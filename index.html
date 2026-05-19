@@ -3,49 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRE Dev Sim | Institutional Underwriting Engine</title>
+    <title>CRE Dev Sim | Institutional Underwriting & Risk Simulation Engine</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #12141c; color: #f3f4f6; margin: 0; padding: 0; text-align: center; }
-        header { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 3rem; color: #ffffff; letter-spacing: -1px; margin-bottom: 10px; }
-        p { font-size: 1.25rem; color: #9ca3af; line-height: 1.6; }
-        .badge { background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 20px; }
-        .btn { background-color: #2563eb; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; margin-top: 20px; transition: background 0.2s; }
-        .btn:hover { background-color: #1d4ed8; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: left; }
-        .card { background-color: #1e2230; padding: 24px; border-radius: 8px; border: 1px solid #2d334a; }
-        .card h3 { margin-top: 0; color: #ffffff; }
-        .card p { font-size: 1rem; margin-bottom: 0; }
-        footer { padding: 40px; color: #4b5563; font-size: 0.9rem; border-top: 1px solid #1e2230; margin-top: 60px; }
+        :root {
+            --bg-main: #0b0f19;
+            --bg-sidebar: #111827;
+            --bg-card: #1f2937;
+            --border-color: #374151;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-blue: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 260px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 16px;
+            box-sizing: border-box;
+        }
+
+        .logo-section h2 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-section p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin: 0 0 32px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+
+        .nav-item.active {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+        }
+
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        /* Main Content Panel */
+        .main-content {
+            flex-grow: 1;
+            padding: 48px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .tab-panel {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & Layout elements */
+        h1 { font-size: 2.5rem; color: #ffffff; margin-top: 0; margin-bottom: 16px; letter-spacing: -1px; }
+        .subtitle { font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; }
+        h3 { font-size: 1.4rem; color: #ffffff; margin-top: 0; }
+        
+        .badge { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 16px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px; }
+        .card { background-color: var(--bg-card); padding: 28px; border-radius: 12px; border: 1px solid var(--border-color); }
+        .card p { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; margin-bottom: 0; }
+
+        /* Pricing Table Styling */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; margin-top: 20px; }
+        .price-card { background-color: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color); padding: 32px; display: flex; flex-direction: column; position: relative; }
+        .price-card.featured { border-color: var(--accent-blue); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); }
+        .price-card.featured .popular-tag { position: absolute; top: -12px; right: 24px; background-color: var(--accent-blue); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+        .price-header h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .price-header .desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; min-height: 40px; }
+        .price-amount { font-size: 2.25rem; font-weight: bold; color: #ffffff; margin-bottom: 24px; }
+        .price-amount span { font-size: 1rem; color: var(--text-muted); font-weight: normal; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 0 0 32px 0; flex-grow: 1; }
+        .feature-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); }
+        .feature-list li.disabled { color: var(--text-muted); text-decoration: line-through; opacity: 0.5; }
+        .checkmark { color: var(--accent-green); font-weight: bold; }
+        .crossmark { color: #ef4444; font-weight: bold; }
+        
+        .btn { background-color: var(--accent-blue); color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; text-align: center; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.95rem; }
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+        .btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); border-color: var(--text-muted); }
+
+        /* Accordion / FAQ styling */
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 20px 0; }
+        .faq-question { font-weight: 600; color: #ffffff; margin-bottom: 8px; font-size: 1.1rem; }
+        .faq-answer { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; }
+
+        /* Contact form placeholder alignment */
+        .contact-box { max-width: 500px; background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; text-align: left; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="badge">⭐️ Advanced Joint Venture Modeling</div>
-        <h1>CRE Risk Simulation Engine</h1>
-        <p>A dynamic underwriting application built to simulate complex capital stacks, track asset repositioning timelines, and project true investor metrics.</p>
-        <a href="mailto:kasing@credevsim.com" class="btn">Request Corporate Demo</a>
-    </header>
+    <nav class="sidebar">
+        <div style="width: 100%;">
+            <div class="logo-section">
+                <h2>CRE Dev Sim</h2>
+                <p>Risk Engine Dashboard</p>
+            </div>
+            <div class="nav-links">
+                <div class="nav-item active" onclick="switchTab('home', this)">Home</div>
+                <div class="nav-item" onclick="switchTab('simulation', this)">Simulation App</div>
+                <div class="nav-item" onclick="switchTab('pricing', this)">Pricing Plans</div>
+                <div class="nav-item" onclick="switchTab('resources', this)">Resources & FAQ</div>
+                <div class="nav-item" onclick="switchTab('contact', this)">Contact</div>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            Logged in via secure domain:<br>
+            <strong style="color: #fff;">kasing@credevsim.com</strong>
+        </div>
+    </nav>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Multi-Tier Promotes</h3>
-            <p>Define precise hurdle limits using custom IRR or MOIC milestones. Fully customizable LP splits with baseline structural overrides.</p>
-        </div>
-        <div class="card">
-            <h3>GP Catch-Up & Clawbacks</h3>
-            <p>Toggle retroactive lookbacks to reward sponsorship performance or enforce stringently calculated exit clawbacks to protect investor capital accounts.</p>
-        </div>
-        <div class="card">
-            <h3>Institutional Constraints</h3>
-            <p>Simulate permanent refinancing windows with strict debt parameters—including DSCR floors, Debt Yield targets, and loan-to-value limitations.</p>
-        </div>
-    </div>
+    <main class="main-content">
 
-    <footer>
-        &copy; 2026 CRE Dev Sim. All rights reserved. Support: kasing@credevsim.com
-    </footer>
+        <div id="home" class="tab-panel active">
+            <div class="badge">⭐️ Advanced Joint Venture Modeling</div>
+            <h1>Next-Generation Institutional Underwriting</h1>
+            <p class="subtitle">A modular simulation suite built directly inside a real-time rendering engine, providing commercial real estate sponsors and analysts with lightning-fast financial risk clarity.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Visual Simulation</h3>
+                    <p>Stop wrestling with brittle, bloated row-and-column spreadsheets. Visualize structural shifts dynamically as you tweak lease-up timelines and structural stress bounds.</p>
+                </div>
+                <div class="card">
+                    <h3>Institutional Quality</h3>
+                    <p>Designed explicitly around Big 4 audit logic frameworks. Every waterfall tier, compounding hurdle calculation, and debt test handles complex capital routing natively.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="simulation" class="tab-panel">
+            <div class="badge">💻 Core Mathematical Engine</div>
+            <h1>The Simulation Application</h1>
+            <p class="subtitle">Our multi-tiered script calculation processor isolates structural variables instantly, generating clear, report-ready metrics without recursive Excel errors.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Dynamic Multi-Tier Promotes</h3>
+                    <p>Input custom internal rate of return (IRR) or multiple on invested capital (MOIC) hurdles. Set precise split shifts across separate independent equity layers.</p>
+                </div>
+                <div class="card">
+                    <h3>Lookback Catch-Ups & Clawbacks</h3>
+                    <p>Accurately stress-test true net exit metrics. Toggle retroactive sponsor lookbacks or simulate capital clawback conditions to ensure alignment across full hold cycles.</p>
+                </div>
+                <div class="card">
+                    <h3>Capital Stack Refinancing Windows</h3>
+                    <p>Model forward permanent debt assumptions natively. Enforce real-time checks against hard structural caps like Debt Service Coverage Ratio (DSCR) minimums and forward Debt Yield metrics.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="pricing" class="tab-panel">
+            <div class="badge">💰 Transparent Infrastructure</div>
+            <h1>Flexible Underwriting Plans</h1>
+            <p class="subtitle">Choose the level of modeling depth your portfolio requires, or partner directly with us to map out completely custom ad-hoc institutional waterfalls.</p>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Community</h3>
+                        <div class="desc">Standard multi-tier equity modeling for quick deal triage.</div>
+                    </div>
+                    <div class="price-amount">$0<span>/forever</span></div>
+                    <ul class="feature-list">
+                        <li><span class="checkmark">✓</span> Up to 3 Active Deal Models</li>
+                        <li><span class="checkmark">✓</span> Standard IRR Hurdle Cascades</li>
+                        <li><span class="checkmark">✓</span> Core Debt Sizing Estimates</li>
+                        <li class="disabled"><span class="crossmark">✕</span> GP Lookback & Catch-Up Logic</li>
+                        <li class="disabled"><span class="crossmark">✕</span> Exit Clawback Simulations</li>
+                    </ul>
+                    <a href="mailto:kasing@credevsim.com?subject=Community%20Tier%20Inquiry" class="btn btn-outline">Launch Free Version</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="popular-tag">Most Popular</div>
+                    <div class="price-header">
+                        <h3>Pro Simulation</h3>
+                        <div class="desc">Complete institutional risk architecture for professional developers and general partners.</div>
+                    </div>
+                    <div class="price-amount">$49<span>/month</span></div>
+                    <ul class="feature-list">
+                        <li><span class="checkmark">✓</span> Unlimited Active Scenarios</li>
+                        <li><span class="checkmark">✓</span> Multi-Tier Promotes (IRR/MOIC)</li>
+                        <li><span class="checkmark">✓</span> GP Lookback & Catch-Up Switch</li>
+                        <li><span class="checkmark">✓</span> Automated Final Exit Clawbacks</li>
+                        <li><span class="checkmark">✓</span> Hard Constraints (DSCR / Debt Yield)</li>
+                    </ul>
+                    <a href="mailto:kasing@credevsim.com?subject=Pro%20Simulation%20Tier%20Subscription" class="btn">Subscribe to Pro</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Strategic Advisory</h3>
+                        <div class="desc">Bespoke mathematical modeling and direct structural auditing for highly non-standard structures.</div>
+                    </div>
+                    <div class="price-amount">Custom<span>/per deal</span></div>
+                    <ul class="feature-list">
+                        <li><span class="checkmark">✓</span> Everything in Pro Architecture</li>
+                        <li><span class="checkmark">✓</span> Custom Ad-Hoc Waterfall Scripting</li>
+                        <li><span class="checkmark">✓</span> Joint Venture Structure Advisory</li>
+                        <li><span class="checkmark">✓</span> Rigorous Audit Logic Verification</li>
+                        <li><span class="checkmark">✓</span> Direct 1-on-1 Developer Support</li>
+                    </ul>
+                    <a href="mailto:kasing@credevsim.com?subject=Bespoke%20Advisory%20Consultation%20Request" class="btn btn-outline">Contact Advisor</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="resources" class="tab-panel">
+            <div class="badge">📚 Knowledge Base</div>
+            <h1>Resources & Documentation</h1>
+            <p class="subtitle">Quick reference documentation on structural accounting terminology and core engine operations.</p>
+            
+            <div class="faq-item">
+                <div class="faq-question">What is a GP Promote Clawback and when does it trigger?</div>
+                <div class="faq-answer">A clawback occurs at asset liquidation or exit. If early operational periods paid out high performance splits to the GP, but later periods underperformed, the engine loops back through lifetime deal metrics to ensure the LP achieved their overarching preferred hurdle. If they did not, the GP returns the difference from their accrued promote account.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How does the GP Catch-Up toggle route capital?</div>
+                <div class="faq-answer">When active, once the Limited Partners have received their full preferred return balance plus any accrued interest hurdle, 100% of subsequent cash flow shifts directly to the General Partner until the aggregate distributions match the targeted baseline percentage split. Normal tiered splits resume immediately after the catch-up pool clears.</div>
+            </div>
+        </div>
+
+        <div id="contact" class="tab-panel">
+            <div class="badge">✉️ Institutional Inquiries</div>
+            <h1>Let's Connect</h1>
+            <p class="subtitle">Have questions about our calculation matrices or want to consult on an upcoming programmatic joint venture framework?</p>
+            
+            <div class="contact-box">
+                <h3 style="margin-bottom: 12px;">Direct Support Channel</h3>
+                <p style="margin-bottom: 24px; color: var(--text-muted);">Skip the standard automated help-desk queues. Connect directly with our main engineering and modeling desk at:</p>
+                <a href="mailto:kasing@credevsim.com" style="color: #ffffff; font-size: 1.25rem; font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--accent-blue); padding-bottom: 4px;">
+                    kasing@credevsim.com
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(tabId, clickedElement) {
+            // Hide all tab panels
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Remove active style from all sidebar navigation buttons
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected panel
+            document.getElementById(tabId).classList.add('active');
+            
+            // Style selected navigation button
+            clickedElement.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
