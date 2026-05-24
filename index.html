@@ -301,133 +301,133 @@
         <div id="resources" class="tab-panel">
         <div id="resources-faq-container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 40px 20px; color: #e5e7eb; background-color: #0b0f19;">
     
-    <header style="margin-bottom: 40px; border-bottom: 1px solid #1f2937; padding-bottom: 20px;">
-        <h1 style="font-size: 2.25rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;">Documentation & System Logic</h1>
-        <p style="color: #9ca3af; font-size: 1.1rem; line-height: 1.6;">Technical breakdowns, audit-grade underwriting definitions, and simulation engine mechanics.</p>
-    </header>
+            <header style="margin-bottom: 40px; border-bottom: 1px solid #1f2937; padding-bottom: 20px;">
+                <h1 style="font-size: 2.25rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;">Documentation & System Logic</h1>
+                <p style="color: #9ca3af; font-size: 1.1rem; line-height: 1.6;">Technical breakdowns, audit-grade underwriting definitions, and simulation engine mechanics.</p>
+            </header>
 
-    <section style="margin-bottom: 50px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 24px;">
-        <h2 style="font-size: 1.5rem; font-weight: 600; color: #38bdf8; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <section style="margin-bottom: 50px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 24px;">
+                <h2 style="font-size: 1.5rem; font-weight: 600; color: #38bdf8; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
             📖 The Post-Refi Capital Pivot Framework
-        </h2>
-        <p style="line-height: 1.7; color: #d1d5db; margin-bottom: 16px;">
+                </h2>
+                <p style="line-height: 1.7; color: #d1d5db; margin-bottom: 16px;">
             In institutional commercial real estate underwriting, the transition from construction to operations is a critical risk vector. Our engine explicitly handles this timeline by separating it into two distinct financial mechanisms:
-        </p>
-        <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px;">
-            <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #6b7280;">
-                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">1. Construction Phase (Accrual Zone)</strong>
-                <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">To maintain administrative and input simplicity, construction loan interest is fully capitalized into the permanent loan basis. The simulation engine accumulates overruns natively without forcing mid-phase capital calls, rolling total accrued interest directly into the final payoff claim balance.</span>
-            </div>
-            <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #10b981;">
-                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">2. Operating Phase (Stabilization Zone)</strong>
-                <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">Once the permanent loan triggers, the asset transitions to lease-up. The model manages this timing stress using a user-defined <strong>Operational Stabilization Reserve</strong> to fence off cash flow defenses dynamically before distributions hit the profit/promote tiers.</span>
-            </div>
-        </div>
-    </section>
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px;">
+                    <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #6b7280;">
+                        <strong style="color: #ffffff; display: block; margin-bottom: 4px;">1. Construction Phase (Accrual Zone)</strong>
+                        <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">To maintain administrative and input simplicity, construction loan interest is fully capitalized into the permanent loan basis. The simulation engine accumulates overruns natively without forcing mid-phase capital calls, rolling total accrued interest directly into the final payoff claim balance.</span>
+                    </div>
+                    <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #10b981;">
+                        <strong style="color: #ffffff; display: block; margin-bottom: 4px;">2. Operating Phase (Stabilization Zone)</strong>
+                        <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">Once the permanent loan triggers, the asset transitions to lease-up. The model manages this timing stress using a user-defined <strong>Operational Stabilization Reserve</strong> to fence off cash flow defenses dynamically before distributions hit the profit/promote tiers.</span>
+                    </div>
+                </div>
+            </section>
 
-    <section>
-        <h2 style="font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 24px;">Frequently Asked Questions</h2>
+            <section>
+                <h2 style="font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 24px;">Frequently Asked Questions</h2>
         
-        <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Refinance & Reserve Mechanics</h3>
+                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Refinance & Reserve Mechanics</h3>
         
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>What exactly does the "Operational Stabilization Reserve (Post-Refi)" input box do?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What exactly does the "Operational Stabilization Reserve (Post-Refi)" input box do?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 It acts as a liquidity fence. Instead of allowing the engine to distribute 100% of the net cash generated at refinance to partners, this user input instructs the simulation to capture and lock away that exact dollar amount as <strong>Restricted Cash</strong> to absorb debt service shortfalls during lease-up.
-            </div>
-        </details>
+                    </div>
+                </details>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>Who "pays" for this Stabilization Reserve?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Who "pays" for this Stabilization Reserve?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 The equity partners (LP/GP pool) pay for it out of their potential refinancing profits via opportunity cost. The engine subtracts the reserve balance directly from your net refinancing cash flow prior to calculating any distribution splits or GP promotes:
-                <div style="background: #1f2937; padding: 12px; border-radius: 4px; font-family: monospace; color: #e5e7eb; margin: 12px 0; font-size: 0.9rem;">
+                        <div style="background: #1f2937; padding: 12px; border-radius: 4px; font-family: monospace; color: #e5e7eb; margin: 12px 0; font-size: 0.9rem;">
                     Net Refi Proceeds = Gross Perm Loan - Bank Construction Payoff - Refi Fees<br>
                     Distributable Cash = Net Refi Proceeds - Operational Stabilization Reserve
-                </div>
-            </div>
-        </details>
+                        </div>
+                    </div>
+                </details>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>Does this reserve increase the Return of Capital (ROC) or accrue a Preferred Return?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                <strong>No.</strong> To protect the mathematical integrity of your returns, the reserve is treated strictly as working capital. Because it is existing money reallocated from loan proceeds, it does not count as "new investor cash out-of-pocket." Adding it to the ROC basis would artificially inflate the preferred return obligation on cash sitting idle in a bank account, which violates audit-grade modeling standards.
-            </div>
-        </details>
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Does this reserve increase the Return of Capital (ROC) or accrue a Preferred Return?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                        <strong>No.</strong> To protect the mathematical integrity of your returns, the reserve is treated strictly as working capital. Because it is existing money reallocated from loan proceeds, it does not count as "new investor cash out-of-pocket." Adding it to the ROC basis would artificially inflate the preferred return obligation on cash sitting idle in a bank account, which violates audit-grade modeling standards.
+                    </div>
+                </details>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>What happens if a portion, or the entirety, of the reserve is unused at sale?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What happens if a portion, or the entirety, of the reserve is unused at sale?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 Any unused balance remaining in the reserve pool is never lost. Upon asset sale, the engine automatically executes an asset sweep, dumping the remaining cash balance straight back into the <strong>Net Sale Distribution Pool</strong> at Exit, returning it to investors proportionally (<em>pari passu</em>).
-            </div>
-        </details>
+                    </div>
+                </details>
+        
+                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Capital Calls & Risk Management</h3>
 
-        <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Capital Calls & Risk Management</h3>
-
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>What happens if the Operational Stabilization Reserve runs completely bone dry?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What happens if the Operational Stabilization Reserve runs completely bone dry?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 If operating deficits outlast the withheld reserve pool, the engine immediately flags an asset stress warning and shifts to a <strong>Capital Call</strong> trigger to preserve debt compliance.
-            </div>
-        </details>
+                    </div>
+                </details>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>How do Capital Calls alter waterfall returns compared to the Reserve?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>How do Capital Calls alter waterfall returns compared to the Reserve?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 A Capital Call represents "Fresh External Equity" injected from investors' external accounts to save the asset. Therefore, unlike reserves, capital calls <strong>are true equity expansions</strong>. The engine increases the project's **Return of Capital (ROC)** basis by the called amount, initiates preferred return accruals on that new capital immediately, and recalibrates management fee tracking if configured to scale with invested basis.
-            </div>
-        </details>
+                    </div>
+                </details>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>What is the difference between Just-in-Time and Full Funding capital calls?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What is the difference between Just-in-Time and Full Funding capital calls?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 The system offers two capital calling pacing settings to track JV behavior types:
-                <ul style="margin: 8px 0; padding-left: 20px;">
-                    <li style="margin-bottom: 6px;"><strong>Just-in-Time (Default):</strong> Calls capital month-by-month to match the exact localized dollar shortage. This maximizes investor IRR metrics by delaying capital deployment metrics.</li>
-                    <li><strong>Full Funding:</strong> Gauges the total aggregate downside gap over the model holding period and executes a single lump-sum call the first month a violation occurs, optimizing accounting cleanliness over internal yield optimization.</li>
-                </ul>
-            </div>
-        </details>
+                        <ul style="margin: 8px 0; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><strong>Just-in-Time (Default):</strong> Calls capital month-by-month to match the exact localized dollar shortage. This maximizes investor IRR metrics by delaying capital deployment metrics.</li>
+                            <li><strong>Full Funding:</strong> Gauges the total aggregate downside gap over the model holding period and executes a single lump-sum call the first month a violation occurs, optimizing accounting cleanliness over internal yield optimization.</li>
+                        </ul>
+                    </div>
+                </details>
 
-        <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Dashboard & Visualizations</h3>
+                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Dashboard & Visualizations</h3>
 
-        <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-            <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>How can I visually trace the reserve burning down inside the interface?</span>
-                <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-            </summary>
-            <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
+                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>How can I visually trace the reserve burning down inside the interface?</span>
+                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
                 You can audit this across two distinct screens. In the **Waterfall Snapshot**, the refinance event isolates a discrete, color-coded block displaying "Restricted Cash Account Stabilization Reserve" next to your net payout metrics. Concurrently, the **Monthly Operating Heatmap** tracks a dynamic cash line illustrating the pool burning down through early months and leveling off as NOI matches and exceeds debt obligations.
-            </div>
-        </details>
+                    </div>
+                </details>
 
-    </section>
+            </section>
 
-    <footer style="margin-top: 50px; border-top: 1px solid #1f2937; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #6b7280;">
+            <footer style="margin-top: 50px; border-top: 1px solid #1f2937; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #6b7280;">
         Commercial Real Estate Development Simulator • Built for Institutional and Audit-Grade Scenario Underwriting.
-    </footer>
-</div>
+            </footer>
+        </div>
 
         <div id="contact" class="tab-panel">
             <div class="badge">✉️ Institutional Inquiries</div>
