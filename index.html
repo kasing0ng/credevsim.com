@@ -95,20 +95,21 @@
         /* Main Content Panel */
         .main-content {
             flex-grow: 1;
-            padding: 48px;
-            overflow-y: auto;
+            padding-bottom: 50px;
+            overflow-y: auto !important;
+            height: 100vh !important;
             box-sizing: border-box;
         }
 
         .tab-panel {
-            display: none;
+            display: none !important; /* Force hide by default */
             max-width: 1000px;
             margin: 0 auto;
             animation: fadeIn 0.3s ease;
         }
 
         .tab-panel.active {
-            display: block;
+            display: block !important; /* Force show when active */
         }
 
         @keyframes fadeIn {
