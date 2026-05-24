@@ -214,7 +214,7 @@
                     <div>• <b>Comparison Tool:</b> Run Scenario A vs. B side-by-side.</div>
                 </div>
                 <div style="margin-top: 24px;">
-                    <button class="btn" onclick="switchTab('simulation', document.querySelector('[onclick*=\'simulation\']'))">Explore the Full Engine</button>
+                    <button class="btn" onclick="switchTab('simulation')">Explore the Full Engine</button>
                     <button class="btn btn-outline" style="margin-left: 10px;" onclick="window.print()">Export Sample PDF Summary</button>
                 </div>
             </div>
@@ -488,17 +488,24 @@
     </main>
 
     <script>
-    function switchTab(tabId) {
-    // 1. Hide ALL panels
+    function switchTab(tabId, clickedElement) {
+    // 1. Hide all tab panels
     const panels = document.querySelectorAll('.tab-panel');
     panels.forEach(panel => panel.classList.remove('active'));
     
-    // 2. Show ONLY the target panel
+    // 2. Remove 'active' class from ALL nav items
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // 3. Show the target panel
     const target = document.getElementById(tabId);
     if (target) {
         target.classList.add('active');
-    } else {
-        console.error("Panel ID not found: " + tabId);
+    }
+
+    // 4. Highlight the button that was clicked
+    if (clickedElement) {
+        clickedElement.classList.add('active');
     }
     }
     </script>
