@@ -488,27 +488,19 @@
     </main>
 
     <script>
-        function switchTab(tabId) {
-            // 1. Safety Check: Verify the element exists
-            const targetPanel = document.getElementById(tabId);
-            if (!targetPanel) {
-            console.error("Could not find tab panel with ID:", tabId);
-            return;
-            }
-
-            // 2. Hide all panels
-            document.querySelectorAll('.tab-panel').forEach(panel => {
-            panel.classList.remove('active');
-            });
-
-             // 3. Deactivate all buttons (optional visual cleanup)
-            document.querySelectorAll('.nav-item').forEach(btn => {
-            btn.classList.remove('active');
-            });
-
-            // 4. Show the selected panel
-            targetPanel.classList.add('active');
-          }
+    function switchTab(tabId) {
+    // 1. Hide ALL panels
+    const panels = document.querySelectorAll('.tab-panel');
+    panels.forEach(panel => panel.classList.remove('active'));
+    
+    // 2. Show ONLY the target panel
+    const target = document.getElementById(tabId);
+    if (target) {
+        target.classList.add('active');
+    } else {
+        console.error("Panel ID not found: " + tabId);
+    }
+    }
     </script>
 
 </body>
