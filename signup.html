@@ -2,37 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up | CRE Dev Sim</title>
+    <title>Debug | CRE Dev Sim</title>
     
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-web@1.5.2/dist/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-shared@1.5.2/dist/index.js"></script>
-    
-    <style>
-        body { background-color: #0b0f19; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .auth-container { width: 400px; background: #1f2937; padding: 30px; border-radius: 8px; }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-web@1.5.2"></script>
 </head>
 <body>
-
-    <div class="auth-container">
-        <h2 style="text-align: center;">Register for CRE Dev Sim</h2>
-        <div id="supabase-auth-ui"></div>
+    <div id="supabase-auth-ui" style="width: 400px; margin: 50px auto; background: #1f2937; padding: 20px; color: white;">
+        <h2>Check Console for Debugging</h2>
     </div>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // 1. Initialize
-            const supabase = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+        console.log("--- DEBUG START ---");
+        
+        window.addEventListener('load', () => {
+            console.log("Step 1: Page Loaded.");
 
-            // 2. Initialize UI - pointing directly to the global object
-            const auth = new supabaseAuthUI.Auth(supabase);
-            
-            // 3. Render
-            auth.render({
-                container: '#supabase-auth-ui',
-                providers: ['email'],
-            });
+            // Debug Step 2: Check if 'supabase' exists
+            if (typeof supabase === 'undefined') {
+                console.error("CRITICAL ERROR: 'supabase' object is undefined. The first script tag failed to load.");
+                return;
+            }
+            console.log("Step 2: 'supabase' object found.");
+
+            // Debug Step 3: Check if 'supabaseAuthUI' exists
+            if (typeof supabaseAuthUI === 'undefined') {
+                console.error("CRITICAL ERROR: 'supabaseAuthUI' is undefined. The second script tag failed to load.");
+                return;
+            }
+            console.log("Step 3: 'supabaseAuthUI' object found.");
+
+            // Debug Step 4: Try to initialize
+            try {
+                console.log("Step 4: Attempting to create Supabase Client...");
+                const supabaseClient = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+                console.log("Step 5: Client Created.");
+
+                console.log("Step 6: Attempting to render Auth UI...");
+                const auth = new supabaseAuthUI.Auth(supabaseClient);
+                auth.render({
+                    container: '#supabase-auth-ui',
+                    providers: ['email'],
+                });
+                console.log("Step 7: Success! UI Rendered.");
+            } catch (err) {
+                console.error("CRITICAL ERROR in Step 4-7:", err);
+            }
         });
     </script>
 </body>
