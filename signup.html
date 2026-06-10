@@ -5,22 +5,26 @@
     <title>Sign Up | CRE Dev Sim</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-web@1.5.2"></script>
+    <style>
+        body { background-color: #0b0f19; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .auth-container { width: 400px; background: #1f2937; padding: 30px; border-radius: 8px; }
+    </style>
 </head>
-<body style="background-color: #0b0f19; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
+<body>
 
-    <div style="width: 400px; background: #1f2937; padding: 30px; border-radius: 8px;">
+    <div class="auth-container">
         <h2 style="text-align: center;">Register for CRE Dev Sim</h2>
         <div id="supabase-auth-ui"></div>
     </div>
 
     <script>
-        // 1. Initialize Supabase
-        const supabase = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+        // Initialize the client once. 
+        // We use 'window.supabase' to ensure we don't conflict with other scripts.
+        const supabaseClient = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
 
-        // 2. Initialize Auth UI
-        const auth = new window.supabaseAuthUI.Auth(supabase);
+        // Render the Auth UI
+        const auth = new window.supabaseAuthUI.Auth(supabaseClient);
         
-        // 3. Render the form
         auth.render({
             container: '#supabase-auth-ui',
             providers: ['email'],
