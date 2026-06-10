@@ -1,21 +1,38 @@
-<script>
-    // 1. Wait until the browser has finished loading all the scripts
-    window.addEventListener('load', () => {
-        
-        // 2. Initialize the Supabase Client
-        const supabaseClient = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | CRE Dev Sim</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-web@1.5.2"></script>
+    <style>
+        body { background-color: #0b0f19; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .auth-container { width: 400px; background: #1f2937; padding: 30px; border-radius: 8px; }
+    </style>
+</head>
+<body>
 
-        // 3. Use the 'supabase.Auth' object directly provided by the library
-        // In the latest version, it is often attached directly to the supabase variable
-        // or available via the global window object.
-        const authContainer = document.getElementById('supabase-auth-ui');
-        
-        const { Auth } = window.supabaseAuthUI;
-        const auth = new Auth(supabaseClient);
-        
-        auth.render({
-            container: authContainer,
-            providers: ['email'],
+    <div class="auth-container">
+        <h2 style="text-align: center;">Register for CRE Dev Sim</h2>
+        <div id="supabase-auth-ui"></div>
+    </div>
+
+    <script>
+        // This function will wait until the entire page (including scripts) is loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // Now we are sure the 'supabase' library is available
+            const supabaseClient = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+
+            // Use the UI components
+            const { Auth } = window.supabaseAuthUI;
+            const auth = new Auth(supabaseClient);
+            
+            auth.render({
+                container: '#supabase-auth-ui',
+                providers: ['email'],
+            });
         });
-    });
-</script>
+    </script>
+</body>
+</html>
