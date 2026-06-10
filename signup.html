@@ -5,18 +5,22 @@
     <title>Sign Up | CRE Dev Sim</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-web@1.5.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/auth-ui-shared@1.5.2"></script>
 </head>
-<body style="background-color: #0b0f19; display: flex; justify-content: center; align-items: center; height: 100vh;">
+<body style="background-color: #0b0f19; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
 
-    <div id="supabase-auth-ui" style="width: 400px; background: #1f2937; padding: 20px; border-radius: 8px;"></div>
+    <div style="width: 400px; background: #1f2937; padding: 30px; border-radius: 8px;">
+        <h2 style="text-align: center;">Register for CRE Dev Sim</h2>
+        <div id="supabase-auth-ui"></div>
+    </div>
 
     <script>
-        // Replace these with your actual Supabase Project URL and Anon Key
+        // 1. Initialize Supabase
         const supabase = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
 
-        const { Auth } = window.supabaseAuthUI;
-        const auth = new Auth(supabase);
+        // 2. Initialize Auth UI
+        const auth = new window.supabaseAuthUI.Auth(supabase);
+        
+        // 3. Render the form
         auth.render({
             container: '#supabase-auth-ui',
             providers: ['email'],
