@@ -7,7 +7,7 @@
     <style>
         body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         .container { width: 350px; background: #1f2937; padding: 30px; border-radius: 8px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 4px; border: 1px solid #374151; background: #111827; color: white; box-sizing: border-box;}
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 4px; border: 1px solid #374151; background: #111827; color: white; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
@@ -17,33 +17,35 @@
         <h2>Register</h2>
         <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
-        <button onclick="window.processSignUp()">Sign Up</button>
+        <button id="signup-btn">Sign Up</button>
         <p id="msg"></p>
     </div>
 
     <script>
-        // 1. Initialize Supabase
-        const supabase = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+        // This wrapper (function() { ... })(); protects your code from errors
+        (function() {
+            // Use 'var' to prevent redeclaration errors
+            var client = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
 
-        // 2. Define the function globally on 'window' so the button can see it
-        window.processSignUp = async function() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const msg = document.getElementById('msg');
-            
-            msg.innerText = "Signing up...";
+            document.getElementById('signup-btn').addEventListener('click', async function() {
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var msg = document.getElementById('msg');
+                
+                msg.innerText = "Signing up...";
 
-            const { data, error } = await supabase.auth.signUp({
-                email: email,
-                password: password,
+                var { error } = await client.auth.signUp({
+                    email: email,
+                    password: password,
+                });
+
+                if (error) {
+                    msg.innerText = "Error: " + error.message;
+                } else {
+                    msg.innerText = "Success! Please check your email to verify.";
+                }
             });
-
-            if (error) {
-                msg.innerText = "Error: " + error.message;
-            } else {
-                msg.innerText = "Success! Please check your email to verify.";
-            }
-        };
+        })();
     </script>
 </body>
 </html>
