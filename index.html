@@ -84,6 +84,11 @@
             background-color: var(--accent-blue);
             color: #ffffff;
         }
+        .nav-right-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* This pushes it to the right without changing anything else */
+        }
 
         .sidebar-footer {
             font-size: 0.75rem;
@@ -147,6 +152,7 @@
         .btn:hover { background-color: var(--accent-hover); }
         .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
         .btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); border-color: var(--text-muted); }
+        .btn-get-access {background-color: #3b82f6;color: white;padding: 10px 20px;border-radius: 6px;text-decoration: none;font-weight: 600;}
 
         /* Accordion / FAQ styling */
         .faq-item { border-bottom: 1px solid var(--border-color); padding: 20px 0; }
@@ -183,7 +189,7 @@
     <main class="main-content">
 
         <div id="home" class="tab-panel active">
-            <div class="nav-right"><a href="signup.html" class="btn-get-access">Get Access</a></div>
+            <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
             <div class="badge">🚀 CRE Investment Intelligence</div>
             <h1>Underwrite Institutional Deals in Seconds, Not Hours.</h1>
             <p class="subtitle">Stop relying soly on complex, recursive Excel sheets. <b>CRE Dev Sim</b> is a more intuitive, institutional-quality underwriting addition to static spreadsheets that handles complex capital stacks, institutional waterfalls, and tax-deferred exits natively.</p>
