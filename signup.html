@@ -1,31 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-document.getElementById('signup-btn').addEventListener('click', async function() {
-    // 1. PLACE IT HERE: At the very beginning of the function
-    var termsCheckbox = document.getElementById('terms');
-    if (!termsCheckbox.checked) {
-        document.getElementById('msg').innerText = "Error: You must agree to the Terms and Conditions.";
-        return; // This stops the rest of the code from running
-    }
-
-    // 2. ONLY AFTER THE CHECK, run the rest of your code
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var msg = document.getElementById('msg');
-    
-    msg.innerText = "Signing up...";
-
-    var { error } = await client.auth.signUp({
-        email: email,
-        password: password,
-    });
-
-    if (error) {
-        msg.innerText = "Error: " + error.message;
-    } else {
-        msg.innerText = "Success! Please check your email to verify.";
-    }
-});
 <head>
     <meta charset="UTF-8">
     <title>Register | Commercial Real Estate Underwriting Simulator</title>
@@ -70,6 +44,11 @@ document.getElementById('signup-btn').addEventListener('click', async function()
             var client = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
 
             document.getElementById('signup-btn').addEventListener('click', async function() {
+                var termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox.checked) {
+                    document.getElementById('msg').innerText = "Error: You must agree to the Terms and Conditions.";
+                    return;
+                }
                 var email = document.getElementById('email').value;
                 var password = document.getElementById('password').value;
                 var msg = document.getElementById('msg');
