@@ -5,11 +5,15 @@
     <title>Register | Commercial Real Estate Underwriting Simulator</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        h2 { margin-top: 0; text-align: center; }
+        body { background: #0b0f19; color: white; font-family: sans-serif; margin: 0; height: 100vh; }
+        .nav-home { position: absolute; top: 20px; left: 20px; color: #3b82f6; text-decoration: none; font-weight: bold; }
+        .main-wrapper { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+        h1 { text-align: center; font-size: 24px; margin-bottom: 20px; }
         .container { width: 350px; background: #1f2937; padding: 30px; border-radius: 8px; }
         input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 4px; border: 1px solid #374151; background: #111827; color: white; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .terms { font-size: 12px; color: #9ca3af; margin: 10px 0; }
+        .terms a { color: #3b82f6; }
         .login-link { text-align: center; margin-top: 15px; font-size: 14px; color: #9ca3af; }
         .login-link a { color: #3b82f6; text-decoration: none; }
         #msg { text-align: center; margin-top: 15px; font-size: 14px; }
@@ -18,17 +22,23 @@
 <body>
 
     <a href="https://credevsim.com" class="nav-home">← Home</a>
-    
+
+    <div class="main-wrapper">
     <div class="container">
         <h2>Register</h2>
         <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
-        <input type="checkbox" id="terms" required> I agree to the <a href="terms.html">Terms and Conditions</a>.
+        
+        <div class="terms">
+        <input type="checkbox" id="terms" required>
+        I agree to the <a href="terms.html">Terms and Conditions</a>.
+        </div>
         <button id="signup-btn">Sign Up</button>
         <p id="msg"></p>
         <div class="login-link">
             Already have an account? Login via the application.
             </div>
+    </div>
     </div>
 
     <script>
