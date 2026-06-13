@@ -17,6 +17,11 @@
         .login-link { text-align: center; margin-top: 15px; font-size: 14px; color: #9ca3af; }
         .login-link a { color: #3b82f6; text-decoration: none; }
         #msg { text-align: center; margin-top: 15px; font-size: 14px; }
+        input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    padding: 0;
+    }
     </style>
 </head>
 <body>
@@ -28,7 +33,8 @@
         <h2>Register | Commercial Real Estate Underwriting Simulator</h2>
         <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
-        <div class="terms"><input type="checkbox" id="terms" required>I agree to the <a href="terms.html">Terms and Conditions</a>.</div>
+        <div class="terms">
+        <label style="display: flex; align-items: center; justify-content: flex-start; cursor: pointer;"><input type="checkbox" id="terms" required> <span>I agree to the <a href="terms.html">Terms and Conditions</a>.</span></label></div>
         <button id="signup-btn">Sign Up</button>
         <p id="msg"></p>
         <div class="login-link">
