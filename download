@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download CREDevSim | Risk Engine</title>
+    <style>
+        body {
+            background-color: #0b0e14;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        h1 { color: #ffffff; }
+        p { color: #8b949e; margin-bottom: 30px; }
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .download-btn:hover { background-color: #2ea043; }
+        .macos-note {
+            margin-top: 25px;
+            font-size: 0.85em;
+            color: #c9510c;
+            border: 1px solid #c9510c;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download CREDevSim</h1>
+        <p>Get the latest version of the institutional risk engine.</p>
+        
+        <a href="YOUR_GITHUB_WINDOWS_LINK_HERE" class="download-btn">Download for Windows (.zip)</a>
+        <a href="YOUR_GITHUB_MACOS_LINK_HERE" class="download-btn">Download for macOS (.zip)</a>
+
+        <div class="macos-note">
+            <strong>Note for macOS Users:</strong> If the app is blocked on launch, right-click the app icon in Finder, select "Open," and confirm in the security prompt to bypass Gatekeeper.
+        </div>
+    </div>
+</body>
+</html>
