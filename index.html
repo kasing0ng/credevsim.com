@@ -117,6 +117,27 @@
         .tab-panel.active {
             display: block !important; /* Force show when active */
         }
+        .row-container {
+        display: flex;
+        flex-wrap: wrap; /* This makes them stack on mobile */
+        gap: 20px;       /* This puts space between the columns */
+        margin: 40px 0;
+        }
+
+        /* This makes each individual column */
+        .col-item {
+        flex: 1;             /* This makes all columns take equal width */
+        min-width: 250px;    /* This prevents them from getting too skinny */
+        text-align: center;
+        }
+    
+        /* This ensures images fit their columns perfectly */
+        .col-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(4px); }
@@ -276,7 +297,35 @@
             <div style="text-align: center; margin: 30px 0;">
             <h3 style="color: white; font-family: sans-serif;">Every inputs and buttons have tooltips to guide users</h3>
             </div>
-            <img src="Screenshot_Tooltip.png" alt="Every inputs and buttons have tooltips to guide users" style="width: 100%; heigh:80%; border-radius: 8px;">
+            <img src="Screenshot_tooltip.png" alt="Every inputs and buttons have tooltips to guide users" style="width: 100%; heigh:80%; border-radius: 8px;">
+
+            <div class="row-container">
+    
+            <div class="col-item">
+                <h3>Input Section</h3>
+                <img src="Screenshot_inputs.png" alt="Deal Inputs">
+                <p>Simple, logical inputs for every deal type.</p>
+            </div>
+    
+            <div class="col-item">
+                <h3>Waterfall Engine</h3>
+                <img src="Screenshot_waterfall.png" alt="Waterfall Logic">
+                <p>Automated calculation, detail tooltips, and visual</p>
+            </div>
+        
+            <div class="col-item">
+                <h3>Screenshot_sankey.png</h3>
+                <img src="Screenshot_sankey.png" alt="Sankey Chart">
+                <p>Clean and clear flow of funds visualizations.</p>
+            </div>
+        
+            <div class="col-item">
+                <h3>Summary</h3>
+                <img src="Screenshot_summary.png" alt="Deal Summary">
+                <p>Summary with a list of metrics and analytics.</p>
+            </div>
+
+        </div>
         </div>
 
         <div id="pricing" class="tab-panel">
