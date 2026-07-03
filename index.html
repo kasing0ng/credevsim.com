@@ -1,720 +1,629 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CREDevSim | Commercial Real Estate Underwriting and Development Tool</title>
-    <style>
-        :root {
-            --bg-main: #0b0f19;
-            --bg-sidebar: #111827;
-            --bg-card: #1f2937;
-            --border-color: #374151;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-blue: #3b82f6;
-            --accent-hover: #2563eb;
-            --accent-green: #10b981;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CREDevSim — LP/GP Waterfall Engine for CRE</title>
+<style>
+:root {
+  --bg-app:      #080d18;
+  --bg-side:     #0c1220;
+  --bg-surf:     #111927;
+  --bg-card:     #17202e;
+  --bg-card-hi:  #1c2838;
+  --bd-subtle:   #1e2f44;
+  --bd-muted:    #28394f;
+  --bd-accent:   rgba(42,108,240,.28);
+  --tx-pri:      #dde8f5;
+  --tx-sec:      #7d91aa;
+  --tx-dim:      #49607a;
+  --acc:         #2a6cf0;
+  --acc-h:       #1b5ce0;
+  --acc-dim:     rgba(42,108,240,.1);
+  --grn:         #1aaf80;
+  --grn-dim:     rgba(26,175,128,.1);
+  --red:         #d95555;
+  --red-dim:     rgba(217,85,85,.08);
+  --font:        -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --mono:        "SF Mono","Cascadia Code","Fira Code",Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}
+body{font-family:var(--font);background:var(--bg-app);color:var(--tx-pri);display:flex;height:100vh;overflow:hidden}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+/* ── Sidebar ── */
+.sidebar{width:240px;flex-shrink:0;background:var(--bg-side);border-right:1px solid var(--bd-subtle);display:flex;flex-direction:column;padding:28px 14px 20px}
+.brand h2{font-size:1.08rem;font-weight:700;color:#fff;letter-spacing:-.3px}
+.brand p{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;margin-bottom:28px}
+.nav-list{display:flex;flex-direction:column;gap:2px;flex:1}
+.nav-item{padding:9px 13px;font-size:.87rem;font-weight:500;color:var(--tx-sec);border-radius:6px;cursor:pointer;transition:color .15s,background .15s;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,.04);color:#fff}
+.nav-item.active{background:var(--acc);color:#fff}
+.sidebar-foot{padding-top:14px;border-top:1px solid var(--bd-subtle);font-size:.7rem;color:var(--tx-dim);line-height:1.5}
 
-        /* Sidebar Styling */
-        .sidebar {
-            width: 260px;
-            background-color: var(--bg-sidebar);
-            border-right: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 24px 16px;
-            box-sizing: border-box;
-        }
+/* ── Main ── */
+.main{flex:1;overflow-y:auto;min-width:0}
+.tab-panel{display:none;max-width:1060px;margin:0 auto;padding:32px 44px 80px;animation:fu .22s ease both}
+.tab-panel.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 
-        .logo-section h2 {
-            font-size: 1.25rem;
-            color: #ffffff;
-            margin: 0 0 4px 0;
-            letter-spacing: -0.5px;
-        }
+/* ── Utilities ── */
+.panel-top{display:flex;justify-content:flex-end;margin-bottom:8px}
+.badge{display:inline-flex;align-items:center;gap:5px;background:var(--acc-dim);color:var(--acc);border:1px solid var(--bd-accent);padding:4px 10px;border-radius:20px;font-size:.73rem;font-weight:600;letter-spacing:.3px;margin-bottom:18px}
+.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);margin-bottom:14px}
+h1{font-size:2.3rem;font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.04em;text-wrap:balance;margin-bottom:14px}
+h2{font-size:1.45rem;font-weight:700;color:#fff;letter-spacing:-.03em;text-wrap:balance;margin-bottom:10px}
+h3{font-size:1rem;font-weight:650;color:#fff;letter-spacing:-.01em;margin-bottom:7px}
+.lead{font-size:1.02rem;color:var(--tx-sec);line-height:1.65;max-width:620px;margin-bottom:32px}
+p{color:var(--tx-sec);line-height:1.6;font-size:.93rem}
+.section{margin-bottom:36px}
+.section-sm{margin-bottom:20px}
 
-        .logo-section p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin: 0 0 32px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--acc);color:#fff;padding:9px 18px;border-radius:7px;font-weight:600;font-size:.86rem;text-decoration:none;border:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--acc-h)}
+.btn-sm{padding:7px 14px;font-size:.8rem}
+.btn-ghost{background:transparent;border:1px solid var(--bd-muted);color:var(--tx-pri)}
+.btn-ghost:hover{background:rgba(255,255,255,.04);border-color:var(--tx-sec)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
 
-        .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            flex-grow: 1;
-        }
+/* ── Cards ── */
+.card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:24px}
+.card-acc{border-color:var(--bd-accent);background:rgba(42,108,240,.05)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
 
-        .nav-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            color: var(--text-muted);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+/* ── Stat row ── */
+.stat-row{display:flex;margin-bottom:34px}
+.stat{padding:13px 22px;border:1px solid var(--bd-subtle);background:var(--bg-card)}
+.stat:first-child{border-radius:8px 0 0 8px}
+.stat:not(:first-child){border-left:none}
+.stat:last-child{border-radius:0 8px 8px 0}
+.stat-val{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums;display:block}
+.stat-lbl{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;display:block}
 
-        .nav-item:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-        }
+/* ── NOT / IS contrast ── */
+.contrast{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden;margin-bottom:36px}
+.c-not{padding:22px 26px;background:var(--red-dim);border-right:1px solid var(--bd-subtle)}
+.c-is {padding:22px 26px;background:var(--grn-dim)}
+.c-hdr{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+.c-not .c-hdr{color:var(--red)}
+.c-is  .c-hdr{color:var(--grn)}
+.c-list{display:flex;flex-direction:column;gap:9px;list-style:none}
+.c-list li{font-size:.88rem;line-height:1.4;display:flex;gap:9px;align-items:flex-start;color:var(--tx-pri)}
+.c-ico{flex-shrink:0;font-size:.78rem;margin-top:2px}
 
-        .nav-item.active {
-            background-color: var(--accent-blue);
-            color: #ffffff;
-        }
-        .nav-right-container {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            margin-bottom: 20px;
-        }
+/* ── Feature 2-col grid ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:.87rem;color:var(--tx-pri)}
+.feat-item{display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+.feat-item b{color:#fff}
 
-        .sidebar-footer {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-        }
+/* ── Videos ── */
+.video-block{margin-bottom:28px}
+.v-cap{font-size:.93rem;font-weight:600;color:#fff;margin-bottom:10px}
+.v-sub{font-size:.78rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+.demo-video{width:100%;border-radius:8px;display:block;background:var(--bg-surf);box-shadow:0 8px 32px rgba(0,0,0,.55);min-height:160px}
 
-        /* Main Content Panel */
-        .main-content {
-            flex-grow: 1;
-            padding-bottom: 50px;
-            overflow-y: auto !important;
-            height: 100vh !important;
-            box-sizing: border-box;
-        }
+/* ── Screenshots ── */
+.ss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.ss-item{text-align:center}
+.ss-item img{width:100%;border-radius:6px;display:block;margin-bottom:6px;border:1px solid var(--bd-subtle)}
+.ss-item p{font-size:.75rem;color:var(--tx-sec)}
 
-        .tab-panel {
-            display: none !important; /* Force hide by default */
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeIn 0.3s ease;
-        }
+/* ── Pricing ── */
+.p-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}
+.p-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:12px;padding:26px;display:flex;flex-direction:column}
+.p-card.featured{border-color:var(--bd-accent)}
+.p-chip{display:inline-block;background:var(--acc);color:#fff;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:3px 9px;border-radius:3px;margin-bottom:10px}
+.p-name{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px}
+.p-desc{font-size:.83rem;color:var(--tx-sec);margin-bottom:18px;min-height:34px}
+.p-amt{font-family:var(--mono);font-size:1.9rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.p-amt sub{font-size:.85rem;font-weight:400;color:var(--tx-sec);font-family:var(--font)}
+.p-note{font-size:.76rem;color:var(--tx-dim);margin-bottom:22px}
+.p-note a{color:var(--acc)}
+.fl{list-style:none;flex:1;margin-bottom:22px;display:flex;flex-direction:column;gap:9px}
+.fl li{display:flex;gap:8px;align-items:flex-start;font-size:.86rem;color:var(--tx-pri)}
+.fl li.off{color:var(--tx-dim);text-decoration:line-through}
+.ck{color:var(--grn);font-weight:700;flex-shrink:0}
+.cx{color:var(--red);font-weight:700;flex-shrink:0}
+.fl-grp{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--tx-dim);padding:10px 0 4px;border-top:1px solid var(--bd-subtle);margin-top:4px;display:block}
+.fl-grp:first-child{border-top:none;margin-top:0;padding-top:2px}
+.fl li .feat-desc{color:var(--tx-sec);font-size:.78rem;display:block;margin-top:2px;line-height:1.35}
 
-        .tab-panel.active {
-            display: block !important; /* Force show when active */
-        }
-        .row-container {
-        display: flex;
-        width: 115%;
-        max-width: 115%;
-        transform: translateX(-7.50%);
-        flex-wrap: wrap; /* This makes them stack on mobile */
-        gap: 15px;       /* This puts space between the columns */
-        margin: 15px 0;
-        }
+/* ── FAQ ── */
+.faq-sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);margin:28px 0 10px}
+details.faq{background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:6px;margin-bottom:7px}
+summary.faq-q{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;cursor:pointer;list-style:none;font-weight:600;font-size:.92rem;color:#fff;gap:12px;user-select:none}
+summary.faq-q::-webkit-details-marker{display:none}
+.faq-tog{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:.88rem;color:var(--acc);font-weight:700;transition:transform .18s,background .18s}
+details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
+.faq-body{padding:0 18px 16px;border-top:1px solid var(--bd-subtle);font-size:.88rem;color:var(--tx-sec);line-height:1.65;padding-top:14px}
+.faq-code{background:var(--bg-card);padding:10px 14px;border-radius:5px;font-family:var(--mono);font-size:.8rem;color:var(--tx-pri);margin:10px 0;overflow-x:auto}
 
-        /* This makes each individual column */
-        .col-item {
-        flex: 1;             /* This makes all columns take equal width */
-        min-width: 250px;    /* This prevents them from getting too skinny */
-        text-align: center;
-        }
-    
-        /* This ensures images fit their columns perfectly */
-        .col-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-        /* This is the key: Force the video to be wide regardless of the parent */
-        .dashboard-video {
-        display: block;
-        width: 115%;      /* Take full available width */
-        max-width: 115%;
-        display: block;
-        margin: 10px auto;
-        transform: translateX(-7.50%);
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        background: #0b0f19; /* Matches your background */
-        }
+/* ── Contact ── */
+.cbox{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:26px;max-width:560px;margin-bottom:14px}
+.cbox h3{margin-bottom:7px}
+.cbox p{margin-bottom:18px}
+.email-link{font-size:1.08rem;font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid var(--acc);padding-bottom:2px}
+.pol-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Typography & Layout elements */
-        h1 { font-size: 2.5rem; color: #ffffff; margin-top: 0; margin-bottom: 16px; letter-spacing: -1px; }
-        .subtitle { font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; }
-        h3 { font-size: 1.4rem; color: #ffffff; margin-top: 0; }
-        
-        .badge { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 16px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px; }
-        .card { background-color: var(--bg-card); padding: 28px; border-radius: 12px; border: 1px solid var(--border-color); }
-        .card p { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; margin-bottom: 0; }
-
-        /* Pricing Table Styling */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; margin-top: 20px; }
-        .price-card { background-color: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color); padding: 32px; display: flex; flex-direction: column; position: relative; }
-        .price-card.featured { border-color: var(--accent-blue); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); }
-        .price-card.featured .popular-tag { position: absolute; top: -12px; right: 24px; background-color: var(--accent-blue); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .price-header h3 { font-size: 1.5rem; margin-bottom: 8px; }
-        .price-header .desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; min-height: 40px; }
-        .price-amount { font-size: 2.25rem; font-weight: bold; color: #ffffff; margin-bottom: 24px; }
-        .price-amount span { font-size: 1rem; color: var(--text-muted); font-weight: normal; }
-        
-        .feature-list { list-style: none; padding: 0; margin: 0 0 32px 0; flex-grow: 1; }
-        .feature-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); }
-        .feature-list li.disabled { color: var(--text-muted); text-decoration: line-through; opacity: 0.5; }
-        .checkmark { color: var(--accent-green); font-weight: bold; }
-        .crossmark { color: #ef4444; font-weight: bold; }
-        
-        .btn { background-color: var(--accent-blue); color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; text-align: center; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.95rem; }
-        .btn:hover { background-color: var(--accent-hover); }
-        .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
-        .btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); border-color: var(--text-muted); }
-        .btn-get-access {background-color: #3b82f6;color: white;padding: 10px 20px;border-radius: 6px;text-decoration: none;font-weight: 600;}
-
-        /* Accordion / FAQ styling */
-        .faq-item { border-bottom: 1px solid var(--border-color); padding: 20px 0; }
-        .faq-question { font-weight: 600; color: #ffffff; margin-bottom: 8px; font-size: 1.1rem; }
-        .faq-answer { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; }
-
-        /* Contact form placeholder alignment */
-        .contact-box { max-width: 600px; background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; text-align: left; }
-    </style>
+/* ── About ── */
+.about-grid{display:grid;grid-template-columns:1fr 255px;gap:26px;max-width:880px;align-items:start;margin-bottom:28px}
+.founder-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-left:3px solid var(--acc);border-radius:10px;padding:26px;line-height:1.7;font-size:.93rem;color:var(--tx-sec)}
+.founder-card p+p{margin-top:12px}
+.credits-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:22px}
+.credits-card .clbl{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);font-weight:700;margin-bottom:14px}
+.cr-row{display:flex;justify-content:space-between;font-size:.86rem;padding:6px 0;border-bottom:1px solid var(--bd-subtle)}
+.cr-row:last-of-type{border-bottom:none}
+.cr-row b{color:#fff}
+.disclaimer{max-width:880px;background:rgba(217,85,85,.06);border:1px solid rgba(217,85,85,.28);border-radius:10px;padding:20px 22px}
+.disclaimer h5{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--red);font-weight:700;margin-bottom:8px}
+.disclaimer p{font-size:.86rem}
+</style>
 </head>
 <body>
 
-    <nav class="sidebar">
-        <div style="width: 100%;">
-            <div class="logo-section">
-                <h2>CREDevSim</h2>
-                <p>Tool Dashboard</p>
-            </div>
-            <div class="nav-links">
-                <div class="nav-item active" onclick="switchTab('home', this)">Home</div>
-                <div class="nav-item" onclick="switchTab('simulation', this)">Underwriting Engine</div>
-                <div class="nav-item" onclick="switchTab('pricing', this)">Pricing Plans/Downloads</div>
-                <div class="nav-item" onclick="switchTab('resources', this)">Resources & FAQ</div>
-                <div class="nav-item" onclick="switchTab('contact', this)">Contact & Policies</div>
-                <div class="nav-item" onclick="switchTab('about', this)">About the Dev</div> </div>
-            </div>
-        </div>
-        <div class="sidebar-footer">
-            Logged in via secure domain:<br>
-            <strong style="color: #fff;">kasing@credevsim.com</strong>
-        </div>
-    </nav>
+<nav class="sidebar">
+  <div>
+    <div class="brand">
+      <h2>CREDevSim</h2>
+      <p>CRE Development Simulation</p>
+    </div>
+    <div class="nav-list">
+      <div class="nav-item active"  onclick="sw('home',this)">Home</div>
+      <div class="nav-item" onclick="sw('engine',this)">Underwriting Engine</div>
+      <div class="nav-item" onclick="sw('pricing',this)">Pricing &amp; Downloads</div>
+      <div class="nav-item" onclick="sw('faq',this)">Resources &amp; FAQ</div>
+      <div class="nav-item" onclick="sw('contact',this)">Contact &amp; Policies</div>
+      <div class="nav-item" onclick="sw('about',this)">About the Dev</div>
+    </div>
+  </div>
+  <div class="sidebar-foot">
+    Windows Desktop App<br>
+    <strong style="color:var(--tx-sec)">v1.0 Beta</strong>
+  </div>
+</nav>
 
-    <main class="main-content">
+<main class="main">
 
-        <div id="home" class="tab-panel active">
-            <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
-            <div class="badge">🚀 CRE Investment Intelligence</div>
-            <h1>Institutional Waterfall Modeling. Without the Spreadsheet Hell. Underwrite Institutional Deals in minutes, Not Hours.</h1>
-            <p class="subtitle"><b>CREDevSim</b> is a real-time underwriting tool built for developers, GPs, and analysts who need to model complex LP/GP capital structures — and see exactly how the deal breaks before it does.</p>
+<!-- ════ HOME ════ -->
+<div id="home" class="tab-panel active">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">CRE Investment Intelligence</div>
+  <h1>Enter Your Deal.<br>See Where the Money Goes.</h1>
+  <p class="lead">CREDevSim is a logic-locked LP/GP waterfall engine for developers, GPs, and analysts. Type your assumptions — capital stack, debt structure, lease-up timeline — and see the promote, IRR, and capital calls update in real time.</p>
 
-            <div class="card" style="margin-bottom: 32px; border-color: var(--accent-blue);">
-                <h3 style="color: var(--accent-blue);">The Problem It Solves</h3>
-                <p>Every serious CRE deal eventually lands in a recursive Excel waterfall, with multiple different spreadsheets and tabs linking all over the places — a fragile, auditor-unfriendly nest of cross-referenced cells where one bad input cascades silently into a wrong IRR, a wrong promote, a wrong capital call.</p>
-                <p><b>CREDevSim</b> does not replace your spreadsheet. It provides a centralized place that replaces the part of your spreadsheet that was always wrong. </p>
-                <p>The waterfall engine, the debt mechanics, the capital call triggers, the preferred return compounding — all computed in a single logic-locked engine, recalculated in real time as you adjust your deal.</p>
-            </div>
-            
-            <div class="card" style="margin-bottom: 32px; border-color: var(--accent-blue);">
-                <h3 style="color: var(--accent-blue);">The Visual Advantage</h3>
-                <p>Designed to institutional underwriting standards for commercial real estate development <b>CREDevSim</b> gives you a real-time, high-fidelity visual dashboard. See exactly how your deal structure shifts as you toggle debt, equity, and lease-up timelines. It is not just a calculator—it is a sandbox where you can see the deal break before it actually does, in real time.</p>
-            </div>
-            
-            <div class="card" style="margin-bottom: 32px; border-color: var(--accent-blue);">
-                <h3 style="color: var(--accent-blue);">The One-Engine Promise</h3>
-                <p>Whether you are tackling Ground-Up Development, Major Renovation, Distressed Value-Add, or Stabilized Acquisitions, <b>CREDevSim</b> adapts instantly, applying the correct institutional logic for every deal structure.</p>
-            </div>
+  <div class="stat-row section-sm">
+    <div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Spreadsheets Needed</span></div>
+    <div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div>
+    <div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div>
+  </div>
 
-            <div class="card" style="margin-bottom: 32px; border-color: var(--accent-blue);">
-                <h3 style="color: var(--accent-blue);">Why Professionals Choose Us</h3>
-                <p><b>CREDevSim</b> aren't just a calculator; It is an interactive risk-intelligence platform. Build, stress-test, and refine complex real estate deals in seconds, not hours."</p>
-            </div>
+  <!-- NOT / IS -->
+  <div class="contrast section">
+    <div class="c-not">
+      <div class="c-hdr">What this is NOT</div>
+      <ul class="c-list">
+        <li><span class="c-ico" style="color:var(--red)">✕</span>A project management tool — no Gantt charts, no task boards, no milestone tracking</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Enterprise software — no implementation team, no training program, no onboarding calls</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Excel with hidden formula chains, circular references, and silent cascading errors</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Argus — no rent roll, no lease abstraction, no $5,000/yr contract</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>A cloud platform where your confidential deal data lives on someone else's server</li>
+      </ul>
+    </div>
+    <div class="c-is">
+      <div class="c-hdr">What it IS</div>
+      <ul class="c-list">
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>One screen. Type your numbers. The full capital stack solves itself — instantly.</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Open it, enter a deal, done — zero setup, zero learning curve, zero configuration</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Every output traces to an input you typed — no hidden logic, no black-box surprises</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Purpose-built for LP/GP waterfall mechanics, capital calls, and promote structures</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>100% local. Nothing leaves your machine. Your deal data is yours.</li>
+      </ul>
+    </div>
+  </div>
 
-            <div class="grid">
-                <div class="card">
-                    <h3>One Engine, Every Asset Class</h3>
-                    <p>Designed for total versatility. Works across all asset classes: <b>Multifamily, Industrial, Retail, Office, Hotel, Mixed-Use, or Self-Storage</b>, model any deal with a stabilized NOI and capital structure. Whether you're modeling a <b>Ground-Up Development, Major Renovation, Distressed Value-Add, or Stabilized Acquisition</b>, the engine adapts to your deal type instantly.</p>
-                </div>
-                <div class="card">
-                    <h3>Built for Your Reality</h3>
-                    <p>Perfect for you if you're a <b>General Partner</b> looking to quickly stress-test sponsor promotes, an <b>Institutional Analyst</b> auditing complex real estate deals, or a <b>Real Estate Entrepreneur</b> needing to present institutional-grade pitch decks to capital partners.</p>
-                </div>
-            </div>
+  <!-- Problem card -->
+  <div class="card card-acc section">
+    <h3 style="color:var(--acc);margin-bottom:10px">The Problem It Solves</h3>
+    <p style="margin-bottom:10px">Every serious CRE deal eventually lands in a recursive Excel waterfall — multiple tabs cross-referencing each other, where one bad input cascades silently into a wrong IRR, wrong promote, or wrong capital call. Nobody catches it until the LP meeting.</p>
+    <p><b style="color:#fff">CREDevSim</b> replaces the part of that spreadsheet that was always wrong: the waterfall engine, the debt mechanics, the capital call triggers, the preferred return compounding — all in a single logic-locked engine, recalculated in real time as you adjust your deal.</p>
+  </div>
 
-            <div class="card" style="background-color: rgba(59, 130, 246, 0.03);">
-                <h3>Institutional-Grade Modeling Architecture</h3>
-                <p style="margin-bottom: 24px;">Our Commercial Real Estate Underwriting and Development Tool handles the heavy lifting of sophisticated deal-making, all natively integrated into one interactive workflow:</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.95rem; color: var(--text-main);">
-                    <div>• <b>Bridge-to-Perm Loan Structure:</b> construction draws, interest reserve, bridge payoff, refi into permanent loan.</div>
-                    <div>• <b>Automated capital stack:</b> LP/GP equity split.</div>
-                    <div>• <b>Ops period waterfall:</b> preferred return accrual, ROC, residual distributions monthly.</div>
-                    <div>• <b>Exit waterfall: </b> sale price, loan payoff, remaining pref, catchup, promote </div>
-                    <div>• <b>Lease-up ramp: </b> occupancy S-curve from current → stabilized over user-defined months </div>
-                    <div>• <b>Sensitivity Analysis:</b> IRR Heatmap for blended rates & exit cap targets.</div>
-                    <div>• <b>Stress & Breakeven:</b> Real-time margin-of-safety testing.</div>
-                    <div>• <b>Capital calls:</b> automatic when refi or NOI surplus can't cover shortfalls</div>
-                </div>
-                <div style="margin-top: 24px;">
-                    <button class="btn" onclick="switchTab('pricing')">Explore the Full Engine</button>
-                    <a href="developer_pro_forma_sample.pdf" target="_blank" class="btn">Download Sample - Developer Pro Forma</a>
-                    <a href="deal_performance_report_sample.pdf" target="_blank" class="btn">Download Sample - Deal Performance Report</a>
-                </div>
-            </div>
-        </div>
+  <!-- Feature cards -->
+  <div class="section">
+    <p class="sec-lbl">Core Capabilities</p>
+    <div class="grid-auto">
+      <div class="card">
+        <h3>One Engine, Every Deal Type</h3>
+        <p>Ground-Up Development, Major Renovation, Distressed Value-Add, Stabilized Acquisition — the engine applies the correct institutional logic for each structure automatically. No templates to swap, no sheets to reconfigure.</p>
+      </div>
+      <div class="card">
+        <h3>Real-Time Visual Dashboard</h3>
+        <p>Drag the timeline, adjust a rate, toggle leverage — every waterfall block, heatmap cell, and Sankey diagram updates instantly. See the deal break before it does, without re-running a macro.</p>
+      </div>
+      <div class="card">
+        <h3>Logic-Locked Safety Rails</h3>
+        <p>The engine enforces hard-coded underwriting standards. It can't silently produce a wrong number — no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
+      </div>
+    </div>
+  </div>
 
-        <div id="simulation" class="tab-panel">
-            <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
-            <div class="badge">💻 Core Underwriting Engine</div>
-            <h1>Institutional-Grade Underwriting, Accelerated</h1>
-            <p class="subtitle">Streamline sophisticated institutional-grade capital stacks, automated waterfall distributions, and real-time capital flow visualization in a single, robust, report-ready environment.</p>
-          
-            <div class="grid">
-                <div class="card">
-                    <h3>High-Fidelity Data Ingestion</h3>
-                    <p>Centralized and Rapid model deal-specific inputs, debt sizing, and equity structure with institutional-grade accuracy.</p>
-                </div>
-                <div class="card">
-                    <h3>Automated Waterfall Architecture</h3>
-                    <p>Accurately stress-test true net exit metrics. Toggle simulate capital calls, preferred returns, GP catch-up, GP clawback conditions to ensure alignment across full hold cycles.</p>
-                </div>
-                <div class="card">
-                    <h3>Visual Capital Stack Analytics</h3>
-                    <p>Identify structural gaps instantly. Visualize cash flow velocity and exit returns through advanced Sankey-based projections.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin: 0px 0;">
-            <h1>CREDevSim Software Dashboard</h1>
-            <h3 style="color: white; font-family: sans-serif;">Dynamic projection engine with real-time feedback loops</h3>
-            <video class="dashboard-video" autoplay muted loop playsinline>
-            <source src="Timelinedrag.mp4" type="video/mp4">
-            </video>
-            </div>
-            <div style="text-align: center; margin: 0px 0;">
-            <h3 style="color: white; font-family: sans-serif;">Every input and button features tooltips to guide users</h3>
-            <video class="dashboard-video" autoplay muted loop playsinline>
-            <source src="Input_tooltips.mp4" type="video/mp4">
-            </video>
-            </div>
-            <div style="text-align: center; margin: 0px 0;">
-            <h3 style="color: white; font-family: sans-serif;">Hover your mouse over each block</h3>
-            <video class="dashboard-video" autoplay muted loop playsinline>
-            <source src="heatmapblockhover.mp4" type="video/mp4">
-            </video>
-            </div>
+  <!-- Architecture -->
+  <div class="card section">
+    <p class="sec-lbl" style="margin-bottom:18px">What's Under the Hood</p>
+    <div class="feat-grid">
+      <div class="feat-item">• <span><b>Bridge-to-Perm Structure:</b> construction draws, interest carry, bridge payoff, refi mechanics</span></div>
+      <div class="feat-item">• <span><b>Automated Capital Stack:</b> LP/GP split, debt sizing, DSCR / LTV / Debt Yield gates</span></div>
+      <div class="feat-item">• <span><b>Operating Waterfall:</b> preferred return accrual, ROC, monthly residual distributions</span></div>
+      <div class="feat-item">• <span><b>Exit Waterfall:</b> sale price, loan payoff, remaining pref, GP catch-up, promote</span></div>
+      <div class="feat-item">• <span><b>Lease-Up Ramp:</b> occupancy S-curve, current → stabilized over user-defined months</span></div>
+      <div class="feat-item">• <span><b>IRR Sensitivity Heatmap:</b> blended rate &amp; exit cap target matrix</span></div>
+      <div class="feat-item">• <span><b>Stress &amp; Breakeven:</b> real-time margin-of-safety testing</span></div>
+      <div class="feat-item">• <span><b>Capital Calls:</b> automatic when refi or NOI surplus can't cover shortfalls</span></div>
+    </div>
+    <div class="btn-row" style="margin-top:22px">
+      <a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost btn-sm">Download Sample — Developer Pro Forma</a>
+      <a href="deal_performance_report_sample.pdf" target="_blank" class="btn btn-ghost btn-sm">Download Sample — Deal Summary Report</a>
+    </div>
+  </div>
+</div>
 
-            <div class="row-container">
-    
-            <div class="col-item">
-                <h3>Input Section</h3>
-                <img src="Screenshot_inputs.png" alt="Deal Inputs">
-                <p>Simple, logical inputs for every deal type.</p>
-            </div>
-    
-            <div class="col-item">
-                <h3>Waterfall Engine</h3>
-                <img src="Screenshot_waterfall.png" alt="Waterfall Logic">
-                <p>Automated calculation, detail tooltips, and visual.</p>
-            </div>
-        
-            <div class="col-item">
-                <h3>Sankey Diagrams</h3>
-                <img src="Screenshot_sankey.png" alt="Sankey Chart">
-                <p>Clean and clear flow of funds visualizations.</p>
-            </div>
-        
-            <div class="col-item">
-                <h3>Flow</h3>
-                <img src="Screenshot_flow.png" alt="Deal Summary">
-                <p>The Chronological flow of the deal.</p>
-            </div>
+<!-- ════ ENGINE ════ -->
+<div id="engine" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Underwriting Engine</div>
+  <h1>Institutional-Grade Modeling.<br>Without the Setup Overhead.</h1>
+  <p class="lead">One screen, one engine. Enter your deal structure and watch the full capital stack solve itself — every promote tier, every capital call, every monthly cash flow — updated in real time.</p>
 
-            <div class="col-item">
-                <h3>Summary</h3>
-                <img src="Screenshot_summary.png" alt="Deal Summary">
-                <p>Summary with a list of metrics and analytics.</p>
-            </div>
+  <div class="grid-3 section-sm">
+    <div class="card">
+      <h3>Rapid Input</h3>
+      <p>Logical, labeled inputs for every deal type — no configuration, no hidden parameters, no guessing which field drives which output. Every input has a tooltip.</p>
+    </div>
+    <div class="card">
+      <h3>Automated Waterfall</h3>
+      <p>Preferred returns, ROC, GP catch-up, and capital calls — computed accurately at every event across the full hold cycle, not just at exit.</p>
+    </div>
+    <div class="card">
+      <h3>Visual Capital Flow</h3>
+      <p>Sankey diagrams, monthly cash flow heatmaps, and waterfall snapshots — all linked to the same live engine output, not static charts.</p>
+    </div>
+  </div>
 
-        </div>
-        </div>
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Timeline Control</p>
+    <p class="v-cap">Drag the timeline — every number in the deal updates instantly</p>
+    <video class="demo-video" autoplay muted loop playsinline>
+      <source src="Timelinedrag.mp4" type="video/mp4">
+    </video>
+  </div>
 
-        <div id="pricing" class="tab-panel">
-            <div class="badge">💰 Transparent Infrastructure</div>
-            <h1>Flexible Underwriting Plans</h1>
-            <p class="subtitle">Choose the level of modeling depth your portfolio requires to scale your commercial real estate underwriting.</p>
-            <div class="card" style="margin-bottom: 32px; border-color: var(--accent-blue);">
-                <h3 style="color: var(--accent-blue);">Core Modeling Engine (Included in All)</h3>
-                <p>These features are the foundation of your "One-Stop-Shop" and come standard.</p>
-                <ul>
-                <li> Universal Deal Architecture</li>
-                <li> <b>Simple Inputs:</b> Inputs are simple to enter and understand. </li>
-                <li> <b>Visual Timeline Controller:</b> Drag-and-drop project timeline that automatically updates all financial snapshots and waterfall.</li>
-                <li> <b>Automated Capital Stacks:</b> Instant calculation of debt-to-equity ratios and total project cost breakdowns.</li>
-                <li> <b>Integrated Waterfall Engine:</b> Real-time visualization of capital flows from initial funding, refinance, to final exit.</li>
-                <li> <b>Logic-Locked Safety Rails:</b> Hard-coded underwriting standards to prevent calculation errors common in manual spreadsheets.</li>
-                </ul>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Free</h3>
-                        <div class="desc">For simple, rapid deal triage and fundamental modeling.</div>
-                    </div>
-                    <div class="price-amount">$0<span>/forever</span></div>
-                    <ul class="feature-list">
-                        <li><span class="checkmark">✓</span> Access to 2 of 4 deal types (Development and Stabilized), Major Reno and Distressed are PRO Only </li>
-                        <li><span class="checkmark">✓</span> Full use of the draggable timeline and visual waterfall dashboard</li>
-                        <li><span class="checkmark">✓</span> Automated construction draws, bridge-to-perm transitions, and interest carry logic</li>
-                        <li><span class="checkmark">✓</span> Core Debt Sizing Estimates</li>
-                        <li class="disabled"><span class="crossmark">✕</span> PDF Export Deal Summary</li>
-                        <li class="disabled"><span class="crossmark">✕</span> After-Tax View, account for Depreciation, Recapture, Cap gains</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Compare scenario A vs B slide by slide</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Major Renovation and Distressed Acquisition (Value-Added)</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Custom Preset Builder for Save/Load deals and all inputs</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Perm Loan refinements with Refi Cost, Amortization, Debt Yield </li>
-                        <li class="disabled"><span class="crossmark">✕</span> User-defined DSCR, Debt Yield, and LTV hard constraints</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Multi-tier Promote Splits</li>
-                        <li class="disabled"><span class="crossmark">✕</span> GP Lookback & Catch-Up Logic</li>
-                        <li class="disabled"><span class="crossmark">✕</span> Exit Clawback Option</li>
-                    </ul>
-                    <a href="/download.html" class="btn">Download Free Version</a>
-                </div>
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Input Guidance</p>
+    <p class="v-cap">Every input and button has a tooltip — no guessing what a field means</p>
+    <video class="demo-video" autoplay muted loop playsinline>
+      <source src="Input_tooltips.mp4" type="video/mp4">
+    </video>
+  </div>
 
-                <div class="price-card featured">
-                    <div class="popular-tag">Coming Soon: Beta Phase</div>
-                    <div class="price-header">
-                        <h3>Pro Simulation</h3>
-                        <div class="desc">Complete institutional risk architecture for professional developers and general partners.</div>
-                    </div>
-                    <div class="price-amount">$TBD<span>/month</span></div>
-                    <ul class="feature-list">
-                        <li><span class="checkmark">✓</span> Access to all 4 deal types (Development, Major Renovation, Distressed and Stabilized)</li>
-                        <li><span class="checkmark">✓</span> Full use of the draggable timeline and visual waterfall dashboard</li>
-                        <li><span class="checkmark">✓</span> Automated construction draws, bridge-to-perm transitions, and interest carry logic</li>
-                        <li><span class="checkmark">✓</span> Core Debt Sizing Estimates</li>
-                        <li><span class="checkmark">✓</span> PDF Export Deal Summary</li>
-                        <li><span class="checkmark">✓</span> After-Tax View, account for Depreciation, Recapture, Cap gains</li>
-                        <li><span class="checkmark">✓</span> Multi-Tier Promotes (IRR/MOIC)</li>
-                        <li><span class="checkmark">✓</span> Compare scenario A vs B slide by slide</li>
-                        <li><span class="checkmark">✓</span> Custom Preset Builder for Save/Load deals and all inputs</li>
-                        <li><span class="checkmark">✓</span> Perm Loan refinements with Refi Cost, Amortization, Debt Yield </li>
-                        <li><span class="checkmark">✓</span> User-defined DSCR, Debt Yield, and LTV hard constraints</li>
-                        <li><span class="checkmark">✓</span> GP Lookback & Catch-Up Switch</li>
-                        <li><span class="checkmark">✓</span> Multi-Tier Promotes (IRR/MOIC)</li>
-                        <li><span class="checkmark">✓</span> Exit Clawbacks Option</li>
-                    </ul>
-                    <a href="pricing.html" class="btn btn-outline">Subscribe to Pro (Coming Soon: Beta Phase)</a>
-                </div>
-                
-            </div>
-        </div>
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Heatmap Detail</p>
+    <p class="v-cap">Hover any heatmap block for a full monthly cash flow breakdown</p>
+    <video class="demo-video" autoplay muted loop playsinline>
+      <source src="heatmapblockhover.mp4" type="video/mp4">
+    </video>
+  </div>
 
-        <div id="resources" class="tab-panel">
-        <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
-        <div id="resources-faq-container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 40px 20px; color: #e5e7eb; background-color: #0b0f19;">
-    
-            <header style="margin-bottom: 40px; border-bottom: 1px solid #1f2937; padding-bottom: 20px;">
-                <h1 style="font-size: 2.25rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;">Documentation & System Logic (In progress, more information will be available shortly)</h1>
-                <p style="color: #9ca3af; font-size: 1.1rem; line-height: 1.6;">Technical breakdowns, audit-grade underwriting definitions, and simulation engine mechanics.</p>
-            </header>
+  <p class="sec-lbl" style="margin-bottom:14px">Dashboard Screens</p>
+  <div class="ss-grid">
+    <div class="ss-item"><img src="Screenshot_inputs.png" alt="Deal Inputs"><p>Input Panel</p></div>
+    <div class="ss-item"><img src="Screenshot_waterfall.png" alt="Waterfall"><p>Waterfall Engine</p></div>
+    <div class="ss-item"><img src="Screenshot_sankey.png" alt="Sankey"><p>Sankey Diagrams</p></div>
+    <div class="ss-item"><img src="Screenshot_flow.png" alt="Flow"><p>Deal Flow Timeline</p></div>
+    <div class="ss-item"><img src="Screenshot_summary.png" alt="Summary"><p>Deal Summary</p></div>
+  </div>
+</div>
 
-            <section style="margin-bottom: 50px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 24px;">
-                <h2 style="font-size: 1.5rem; font-weight: 600; color: #38bdf8; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-            📖 The Post-Refi Capital Pivot Framework
-                </h2>
-                <p style="line-height: 1.7; color: #d1d5db; margin-bottom: 16px;">
-            In institutional commercial real estate underwriting, the transition from construction to operations is a critical risk vector. Our engine explicitly handles this timeline by separating it into two distinct financial mechanisms:
-                </p>
-                <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px;">
-                    <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #6b7280;">
-                        <strong style="color: #ffffff; display: block; margin-bottom: 4px;">1. Construction Phase (Accrual Zone)</strong>
-                        <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">To maintain administrative and input simplicity, construction loan interest is fully capitalized into the permanent loan basis. The simulation engine accumulates overruns natively without forcing mid-phase capital calls, rolling total accrued interest directly into the final payoff claim balance.</span>
-                    </div>
-                    <div style="background: #1f2937; padding: 16px; border-radius: 6px; border-left: 4px solid #10b981;">
-                        <strong style="color: #ffffff; display: block; margin-bottom: 4px;">2. Operating Phase (Stabilization Zone)</strong>
-                        <span style="font-size: 0.95rem; color: #9ca3af; line-height: 1.5;">Once the permanent loan triggers, the asset transitions to lease-up. The model manages this timing stress using a user-defined <strong>Operational Stabilization Reserve</strong> to fence off cash flow defenses dynamically before distributions hit the profit/promote tiers.</span>
-                    </div>
-                </div>
-            </section>
+<!-- ════ PRICING ════ -->
+<div id="pricing" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Pricing &amp; Downloads</div>
+  <h1>Start Free.<br>Go Pro When You Need It.</h1>
+  <p class="lead">The free tier gives you two deal types and the full visual engine with no time limit. Pro unlocks all four deal types, PDF export, and advanced waterfall mechanics.</p>
 
-            <section>
-                <h2 style="font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 24px;">Frequently Asked Questions</h2>
+  <div class="card section-sm">
+    <p class="sec-lbl" style="margin-bottom:16px">Included in Both Plans</p>
+    <div class="feat-grid">
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Draggable timeline with real-time recalculation</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Automated construction draws and bridge-to-perm</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Full visual waterfall dashboard</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Heatmap sensitivity &amp; Sankey flow diagrams</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Core debt sizing (LTV, DSCR, Debt Yield)</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>100% local — no deal data transmitted anywhere</span></div>
+    </div>
+  </div>
 
-                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Refinance & Reserve Mechanics</h3>
-                
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Is this a web app or a desktop application?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                CREDevSim is a desktop application for Windows. There is no browser version.
-                    </div>
-                </details>
+  <div class="p-grid section">
+    <div class="p-card">
+      <div class="p-name">Free</div>
+      <div class="p-desc">Full engine access for two deal types. No expiry, no credit card.</div>
+      <div class="p-amt">$0 <sub>/forever</sub></div>
+      <div class="p-note">No trial period. Download and run immediately.</div>
+      <ul class="fl">
+        <li><span class="ck">✓</span> Ground-Up Development deal type</li>
+        <li><span class="ck">✓</span> Stabilized Acquisition deal type</li>
+        <li><span class="ck">✓</span> Full visual waterfall dashboard</li>
+        <li><span class="ck">✓</span> Heatmap, Sankey, cash flow timeline</li>
+        <li class="off"><span class="cx">✕</span> PDF Export — Deal Summary + Developer Pro Forma</li>
+        <li class="off"><span class="cx">✕</span> Major Renovation deal type</li>
+        <li class="off"><span class="cx">✕</span> Distressed Acquisition deal type</li>
+        <li class="off"><span class="cx">✕</span> Multi-Tier Promotes (IRR / MOIC hurdles)</li>
+        <li class="off"><span class="cx">✕</span> GP Lookback &amp; Catch-Up Switch</li>
+        <li class="off"><span class="cx">✕</span> Exit Clawback Option</li>
+        <li class="off"><span class="cx">✕</span> After-Tax View (Depreciation, Recapture, Cap Gains)</li>
+        <li class="off"><span class="cx">✕</span> Save / Load Deal Presets</li>
+        <li class="off"><span class="cx">✕</span> Scenario A vs B Side-by-Side Comparison</li>
+      </ul>
+      <a href="/download.html" class="btn btn-ghost">Download Free Version</a>
+    </div>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>How is this different from Argus or Excel?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a logic-locked engine that can't silently produce wrong numbers. It is a complement to both, not a replacement.
-                    </div>
-                </details>
+    <div class="p-card featured">
+      <div class="p-chip">Beta Phase — Coming Soon</div>
+      <div class="p-name">Pro Simulation</div>
+      <div class="p-desc">Complete institutional architecture for developers, GPs, and analysts who need the full toolkit.</div>
+      <div class="p-amt">TBD <sub>/month</sub></div>
+      <div class="p-note">Beta subscribers get founder pricing locked in. <a href="signup.html">Join the waitlist →</a></div>
+      <ul class="fl">
+        <li><span class="ck">✓</span> <span>Everything in Free<span class="feat-desc">Ground-Up Development, Stabilized Acquisition, full visual dashboard</span></span></li>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>What asset classes does it support?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                Any deal with a stabilized NOI and an LP/GP capital structure. The engine is not asset-class-specific — multifamily, industrial, retail, office, mixed-use, and self-storage all work. Asset-class-specific rent roll modeling (unit mix, RevPAR, overage rent) is not currently in scope.
-                    </div>
-                </details>
-                
-                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Refinance & Reserve Mechanics</h3>
-        
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Is the free version truly free?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                Yes. No trial period, no expiration. The free version gives you two deal types and the full visual suite with no time limit.
-                </details>
-               
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>What exactly does the "Operational Stabilization Reserve (Post-Refi)" input box do?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                It acts as a liquidity fence. Instead of allowing the engine to distribute 100% of the net cash generated at refinance to partners, this user input instructs the simulation to capture and lock away that exact dollar amount as <strong>Restricted Cash</strong> to absorb debt service shortfalls during lease-up.
-                    </div>
-                </details>
+        <span class="fl-grp">Deal Types — 2 More Unlocked</span>
+        <li><span class="ck">✓</span> <span>Major Renovation<span class="feat-desc">Pre-renovation NOI offsets construction debt service; bridge-to-perm with full operating waterfall</span></span></li>
+        <li><span class="ck">✓</span> <span>Distressed Acquisition<span class="feat-desc">Day-0 capital deficit, immediate bridge financing, reserve-funded stabilization mechanics</span></span></li>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Who "pays" for this Stabilization Reserve?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                The equity partners (LP/GP pool) pay for it out of their potential refinancing profits via opportunity cost. The engine subtracts the reserve balance directly from your net refinancing cash flow prior to calculating any distribution splits or GP promotes:
-                        <div style="background: #1f2937; padding: 12px; border-radius: 4px; font-family: monospace; color: #e5e7eb; margin: 12px 0; font-size: 0.9rem;">
-                    Net Refi Proceeds = Gross Perm Loan - Bank Construction Payoff - Refi Fees<br>
-                    Distributable Cash = Net Refi Proceeds - Operational Stabilization Reserve
-                        </div>
-                    </div>
-                </details>
+        <span class="fl-grp">Investor Deliverables</span>
+        <li><span class="ck">✓</span> <span>Deal Summary PDF<span class="feat-desc">One-page investor snapshot: IRR/MOIC by tier, capital stack, exit waterfall, key metrics — generated in seconds</span></span></li>
+        <li><span class="ck">✓</span> <span>Developer Pro Forma PDF<span class="feat-desc">Full institutional report: construction draw schedule, debt structure, annual operating projections, exit analysis</span></span></li>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>What happens if a portion, or the entirety, of the reserve is unused at sale?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                Any unused balance remaining in the reserve pool is never lost. Upon asset sale, the engine automatically executes an asset sweep, dumping the remaining cash balance straight back into the <strong>Net Sale Distribution Pool</strong> at Exit, returning it to investors proportionally (<em>pari passu</em>).
-                    </div>
-                </details>
-        
-                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Capital Calls & Risk Management</h3>
+        <span class="fl-grp">Advanced Waterfall Mechanics</span>
+        <li><span class="ck">✓</span> <span>Multi-Tier Promotes (IRR &amp; MOIC)<span class="feat-desc">Up to 3 promote tiers with configurable hurdle rates — gates tested at every distribution event, not only at exit</span></span></li>
+        <li><span class="ck">✓</span> <span>GP Lookback &amp; Catch-Up<span class="feat-desc">Model catch-up provisions; lookback reconciles GP promote at exit against LP's actual realized return</span></span></li>
+        <li><span class="ck">✓</span> <span>Exit Clawback<span class="feat-desc">Simulate GP clawback obligations when LP didn't hit the hurdle rate over the full hold period</span></span></li>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>What happens if the Operational Stabilization Reserve runs completely bone dry?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                If operating deficits outlast the withheld reserve pool, the engine immediately flags an asset stress warning and shifts to a <strong>Capital Call</strong> trigger to preserve debt compliance.
-                    </div>
-                </details>
+        <span class="fl-grp">Analysis &amp; Workflow</span>
+        <li><span class="ck">✓</span> <span>After-Tax Returns View<span class="feat-desc">LP/GP net returns accounting for depreciation, cost segregation basis, recapture, and capital gains at exit</span></span></li>
+        <li><span class="ck">✓</span> <span>Scenario A vs B Side-by-Side<span class="feat-desc">Compare two deal structures on one screen — leverage, promote, exit cap — ideal for LP presentations</span></span></li>
+        <li><span class="ck">✓</span> <span>Save / Load Deal Presets<span class="feat-desc">Archive any deal configuration and reload it later; run multiple sensitivity scenarios without re-entering inputs</span></span></li>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>How do Capital Calls alter waterfall returns compared to the Reserve?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                A Capital Call represents "Fresh External Equity" injected from investors' external accounts to save the asset. Therefore, unlike reserves, capital calls <strong>are true equity expansions</strong>. The engine increases the project's **Return of Capital (ROC)** basis by the called amount, initiates preferred return accruals on that new capital immediately, and recalibrates management fee tracking if configured to scale with invested basis.
-                    </div>
-                </details>
+        <span class="fl-grp">Debt &amp; Underwriting Controls</span>
+        <li><span class="ck">✓</span> <span>Fund Reserve via Loan<span class="feat-desc">Fold the Ops Stabilization Reserve into the permanent loan balance instead of funding it from equity proceeds at refi</span></span></li>
+        <li><span class="ck">✓</span> <span>Perm Loan Refinements<span class="feat-desc">Set amortization schedule, IO period, refi closing cost, and Debt Yield gate independently from the bridge loan</span></span></li>
+        <li><span class="ck">✓</span> <span>Underwriting Hard Gates<span class="feat-desc">Enforce minimum DSCR, Debt Yield, and LTV constraints — the engine flags violations before you export</span></span></li>
+      </ul>
+      <a href="signup.html" class="btn">Join Beta Waitlist</a>
+    </div>
+  </div>
+</div>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>What is the difference between Just-in-Time and Full Funding capital calls?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                The system offers two capital calling pacing settings to track JV behavior types:
-                        <ul style="margin: 8px 0; padding-left: 20px;">
-                            <li style="margin-bottom: 6px;"><strong>Just-in-Time (Default):</strong> Calls capital month-by-month to match the exact localized dollar shortage. This maximizes investor IRR metrics by delaying capital deployment metrics.</li>
-                            <li><strong>Full Funding:</strong> Gauges the total aggregate downside gap over the model holding period and executes a single lump-sum call the first month a violation occurs, optimizing accounting cleanliness over internal yield optimization.</li>
-                        </ul>
-                    </div>
-                </details>
+<!-- ════ FAQ ════ -->
+<div id="faq" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Documentation &amp; FAQ</div>
+  <h1>Resources &amp; System Logic</h1>
+  <p class="lead">Technical breakdowns, audit-grade underwriting definitions, and simulation engine mechanics. <em style="color:var(--tx-dim)">(More documentation coming soon.)</em></p>
 
-                <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 12px; margin-top: 30px;">Dashboard & Visualizations</h3>
+  <div class="card card-acc section">
+    <h3 style="color:var(--acc);margin-bottom:10px">The Post-Refi Capital Pivot Framework</h3>
+    <p style="margin-bottom:14px">The construction-to-operations transition is the highest-risk event in the deal lifecycle. The engine separates it into two distinct financial mechanisms:</p>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--tx-dim)">
+        <h3 style="font-size:.88rem;margin-bottom:5px">1. Construction Phase (Accrual Zone)</h3>
+        <p style="font-size:.84rem">Construction loan interest is capitalized into the permanent loan basis. The engine accumulates without forcing mid-phase capital calls, rolling total accrued interest into the final payoff balance.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--grn)">
+        <h3 style="font-size:.88rem;margin-bottom:5px">2. Operating Phase (Stabilization Zone)</h3>
+        <p style="font-size:.84rem">Once the perm loan triggers, the model manages lease-up timing stress using a user-defined Operational Stabilization Reserve to buffer shortfalls before distributions hit the promote tiers.</p>
+      </div>
+    </div>
+  </div>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>How can I visually trace the reserve burning down inside the interface?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-                You can audit this across two distinct screens. In the **Waterfall Snapshot**, the refinance event isolates a discrete, color-coded block displaying "Restricted Cash Account Stabilization Reserve" next to your net payout metrics. Concurrently, the **Monthly Operating Heatmap** tracks a dynamic cash line illustrating the pool burning down through early months and leveling off as NOI matches and exceeds debt obligations.
-                    </div>
-                </details>
+  <h2 style="margin-bottom:4px">Frequently Asked Questions</h2>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Can I export to PDF on the free plan?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-               PDF export is a Pro feature. The free plan gives you the full interactive model; PDF is the deliverable layer for investor packages and lender submissions.
-                    </div>
-                </details>
+  <p class="faq-sec-lbl">General</p>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Is my deal data stored anywhere?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-               No. CREDevSim runs entirely on your local machine. No deal data is transmitted or stored externally.
-                    </div>
-                </details>
+  <details class="faq">
+    <summary class="faq-q">Is this a web app or a desktop application?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">CREDevSim is a desktop application for Windows. There is no browser version — it runs fully offline on your machine. No install of Node, Python, or any runtime is required.</div>
+  </details>
 
-                <details style="background: #111827; border: 1px solid #1f2937; border-radius: 6px; margin-bottom: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Where can I see a sample output?</span>
-                        <span style="color: #38bdf8; font-size: 1.2rem;">+</span>
-                    </summary>
-                    <div style="margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #1f2937; padding-top: 12px; cursor: default;">
-              Under Home tab, scroll down to find: [Download Sample — Deal Summary PDF] [Download Sample — Pro Forma PDF]
-                    </div>
-                </details>
+  <details class="faq">
+    <summary class="faq-q">How is this different from Argus or Excel?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a logic-locked engine that can't silently produce wrong numbers. It complements both; it doesn't replace them.</div>
+  </details>
 
-            </section>
+  <details class="faq">
+    <summary class="faq-q">What asset classes does it support?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Any deal with a stabilized NOI and an LP/GP capital structure: multifamily, industrial, retail, office, mixed-use, self-storage. Enter stabilized NOI directly — asset-class-specific rent roll modeling (unit mix, RevPAR, overage rent) is outside scope.</div>
+  </details>
 
-            <footer style="margin-top: 50px; border-top: 1px solid #1f2937; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #6b7280;">
-                Commercial Real Estate Underwriting & Development Tool • Built for Institutional and Audit-Grade Scenario Underwriting.
-            </footer>
-                </div>
-            </div>
-        </div>
+  <details class="faq">
+    <summary class="faq-q">What inputs does the model actually need to run a deal?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">For a Ground-Up Development deal: Total Project Cost (or a line-by-line budget), construction loan amount and interest rate, LP/GP equity split and preferred return rate, construction timeline in months, stabilized NOI, exit cap rate, and desired hold period. That's it — the engine computes the bridge payoff, permanent loan sizing, monthly distributions, IRR, MOIC, and full exit waterfall from those inputs automatically. Most deals are fully set up in under 5 minutes.</div>
+  </details>
 
-        <div id="contact" class="tab-panel">
-            <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
-            <div class="badge">✉️ Institutional Inquiries</div>
-            <h1>Let's Connect</h1>
-            <p class="subtitle">Have questions, feedbacks, feature requests, report issues?</p>
-            
-            <div class="contact-box">
-                <h3 style="margin-bottom: 12px;">Direct Support Channel</h3>
-                <p style="margin-bottom: 24px; color: var(--text-muted);">Skip the standard automated help-desk queues. Connect directly with our main engineering and modeling desk at:</p>
-                <a href="mailto:kasing@credevsim.com" style="color: #ffffff; font-size: 1.25rem; font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--accent-blue); padding-bottom: 4px;">
-                    kasing@credevsim.com
-                </a>
-            </div>
-            <div class="contact-box">
-            <h3 style="margin-bottom: 12px;">List of Policies</h3>
-            <a href="privacy.html" class="btn">Privacy Policy</a>
-            <a href="terms.html" class="btn">Terms and Conditions</a>
-            <a href="EULA.html" class="btn">EULA</a>
-            <a href="refund.html" class="btn">Refund Policy</a>
-            </div>
-        </div>
-        <div id="about" class="tab-panel">
-            <div class="nav-right-container"><a href="signup.html" class="btn-get-access">Get Access</a></div>
-            <div class="badge">👨‍💻 Core Architecture & Founder</div>
-            <h1>The Developer's Desk</h1>
-            <p class="subtitle">An underwriting platform built on real-world audit logic, refined between shifts by a single founder.</p>
+  <details class="faq">
+    <summary class="faq-q">Do I need to already understand LP/GP waterfall mechanics to use this?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">No — not to get started. The default deal structure uses a single-tier LP/GP split with a preferred return, which is the most common structure. You can run a complete deal analysis without touching any of the advanced settings. The multi-tier promotes, catchup provisions, and clawback toggles are there when you're ready for institutional-level structuring, but they're completely optional.</div>
+  </details>
 
-            <div style="display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: start; max-width: 1000px;">
-                
-                <div class="contact-box" style="margin: 0; max-width: 100%; box-sizing: border-box; line-height: 1.6; color: var(--text-main); border-left: 3px solid var(--accent-blue); padding-left: 24px;">
-                    <p style="margin-top: 0; margin-bottom: 16px;">
-                        Hi, I'm Kasing. I spent years working as a <strong>professional auditor at a Big 4 accounting firm</strong>, auditing public REITs, institutional developers, and complex real estate investment funds. Day after day, I saw how complex and time-consuming it is to underwrite commercial real estate deals and modeling for equity waterfall. 
-                    </p>
-                    <p style="margin-bottom: 16px;">
-                        I built <strong>CREDevSim</strong> to solve that exact problem. By moving the mathematical engine out of spreadsheets and into a dedicated simulation suite, developers, investors, lenders, sales brokers, and analysts/accountants can stress-test and see the month to month life-cycle of the complex capital stacks, multi-tier promotes, and exit clawbacks with a more intuitive and agile user experience.
-                    </p>
-                    <p style="margin-bottom: 0; color: var(--text-muted); font-style: italic;">
-                        <strong>Note from the Founder:</strong> This tool is built by a single practitioner who audited these structures professionally — every edge case in the model was a real deal I reviewed. Thank you for supporting independent software.
-                    </p>
-                </div>
+  <details class="faq">
+    <summary class="faq-q">Is the free version truly free?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes. No trial period, no expiration. The free version gives you two deal types and the full visual suite with no time limit and no credit card required.</div>
+  </details>
 
-                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-sizing: border-box; text-align: left;">
-                    <h4 style="margin-top: 0; margin-bottom: 16px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: bold;">System Credits:</h4>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
-                        <div style="display: flex; justify-content: space-between;"><strong style="color: #fff;">Development:</strong> <span style="color: var(--text-muted);">Kasing Ng</span></div>
-                        <div style="display: flex; justify-content: space-between;"><strong style="color: #fff;">Design:</strong> <span style="color: var(--text-muted);">Kasing Ng</span></div>
-                        <div style="display: flex; justify-content: space-between;"><strong style="color: #fff;">Programming:</strong> <span style="color: var(--text-muted);">Kasing Ng</span></div>
-                        <div style="display: flex; justify-content: space-between;"><strong style="color: #fff;">Marketing:</strong> <span style="color: var(--text-muted);">Kasing Ng</span></div>
-                        <div style="display: flex; justify-content: space-between;"><strong style="color: #fff;">Operation:</strong> <span style="color: var(--text-muted);">Kasing Ng</span></div>
-                        <div style="border-top: 1px solid var(--border-color); margin-top: 12px; padding-top: 12px; font-size: 0.8rem; color: var(--text-muted);">
-                            Built on <strong> a custom real-time financial computation engine</strong><br>
-                            &copy; 2026 Kasing Ng - All rights reserved
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <details class="faq">
+    <summary class="faq-q">Is my deal data stored anywhere?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">No. CREDevSim runs entirely on your local machine. No deal data is ever transmitted or stored externally. Everything stays on your hard drive.</div>
+  </details>
 
-            <div style="max-width: 1000px; background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 12px; padding: 24px; margin-top: 32px; box-sizing: border-box;">
-                <h4 style="margin-top: 0; margin-bottom: 12px; color: #ef4444; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; font-weight: bold;">Institutional Projection Disclaimer:</h4>
-                <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-                    This model provides mathematical estimates based on user-defined variables. Actual results will vary. The IRR and MOIC are highly sensitive to the exact timing of cash flows and exit assumptions. This tool does not account for specific tax liabilities or structural legal nuances. All data outputs are simulation estimates. Users are strongly advised to verify all math against a secondary, audit-grade spreadsheet framework before presenting to institutional investors or executing limited partnership agreements.
-                </div>
-            </div>
-        </div>
-    </main>
+  <details class="faq">
+    <summary class="faq-q">Where can I see a sample output?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">On the Home tab, scroll to the bottom: <b>Download Sample — Developer Pro Forma</b> and <b>Download Sample — Deal Summary Report</b>. Both are real PDF exports generated from the engine.</div>
+  </details>
 
-    <script>
-    function switchTab(tabId, clickedElement) {
-    // 1. Hide all tab panels
-    const panels = document.querySelectorAll('.tab-panel');
-    panels.forEach(panel => panel.classList.remove('active'));
-    
-    // 2. Remove 'active' class from ALL nav items
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-    
-    // 3. Show the target panel
-    const target = document.getElementById(tabId);
-    if (target) {
-        target.classList.add('active');
-    }
+  <p class="faq-sec-lbl">Refinance &amp; Reserve Mechanics</p>
 
-    // 4. Highlight the button that was clicked
-    if (clickedElement) {
-        clickedElement.classList.add('active');
-    }
-    }
-    </script>
+  <details class="faq">
+    <summary class="faq-q">What does the "Operational Stabilization Reserve (Post-Refi)" input do?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      It acts as a liquidity fence. Instead of distributing 100% of net refi proceeds to partners immediately, this input captures a dollar amount as restricted cash to absorb debt service shortfalls during lease-up.
+      <div class="faq-code">Distributable Cash = Net Refi Proceeds − Operational Stabilization Reserve</div>
+    </div>
+  </details>
 
+  <details class="faq">
+    <summary class="faq-q">Who pays for the Stabilization Reserve?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What happens to unused reserve at sale?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Any unused balance is swept back into the net sale distribution pool at exit and returned to investors proportionally (<em>pari passu</em>). It is never lost.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How does the lease-up ramp work?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">You set three inputs: current occupancy (e.g. 60%), stabilized occupancy target (e.g. 92%), and ramp duration in months (e.g. 12 months). The engine runs an S-curve from current to stabilized over that window. Each operating month's NOI reflects the actual blended occupancy for that month — so debt service coverage, distributions, and capital call triggers are all computed from projected income at that occupancy level, not the stabilized rate. This matters most for Development and Major Renovation deals where the property isn't fully leased at refinance.</div>
+  </details>
+
+  <p class="faq-sec-lbl">Capital Calls &amp; Risk Management</p>
+
+  <details class="faq">
+    <summary class="faq-q">What happens if the Stabilization Reserve runs dry?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">If operating deficits outlast the reserve, the engine flags an asset stress warning and triggers a Capital Call to preserve debt compliance.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How do Capital Calls alter waterfall returns vs. the Reserve?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">A Capital Call is fresh equity — it expands the Return of Capital basis, initiates preferred return accruals on the new capital immediately, and recalibrates fee tracking. A reserve draw is not new equity; it's a return of previously withheld refi proceeds.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the difference between Just-in-Time and Full Funding capital calls?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <b>Just-in-Time (default):</b> Calls capital month-by-month to match the exact dollar shortage. Maximizes investor IRR by delaying deployment.<br><br>
+      <b>Full Funding:</b> Calculates total aggregate downside gap over the hold period and executes a single lump-sum call on the first violation month. Optimizes accounting clarity over IRR.
+    </div>
+  </details>
+
+  <p class="faq-sec-lbl">Dashboard &amp; Visualizations</p>
+
+  <details class="faq">
+    <summary class="faq-q">Can I trace the reserve burning down inside the interface?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes — in two places. The <b>Waterfall Snapshot</b> shows the reserve as a color-coded block at the refi event. The <b>Monthly Operating Heatmap</b> tracks a dynamic cash line showing the pool declining through early months and leveling off as NOI covers debt service.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Can I export to PDF on the free plan?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">PDF export is a Pro feature. The free plan gives you the full interactive model; PDF is the deliverable layer for investor packages and lender submissions.</div>
+  </details>
+
+  <p class="faq-sec-lbl">Outputs &amp; PDF Exports</p>
+
+  <details class="faq">
+    <summary class="faq-q">What's the difference between the Deal Summary PDF and the Developer Pro Forma?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <b>Deal Summary</b> is a one-page investor snapshot — total project cost, capital stack breakdown, IRR and MOIC by tier, exit waterfall table, and a key metrics panel. Designed for quick LP conversations and lender submissions.<br><br>
+      <b>Developer Pro Forma</b> is a full institutional report (4–5 pages): construction draw schedule showing monthly bank and equity draws, debt structure detail, annual operating cash flow table (NOI / debt service / CapEx / distributions for each year of the hold), and a complete exit analysis.<br><br>
+      Rule of thumb: use the Deal Summary for first conversations; use the Developer Pro Forma for due diligence packages or when a counterparty needs to audit your numbers.
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How accurate are the IRR calculations?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Very. The engine uses exact monthly cash flow timing — not annual approximations or simplified period returns. Each equity dollar is tracked from its actual draw date, and returns are discounted back to Month 0 using monthly compounding.<br><br>For multi-tier promotes with IRR hurdles, the engine maintains a running present-value accumulator that updates at every distribution event — construction surplus, refi proceeds, monthly operating distributions, and exit. Promote gates reflect the LP's actual return path at every point in the deal, not an end-of-hold estimate. This is meaningfully more accurate than models that only test IRR hurdles at exit and can mismeasure promote on deals with significant mid-hold distributions.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Can I model a deal that doesn't have a construction phase?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes — the Stabilized Acquisition deal type is designed exactly for this. There is no construction period, no bridge loan, and no refi. You model the acquisition at a going-in cap rate, set your permanent financing, define the hold period and exit cap, and the engine runs the operating waterfall and exit analysis directly. The lease-up ramp is still available if the property isn't fully stabilized at purchase.</div>
+  </details>
+</div>
+
+<!-- ════ CONTACT ════ -->
+<div id="contact" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Contact &amp; Policies</div>
+  <h1>Let's Connect</h1>
+  <p class="lead">Questions, feature requests, bug reports — reach out directly. No ticket system, no automated queue.</p>
+
+  <div class="cbox">
+    <h3>Direct Support</h3>
+    <p>Connect directly with the engineering and modeling desk:</p>
+    <a href="mailto:kasing@credevsim.com" class="email-link">kasing@credevsim.com</a>
+  </div>
+
+  <div class="cbox">
+    <h3>Legal &amp; Policies</h3>
+    <p>Documentation governing use of CREDevSim.</p>
+    <div class="pol-row">
+      <a href="privacy.html" class="btn btn-ghost btn-sm">Privacy Policy</a>
+      <a href="terms.html"   class="btn btn-ghost btn-sm">Terms &amp; Conditions</a>
+      <a href="EULA.html"    class="btn btn-ghost btn-sm">EULA</a>
+      <a href="refund.html"  class="btn btn-ghost btn-sm">Refund Policy</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════ ABOUT ════ -->
+<div id="about" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">About the Developer</div>
+  <h1>The Developer's Desk</h1>
+  <p class="lead">An underwriting platform built on real-world audit logic, refined between shifts by a single founder.</p>
+
+  <div class="about-grid">
+    <div class="founder-card">
+      <p>Hi, I'm Kasing. I spent years as a <strong>professional auditor at a Big 4 accounting firm</strong>, auditing public REITs, institutional developers, and complex real estate investment funds. Day after day, I saw how fragile the waterfall models were — cross-referenced Excel sheets where one broken link produced the wrong IRR and nobody caught it until the LP meeting.</p>
+      <p>I built <strong>CREDevSim</strong> to solve exactly that. By moving the mathematical engine out of spreadsheets and into a dedicated simulation, developers, investors, and analysts can stress-test complex capital stacks — multi-tier promotes, exit clawbacks, capital calls — with an intuitive, auditable interface that shows every input driving every output.</p>
+      <p style="font-style:italic;color:var(--tx-dim);margin-top:14px"><strong style="font-style:normal;color:var(--tx-sec)">Note from the Founder:</strong> Every edge case in this engine is a real deal I reviewed during my audit career. Thank you for supporting independent software.</p>
+    </div>
+    <div class="credits-card">
+      <div class="clbl">System Credits</div>
+      <div class="cr-row"><b>Development</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Design</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Programming</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Marketing</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Operations</b><span>Kasing Ng</span></div>
+      <div style="font-size:.7rem;color:var(--tx-dim);margin-top:12px;line-height:1.5">Built on a custom real-time financial computation engine<br>&copy; 2026 Kasing Ng — All rights reserved</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <h5>Projection Disclaimer</h5>
+    <p>This model provides mathematical estimates based on user-defined variables. Actual results will vary. IRR and MOIC are highly sensitive to exact cash flow timing and exit assumptions. This tool does not account for specific tax liabilities or legal structural nuances. All outputs are simulation estimates. Verify against a secondary audit-grade framework before presenting to institutional investors or executing LP agreements.</p>
+  </div>
+</div>
+
+</main>
+
+<script>
+function sw(tabId, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById(tabId);
+  if (panel) panel.classList.add('active');
+  if (el) el.classList.add('active');
+}
+
+document.querySelectorAll('details.faq').forEach(d => {
+  d.addEventListener('toggle', () => {
+    const t = d.querySelector('.faq-tog');
+    if (t) t.textContent = d.open ? '×' : '+';
+  });
+});
+</script>
 </body>
 </html>
