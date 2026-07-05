@@ -172,6 +172,20 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 .email-link{font-size:1.08rem;font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid var(--acc);padding-bottom:2px}
 .pol-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 
+/* ── Engine Reference ── */
+.eng-ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px;margin-top:8px}
+.er-item{background:var(--bg-surf);border:1px solid var(--bd-subtle);border-left:3px solid var(--acc);border-radius:6px;padding:14px 16px}
+.er-item.er-grn{border-left-color:var(--grn)}
+.er-item.er-amb{border-left-color:var(--amb)}
+.er-term{font-size:.82rem;font-weight:700;color:#fff;font-family:var(--mono);margin-bottom:5px;letter-spacing:-.1px}
+.er-def{font-size:.82rem;color:var(--tx-sec);line-height:1.5}
+/* Color swatch row used in color convention block */
+.clr-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd-subtle)}
+.clr-row:last-child{border-bottom:none;padding-bottom:0}
+.clr-swatch{width:38px;height:38px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;letter-spacing:.6px;margin-top:1px}
+.clr-label{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:3px}
+.clr-desc{font-size:.82rem;color:var(--tx-sec);line-height:1.5}
+
 /* ── About ── */
 .about-grid{display:grid;grid-template-columns:1fr 255px;gap:26px;max-width:880px;align-items:start;margin-bottom:28px}
 .founder-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-left:3px solid var(--acc);border-radius:10px;padding:26px;line-height:1.7;font-size:.93rem;color:var(--tx-sec)}
@@ -349,6 +363,58 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     <div class="ss-item"><img src="Screenshot_flow.png" alt="Flow"><p>Deal Flow Timeline</p></div>
     <div class="ss-item"><img src="Screenshot_summary.png" alt="Summary"><p>Deal Summary</p></div>
   </div>
+
+  <!-- Visual Language -->
+  <div class="section" style="margin-top:36px">
+    <p class="sec-lbl">Visual Language — Reading the Interface</p>
+
+    <div class="card" style="margin-bottom:14px">
+      <h3 style="margin-bottom:14px">Capital Stack Color Convention</h3>
+      <p style="font-size:.88rem;color:var(--tx-sec);margin-bottom:18px">Every waterfall block, Sankey segment, capital stack bar, and heatmap row uses the same three-color system — consistent across every screen and every PDF export. Once you know it, any view reads instantly.</p>
+      <div style="display:flex;flex-direction:column">
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--acc)">BANK</div>
+          <div>
+            <div class="clr-label">Bank Debt — Blue</div>
+            <div class="clr-desc">Senior lender capital. Appears on: construction draws, bridge loan balance, permanent loan principal, bank payoff at exit, accrued interest. Blue blocks in the Sankey and heatmap always represent money the bank is owed or has funded.</div>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--grn)">LP</div>
+          <div>
+            <div class="clr-label">LP Equity — Green</div>
+            <div class="clr-desc">Limited partner capital. Appears on: equity draws at construction, LP return of capital at refi/exit, preferred return, LP residual share. Green always flows toward passive investors — capital in, distributions out.</div>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--amb)">GP</div>
+          <div>
+            <div class="clr-label">GP Equity — Amber</div>
+            <div class="clr-desc">General partner capital. Appears on: GP co-invest draws, GP management fee, GP catch-up distributions, GP promote at exit. Amber is always the active sponsor's share — the smaller stake earning the larger upside on performance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>4-Phase Timeline</h3>
+        <p style="font-size:.88rem">The horizontal timeline bar divides every deal into four phases: <b style="color:#fff">Construction → Refi → Operating → Exit</b>. Drag the slider to any month and the entire dashboard — waterfall, heatmap, Sankey, cash flow detail — snaps to that month's exact financial state in real time. Month-level granularity, not annual buckets.</p>
+      </div>
+      <div class="card">
+        <h3>Capital Stack Bar</h3>
+        <p style="font-size:.88rem">The three-segment bar at the top of the Summary panel shows live Bank / LP / GP percentages of total project cost, color-coded in the same blue / green / amber convention. Values update instantly as you change any debt or equity input — no need to re-run the analysis to see the capital split shift.</p>
+      </div>
+      <div class="card">
+        <h3>Verdict Badges</h3>
+        <p style="font-size:.88rem">The colored badge next to LP IRR summarizes deal health at a glance: <b style="color:var(--grn)">STRONG</b> (well above hurdle), <b style="color:var(--acc)">VALUE-ADD / DEVELOPMENT</b> (on-target), <b style="color:var(--amb)">MARGINAL</b> (IRR below LP pref), or <b style="color:var(--red)">IMPAIRED</b> (LP loses money). The IC Memo auto-thesis language reflects whichever badge is active.</p>
+      </div>
+      <div class="card">
+        <h3>Feedback Bar</h3>
+        <p style="font-size:.88rem">The status strip below the timeline shows real-time validation flags as you type: DSCR violations, LTC exceedances, capital call triggers, DS reserve sizing warnings, and gate breaches. Amber means tight; red means the deal has a structural problem that blocks export. It clears automatically when the underlying input is corrected.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ════ PRICING ════ -->
@@ -379,8 +445,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <ul class="fl">
         <li><span class="ck">✓</span> Ground-Up Development deal type</li>
         <li><span class="ck">✓</span> Stabilized Acquisition deal type</li>
-        <li><span class="ck">✓</span> Full visual waterfall dashboard</li>
-        <li><span class="ck">✓</span> Heatmap, Sankey, cash flow timeline</li>
+        <li><span style="font-size:.78rem;color:var(--tx-dim);padding-left:0">Plus all features listed under "Included in Both Plans" above.</span></li>
         <li class="off"><span class="cx">✕</span> PDF Export — Deal Summary + Developer Pro Forma</li>
         <li class="off"><span class="cx">✕</span> Major Renovation deal type</li>
         <li class="off"><span class="cx">✕</span> Distressed Acquisition deal type</li>
@@ -424,7 +489,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
         <li><span class="ck">✓</span> <span>CSV Import<span class="feat-desc">Import deal inputs from a spreadsheet template — skip manual re-entry on deals you've already modeled elsewhere</span></span></li>
 
         <span class="fl-grp">Debt &amp; Underwriting Controls</span>
-        <li><span class="ck">✓</span> <span>Fund Reserve via Loan<span class="feat-desc">Fold the Ops Stabilization Reserve into the permanent loan balance instead of funding it from equity proceeds at refi</span></span></li>
+        <li><span class="ck">✓</span> <span>Fund Reserve via Loan<span class="feat-desc">Fold the Debt Service Reserve into the permanent loan balance instead of funding it from equity proceeds at refi</span></span></li>
         <li><span class="ck">✓</span> <span>Perm Loan Refinements<span class="feat-desc">Set amortization schedule, IO period, refi closing cost, and Debt Yield gate independently from the bridge loan</span></span></li>
         <li><span class="ck">✓</span> <span>Underwriting Hard Gates<span class="feat-desc">Enforce minimum DSCR, Debt Yield, and LTV constraints — the engine flags violations before you export</span></span></li>
       </ul>
@@ -478,7 +543,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       </div>
       <div class="card" style="border-left:3px solid var(--grn)">
         <h3 style="font-size:.88rem;margin-bottom:5px">2. Operating Phase (Stabilization Zone)</h3>
-        <p style="font-size:.84rem">Once the perm loan triggers, the model manages lease-up timing stress using a user-defined Operational Stabilization Reserve to buffer shortfalls before distributions hit the promote tiers.</p>
+        <p style="font-size:.84rem">Once the perm loan triggers, the model manages lease-up timing stress using a user-defined Debt Service Reserve (DS Reserve) to buffer shortfalls before distributions hit the promote tiers.</p>
       </div>
     </div>
   </div>
@@ -595,20 +660,20 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <p class="faq-sec-lbl">Refinance &amp; Reserve Mechanics</p>
 
   <details class="faq">
-    <summary class="faq-q">What does the "Operational Stabilization Reserve (Post-Refi)" input do?<span class="faq-tog">+</span></summary>
+    <summary class="faq-q">What does the Debt Service Reserve (DS Reserve) input do?<span class="faq-tog">+</span></summary>
     <div class="faq-body">
       It acts as a liquidity fence. Instead of distributing 100% of net refi proceeds to partners immediately, this input captures a dollar amount as restricted cash to absorb debt service shortfalls during lease-up.
-      <div class="faq-code">Distributable Cash = Net Refi Proceeds − Operational Stabilization Reserve</div>
+      <div class="faq-code">Distributable Cash = Net Refi Proceeds − Debt Service Reserve</div>
     </div>
   </details>
 
   <details class="faq">
-    <summary class="faq-q">Who pays for the Stabilization Reserve?<span class="faq-tog">+</span></summary>
-    <div class="faq-body">The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated.</div>
+    <summary class="faq-q">Who pays for the Debt Service Reserve?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The Debt Service Reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated.</div>
   </details>
 
   <details class="faq">
-    <summary class="faq-q">What happens to unused reserve at sale?<span class="faq-tog">+</span></summary>
+    <summary class="faq-q">What happens to unused DS Reserve at sale?<span class="faq-tog">+</span></summary>
     <div class="faq-body">Any unused balance is swept back into the net sale distribution pool at exit and returned to investors proportionally (<em>pari passu</em>). It is never lost.</div>
   </details>
 
@@ -885,6 +950,75 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
         <div class="gl-term">Catch-Up</div>
         <div class="gl-def">A provision allowing the GP to receive 100% of distributions (temporarily) after LP's pref is satisfied, until the GP's share of total distributions equals the target promote percentage. Accelerates GP participation before the final residual split.</div>
       </div>
+    </div>
+  </div>
+
+  <!-- Engine Reference -->
+  <div class="section" style="margin-top:44px">
+    <h2 style="margin-bottom:6px">CREDevSim Engine Reference</h2>
+    <p style="margin-bottom:18px;font-size:.88rem;color:var(--tx-sec)">Proprietary behaviors and mechanics specific to how this engine computes and displays results — not general CRE definitions. These are the conventions you need to know to read the interface correctly.</p>
+    <div class="eng-ref-grid">
+
+      <div class="er-item">
+        <div class="er-term">Capital Stack Color System</div>
+        <div class="er-def">Blue = Bank debt. Green = LP equity. Amber = GP equity. This mapping is enforced globally: waterfall blocks, Sankey segments, the capital stack bar, timeline chips, and all PDF exports use the same three colors. Status colors (red = impaired, green chip = stabilized) are a separate, independent layer and never conflict with entity colors.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Bank Sizing — MIN of Four Tests</div>
+        <div class="er-def">The engine computes the loan four ways independently: LTC × Total Cost, LTV × Appraised Value, NOI ÷ DSCR minimum ÷ rate, NOI ÷ Debt Yield minimum. The binding constraint — the smallest of the four — becomes the actual bank loan. The Summary panel shows which constraint is binding and by how much. This is standard institutional underwriting behavior; it can't be overridden by simply increasing the LTC slider.</div>
+      </div>
+
+      <div class="er-item er-grn">
+        <div class="er-term">Debt Service Reserve (DS Reserve)</div>
+        <div class="er-def">Post-refi restricted cash set aside from net refi proceeds to absorb debt service shortfalls during the lease-up ramp. The engine can auto-size it to exactly cover the projected gap, or you can enter a manual amount. When "Fund Reserve via Loan" is ON, the reserve folds into the perm loan balance (increasing DS slightly) rather than coming from LP/GP equity proceeds. Any unused balance is returned pari passu at exit.</div>
+      </div>
+
+      <div class="er-item er-grn">
+        <div class="er-term">Fund Reserve via Loan (RVL Toggle)</div>
+        <div class="er-def">When ON (default), the DS Reserve is bank-funded by folding it into the permanent loan amount. This raises the loan balance — and slightly raises monthly debt service — but avoids a direct equity call. When OFF, LP/GP fund the reserve from their share of refi proceeds (equity call). The toggle is auto-disabled when enabling it would push DSCR below 1.0, because lenders won't allow a borrower to borrow their own cushion in that case.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Timeline Phase System</div>
+        <div class="er-def">Every deal has four chronological phases: Construction → Refi → Operating → Exit. The horizontal timeline bar at the top of the dashboard marks each boundary. Drag the slider to any month and all panels update to that month's financial state: what the waterfall looks like, what's been drawn, what's owed, what's been distributed — all without re-running the analysis.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Verdict Badge System</div>
+        <div class="er-def">The badge next to LP IRR summarizes deal quality: <b>STRONG</b> (LP IRR &gt; pref by a wide margin), <b>VALUE-ADD / DEVELOPMENT</b> (LP IRR above pref, thesis dependent on execution), <b>MARGINAL</b> (LP IRR below the stated preferred return — LP doesn't clear the hurdle), <b>IMPAIRED</b> (LP IRR &lt; 0 — LP loses money). The IC Memo auto-thesis section writes deal-appropriate language reflecting whichever badge is active when you export.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Multi-Tier Promote — Every Event, Not Just Exit</div>
+        <div class="er-def">Most waterfall models only test IRR/MOIC hurdles at exit. CREDevSim tests at every distribution event — construction surplus, refi proceeds, each month of operating cash flow — and pays promote into the appropriate tier as the deal's cumulative return crosses each threshold in real time. This means Tier 2 and Tier 3 can engage at refi if the deal's return is already high enough, matching how institutional LP agreements actually work.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Heatmap Block — Hover for Full Breakdown</div>
+        <div class="er-def">Each colored block in the monthly heatmap is clickable/hoverable. The tooltip shows the exact cash flow breakdown for that month: NOI, debt service (IO vs P&amp;I phase), DS Reserve draw/balance, CapEx/TI-LC deduction, distributable cash, and LP/GP split by tier. What looks like a summary bar is actually a full monthly accounting — every dollar is traceable.</div>
+      </div>
+
+      <div class="er-item er-amb">
+        <div class="er-term">Capital Call — Just-in-Time vs Full Funding</div>
+        <div class="er-def">When the DS Reserve runs dry and operating NOI can't cover debt service, the engine triggers a capital call. In Just-in-Time mode (default), it calls only the exact month's shortfall — maximizing LP IRR by delaying equity deployment. In Full Funding mode, it calls a single lump sum covering the entire projected gap on the first violation month. Both increase LP's equity basis and restart pref accrual on the new capital from that date.</div>
+      </div>
+
+      <div class="er-item er-amb">
+        <div class="er-term">Stress &amp; Breakeven Panel</div>
+        <div class="er-def">Binary-searches the breakeven point for six key variables simultaneously: exit cap rate, blended bank rate, stabilized NOI, total project cost, LP pref rate, and hold period. For each variable, it finds the exact value at which LP IRR hits zero. The display shows current value, breakeven value, margin of safety, and a STRONG / Tight / STRESSED rating. Tight means the deal breaks with less than 25% of additional adverse movement in that variable.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Pref Accrual — Monthly Compound</div>
+        <div class="er-def">Preferred return accrues monthly on the LP's unreturned equity balance — not on committed capital that hasn't been drawn yet. The engine uses compound interest at the monthly rate (annual rate ÷ 12) and grows the pref balance each month until a distribution event pays it down. This is more accurate than annual approximations, which understate pref accumulation on long holds with early equity draws.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Construction Draw Schedule</div>
+        <div class="er-def">By default the engine uses an S-curve draw pattern (front-loads early draws; levels off mid-construction). You can switch to Linear (even monthly draws), Lump Sum (all at Day 1), or Manual (enter a custom month-by-month schedule). Draw timing affects capitalized interest, IRR precision, and GP management fee accrual — S-curve is the institutional norm for most construction deals. Manual draw schedules are invalidated if the construction period is later changed to prevent silent mismatches.</div>
+      </div>
+
     </div>
   </div>
 </div>
