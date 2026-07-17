@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CREDevSim — LP/GP Waterfall Engine for CRE</title>
+<meta name="description" content="CREDevSim is a desktop LP/GP waterfall engine for CRE developers, GPs, and analysts. Enter your capital stack, debt structure, and lease-up assumptions and watch IRR, promote, and capital calls solve in real time. Free for Windows — no credit card.">
+<meta name="keywords" content="CRE underwriting, LP GP waterfall, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, development modeling">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="CREDevSim — LP/GP Waterfall Engine for CRE">
+<meta property="og:description" content="Enter the deal. See the capital flow. A desktop LP/GP waterfall engine that solves the full capital stack in real time. Free for Windows.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CREDevSim — LP/GP Waterfall Engine for CRE">
+<meta name="twitter:description" content="A desktop LP/GP waterfall engine that solves the full capital stack in real time. Free for Windows.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <style>
 :root {
   --bg-app:      #080d18;
@@ -45,7 +62,7 @@ body{font-family:var(--font);background:var(--bg-app);color:var(--tx-pri);displa
 
 /* ── Main ── */
 .main{flex:1;overflow-y:auto;min-width:0}
-/* max-width 960px keeps line lengths readable on wide monitors */
+/* max-width 1400px keeps line lengths readable on wide monitors */
 .tab-panel{display:none;max-width:1400px;margin:0 auto;padding:32px 48px 80px;animation:fu .22s ease both}
 .tab-panel.active{display:block}
 @keyframes fu{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
@@ -198,23 +215,78 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 .disclaimer{max-width:880px;background:rgba(217,85,85,.06);border:1px solid rgba(217,85,85,.28);border-radius:10px;padding:20px 22px}
 .disclaimer h5{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--red);font-weight:700;margin-bottom:8px}
 .disclaimer p{font-size:.86rem}
+.btn-primary{box-shadow:0 10px 28px rgba(42,108,240,.28)}
+.btn-label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px}
+.home-hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);gap:28px;align-items:stretch;margin-bottom:30px}.hero-copy{padding:18px 0 4px}.hero-copy .lead{margin-bottom:22px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 18px}.trust-row{display:flex;flex-wrap:wrap;gap:7px}.trust-chip{font-size:.72rem;color:var(--tx-sec);background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:999px;padding:6px 9px}.deal-preview{background:linear-gradient(145deg,#162640 0%,#101a29 58%,#101827 100%);border:1px solid rgba(74,138,255,.32);border-radius:12px;padding:20px;position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.26)}.deal-preview:before{content:"LIVE DEAL SNAPSHOT";position:absolute;top:13px;right:15px;color:rgba(135,173,235,.55);font-family:var(--mono);font-size:.59rem;letter-spacing:.13em}.preview-kicker{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#83b0ff;margin-bottom:22px}.preview-title{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:2px}.preview-sub{font-size:.76rem;color:var(--tx-sec);margin-bottom:20px}.preview-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}.preview-metric{background:rgba(4,12,23,.38);border:1px solid rgba(135,173,235,.15);padding:10px;border-radius:7px}.preview-metric span{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--tx-dim);margin-bottom:5px}.preview-metric strong{font-family:var(--mono);font-size:.95rem;color:#fff}.preview-metric strong.good{color:var(--grn)}.preview-flow{display:flex;align-items:center;gap:6px;margin:14px 0 18px}.flow-pill{flex:1;text-align:center;border-radius:5px;padding:7px 4px;font-size:.65rem;font-weight:700}.flow-pill.bank{background:rgba(42,108,240,.24);color:#9ac0ff}.flow-pill.lp{background:rgba(26,175,128,.2);color:#80e0bd}.flow-pill.gp{background:rgba(232,163,42,.18);color:#f3c76e}.flow-arrow{color:var(--tx-dim);font-size:.75rem}.preview-verdict{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(135,173,235,.15);padding-top:13px;font-size:.76rem;color:var(--tx-sec)}.verdict{color:var(--grn);font-weight:800;letter-spacing:.08em;font-size:.68rem}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd-subtle);border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden;margin-bottom:36px}.how-step{background:var(--bg-surf);padding:19px 20px}.how-num{display:block;font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.1em;margin-bottom:9px}
+
+/* ── Billing toggle (pricing) ── */
+.bill-toggle{display:inline-flex;background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:999px;padding:4px;gap:2px;margin-bottom:22px}
+.bill-opt{display:inline-flex;align-items:center;gap:7px;background:transparent;border:none;color:var(--tx-sec);font-family:var(--font);font-size:.84rem;font-weight:600;padding:8px 18px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.bill-opt:hover{color:var(--tx-pri)}
+.bill-opt.active{background:var(--acc);color:#fff}
+.bill-badge{font-size:.64rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;background:var(--grn-dim);color:var(--grn);padding:2px 7px;border-radius:999px}
+.bill-opt.active .bill-badge{background:rgba(255,255,255,.18);color:#fff}
+/* Price display in Pro card */
+.p-strike{font-family:var(--mono);font-size:1rem;color:var(--tx-dim);text-decoration:line-through;line-height:1;margin-bottom:4px}
+.p-save{font-size:.74rem;font-weight:600;color:var(--grn);margin-bottom:4px}
+
+/* ── FAQ search ── */
+.faq-search-wrap{position:relative;margin:0 0 20px;max-width:440px}
+.faq-search{width:100%;background:var(--bg-surf);border:1px solid var(--bd-muted);border-radius:8px;color:var(--tx-pri);font-family:var(--font);font-size:.9rem;padding:11px 14px 11px 38px;outline:none;transition:border-color .15s}
+.faq-search:focus{border-color:var(--acc)}
+.faq-search::placeholder{color:var(--tx-dim)}
+.faq-search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--tx-dim);font-size:.9rem;pointer-events:none}
+.faq-empty{display:block;font-size:.88rem;color:var(--tx-dim);padding:6px 2px;font-style:italic}
+.faq-sec-lbl.is-hidden,details.faq.is-hidden{display:none}
+
+/* ── Changelog / Updates ── */
+.log-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden}
+.log-row{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:15px 20px;background:var(--bg-surf);border-top:1px solid var(--bd-subtle)}
+.log-row:first-child{border-top:none}
+.log-meta{display:flex;flex-direction:column;gap:5px}
+.log-ver{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--acc)}
+.log-date{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.6px}
+.log-tag{align-self:flex-start;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:3px;background:var(--acc-dim);color:var(--acc)}
+.log-tag.fix{background:var(--grn-dim);color:var(--grn)}
+.log-tag.new{background:var(--amb-dim);color:var(--amb)}
+.log-body{font-size:.86rem;color:var(--tx-sec);line-height:1.55}
+.log-body b{color:var(--tx-pri)}
+
+/* ── Email capture modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(4,8,16,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.modal-overlay.open{display:flex;animation:fu .2s ease both}
+.modal-box{background:var(--bg-card);border:1px solid var(--bd-accent);border-radius:14px;padding:30px 30px 26px;max-width:420px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.55);position:relative}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--tx-dim);font-size:1.3rem;line-height:1;cursor:pointer;padding:2px 6px}
+.modal-close:hover{color:var(--tx-pri)}
+.modal-box h3{font-size:1.2rem;margin-bottom:8px}
+.modal-box .lead{font-size:.9rem;margin-bottom:18px;max-width:none}
+.modal-form{display:flex;flex-direction:column;gap:10px}
+.modal-input{background:var(--bg-surf);border:1px solid var(--bd-muted);border-radius:8px;color:var(--tx-pri);font-family:var(--font);font-size:.92rem;padding:12px 14px;outline:none;transition:border-color .15s}
+.modal-input:focus{border-color:var(--acc)}
+.modal-input::placeholder{color:var(--tx-dim)}
+.modal-form .btn{justify-content:center;width:100%;padding:12px}
+.modal-skip{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:var(--tx-sec);text-decoration:none;background:none;border:none;cursor:pointer;width:100%;font-family:var(--font)}
+.modal-skip:hover{color:var(--tx-pri);text-decoration:underline}
+.modal-fine{font-size:.72rem;color:var(--tx-dim);text-align:center;margin-top:12px;line-height:1.45}
+
+@media(max-width:820px){body{display:block;height:auto;overflow:auto}.sidebar{width:100%;padding:14px 16px;border-right:0;border-bottom:1px solid var(--bd-subtle)}.brand p{margin-bottom:12px}.nav-list{flex-direction:row;overflow-x:auto;gap:4px}.nav-item{white-space:nowrap}.sidebar-foot{display:none}.main{overflow:visible}.tab-panel{padding:24px 18px 52px}.home-hero{grid-template-columns:1fr}.stat-row{overflow-x:auto}.stat{padding:12px 16px;min-width:110px}.contrast,.grid-2,.p-grid{grid-template-columns:1fr}.grid-3,.how-grid{grid-template-columns:1fr}.c-not{border-right:0;border-bottom:1px solid var(--bd-subtle)}h1{font-size:1.9rem}.preview-metrics{grid-template-columns:repeat(3,1fr)}.log-row{grid-template-columns:1fr;gap:8px}.bill-toggle{width:100%}.bill-opt{flex:1;justify-content:center;padding:10px 8px}}
 </style>
 </head>
 <body>
 
-<nav class="sidebar">
+<nav class="sidebar" aria-label="Main Navigation">
   <div>
     <div class="brand">
       <h2>CREDevSim</h2>
       <p>CRE Development Simulation</p>
     </div>
-    <div class="nav-list">
-      <div class="nav-item active"  onclick="sw('home',this)">Home</div>
-      <div class="nav-item" onclick="sw('engine',this)">Underwriting Engine</div>
-      <div class="nav-item" onclick="sw('pricing',this)">Pricing &amp; Downloads</div>
-      <div class="nav-item" onclick="sw('faq',this)">Resources &amp; FAQ</div>
-      <div class="nav-item" onclick="sw('contact',this)">Contact &amp; Policies</div>
-      <div class="nav-item" onclick="sw('about',this)">About the Dev</div>
+    <div class="nav-list" role="tablist">
+      <div class="nav-item active" role="tab" tabindex="0" aria-current="page" data-tab="home">Home</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="engine">Underwriting Engine</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="pricing">Pricing &amp; Downloads</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="faq">Resources &amp; FAQ</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="contact">Contact &amp; Policies</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="about">About the Dev</div>
     </div>
   </div>
   <div class="sidebar-foot">
@@ -227,17 +299,19 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
 <!-- ════ HOME ════ -->
 <div id="home" class="tab-panel active">
-  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
-  <div class="badge">CRE Investment Intelligence</div>
-  <h1>Enter Your Deal.<br>See Where the Money Goes.</h1>
-  <p class="lead">CREDevSim is a logic-locked LP/GP waterfall engine for developers, GPs, and analysts. Type your assumptions — capital stack, debt structure, lease-up timeline — and see the promote, IRR, and capital calls update in real time.</p>
-
-  <div class="stat-row section-sm">
-    <div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div>
-    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Spreadsheets Needed</span></div>
-    <div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div>
-    <div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div>
+  <div class="panel-top"><a href="download.html" class="btn btn-sm">Download Free for Windows</a></div>
+  <div class="home-hero">
+    <div class="hero-copy">
+      <div class="badge">CRE Investment Intelligence</div>
+      <h1>Enter the deal.<br>See the capital flow.</h1>
+      <p class="lead">CREDevSim is a desktop LP/GP waterfall engine for developers, GPs, and analysts. Enter your capital stack, debt structure, and lease-up assumptions, then follow IRR, promote, and capital calls as the deal changes.</p>
+      <div class="hero-actions"><a href="download.html" class="btn btn-primary">Download Free for Windows</a><a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost">View a sample pro forma</a></div>
+      <div class="trust-row"><span class="trust-chip">No credit card</span><span class="trust-chip">Windows 10/11</span><span class="trust-chip">Local deal files</span></div>
+    </div>
+    <aside class="deal-preview" aria-label="Illustrative deal dashboard preview"><div class="preview-kicker">Illustrative deal state</div><div class="preview-title">Westside Multifamily</div><div class="preview-sub">Month 26 of 60 - refinance complete</div><div class="preview-metrics"><div class="preview-metric"><span>LP IRR</span><strong class="good">18.4%</strong></div><div class="preview-metric"><span>LP MOIC</span><strong>1.92x</strong></div><div class="preview-metric"><span>DSCR</span><strong>1.31x</strong></div></div><div class="preview-flow"><span class="flow-pill bank">BANK</span><span class="flow-arrow">&gt;</span><span class="flow-pill lp">LP</span><span class="flow-arrow">&gt;</span><span class="flow-pill gp">GP</span></div><div class="preview-verdict"><span>Current underwriting verdict</span><span class="verdict">STRONG</span></div></aside>
   </div>
+  <div class="stat-row section-sm"><div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div><div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Spreadsheets Needed</span></div><div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div><div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div></div>
+  <div class="how-grid"><div class="how-step"><span class="how-num">01 / INPUT</span><h3>Structure the deal</h3><p>Enter cost, debt, equity, and operating assumptions in one place.</p></div><div class="how-step"><span class="how-num">02 / TEST</span><h3>Stress the economics</h3><p>Adjust timing, rates, and exit assumptions while the waterfall recalculates.</p></div><div class="how-step"><span class="how-num">03 / SHARE</span><h3>Export the narrative</h3><p>Move from analysis to investor-ready outputs when you are ready.</p></div></div>
 
   <!-- NOT / IS -->
   <div class="contrast section">
@@ -284,7 +358,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       </div>
       <div class="card">
         <h3>Logic-Locked Safety Rails</h3>
-        <p>The engine enforces hard-coded underwriting standards. It can't silently produce a wrong number — no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
+        <p>The engine enforces hard-coded underwriting standards. It is designed to make assumptions and validation flags visible — no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
       </div>
     </div>
   </div>
@@ -303,8 +377,8 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <div class="feat-item">• <span><b>Capital Calls:</b> automatic when refi or NOI surplus can't cover shortfalls</span></div>
     </div>
     <div class="btn-row" style="margin-top:22px">
-      <a href="developer_pro_forma_sample.pdf" target="_blank" class="btn">Download Sample — Developer Pro Forma</a>
-      <a href="deal_performance_report_sample.pdf" target="_blank" class="btn">Download Sample — Deal Summary Report</a>
+      <a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost">Download Sample — Developer Pro Forma</a>
+      <a href="deal_performance_report_sample.pdf" target="_blank" class="btn btn-ghost">Download Sample — Deal Summary Report</a>
     </div>
   </div>
   <div class="ss-item"><img src="CREDevSim_Banner_Download.png" alt="Banner"></div>
@@ -437,6 +511,11 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
   </div>
 
+  <div class="bill-toggle" role="group" aria-label="Billing period">
+    <button type="button" class="bill-opt active" data-plan="monthly" aria-pressed="true">Monthly</button>
+    <button type="button" class="bill-opt" data-plan="yearly" aria-pressed="false">Yearly <span class="bill-badge">Save 58%</span></button>
+  </div>
+
   <div class="p-grid section">
     <div class="p-card">
       <div class="p-name">Free</div>
@@ -461,11 +540,15 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
 
     <div class="p-card featured">
-      <div class="p-chip">Beta Phase — Coming Soon</div>
+      <div class="p-chip">Beta · Founder Pricing</div>
       <div class="p-name">Pro Simulation</div>
       <div class="p-desc">Complete institutional architecture for developers, GPs, and analysts who need the full toolkit.</div>
-      <div class="p-amt">TBD <sub>/month</sub></div>
-      <div class="p-note">Beta subscribers get founder pricing locked in. <a href="signup.html">Join the waitlist →</a></div>
+      <div class="p-price">
+        <div class="p-strike" id="proStrike">$99.99</div>
+        <div class="p-amt"><span id="proAmt">$49.99</span> <sub id="proPer">/month</sub></div>
+        <div class="p-save" id="proSave">Founder rate — 50% off during beta</div>
+      </div>
+      <div class="p-note">Founder pricing locks in for beta subscribers before public launch. <a href="signup.html">Join the waitlist →</a></div>
       <ul class="fl">
         <li><span class="ck">✓</span> <span>Everything in Free<span class="feat-desc">Ground-Up Development, Stabilized Acquisition, full visual dashboard</span></span></li>
 
@@ -533,6 +616,29 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
   </div>
 
+  <!-- Product updates / changelog -->
+  <div class="section-sm">
+    <p class="sec-lbl">Product Updates <span class="badge badge-grn" style="margin-bottom:0;margin-left:6px">Actively maintained</span></p>
+    <div class="log-list">
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.2</span><span class="log-date">Jul 2026</span><span class="log-tag fix">Fix</span></div>
+        <div class="log-body"><b>Linear interest accrual</b> across construction and bridge-extension draws, plus refined margin-of-safety heatmap and input tooltips.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.1</span><span class="log-date">Jul 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Construction Loan Extension</b> — model an extension fee and rate spread when the bridge runs past its original term before refinance.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.1</span><span class="log-date">Jul 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Bridge spread control</b> with a 0.25%/yr net-rate floor, plus a user-defined refinance month.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.0</span><span class="log-date">Jun 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Public beta</b> — four deal types, real-time waterfall engine, and the Sankey + heatmap dashboard.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Capital pivot framework -->
   <div class="card card-acc section">
     <h3 style="color:var(--acc);margin-bottom:10px">The Post-Refi Capital Pivot Framework</h3>
@@ -550,7 +656,12 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   </div>
 
   <!-- ── FAQ SECTIONS ── -->
-  <h2 style="margin-bottom:4px">Frequently Asked Questions</h2>
+  <h2 style="margin-bottom:10px">Frequently Asked Questions</h2>
+  <div class="faq-search-wrap">
+    <span class="faq-search-ico" aria-hidden="true">⌕</span>
+    <input id="faqSearch" class="faq-search" type="search" placeholder="Search questions, terms, mechanics…" aria-label="Search the FAQ" autocomplete="off">
+  </div>
+  <span id="faqEmpty" class="faq-empty" hidden>No questions match that search. Try a broader term like “DSCR”, “promote”, or “reserve”.</span>
 
   <!-- GENERAL -->
   <p class="faq-sec-lbl">General</p>
@@ -567,7 +678,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
   <details class="faq">
     <summary class="faq-q">How is this different from Argus or Excel?<span class="faq-tog">+</span></summary>
-    <div class="faq-body">Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a logic-locked engine that can't silently produce wrong numbers. It complements both; it doesn't replace them.</div>
+    <div class="faq-body">Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a dedicated engine with validation gates and traceable outputs. It complements both; it doesn't replace them.</div>
   </details>
 
   <details class="faq">
@@ -606,6 +717,13 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   </details>
 
   <!-- WATERFALL MECHANICS -->
+  <p class="faq-sec-lbl">Getting Started</p>
+  <details class="faq"><summary class="faq-q">Can I import an existing Excel or Argus underwriting?<span class="faq-tog">+</span></summary><div class="faq-body">CREDevSim is built for a focused set of deal inputs rather than a lease-level rent roll. Pro includes CSV import for supported inputs; review the supplied template before importing a deal.</div></details>
+  <details class="faq"><summary class="faq-q">What does the free version exclude?<span class="faq-tog">+</span></summary><div class="faq-body">Free includes two deal types and the interactive visual engine with no time limit. Pro adds the other deal types, PDF and IC Memo exports, advanced waterfall controls, scenario comparison, and deal presets.</div></details>
+  <details class="faq"><summary class="faq-q">Does CREDevSim need an internet connection?<span class="faq-tog">+</span></summary><div class="faq-body">The application runs locally. A lightweight license check may occur for account validation; deal inputs and saved files remain on your machine.</div></details>
+  <details class="faq"><summary class="faq-q">How does Pro pricing and founder pricing work?<span class="faq-tog">+</span></summary><div class="faq-body">Pro pricing will be announced before launch. Join the beta waitlist to receive launch details and founder-pricing information.</div></details>
+  <details class="faq"><summary class="faq-q">Is CREDevSim financial, tax, or legal advice?<span class="faq-tog">+</span></summary><div class="faq-body">No. CREDevSim is a modeling tool. Validate outputs independently and consult qualified financial, tax, and legal advisors before making investment decisions or using investor-facing materials.</div></details>
+
   <p class="faq-sec-lbl">Waterfall Mechanics</p>
 
   <details class="faq">
@@ -1081,21 +1199,177 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
 </main>
 
+<!-- ════ EMAIL CAPTURE (soft gate before download) ════ -->
+<div class="modal-overlay" id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlModalTitle" aria-hidden="true">
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="dlClose" aria-label="Close">×</button>
+    <h3 id="dlModalTitle">Get the download link</h3>
+    <p class="lead">Drop your email and we'll send Pro launch details and founder pricing when it's ready. Your download starts either way — no account required.</p>
+    <!-- NOTE: point action= at your email service endpoint (Mailchimp, Formspree, ConvertKit, etc.). -->
+    <form class="modal-form" id="dlForm" action="" method="post">
+      <input class="modal-input" id="dlEmail" type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
+      <button type="submit" class="btn btn-primary">Email me &amp; start download</button>
+    </form>
+    <button type="button" class="modal-skip" id="dlSkip">No thanks — just download</button>
+    <p class="modal-fine">We only email about CREDevSim. No spam, unsubscribe anytime.</p>
+  </div>
+</div>
+
 <script>
-function sw(tabId, el) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const panel = document.getElementById(tabId);
+/* ── Tab routing with deep-link + Back-button support ── */
+var VALID_TABS = ['home','engine','pricing','faq','contact','about'];
+
+function sw(tabId, el, push) {
+  if (VALID_TABS.indexOf(tabId) === -1) tabId = 'home';
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){
+    n.classList.remove('active');
+    n.removeAttribute('aria-current');
+  });
+  var panel = document.getElementById(tabId);
   if (panel) panel.classList.add('active');
-  if (el) el.classList.add('active');
+  var nav = el || document.querySelector('.nav-item[data-tab="' + tabId + '"]');
+  if (nav) { nav.classList.add('active'); nav.setAttribute('aria-current', 'page'); }
+  var main = document.querySelector('.main');
+  if (main) main.scrollTop = 0;
+  if (push !== false) history.pushState({ tab: tabId }, '', '#' + tabId);
 }
 
-document.querySelectorAll('details.faq').forEach(d => {
-  d.addEventListener('toggle', () => {
-    const t = d.querySelector('.faq-tog');
+/* Wire nav items: click + keyboard (Enter / Space) */
+document.querySelectorAll('.nav-item').forEach(function(item){
+  item.addEventListener('click', function(){ sw(item.dataset.tab, item); });
+  item.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sw(item.dataset.tab, item); }
+  });
+});
+
+/* Native Back/Forward */
+window.addEventListener('popstate', function(e){
+  var tab = (e.state && e.state.tab) || (location.hash || '').replace('#','') || 'home';
+  sw(tab, null, false);
+});
+
+/* Open the correct tab on first load if a hash is present */
+(function(){
+  var initial = (location.hash || '').replace('#','');
+  if (initial && VALID_TABS.indexOf(initial) !== -1) sw(initial, null, false);
+})();
+
+/* ── FAQ open/close glyph ── */
+document.querySelectorAll('details.faq').forEach(function(d){
+  d.addEventListener('toggle', function(){
+    var t = d.querySelector('.faq-tog');
     if (t) t.textContent = d.open ? '×' : '+';
   });
 });
+
+/* ── FAQ live search ── */
+(function(){
+  var input = document.getElementById('faqSearch');
+  if (!input) return;
+  var empty = document.getElementById('faqEmpty');
+  var faqPanel = document.getElementById('faq');
+  var items = Array.prototype.slice.call(faqPanel.querySelectorAll('details.faq'));
+  var labels = Array.prototype.slice.call(faqPanel.querySelectorAll('.faq-sec-lbl'));
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var anyVisible = false;
+    items.forEach(function(d){
+      var hit = !q || d.textContent.toLowerCase().indexOf(q) !== -1;
+      d.classList.toggle('is-hidden', !hit);
+      if (hit) anyVisible = true;
+      if (q && hit) d.open = true; else if (!q) d.open = false;
+    });
+    // Hide a section label when every FAQ after it (until the next label) is hidden
+    labels.forEach(function(lbl){
+      var n = lbl.nextElementSibling, show = false;
+      while (n && !n.classList.contains('faq-sec-lbl')) {
+        if (n.classList.contains('faq') && !n.classList.contains('is-hidden')) { show = true; break; }
+        n = n.nextElementSibling;
+      }
+      lbl.classList.toggle('is-hidden', q && !show);
+    });
+    if (empty) empty.hidden = anyVisible;
+  });
+})();
+
+/* ── Pricing: monthly / yearly toggle ── */
+(function(){
+  var PLANS = {
+    monthly: { strike: '$99.99', amt: '$49.99', per: '/month', save: 'Founder rate — 50% off during beta' },
+    yearly:  { strike: '$1,200', amt: '$500',   per: '/year',  save: '≈ $42/mo · billed annually · save 58%' }
+  };
+  var opts = document.querySelectorAll('.bill-opt');
+  var strike = document.getElementById('proStrike');
+  var amt = document.getElementById('proAmt');
+  var per = document.getElementById('proPer');
+  var save = document.getElementById('proSave');
+  if (!opts.length || !amt) return;
+
+  function apply(plan){
+    var p = PLANS[plan]; if (!p) return;
+    strike.textContent = p.strike;
+    amt.textContent = p.amt;
+    per.textContent = p.per;
+    save.textContent = p.save;
+    opts.forEach(function(o){
+      var on = o.dataset.plan === plan;
+      o.classList.toggle('active', on);
+      o.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  opts.forEach(function(o){
+    o.addEventListener('click', function(){ apply(o.dataset.plan); });
+  });
+})();
+
+/* ── Download email capture (soft gate) ── */
+(function(){
+  var modal = document.getElementById('dlModal');
+  if (!modal) return;
+  var form = document.getElementById('dlForm');
+  var emailInput = document.getElementById('dlEmail');
+  var pendingHref = null;
+
+  function open(href){
+    pendingHref = href;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    setTimeout(function(){ emailInput && emailInput.focus(); }, 40);
+  }
+  function close(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  function go(){
+    var href = pendingHref; close();
+    if (href) window.location.href = href;
+  }
+
+  // Intercept any link that points at the download page
+  document.querySelectorAll('a[href$="download.html"], a[href$="/download.html"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      open(a.getAttribute('href'));
+    });
+  });
+
+  document.getElementById('dlClose').addEventListener('click', close);
+  document.getElementById('dlSkip').addEventListener('click', go);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+
+  form.addEventListener('submit', function(e){
+    // If no backend endpoint is configured yet, proceed to the download after "submit".
+    if (!form.getAttribute('action')) {
+      e.preventDefault();
+      try { localStorage.setItem('credevsim_lead', emailInput.value); } catch (err) {}
+      go();
+    }
+    // If action IS set, let the form POST to your email service normally.
+  });
+})();
 </script>
 </body>
 </html>
