@@ -553,11 +553,11 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <div class="p-name">Pro Simulation</div>
       <div class="p-desc">Complete institutional architecture for developers, GPs, and analysts who need the full toolkit.</div>
       <div class="p-price">
-        <div class="p-strike" id="proStrike">$99.99</div>
-        <div class="p-amt"><span id="proAmt">$49.99</span> <sub id="proPer">/month</sub></div>
-        <div class="p-save" id="proSave">Founder rate — 50% off during beta</div>
+        <div class="p-strike" id="proStrike">$TBD</div>
+        <div class="p-amt"><span id="proAmt">$TBD</span> <sub id="proPer">/month</sub></div>
+        <div class="p-save" id="proSave">Founder rate — Free during beta</div>
       </div>
-      <div class="p-note">Founder pricing locks in for beta subscribers before public launch. <a href="signup.html">Join the waitlist →</a></div>
+      <div class="p-note">Free for beta subscribers before public launch. <a href="signup.html">Join the waitlist →</a></div>
       <ul class="fl">
         <li><span class="ck">✓</span> <span>Everything in Free<span class="feat-desc">Ground-Up Development, Stabilized Acquisition, full visual dashboard</span></span></li>
 
@@ -1303,8 +1303,8 @@ document.querySelectorAll('details.faq').forEach(function(d){
 /* ── Pricing: monthly / yearly toggle ── */
 (function(){
   var PLANS = {
-    monthly: { strike: '$99.99', amt: '$49.99', per: '/month', save: 'Founder rate — 50% off during beta' },
-    yearly:  { strike: '$1,200', amt: '$500',   per: '/year',  save: '≈ $42/mo · billed annually · save 58%' }
+    monthly: { strike: '$TBD', amt: '$TBD', per: '/month', save: 'Free during beta' },
+    yearly:  { strike: '$TBD', amt: '$TBD',   per: '/year',  save: '≈ $TBD/mo · billed annually · save TBD%' }
   };
   var opts = document.querySelectorAll('.bill-opt');
   var strike = document.getElementById('proStrike');
