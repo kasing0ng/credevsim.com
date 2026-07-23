@@ -9,6 +9,7 @@
 <meta name="author" content="Kasing Ng">
 <meta name="theme-color" content="#080d18">
 <link rel="canonical" href="https://credevsim.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CREDevSim">
@@ -48,6 +49,414 @@
     "Bridge-to-perm construction financing with S-curve draw scheduling",
     "Real-time Sankey diagrams, monthly cash flow heatmaps, and IRR sensitivity analysis",
     "100% local deal data — no cloud storage or transmission"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this a web app or a desktop application?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim is a desktop application for Windows. There is no browser version — it runs fully offline on your machine. No install of Node, Python, or any runtime is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What operating system does it require?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Windows 10 or Windows 11 (64-bit). A macOS version is on the roadmap. The application is distributed as a standalone executable — no installation wizard or admin rights needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Argus or Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a dedicated engine with validation gates and traceable outputs. It complements both; it doesn't replace them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What asset classes does it support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any deal with a stabilized NOI and an LP/GP capital structure: multifamily, industrial, retail, office, mixed-use, self-storage. Enter stabilized NOI directly — asset-class-specific rent roll modeling (unit mix, RevPAR, overage rent) is outside scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What inputs does the model actually need to run a deal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a Ground-Up Development deal: Total Project Cost (or a line-by-line budget), construction loan amount and interest rate, LP/GP equity split and preferred return rate, construction timeline in months, stabilized NOI, exit cap rate, and desired hold period. That's it — the engine computes the bridge payoff, permanent loan sizing, monthly distributions, IRR, MOIC, and full exit waterfall from those inputs automatically. Most deals are fully set up in under 5 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to already understand LP/GP waterfall mechanics to use this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — not to get started. The default deal structure uses a single-tier LP/GP split with a preferred return, which is the most common structure. You can run a complete deal analysis without touching any of the advanced settings. The multi-tier promotes, catch-up provisions, and clawback toggles are there when you're ready for institutional-level structuring, but they're completely optional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share my deal files with a colleague?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Deal presets are saved as standard JSON files on your hard drive. You can copy or share these files directly — your colleague loads them in their own copy of CREDevSim. No cloud sync required. Note that deal preset save/load is a Pro feature."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the free version truly free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. No trial period, no expiration. The free version gives you two deal types and the full visual suite with no time limit and no credit card required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my deal data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CREDevSim runs entirely on your local machine. No deal data is ever transmitted or stored externally. Everything stays on your hard drive. Your license is validated against your account via a lightweight token check — that's the only network call the application makes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I see a sample output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the Home tab, scroll to the bottom: Download Sample — Developer Pro Forma and Download Sample — Deal Summary Report . Both are real PDF exports generated from the engine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import an existing Excel or Argus underwriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim is built for a focused set of deal inputs rather than a lease-level rent roll. Pro includes CSV import for supported inputs; review the supplied template before importing a deal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the free version exclude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free includes two deal types and the interactive visual engine with no time limit. Pro adds the other deal types, PDF and IC Memo exports, advanced waterfall controls, scenario comparison, and deal presets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CREDevSim need an internet connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The application runs locally. A lightweight license check may occur for account validation; deal inputs and saved files remain on your machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Pro pricing and founder pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pro pricing will be announced before launch. Join the beta waitlist to receive launch details and founder-pricing information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is CREDevSim financial, tax, or legal advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CREDevSim is a modeling tool. Validate outputs independently and consult qualified financial, tax, and legal advisors before making investment decisions or using investor-facing materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a preferred return, and how is it compounded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A preferred return (pref) is the minimum annualized return LP investors must receive before the GP earns any promote. It accrues on invested and unreturned capital — not on committed capital that hasn't been drawn yet. CREDevSim computes pref accrual monthly using compound interest by default. Each month the pref balance grows by (annual pref rate ÷ 12) × LP equity basis outstanding. When a distribution event occurs — refi proceeds, operating cash flow, or exit — the engine pays pref arrears before any promote tier is tested. This matches institutional LP agreement logic far more accurately than annual approximations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between an IRR hurdle and a MOIC hurdle for promote tiers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IRR hurdle: The promote tier unlocks when the LP's time-weighted rate of return exceeds the hurdle (e.g., 15% IRR). IRR is sensitive to timing — early distributions dramatically boost it. Best for deals with significant mid-hold cash flow. MOIC hurdle: The promote tier unlocks when the LP's total return multiple exceeds the hurdle (e.g., 2.0× MOIC). MOIC is purely magnitude-based — a 5× return over 10 years and a 5× return over 3 years are treated identically. Best for short holds or deals where timing is predictable and simple. CREDevSim lets you set each promote tier independently as IRR or MOIC, and tests the gate at every distribution event — not only at exit — which is meaningfully more accurate for deals with significant mid-hold distributions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does GP catch-up work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After LP has received its preferred return, a catch-up provision lets the GP rapidly collect distributions until the GP's share of total distributions equals its target promote percentage. Example: 80/20 structure with full GP catch-up. After LP receives 8% pref, the GP gets 100% of subsequent distributions until GP's cumulative share equals 20% of all distributions made so far. After catch-up closes, remaining distributions split 80/20. CREDevSim models catch-up precisely at every distribution event. The catch-up switch is off by default (most institutional deals don't use a full catch-up); enable it in the Equity Structure panel when your LP agreement includes this provision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an exit clawback and when does it trigger?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A clawback is a GP obligation to return previously collected promote if the LP's realized return over the full hold period falls below the hurdle rate. It matters when a GP collects interim promote during mid-hold distributions (e.g., at refi) but the deal underperforms at exit, leaving the LP below their pref threshold overall. The clawback forces the GP to give back the excess promote to make the LP whole. CREDevSim tracks cumulative GP promote received at every distribution event and computes the clawback obligation at exit against the LP's actual realized return. Toggle it on in the Equity Structure panel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does \"ROC-First\" distribution order mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROC-First (Return of Capital First): LP gets all invested capital back before any pref or promote is paid. This minimizes LP risk exposure and is common in development deals. Pref-First: LP receives accrued preferred return before ROC. Less common; lowers the LP's capital exposure but delays full capital recovery. CREDevSim defaults to ROC-First for development and renovation deals. Stabilized acquisitions typically use Pref-First. Both are configurable in the Distribution Order dropdown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is pari passu, and where does it appear in the waterfall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pari passu means \"on equal footing\" — distributions are shared proportionally based on each party's ownership stake, with no priority. In CREDevSim, pari passu typically applies to residual cash distributions after all pref, ROC, and promote tiers have been satisfied. It also describes how unused reserves are returned at exit: LP and GP receive their pro-rata share of any leftover reserve balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Debt Service Reserve (DS Reserve) input do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It acts as a liquidity fence. Instead of distributing 100% of net refi proceeds to partners immediately, this input captures a dollar amount as restricted cash to absorb debt service shortfalls during lease-up. Distributable Cash = Net Refi Proceeds − Debt Service Reserve"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who pays for the Debt Service Reserve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The Debt Service Reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to unused DS Reserve at sale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any unused balance is swept back into the net sale distribution pool at exit and returned to investors proportionally ( pari passu ). It is never lost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the lease-up ramp work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You set three inputs: current occupancy (e.g. 60%), stabilized occupancy target (e.g. 92%), and ramp duration in months (e.g. 12 months). The engine runs an S-curve from current to stabilized over that window. Each operating month's NOI reflects the actual blended occupancy for that month — so debt service coverage, distributions, and capital call triggers are all computed from projected income at that occupancy level, not the stabilized rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the Stabilization Reserve runs dry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If operating deficits outlast the reserve, the engine flags an asset stress warning and triggers a Capital Call to preserve debt compliance. The call is sized to cover the exact shortfall (Just-in-Time mode) or the aggregate projected gap (Full Funding mode)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do Capital Calls alter waterfall returns vs. using the Reserve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Capital Call is fresh equity — it expands the Return of Capital basis, initiates preferred return accruals on the new capital immediately, and recalibrates fee tracking. A reserve draw is not new equity; it's a return of previously withheld refi proceeds. Capital calls are more dilutive to GP promote because they grow the LP's basis, which must be repaid and pref'd before any residual split."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Just-in-Time and Full Funding capital calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just-in-Time (default): Calls capital month-by-month to match the exact dollar shortage. Maximizes investor IRR by delaying deployment. Full Funding: Calculates total aggregate downside gap over the hold period and executes a single lump-sum call on the first violation month. Optimizes accounting clarity over IRR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is DSCR and what minimum should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Debt Service Coverage Ratio = NOI ÷ Annual Debt Service. It measures how many times the property's income covers its debt payments. Agency lenders (Fannie Mae, Freddie Mac) typically require 1.25× minimum DSCR on multifamily. Banks on commercial deals often require 1.20–1.30×. Construction lenders underwrite to stabilized DSCR at takeout. CREDevSim enforces a configurable minimum and flags any breach in real time before you export. The engine also shows Net DSCR (after management fee, capex reserve, and TI/LC) for a more conservative underwriting view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Debt Yield, and how is it different from DSCR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Debt Yield = NOI ÷ Loan Amount. Unlike DSCR, it doesn't depend on interest rates or amortization terms — it measures the lender's return if they had to foreclose and hold the asset. As interest rates change, a fixed DSCR can be achieved by changing the loan term or IO period — Debt Yield can't be gamed this way. CMBS and institutional lenders have increasingly focused on Debt Yield (typically 8–10%+ minimum) alongside DSCR as a more rate-agnostic underwriting metric."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between LTC and LTV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Loan-to-Cost (LTC) = Loan Amount ÷ Total Project Cost. Used during construction — the denominator is what you're spending, not what the asset is worth yet. Typical range: 60–75%. Loan-to-Value (LTV) = Loan Amount ÷ Appraised Property Value. Used for permanent loans — the denominator is the stabilized or as-is property value. Typical range: 55–75% depending on asset class and lender. CREDevSim enforces user-defined LTC on the construction loan and LTV on the permanent loan, and flags any breach against your inputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a bridge-to-perm structure and how does the engine handle it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A bridge-to-perm structure uses a short-term construction loan (the \"bridge\") to fund the development period, then refinances into a long-term permanent loan once the asset reaches a lender-defined stabilization threshold — typically DSCR above 1.20× and occupancy above 85–90%. CREDevSim models this as a two-phase structure: the construction loan draws on an S-curve schedule with capitalized interest, then the engine automatically payoffs the bridge and originate the perm loan at the user-defined refi month. The perm loan size, rate, IO period, and amortization schedule are set independently from the bridge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a TI/LC reserve and how is it modeled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tenant Improvement (TI) allowance is the landlord's contribution to fit-out costs when signing a new lease or renewing an existing one. Leasing Commissions (LC) are broker fees typically paid as a percentage of the lease revenue. In the model, TI/LC is computed as an annual reserve: (TI $/SF × rentable SF ÷ average lease term) + (leasing commission % × annual gross rent). This reserve is funded from operating income before distributions, reflecting the real cash drag on NOI available for debt service and equity payouts. Office and retail deals often carry TI/LC reserves that consume 25–40% of gross NOI — a critical underwriting input that many simplified models ignore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a rate cap, and why does it appear in the project cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rate caps are insurance contracts that limit the floating interest rate on a loan — for example, a SOFR cap at 4.5% means the borrower never pays more than 4.5% + spread even if SOFR rises above that level. Lenders often require them on floating-rate construction loans. CREDevSim includes rate cap cost as a Day-0 project expense in the Sources & Uses, which adds it to LP's equity basis for waterfall purposes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does depreciation affect LP/GP after-tax returns?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Real property can be depreciated for tax purposes over its IRS-defined recovery period: 27.5 years for residential, 39 years for commercial. This creates an annual non-cash tax deduction that reduces taxable income — effectively sheltering a portion of operating distributions from ordinary income tax. The annual depreciation shield = Depreciable Basis ÷ Recovery Period. A $10M apartment property depreciates at $10M ÷ 27.5 = $364K/yr. If LP's tax rate is 37%, that's ~$134K/yr in saved taxes. CREDevSim's After-Tax view applies the appropriate recovery period based on the asset class you've selected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is cost segregation and how does it work in the model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cost segregation is an engineering study that reclassifies components of a building into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation in early years rather than straight-line over 27.5 or 39 years. CREDevSim lets you specify a cost segregation percentage of the depreciable basis. That portion is depreciated at the accelerated rate, producing a larger tax shield in Year 1 and smaller shields in later years. Remaining basis is depreciated straight-line over the standard recovery period."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is §1245 recapture at exit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you sell a property that benefited from cost segregation or bonus depreciation on personal property, the IRS \"recaptures\" the accelerated depreciation you claimed — taxing that portion at ordinary income rates (up to 37%) rather than the lower long-term capital gains rate (typically 20%). This recapture under §1245 applies specifically to personal property components. Real property recapture under §1250 is taxed at a 25% unrecaptured rate. CREDevSim models both recapture types at exit and shows after-tax net proceeds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is bonus depreciation, and should I use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonus depreciation allows immediate 100% expensing of qualifying personal property in Year 1 (phasing down under current tax law). Combined with cost segregation, this can generate very large paper losses in the first year, which pass through to investors. Whether to use it depends on your LP investors' tax situation — passive loss rules may prevent non-real estate professionals from deducting those losses immediately. CREDevSim models the Year 1 bonus depreciation impact on after-tax IRR. Consult a tax advisor for LP-specific implications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trace the reserve burning down inside the interface?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — in two places. The Waterfall Snapshot shows the reserve as a color-coded block at the refi event. The Monthly Operating Heatmap tracks a dynamic cash line showing the pool declining through early months and leveling off as NOI covers debt service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do the Sankey diagrams show?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim has three Sankey views, selectable in the dashboard dropdown: NOI Distribution: Shows how cumulative operating income flows to debt service, reserves, management fees, and equity distributions over the hold period. Useful for identifying cash flow drag (e.g., TI/LC consuming 30% of NOI on an office deal). Exit Waterfall: Shows gross sale proceeds flowing to disposition costs, bank repayment, LP return of capital, preferred return, and GP promote — tier by tier. Sources & Uses: Shows where construction capital came from (bank loan, LP equity, GP equity) and how it was spent (land, hard costs, soft costs, fees, contingency, financing)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I read the IRR Sensitivity Heatmap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The heatmap shows LP IRR across a matrix of blended bank rates (rows) and exit cap rates (columns). The current deal scenario is highlighted. Green cells = LP meets or exceeds pref hurdle; yellow = marginal; red = LP IRR below pref. This lets you see at a glance how much your deal's return depends on interest rate direction and exit pricing, and identify the breakeven rate/cap combination where LP barely clears the hurdle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export to PDF on the free plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDF export is a Pro feature. The free plan gives you the full interactive model; PDF is the deliverable layer for investor packages and lender submissions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Investment Committee Memo export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The IC Memo is a placement-agent quality investor document generated directly from your deal model. It includes: deal overview, sources & uses, capital structure, projected returns (IRR/MOIC by tier), risk factor checklist with mitigants, sponsor track record, deal thesis, regulatory disclosures, and optional Reg D language. Exported as an HTML file (browser-renderable, easily converted to PDF via browser print) or as an RTF file compatible with Word. The entire document populates from your live deal model — there's no manual copy-paste from the spreadsheet to the deck."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Risk Factor checklist and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The risk factor editor contains 12 standard risk categories: construction cost overrun, interest rate, lease-up timing, exit cap rate compression, capital call, entitlement, operator, market, environmental, regulatory, force majeure, and interest coverage. The engine auto-detects which risks are elevated from your deal inputs — for example, if your DSCR is below 1.20× the interest coverage risk is flagged automatically. You can accept, dismiss, add custom risks, and edit the mitigant text for each. Selected risks are rendered as a formatted risk matrix in the IC Memo export."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Sponsor Track Record section?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A firm-level section (saved globally, not per-deal) where you enter your sponsor's credentials: years in business, total AUM, deals closed, total transaction volume, up to 3 named principals with bios, and a table of up to 10 prior deals (name, type, market, size, LP IRR, hold period, status). This data populates a \"Sponsor Profile\" section in every IC Memo you generate, saving re-entry across deals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Reg D / Rule 506(b) disclosure section?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rule 506(b) of Regulation D is the most commonly used SEC exemption for private real estate offerings. The IC Memo includes a pre-filled, editable 506(b) disclosure block covering: private offering notice, forward-looking statement disclaimer, accredited investor restriction, and a mandatory attorney-review reminder. This is a template only — the disclosure must be reviewed by a securities attorney before use in any actual investor communication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the \"Marginal Deal\" badge mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Marginal Deal badge appears when the LP's projected IRR falls below the LP preferred return threshold you've set. It signals that — at current assumptions — the LP does not clear their hurdle rate. The engine continues to run and show all outputs; the badge is a heads-up that the deal's return projections do not support the stated preferred return, and deal assumptions should be scrutinized carefully before presenting to investors. The IC Memo auto-thesis also reflects this language when the badge is active."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between the Deal Summary PDF and the Developer Pro Forma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deal Summary is a one-page investor snapshot — total project cost, capital stack breakdown, IRR and MOIC by tier, exit waterfall table, and a key metrics panel. Designed for quick LP conversations and lender submissions. Developer Pro Forma is a full institutional report (4–5 pages): construction draw schedule showing monthly bank and equity draws, debt structure detail, annual operating cash flow table (NOI / debt service / CapEx / distributions for each year of the hold), and a complete exit analysis. Rule of thumb: use the Deal Summary for first conversations; use the Developer Pro Forma for due diligence packages or when a counterparty needs to audit your numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are the IRR calculations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very. The engine uses exact monthly cash flow timing — not annual approximations or simplified period returns. Each equity dollar is tracked from its actual draw date, and returns are discounted back to Month 0 using monthly compounding. For multi-tier promotes with IRR hurdles, the engine maintains a running present-value accumulator that updates at every distribution event — construction surplus, refi proceeds, monthly operating distributions, and exit. Promote gates reflect the LP's actual return path at every point in the deal, not an end-of-hold estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I model a deal that doesn't have a construction phase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — the Stabilized Acquisition deal type is designed exactly for this. There is no construction period, no bridge loan, and no refi. You model the acquisition at a going-in cap rate, set your permanent financing, define the hold period and exit cap, and the engine runs the operating waterfall and exit analysis directly. The lease-up ramp is still available if the property isn't fully stabilized at purchase."
+      }
+    }
   ]
 }
 </script>
