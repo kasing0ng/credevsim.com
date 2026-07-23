@@ -3,24 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CREDevSim — LP/GP Waterfall Engine for CRE</title>
-<meta name="description" content="CREDevSim is a desktop LP/GP waterfall engine for CRE developers, GPs, and analysts. Enter your capital stack, debt structure, and lease-up assumptions and watch IRR, promote, and capital calls solve in real time.">
-<meta name="keywords" content="CRE underwriting, LP GP waterfall, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, development modeling">
+<title>CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software</title>
+<meta name="description" content="Native Windows desktop software for ground-up development underwriting, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring — a deterministic, offline alternative to error-prone Excel underwriting models.">
+<meta name="keywords" content="ground-up commercial real estate underwriting software, construction to perm loan refinance model, CRE waterfall model excel alternative, S-curve construction draw simulator, CRE underwriting software, LP GP waterfall calculator, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, deterministic underwriting">
 <meta name="author" content="Kasing Ng">
 <meta name="theme-color" content="#080d18">
 <link rel="canonical" href="https://credevsim.com/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CREDevSim">
-<meta property="og:title" content="CREDevSim — LP/GP Waterfall Engine for CRE">
-<meta property="og:description" content="Enter the deal. See the capital flow. A desktop LP/GP waterfall engine that solves the full capital stack in real time. Free for Windows.">
+<meta property="og:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
+<meta property="og:description" content="Enter the deal. See the capital flow. A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
 <meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <meta property="og:url" content="https://credevsim.com/">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CREDevSim — LP/GP Waterfall Engine for CRE">
-<meta name="twitter:description" content="A desktop LP/GP waterfall engine that solves the full capital stack in real time. Free for Windows.">
+<meta name="twitter:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
+<meta name="twitter:description" content="A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
 <meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CREDevSim",
+  "url": "https://credevsim.com/",
+  "description": "Native Windows desktop underwriting software for ground-up development, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring. Runs fully offline — no browser, no cloud dependency.",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Real Estate Underwriting Software",
+  "operatingSystem": "Windows 10, Windows 11",
+  "softwareVersion": "1.0.3",
+  "downloadUrl": "https://credevsim.com/download.html",
+  "installUrl": "https://credevsim.com/download.html",
+  "author": { "@type": "Person", "name": "Kasing Ng" },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "category": "Free"
+  },
+  "featureList": [
+    "Ground-up development, major renovation, distressed acquisition, and stabilized acquisition deal types",
+    "Deterministic LP/GP waterfall engine with multi-tier promotes, GP catch-up, and exit clawback",
+    "Bridge-to-perm construction financing with S-curve draw scheduling",
+    "Real-time Sankey diagrams, monthly cash flow heatmaps, and IRR sensitivity analysis",
+    "100% local deal data — no cloud storage or transmission"
+  ]
+}
+</script>
 <style>
 :root {
   --bg-app:      #080d18;
@@ -287,7 +317,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     <div class="hero-copy">
       <div class="badge">★ Built by a Big&nbsp;4 auditor — for developers, GPs &amp; analysts</div>
       <h1>Enter the deal.<br>See the capital flow.</h1>
-      <p class="lead">CREDevSim is a desktop LP/GP waterfall engine for developers, GPs, and analysts. Enter your capital stack, debt structure, and lease-up assumptions, then follow IRR, promote, and capital calls as the deal changes.</p>
+      <p class="lead">CREDevSim is a deterministic, native desktop underwriting engine for ground-up development, construction-to-perm loan refinancing, and LP/GP waterfall modeling. Enter your capital stack, debt structure, and lease-up assumptions, then follow IRR, promote, and capital calls as the deal changes.</p>
       <div class="hero-actions"><a href="/download.html" class="btn btn-primary">Download Free for Windows</a><a class="btn btn-ghost" data-tab-link="engine" role="button" tabindex="0">See it in action →</a><a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost">View a sample pro forma</a></div>
       <p class="cta-sub"> Windows 10/11 · 100% local deal files</p>
     </div>
@@ -319,6 +349,11 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <span class="ds-ph on">Exit</span>
     </div>
   </section>
+
+  <!-- Real screenshot proof — the actual dark-mode Instrument Panel, not a mockup -->
+  <div class="card section" style="padding:6px">
+    <img src="Screenshot_summary.png" alt="CREDevSim dark-mode Instrument Panel — live LP/GP waterfall dashboard showing capital stack, IRR, and Sankey cash flow" style="width:100%;border-radius:6px;display:block">
+  </div>
 
   <!-- NOT / IS (moved directly below hero) -->
   <div class="contrast section">
@@ -363,11 +398,11 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       </div>
       <div class="card">
         <h3>Real-Time Visual Dashboard</h3>
-        <p>Drag the timeline, adjust a rate, toggle leverage — every waterfall block, heatmap cell, and Sankey diagram updates instantly. See the deal break before it does, without re-running a macro.</p>
+        <p>Drag the timeline, adjust a rate, toggle leverage — every waterfall block, heatmap cell, and Sankey diagram updates instantly as live financial telemetry. See the deal break before it does, without re-running a macro.</p>
       </div>
       <div class="card">
-        <h3>Logic-Locked Safety Rails</h3>
-        <p>The engine enforces hard-coded underwriting standards. It is designed to make assumptions and validation flags visible — no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
+        <h3>Deterministic, Logic-Locked Engine</h3>
+        <p>The same inputs always produce the same outputs, with no Monte Carlo variance sitting between your assumptions and the number an LP sees. The engine enforces hard-coded underwriting standards and makes assumptions and validation flags visible: no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
       </div>
     </div>
   </div>
@@ -376,7 +411,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <div class="card section">
     <p class="sec-lbl" style="margin-bottom:18px">What's Under the Hood</p>
     <div class="feat-grid">
-      <div class="feat-item">• <span><b>Bridge-to-Perm Structure:</b> construction draws, interest carry, bridge payoff, refi mechanics</span></div>
+      <div class="feat-item">• <span><b>Bridge-to-Perm Structure:</b> S-curve construction draw simulator, interest carry, bridge payoff, refi mechanics</span></div>
       <div class="feat-item">• <span><b>Automated Capital Stack:</b> LP/GP split, debt sizing, DSCR / LTV / Debt Yield gates</span></div>
       <div class="feat-item">• <span><b>Operating Waterfall:</b> preferred return accrual, ROC, monthly residual distributions</span></div>
       <div class="feat-item">• <span><b>Exit Waterfall:</b> sale price, loan payoff, remaining pref, GP catch-up, promote</span></div>
