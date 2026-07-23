@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software</title>
+<meta name="description" content="Native Windows desktop software for ground-up development underwriting, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring — a deterministic, offline alternative to error-prone Excel underwriting models.">
+<meta name="keywords" content="ground-up commercial real estate underwriting software, construction to perm loan refinance model, CRE waterfall model excel alternative, S-curve construction draw simulator, CRE underwriting software, LP GP waterfall calculator, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, deterministic underwriting">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
+<meta property="og:description" content="Enter the deal. See the capital flow. A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
+<meta property="og:url" content="https://credevsim.com/">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
+<meta name="twitter:description" content="A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CREDevSim",
+  "url": "https://credevsim.com/",
+  "description": "Native Windows desktop underwriting software for ground-up development, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring. Runs fully offline — no browser, no cloud dependency.",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Real Estate Underwriting Software",
+  "operatingSystem": "Windows 10, Windows 11",
+  "softwareVersion": "1.0.3",
+  "downloadUrl": "https://credevsim.com/download.html",
+  "installUrl": "https://credevsim.com/download.html",
+  "author": { "@type": "Person", "name": "Kasing Ng" },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "category": "Free"
+  },
+  "featureList": [
+    "Ground-up development, major renovation, distressed acquisition, and stabilized acquisition deal types",
+    "Deterministic LP/GP waterfall engine with multi-tier promotes, GP catch-up, and exit clawback",
+    "Bridge-to-perm construction financing with S-curve draw scheduling",
+    "Real-time Sankey diagrams, monthly cash flow heatmaps, and IRR sensitivity analysis",
+    "100% local deal data — no cloud storage or transmission"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this a web app or a desktop application?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim is a desktop application for Windows. There is no browser version — it runs fully offline on your machine. No install of Node, Python, or any runtime is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What operating system does it require?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Windows 10 or Windows 11 (64-bit). A macOS version is on the roadmap. The application is distributed as a standalone executable — no installation wizard or admin rights needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Argus or Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a dedicated engine with validation gates and traceable outputs. It complements both; it doesn't replace them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What asset classes does it support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any deal with a stabilized NOI and an LP/GP capital structure: multifamily, industrial, retail, office, mixed-use, self-storage. Enter stabilized NOI directly — asset-class-specific rent roll modeling (unit mix, RevPAR, overage rent) is outside scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What inputs does the model actually need to run a deal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a Ground-Up Development deal: Total Project Cost (or a line-by-line budget), construction loan amount and interest rate, LP/GP equity split and preferred return rate, construction timeline in months, stabilized NOI, exit cap rate, and desired hold period. That's it — the engine computes the bridge payoff, permanent loan sizing, monthly distributions, IRR, MOIC, and full exit waterfall from those inputs automatically. Most deals are fully set up in under 5 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to already understand LP/GP waterfall mechanics to use this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — not to get started. The default deal structure uses a single-tier LP/GP split with a preferred return, which is the most common structure. You can run a complete deal analysis without touching any of the advanced settings. The multi-tier promotes, catch-up provisions, and clawback toggles are there when you're ready for institutional-level structuring, but they're completely optional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share my deal files with a colleague?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Deal presets are saved as standard JSON files on your hard drive. You can copy or share these files directly — your colleague loads them in their own copy of CREDevSim. No cloud sync required. Note that deal preset save/load is a Pro feature."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the free version truly free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. No trial period, no expiration. The free version gives you two deal types and the full visual suite with no time limit and no credit card required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my deal data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CREDevSim runs entirely on your local machine. No deal data is ever transmitted or stored externally. Everything stays on your hard drive. Your license is validated against your account via a lightweight token check — that's the only network call the application makes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I see a sample output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the Home tab, scroll to the bottom: Download Sample — Developer Pro Forma and Download Sample — Deal Summary Report . Both are real PDF exports generated from the engine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import an existing Excel or Argus underwriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim is built for a focused set of deal inputs rather than a lease-level rent roll. Pro includes CSV import for supported inputs; review the supplied template before importing a deal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the free version exclude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free includes two deal types and the interactive visual engine with no time limit. Pro adds the other deal types, PDF and IC Memo exports, advanced waterfall controls, scenario comparison, and deal presets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CREDevSim need an internet connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The application runs locally. A lightweight license check may occur for account validation; deal inputs and saved files remain on your machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Pro pricing and founder pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pro pricing will be announced before launch. Join the beta waitlist to receive launch details and founder-pricing information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is CREDevSim financial, tax, or legal advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CREDevSim is a modeling tool. Validate outputs independently and consult qualified financial, tax, and legal advisors before making investment decisions or using investor-facing materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a preferred return, and how is it compounded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A preferred return (pref) is the minimum annualized return LP investors must receive before the GP earns any promote. It accrues on invested and unreturned capital — not on committed capital that hasn't been drawn yet. CREDevSim computes pref accrual monthly using compound interest by default. Each month the pref balance grows by (annual pref rate ÷ 12) × LP equity basis outstanding. When a distribution event occurs — refi proceeds, operating cash flow, or exit — the engine pays pref arrears before any promote tier is tested. This matches institutional LP agreement logic far more accurately than annual approximations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between an IRR hurdle and a MOIC hurdle for promote tiers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IRR hurdle: The promote tier unlocks when the LP's time-weighted rate of return exceeds the hurdle (e.g., 15% IRR). IRR is sensitive to timing — early distributions dramatically boost it. Best for deals with significant mid-hold cash flow. MOIC hurdle: The promote tier unlocks when the LP's total return multiple exceeds the hurdle (e.g., 2.0× MOIC). MOIC is purely magnitude-based — a 5× return over 10 years and a 5× return over 3 years are treated identically. Best for short holds or deals where timing is predictable and simple. CREDevSim lets you set each promote tier independently as IRR or MOIC, and tests the gate at every distribution event — not only at exit — which is meaningfully more accurate for deals with significant mid-hold distributions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does GP catch-up work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After LP has received its preferred return, a catch-up provision lets the GP rapidly collect distributions until the GP's share of total distributions equals its target promote percentage. Example: 80/20 structure with full GP catch-up. After LP receives 8% pref, the GP gets 100% of subsequent distributions until GP's cumulative share equals 20% of all distributions made so far. After catch-up closes, remaining distributions split 80/20. CREDevSim models catch-up precisely at every distribution event. The catch-up switch is off by default (most institutional deals don't use a full catch-up); enable it in the Equity Structure panel when your LP agreement includes this provision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an exit clawback and when does it trigger?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A clawback is a GP obligation to return previously collected promote if the LP's realized return over the full hold period falls below the hurdle rate. It matters when a GP collects interim promote during mid-hold distributions (e.g., at refi) but the deal underperforms at exit, leaving the LP below their pref threshold overall. The clawback forces the GP to give back the excess promote to make the LP whole. CREDevSim tracks cumulative GP promote received at every distribution event and computes the clawback obligation at exit against the LP's actual realized return. Toggle it on in the Equity Structure panel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does \"ROC-First\" distribution order mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROC-First (Return of Capital First): LP gets all invested capital back before any pref or promote is paid. This minimizes LP risk exposure and is common in development deals. Pref-First: LP receives accrued preferred return before ROC. Less common; lowers the LP's capital exposure but delays full capital recovery. CREDevSim defaults to ROC-First for development and renovation deals. Stabilized acquisitions typically use Pref-First. Both are configurable in the Distribution Order dropdown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is pari passu, and where does it appear in the waterfall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pari passu means \"on equal footing\" — distributions are shared proportionally based on each party's ownership stake, with no priority. In CREDevSim, pari passu typically applies to residual cash distributions after all pref, ROC, and promote tiers have been satisfied. It also describes how unused reserves are returned at exit: LP and GP receive their pro-rata share of any leftover reserve balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Debt Service Reserve (DS Reserve) input do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It acts as a liquidity fence. Instead of distributing 100% of net refi proceeds to partners immediately, this input captures a dollar amount as restricted cash to absorb debt service shortfalls during lease-up. Distributable Cash = Net Refi Proceeds − Debt Service Reserve"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who pays for the Debt Service Reserve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The Debt Service Reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to unused DS Reserve at sale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any unused balance is swept back into the net sale distribution pool at exit and returned to investors proportionally ( pari passu ). It is never lost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the lease-up ramp work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You set three inputs: current occupancy (e.g. 60%), stabilized occupancy target (e.g. 92%), and ramp duration in months (e.g. 12 months). The engine runs an S-curve from current to stabilized over that window. Each operating month's NOI reflects the actual blended occupancy for that month — so debt service coverage, distributions, and capital call triggers are all computed from projected income at that occupancy level, not the stabilized rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the Stabilization Reserve runs dry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If operating deficits outlast the reserve, the engine flags an asset stress warning and triggers a Capital Call to preserve debt compliance. The call is sized to cover the exact shortfall (Just-in-Time mode) or the aggregate projected gap (Full Funding mode)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do Capital Calls alter waterfall returns vs. using the Reserve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Capital Call is fresh equity — it expands the Return of Capital basis, initiates preferred return accruals on the new capital immediately, and recalibrates fee tracking. A reserve draw is not new equity; it's a return of previously withheld refi proceeds. Capital calls are more dilutive to GP promote because they grow the LP's basis, which must be repaid and pref'd before any residual split."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Just-in-Time and Full Funding capital calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just-in-Time (default): Calls capital month-by-month to match the exact dollar shortage. Maximizes investor IRR by delaying deployment. Full Funding: Calculates total aggregate downside gap over the hold period and executes a single lump-sum call on the first violation month. Optimizes accounting clarity over IRR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is DSCR and what minimum should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Debt Service Coverage Ratio = NOI ÷ Annual Debt Service. It measures how many times the property's income covers its debt payments. Agency lenders (Fannie Mae, Freddie Mac) typically require 1.25× minimum DSCR on multifamily. Banks on commercial deals often require 1.20–1.30×. Construction lenders underwrite to stabilized DSCR at takeout. CREDevSim enforces a configurable minimum and flags any breach in real time before you export. The engine also shows Net DSCR (after management fee, capex reserve, and TI/LC) for a more conservative underwriting view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Debt Yield, and how is it different from DSCR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Debt Yield = NOI ÷ Loan Amount. Unlike DSCR, it doesn't depend on interest rates or amortization terms — it measures the lender's return if they had to foreclose and hold the asset. As interest rates change, a fixed DSCR can be achieved by changing the loan term or IO period — Debt Yield can't be gamed this way. CMBS and institutional lenders have increasingly focused on Debt Yield (typically 8–10%+ minimum) alongside DSCR as a more rate-agnostic underwriting metric."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between LTC and LTV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Loan-to-Cost (LTC) = Loan Amount ÷ Total Project Cost. Used during construction — the denominator is what you're spending, not what the asset is worth yet. Typical range: 60–75%. Loan-to-Value (LTV) = Loan Amount ÷ Appraised Property Value. Used for permanent loans — the denominator is the stabilized or as-is property value. Typical range: 55–75% depending on asset class and lender. CREDevSim enforces user-defined LTC on the construction loan and LTV on the permanent loan, and flags any breach against your inputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a bridge-to-perm structure and how does the engine handle it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A bridge-to-perm structure uses a short-term construction loan (the \"bridge\") to fund the development period, then refinances into a long-term permanent loan once the asset reaches a lender-defined stabilization threshold — typically DSCR above 1.20× and occupancy above 85–90%. CREDevSim models this as a two-phase structure: the construction loan draws on an S-curve schedule with capitalized interest, then the engine automatically payoffs the bridge and originate the perm loan at the user-defined refi month. The perm loan size, rate, IO period, and amortization schedule are set independently from the bridge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a TI/LC reserve and how is it modeled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tenant Improvement (TI) allowance is the landlord's contribution to fit-out costs when signing a new lease or renewing an existing one. Leasing Commissions (LC) are broker fees typically paid as a percentage of the lease revenue. In the model, TI/LC is computed as an annual reserve: (TI $/SF × rentable SF ÷ average lease term) + (leasing commission % × annual gross rent). This reserve is funded from operating income before distributions, reflecting the real cash drag on NOI available for debt service and equity payouts. Office and retail deals often carry TI/LC reserves that consume 25–40% of gross NOI — a critical underwriting input that many simplified models ignore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a rate cap, and why does it appear in the project cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rate caps are insurance contracts that limit the floating interest rate on a loan — for example, a SOFR cap at 4.5% means the borrower never pays more than 4.5% + spread even if SOFR rises above that level. Lenders often require them on floating-rate construction loans. CREDevSim includes rate cap cost as a Day-0 project expense in the Sources & Uses, which adds it to LP's equity basis for waterfall purposes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does depreciation affect LP/GP after-tax returns?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Real property can be depreciated for tax purposes over its IRS-defined recovery period: 27.5 years for residential, 39 years for commercial. This creates an annual non-cash tax deduction that reduces taxable income — effectively sheltering a portion of operating distributions from ordinary income tax. The annual depreciation shield = Depreciable Basis ÷ Recovery Period. A $10M apartment property depreciates at $10M ÷ 27.5 = $364K/yr. If LP's tax rate is 37%, that's ~$134K/yr in saved taxes. CREDevSim's After-Tax view applies the appropriate recovery period based on the asset class you've selected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is cost segregation and how does it work in the model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cost segregation is an engineering study that reclassifies components of a building into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation in early years rather than straight-line over 27.5 or 39 years. CREDevSim lets you specify a cost segregation percentage of the depreciable basis. That portion is depreciated at the accelerated rate, producing a larger tax shield in Year 1 and smaller shields in later years. Remaining basis is depreciated straight-line over the standard recovery period."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is §1245 recapture at exit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you sell a property that benefited from cost segregation or bonus depreciation on personal property, the IRS \"recaptures\" the accelerated depreciation you claimed — taxing that portion at ordinary income rates (up to 37%) rather than the lower long-term capital gains rate (typically 20%). This recapture under §1245 applies specifically to personal property components. Real property recapture under §1250 is taxed at a 25% unrecaptured rate. CREDevSim models both recapture types at exit and shows after-tax net proceeds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is bonus depreciation, and should I use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonus depreciation allows immediate 100% expensing of qualifying personal property in Year 1 (phasing down under current tax law). Combined with cost segregation, this can generate very large paper losses in the first year, which pass through to investors. Whether to use it depends on your LP investors' tax situation — passive loss rules may prevent non-real estate professionals from deducting those losses immediately. CREDevSim models the Year 1 bonus depreciation impact on after-tax IRR. Consult a tax advisor for LP-specific implications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trace the reserve burning down inside the interface?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — in two places. The Waterfall Snapshot shows the reserve as a color-coded block at the refi event. The Monthly Operating Heatmap tracks a dynamic cash line showing the pool declining through early months and leveling off as NOI covers debt service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do the Sankey diagrams show?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CREDevSim has three Sankey views, selectable in the dashboard dropdown: NOI Distribution: Shows how cumulative operating income flows to debt service, reserves, management fees, and equity distributions over the hold period. Useful for identifying cash flow drag (e.g., TI/LC consuming 30% of NOI on an office deal). Exit Waterfall: Shows gross sale proceeds flowing to disposition costs, bank repayment, LP return of capital, preferred return, and GP promote — tier by tier. Sources & Uses: Shows where construction capital came from (bank loan, LP equity, GP equity) and how it was spent (land, hard costs, soft costs, fees, contingency, financing)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I read the IRR Sensitivity Heatmap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The heatmap shows LP IRR across a matrix of blended bank rates (rows) and exit cap rates (columns). The current deal scenario is highlighted. Green cells = LP meets or exceeds pref hurdle; yellow = marginal; red = LP IRR below pref. This lets you see at a glance how much your deal's return depends on interest rate direction and exit pricing, and identify the breakeven rate/cap combination where LP barely clears the hurdle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export to PDF on the free plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDF export is a Pro feature. The free plan gives you the full interactive model; PDF is the deliverable layer for investor packages and lender submissions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Investment Committee Memo export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The IC Memo is a placement-agent quality investor document generated directly from your deal model. It includes: deal overview, sources & uses, capital structure, projected returns (IRR/MOIC by tier), risk factor checklist with mitigants, sponsor track record, deal thesis, regulatory disclosures, and optional Reg D language. Exported as an HTML file (browser-renderable, easily converted to PDF via browser print) or as an RTF file compatible with Word. The entire document populates from your live deal model — there's no manual copy-paste from the spreadsheet to the deck."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Risk Factor checklist and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The risk factor editor contains 12 standard risk categories: construction cost overrun, interest rate, lease-up timing, exit cap rate compression, capital call, entitlement, operator, market, environmental, regulatory, force majeure, and interest coverage. The engine auto-detects which risks are elevated from your deal inputs — for example, if your DSCR is below 1.20× the interest coverage risk is flagged automatically. You can accept, dismiss, add custom risks, and edit the mitigant text for each. Selected risks are rendered as a formatted risk matrix in the IC Memo export."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Sponsor Track Record section?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A firm-level section (saved globally, not per-deal) where you enter your sponsor's credentials: years in business, total AUM, deals closed, total transaction volume, up to 3 named principals with bios, and a table of up to 10 prior deals (name, type, market, size, LP IRR, hold period, status). This data populates a \"Sponsor Profile\" section in every IC Memo you generate, saving re-entry across deals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Reg D / Rule 506(b) disclosure section?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rule 506(b) of Regulation D is the most commonly used SEC exemption for private real estate offerings. The IC Memo includes a pre-filled, editable 506(b) disclosure block covering: private offering notice, forward-looking statement disclaimer, accredited investor restriction, and a mandatory attorney-review reminder. This is a template only — the disclosure must be reviewed by a securities attorney before use in any actual investor communication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the \"Marginal Deal\" badge mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Marginal Deal badge appears when the LP's projected IRR falls below the LP preferred return threshold you've set. It signals that — at current assumptions — the LP does not clear their hurdle rate. The engine continues to run and show all outputs; the badge is a heads-up that the deal's return projections do not support the stated preferred return, and deal assumptions should be scrutinized carefully before presenting to investors. The IC Memo auto-thesis also reflects this language when the badge is active."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between the Deal Summary PDF and the Developer Pro Forma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deal Summary is a one-page investor snapshot — total project cost, capital stack breakdown, IRR and MOIC by tier, exit waterfall table, and a key metrics panel. Designed for quick LP conversations and lender submissions. Developer Pro Forma is a full institutional report (4–5 pages): construction draw schedule showing monthly bank and equity draws, debt structure detail, annual operating cash flow table (NOI / debt service / CapEx / distributions for each year of the hold), and a complete exit analysis. Rule of thumb: use the Deal Summary for first conversations; use the Developer Pro Forma for due diligence packages or when a counterparty needs to audit your numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are the IRR calculations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very. The engine uses exact monthly cash flow timing — not annual approximations or simplified period returns. Each equity dollar is tracked from its actual draw date, and returns are discounted back to Month 0 using monthly compounding. For multi-tier promotes with IRR hurdles, the engine maintains a running present-value accumulator that updates at every distribution event — construction surplus, refi proceeds, monthly operating distributions, and exit. Promote gates reflect the LP's actual return path at every point in the deal, not an end-of-hold estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I model a deal that doesn't have a construction phase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — the Stabilized Acquisition deal type is designed exactly for this. There is no construction period, no bridge loan, and no refi. You model the acquisition at a going-in cap rate, set your permanent financing, define the hold period and exit cap, and the engine runs the operating waterfall and exit analysis directly. The lease-up ramp is still available if the property isn't fully stabilized at purchase."
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --bg-app:      #080d18;
+  --bg-side:     #0c1220;
+  --bg-surf:     #111927;
+  --bg-card:     #17202e;
+  --bg-card-hi:  #1c2838;
+  --bd-subtle:   #1e2f44;
+  --bd-muted:    #28394f;
+  --bd-accent:   rgba(42,108,240,.28);
+  --tx-pri:      #dde8f5;
+  --tx-sec:      #7d91aa;
+  --tx-dim:      #49607a;
+  --acc:         #2a6cf0;
+  --acc-h:       #1b5ce0;
+  --acc-dim:     rgba(42,108,240,.1);
+  --grn:         #1aaf80;
+  --grn-dim:     rgba(26,175,128,.1);
+  --red:         #d95555;
+  --red-dim:     rgba(217,85,85,.08);
+  --amb:         #e8a32a;
+  --amb-dim:     rgba(232,163,42,.08);
+  --font:        -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --mono:        "SF Mono","Cascadia Code","Fira Code",Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg-app);color:var(--tx-pri);display:flex;height:100vh;overflow:hidden}
+
+/* ── Sidebar ── */
+.sidebar{width:240px;flex-shrink:0;background:var(--bg-side);border-right:1px solid var(--bd-subtle);display:flex;flex-direction:column;padding:28px 14px 20px}
+.brand h2{font-size:1.08rem;font-weight:700;color:#fff;letter-spacing:-.3px}
+.brand p{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;margin-bottom:28px}
+.nav-list{display:flex;flex-direction:column;gap:2px;flex:1}
+.nav-item{padding:9px 13px;font-size:.87rem;font-weight:500;color:var(--tx-sec);border-radius:6px;cursor:pointer;transition:color .15s,background .15s;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,.04);color:#fff}
+.nav-item.active{background:var(--acc);color:#fff}
+.sidebar-foot{padding-top:14px;border-top:1px solid var(--bd-subtle);font-size:.7rem;color:var(--tx-dim);line-height:1.5}
+
+/* ── Main ── */
+.main{flex:1;overflow-y:auto;min-width:0}
+/* max-width 1400px keeps line lengths readable on wide monitors */
+.tab-panel{display:none;max-width:1400px;margin:0 auto;padding:32px 48px 80px;animation:fu .22s ease both}
+.tab-panel.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Utilities ── */
+.panel-top{display:flex;justify-content:flex-end;margin-bottom:8px}
+.badge{display:inline-flex;align-items:center;gap:5px;background:var(--acc-dim);color:var(--acc);border:1px solid var(--bd-accent);padding:4px 10px;border-radius:20px;font-size:.73rem;font-weight:600;letter-spacing:.3px;margin-bottom:18px}
+.badge-grn{background:var(--grn-dim);color:var(--grn);border-color:rgba(26,175,128,.28)}
+.badge-amb{background:var(--amb-dim);color:var(--amb);border-color:rgba(232,163,42,.28)}
+.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);margin-bottom:14px}
+h1{font-size:2.2rem;font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.04em;text-wrap:balance;margin-bottom:14px}
+h2{font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:-.03em;text-wrap:balance;margin-bottom:10px}
+h3{font-size:1rem;font-weight:650;color:#fff;letter-spacing:-.01em;margin-bottom:7px}
+.lead{font-size:1rem;color:var(--tx-sec);line-height:1.65;max-width:620px;margin-bottom:32px}
+p{color:var(--tx-sec);line-height:1.6;font-size:.93rem}
+.section{margin-bottom:36px}
+.section-sm{margin-bottom:20px}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--acc);color:#fff;padding:9px 18px;border-radius:7px;font-weight:600;font-size:.86rem;text-decoration:none;border:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--acc-h)}
+.btn-sm{padding:7px 14px;font-size:.8rem}
+.btn-ghost{background:transparent;border:1px solid var(--bd-muted);color:var(--tx-pri)}
+.btn-ghost:hover{background:rgba(255,255,255,.04);border-color:var(--tx-sec)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ── Cards ── */
+.card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:24px}
+.card-acc{border-color:var(--bd-accent);background:rgba(42,108,240,.05)}
+.card-grn{border-color:rgba(26,175,128,.28);background:var(--grn-dim)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+
+/* ── Stat row ── */
+.stat-row{display:flex;margin-bottom:34px}
+.stat{padding:13px 22px;border:1px solid var(--bd-subtle);background:var(--bg-card)}
+.stat:first-child{border-radius:8px 0 0 8px}
+.stat:not(:first-child){border-left:none}
+.stat:last-child{border-radius:0 8px 8px 0}
+.stat-val{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums;display:block}
+.stat-lbl{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;display:block}
+
+/* ── NOT / IS contrast ── */
+.contrast{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden;margin-bottom:36px}
+.c-not{padding:22px 26px;background:var(--red-dim);border-right:1px solid var(--bd-subtle)}
+.c-is {padding:22px 26px;background:var(--grn-dim)}
+.c-hdr{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+.c-not .c-hdr{color:var(--red)}
+.c-is  .c-hdr{color:var(--grn)}
+.c-list{display:flex;flex-direction:column;gap:9px;list-style:none}
+.c-list li{font-size:.88rem;line-height:1.4;display:flex;gap:9px;align-items:flex-start;color:var(--tx-pri)}
+.c-ico{flex-shrink:0;font-size:.78rem;margin-top:2px}
+
+/* ── Feature 2-col grid ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:.87rem;color:var(--tx-pri)}
+.feat-item{display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+.feat-item b{color:#fff}
+
+/* ── Videos ── */
+.video-block{margin-bottom:28px}
+.v-cap{font-size:.93rem;font-weight:600;color:#fff;margin-bottom:10px}
+.v-sub{font-size:.78rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+.demo-video{width:100%;border-radius:8px;display:block;background:var(--bg-surf);box-shadow:0 8px 32px rgba(0,0,0,.55);min-height:160px}
+
+/* ── Screenshots ── */
+.ss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.ss-item{text-align:center}
+.ss-item img{width:100%;border-radius:6px;display:block;margin-bottom:6px;border:1px solid var(--bd-subtle)}
+.ss-item p{font-size:.75rem;color:var(--tx-sec)}
+
+/* ── Pricing ── */
+.p-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}
+.p-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:12px;padding:26px;display:flex;flex-direction:column}
+.p-card.featured{border-color:var(--bd-accent)}
+.p-chip{display:inline-block;background:var(--acc);color:#fff;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:3px 9px;border-radius:3px;margin-bottom:10px}
+.p-name{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px}
+.p-desc{font-size:.83rem;color:var(--tx-sec);margin-bottom:18px;min-height:34px}
+.p-amt{font-family:var(--mono);font-size:1.9rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.p-amt sub{font-size:.85rem;font-weight:400;color:var(--tx-sec);font-family:var(--font)}
+.p-note{font-size:.76rem;color:var(--tx-dim);margin-bottom:22px}
+.p-note a{color:var(--acc)}
+.fl{list-style:none;flex:1;margin-bottom:22px;display:flex;flex-direction:column;gap:9px}
+.fl li{display:flex;gap:8px;align-items:flex-start;font-size:.86rem;color:var(--tx-pri)}
+.fl li.off{color:var(--tx-dim);text-decoration:line-through}
+.ck{color:var(--grn);font-weight:700;flex-shrink:0}
+.cx{color:var(--red);font-weight:700;flex-shrink:0}
+.fl-grp{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--tx-dim);padding:10px 0 4px;border-top:1px solid var(--bd-subtle);margin-top:4px;display:block}
+.fl-grp:first-child{border-top:none;margin-top:0;padding-top:2px}
+.fl li .feat-desc{color:var(--tx-sec);font-size:.78rem;display:block;margin-top:2px;line-height:1.35}
+
+/* ── FAQ ── */
+.faq-sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);margin:28px 0 10px}
+details.faq{background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:6px;margin-bottom:7px}
+summary.faq-q{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;cursor:pointer;list-style:none;font-weight:600;font-size:.92rem;color:#fff;gap:12px;user-select:none}
+summary.faq-q::-webkit-details-marker{display:none}
+.faq-tog{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:.88rem;color:var(--acc);font-weight:700;transition:transform .18s,background .18s}
+details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
+.faq-body{padding:14px 18px 16px;border-top:1px solid var(--bd-subtle);font-size:.88rem;color:var(--tx-sec);line-height:1.65}
+.faq-body p+p{margin-top:10px}
+.faq-code{background:var(--bg-card);padding:10px 14px;border-radius:5px;font-family:var(--mono);font-size:.8rem;color:var(--tx-pri);margin:10px 0;overflow-x:auto}
+
+/* ── Pro badge inline ── */
+.pro-tag{display:inline-block;background:var(--acc);color:#fff;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:middle;position:relative;top:-1px}
+
+/* ── Glossary ── */
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;margin-top:8px}
+.gl-item{background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:6px;padding:14px 16px}
+.gl-term{font-size:.82rem;font-weight:700;color:var(--acc);font-family:var(--mono);margin-bottom:4px;letter-spacing:-.2px}
+.gl-def{font-size:.82rem;color:var(--tx-sec);line-height:1.5}
+
+/* ── Resource links ── */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.res-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:8px;padding:16px 18px;text-decoration:none;display:block;transition:border-color .15s,background .15s}
+.res-card:hover{border-color:var(--bd-muted);background:var(--bg-card-hi)}
+.res-card-icon{font-size:1.3rem;margin-bottom:8px;display:block}
+.res-card-title{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:4px}
+.res-card-desc{font-size:.78rem;color:var(--tx-sec);line-height:1.4}
+
+/* ── Contact ── */
+.cbox{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:26px;max-width:560px;margin-bottom:14px}
+.cbox h3{margin-bottom:7px}
+.cbox p{margin-bottom:14px}
+.email-link{font-size:1.08rem;font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid var(--acc);padding-bottom:2px}
+.pol-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+
+/* ── Engine Reference ── */
+.eng-ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px;margin-top:8px}
+.er-item{background:var(--bg-surf);border:1px solid var(--bd-subtle);border-left:3px solid var(--acc);border-radius:6px;padding:14px 16px}
+.er-item.er-grn{border-left-color:var(--grn)}
+.er-item.er-amb{border-left-color:var(--amb)}
+.er-term{font-size:.82rem;font-weight:700;color:#fff;font-family:var(--mono);margin-bottom:5px;letter-spacing:-.1px}
+.er-def{font-size:.82rem;color:var(--tx-sec);line-height:1.5}
+/* Color swatch row used in color convention block */
+.clr-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd-subtle)}
+.clr-row:last-child{border-bottom:none;padding-bottom:0}
+.clr-swatch{width:38px;height:38px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;letter-spacing:.6px;margin-top:1px}
+.clr-label{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:3px}
+.clr-desc{font-size:.82rem;color:var(--tx-sec);line-height:1.5}
+
+/* ── About ── */
+.about-grid{display:grid;grid-template-columns:1fr 255px;gap:26px;max-width:880px;align-items:start;margin-bottom:28px}
+.founder-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-left:3px solid var(--acc);border-radius:10px;padding:26px;line-height:1.7;font-size:.93rem;color:var(--tx-sec)}
+.founder-card p+p{margin-top:12px}
+.credits-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:10px;padding:22px}
+.credits-card .clbl{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--tx-dim);font-weight:700;margin-bottom:14px}
+.cr-row{display:flex;justify-content:space-between;font-size:.86rem;padding:6px 0;border-bottom:1px solid var(--bd-subtle)}
+.cr-row:last-of-type{border-bottom:none}
+.cr-row b{color:#fff}
+.disclaimer{max-width:880px;background:rgba(217,85,85,.06);border:1px solid rgba(217,85,85,.28);border-radius:10px;padding:20px 22px}
+.disclaimer h5{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--red);font-weight:700;margin-bottom:8px}
+.disclaimer p{font-size:.86rem}
+.btn-primary{box-shadow:0 10px 28px rgba(42,108,240,.28)}
+.btn-label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px}
+.home-hero{margin-bottom:18px}.cta-sub{font-size:.78rem;color:var(--tx-dim);margin:4px 0 0}.hero-copy{padding:18px 0 4px}.hero-copy .lead{margin-bottom:22px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 18px}.trust-row{display:flex;flex-wrap:wrap;gap:7px}.trust-chip{font-size:.72rem;color:var(--tx-sec);background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:999px;padding:6px 9px}.deal-snapshot{background:linear-gradient(145deg,#162640 0%,#101a29 58%,#101827 100%);border:1px solid rgba(74,138,255,.32);border-radius:12px;padding:16px 18px;box-shadow:0 18px 40px rgba(0,0,0,.26);margin-bottom:30px}.ds-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:13px}.ds-title{color:#fff;font-size:1rem;font-weight:700}.ds-title small{color:var(--tx-sec);font-weight:500;font-size:.76rem;margin-left:8px}.ds-kicker{font-family:var(--mono);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(135,173,235,.7)}.ds-stack{display:flex;gap:3px;height:38px;border-radius:6px;overflow:hidden;margin-bottom:12px}.ds-seg{display:flex;flex-direction:column;justify-content:center;padding:0 13px;font-size:.66rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}.ds-seg small{font-weight:500;opacity:.85;font-size:.62rem;margin-top:1px}.ds-seg.bank{background:rgba(42,108,240,.6)}.ds-seg.lp{background:rgba(26,175,128,.55)}.ds-seg.gp{background:rgba(232,163,42,.55)}.ds-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}.ds-metric{background:rgba(4,12,23,.42);border:1px solid rgba(135,173,235,.15);padding:12px 12px 11px;border-radius:7px}.ds-metric strong{display:block;font-family:var(--mono);font-size:1.2rem;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.02em}.ds-metric strong.good{color:var(--grn)}.ds-metric strong.warn{color:var(--amb)}.ds-metric span{display:block;font-size:.58rem;text-transform:uppercase;letter-spacing:.05em;color:var(--tx-dim);margin-top:6px;line-height:1.25}.ds-time{display:flex;gap:3px}.ds-ph{flex:1;text-align:center;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--tx-dim);background:rgba(4,12,23,.42);border:1px solid rgba(135,173,235,.1);border-radius:5px;padding:7px 4px}.ds-ph.on{color:var(--grn);border-color:rgba(26,175,128,.4);background:var(--grn-dim)}.mobile-cta{display:none;gap:6px;align-items:center;justify-content:center;position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--acc);color:#fff;font-weight:700;font-size:.92rem;padding:15px;text-decoration:none;box-shadow:0 -6px 20px rgba(0,0,0,.45)}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd-subtle);border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden;margin-bottom:36px}.how-step{background:var(--bg-surf);padding:19px 20px}.how-num{display:block;font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.1em;margin-bottom:9px}
+
+/* ── Billing toggle (pricing) ── */
+.bill-toggle{display:inline-flex;background:var(--bg-surf);border:1px solid var(--bd-subtle);border-radius:999px;padding:4px;gap:2px;margin-bottom:22px}
+.bill-opt{display:inline-flex;align-items:center;gap:7px;background:transparent;border:none;color:var(--tx-sec);font-family:var(--font);font-size:.84rem;font-weight:600;padding:8px 18px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.bill-opt:hover{color:var(--tx-pri)}
+.bill-opt.active{background:var(--acc);color:#fff}
+.bill-badge{font-size:.64rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;background:var(--grn-dim);color:var(--grn);padding:2px 7px;border-radius:999px}
+.bill-opt.active .bill-badge{background:rgba(255,255,255,.18);color:#fff}
+/* Price display in Pro card */
+.p-strike{font-family:var(--mono);font-size:1rem;color:var(--tx-dim);text-decoration:line-through;line-height:1;margin-bottom:4px}
+.p-save{font-size:.74rem;font-weight:600;color:var(--grn);margin-bottom:4px}
+
+/* ── FAQ search ── */
+.faq-search-wrap{position:relative;margin:0 0 20px;max-width:440px}
+.faq-search{width:100%;background:var(--bg-surf);border:1px solid var(--bd-muted);border-radius:8px;color:var(--tx-pri);font-family:var(--font);font-size:.9rem;padding:11px 14px 11px 38px;outline:none;transition:border-color .15s}
+.faq-search:focus{border-color:var(--acc)}
+.faq-search::placeholder{color:var(--tx-dim)}
+.faq-search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--tx-dim);font-size:.9rem;pointer-events:none}
+.faq-empty{display:block;font-size:.88rem;color:var(--tx-dim);padding:6px 2px;font-style:italic}
+.faq-sec-lbl.is-hidden,details.faq.is-hidden{display:none}
+
+/* ── Changelog / Updates ── */
+.log-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--bd-subtle);border-radius:10px;overflow:hidden}
+.log-row{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:15px 20px;background:var(--bg-surf);border-top:1px solid var(--bd-subtle)}
+.log-row:first-child{border-top:none}
+.log-meta{display:flex;flex-direction:column;gap:5px}
+.log-ver{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--acc)}
+.log-date{font-size:.68rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.6px}
+.log-tag{align-self:flex-start;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:3px;background:var(--acc-dim);color:var(--acc)}
+.log-tag.fix{background:var(--grn-dim);color:var(--grn)}
+.log-tag.new{background:var(--amb-dim);color:var(--amb)}
+.log-body{font-size:.86rem;color:var(--tx-sec);line-height:1.55}
+.log-body b{color:var(--tx-pri)}
+
+@media(max-width:820px){body{display:block;height:auto;overflow:auto}.sidebar{width:100%;padding:14px 16px;border-right:0;border-bottom:1px solid var(--bd-subtle)}.brand p{margin-bottom:12px}.nav-list{flex-direction:row;overflow-x:auto;gap:4px}.nav-item{white-space:nowrap}.sidebar-foot{display:none}.main{overflow:visible}.tab-panel{padding:24px 18px 52px}.home-hero{grid-template-columns:1fr}.stat-row{overflow-x:auto}.stat{padding:12px 16px;min-width:110px}.contrast,.grid-2,.p-grid{grid-template-columns:1fr}.grid-3,.how-grid{grid-template-columns:1fr}.c-not{border-right:0;border-bottom:1px solid var(--bd-subtle)}h1{font-size:1.9rem}.ds-metrics{grid-template-columns:repeat(3,1fr)}.ds-title small{display:block;margin-left:0;margin-top:3px}.log-row{grid-template-columns:1fr;gap:8px}.bill-toggle{width:100%}.bill-opt{flex:1;justify-content:center;padding:10px 8px}.mobile-cta{display:flex}.tab-panel{padding-bottom:80px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Main Navigation">
+  <div>
+    <div class="brand">
+      <h2>CREDevSim</h2>
+      <p>CRE Development Simulation</p>
+    </div>
+    <div class="nav-list" role="tablist">
+      <div class="nav-item active" role="tab" tabindex="0" aria-current="page" data-tab="home">Home</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="engine">Underwriting Engine</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="pricing">Pricing &amp; Downloads</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="faq">Resources &amp; FAQ</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="contact">Contact &amp; Policies</div>
+      <div class="nav-item" role="tab" tabindex="0" data-tab="about">About the Dev</div>
+    </div>
+  </div>
+  <div class="sidebar-foot">
+    Windows Desktop App<br>
+    <strong style="color:var(--tx-sec)">v1.0.3 Beta</strong>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ════ HOME ════ -->
+<div id="home" class="tab-panel active">
+  <div class="panel-top"><a href="/download.html" class="btn btn-sm">Download Free for Windows</a></div>
+  <div class="home-hero">
+    <div class="hero-copy">
+      <div class="badge">★ Built by a Big&nbsp;4 auditor — for developers, GPs &amp; analysts</div>
+      <h1>Enter the deal.<br>See the capital flow.</h1>
+      <p class="lead">CREDevSim is a deterministic, native desktop underwriting engine for ground-up development, construction-to-perm loan refinancing, and LP/GP waterfall modeling. Enter your capital stack, debt structure, and lease-up assumptions, then follow IRR, promote, and capital calls as the deal changes.</p>
+      <div class="hero-actions"><a href="/download.html" class="btn btn-primary">Download Free for Windows</a><a class="btn btn-ghost" data-tab-link="engine" role="button" tabindex="0">See it in action →</a><a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost">View a sample pro forma</a></div>
+      <p class="cta-sub"> Windows 10/11 · 100% local deal files</p>
+    </div>
+  </div>
+
+  <!-- Live deal snapshot — mirrors the in-app top ribbon -->
+  <section class="deal-snapshot" aria-label="Illustrative deal dashboard snapshot">
+    <div class="ds-head">
+      <div class="ds-title">Westside Multifamily <small>Ground-Up Development · Year 5 (Jan 2026) · Exit</small></div>
+      <span class="ds-kicker">Illustrative live snapshot</span>
+    </div>
+    <div class="ds-stack">
+      <div class="ds-seg bank" style="flex:65">Bank Debt · 65%<small>$11.1M</small></div>
+      <div class="ds-seg lp" style="flex:25">LP Equity · 25%<small>$4.3M</small></div>
+      <div class="ds-seg gp" style="flex:10">GP · 10%<small>$1.7M</small></div>
+    </div>
+    <div class="ds-metrics">
+      <div class="ds-metric"><strong class="good">18.05%</strong><span>LP IRR</span></div>
+      <div class="ds-metric"><strong>1.88x</strong><span>LP MOIC</span></div>
+      <div class="ds-metric"><strong>1.25x</strong><span>P&amp;I DSCR</span></div>
+      <div class="ds-metric"><strong class="good">6.71%</strong><span>YOC · +171bps vs cap</span></div>
+      <div class="ds-metric"><strong>$5.4M</strong><span>Equity Profit</span></div>
+      <div class="ds-metric"><strong class="warn">$184K</strong><span>Capital Calls</span></div>
+    </div>
+    <div class="ds-time">
+      <span class="ds-ph">Construction</span>
+      <span class="ds-ph">Refi</span>
+      <span class="ds-ph">Operating / Leasing</span>
+      <span class="ds-ph on">Exit</span>
+    </div>
+  </section>
+
+  <!-- Real screenshot proof — the actual dark-mode Instrument Panel, not a mockup -->
+  <div class="card section" style="padding:6px">
+    <a href="Screenshot_instrumentdisplay.png" target="_blank" rel="noopener" title="Tap to view full size">
+      <img src="Screenshot_instrumentdisplay.png" alt="CREDevSim dark-mode Instrument Panel — live LP/GP waterfall dashboard showing capital stack, IRR, and Sankey cash flow" style="width:100%;border-radius:6px;display:block">
+    </a>
+  </div>
+
+  <!-- NOT / IS (moved directly below hero) -->
+  <div class="contrast section">
+    <div class="c-not">
+      <div class="c-hdr">What this is NOT</div>
+      <ul class="c-list">
+        <li><span class="c-ico" style="color:var(--red)">✕</span>A project management tool — no Gantt charts, no task boards, no milestone tracking</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Enterprise software — no implementation team, no training program, no onboarding calls</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Excel with hidden formula chains, circular references, and silent cascading errors</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>Argus — no rent roll, no lease abstraction, no $5,000/yr contract</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>A cloud platform where your confidential deal data lives on someone else's server</li>
+      </ul>
+    </div>
+    <div class="c-is">
+      <div class="c-hdr">What it IS</div>
+      <ul class="c-list">
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>One screen. Type your numbers. The full capital stack solves itself — instantly.</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Open it, enter a deal, done — zero setup, zero learning curve, zero configuration</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Every output traces to an input you typed — no hidden logic, no black-box surprises</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>Purpose-built for LP/GP waterfall mechanics, capital calls, and promote structures</li>
+        <li><span class="c-ico" style="color:var(--grn)">✓</span>100% local. Nothing leaves your machine. Your deal data is yours.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stat-row section-sm"><div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div><div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Spreadsheets Needed</span></div><div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div><div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div></div>
+  <div class="how-grid"><div class="how-step"><span class="how-num">01 / INPUT</span><h3>Structure the deal</h3><p>Enter cost, debt, equity, and operating assumptions in one place.</p></div><div class="how-step"><span class="how-num">02 / TEST</span><h3>Stress the economics</h3><p>Adjust timing, rates, and exit assumptions while the waterfall recalculates.</p></div><div class="how-step"><span class="how-num">03 / SHARE</span><h3>Export the narrative</h3><p>Move from analysis to investor-ready outputs when you are ready.</p></div></div>
+
+  <!-- Problem card -->
+  <div class="card card-acc section">
+    <h3 style="color:var(--acc);margin-bottom:10px">The Problem It Solves</h3>
+    <p style="margin-bottom:10px">Every serious CRE deal eventually lands in a recursive Excel waterfall — multiple tabs cross-referencing each other, where one bad input cascades silently into a wrong IRR, wrong promote, or wrong capital call. Nobody catches it until the LP meeting.</p>
+    <p><b style="color:#fff">CREDevSim</b> replaces the part of that spreadsheet that was always wrong: the waterfall engine, the debt mechanics, the capital call triggers, the preferred return compounding — all in a single logic-locked engine, recalculated in real time as you adjust your deal.</p>
+  </div>
+
+  <!-- Feature cards -->
+  <div class="section">
+    <p class="sec-lbl">Core Capabilities</p>
+    <div class="grid-auto">
+      <div class="card">
+        <h3>One Engine, Every Deal Type</h3>
+        <p>Ground-Up Development, Major Renovation, Distressed Value-Add, Stabilized Acquisition — the engine applies the correct institutional logic for each structure automatically. No templates to swap, no sheets to reconfigure.</p>
+      </div>
+      <div class="card">
+        <h3>Real-Time Visual Dashboard</h3>
+        <p>Drag the timeline, adjust a rate, toggle leverage — every waterfall block, heatmap cell, and Sankey diagram updates instantly as live financial telemetry. See the deal break before it does, without re-running a macro.</p>
+      </div>
+      <div class="card">
+        <h3>Deterministic, Logic-Locked Engine</h3>
+        <p>The same inputs always produce the same outputs, with no Monte Carlo variance sitting between your assumptions and the number an LP sees. The engine enforces hard-coded underwriting standards and makes assumptions and validation flags visible: no circular references, no cross-sheet drift, no formula overrides that bypass the debt constraints.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Architecture -->
+  <div class="card section">
+    <p class="sec-lbl" style="margin-bottom:18px">What's Under the Hood</p>
+    <div class="feat-grid">
+      <div class="feat-item">• <span><b>Bridge-to-Perm Structure:</b> S-curve construction draw simulator, interest carry, bridge payoff, refi mechanics</span></div>
+      <div class="feat-item">• <span><b>Automated Capital Stack:</b> LP/GP split, debt sizing, DSCR / LTV / Debt Yield gates</span></div>
+      <div class="feat-item">• <span><b>Operating Waterfall:</b> preferred return accrual, ROC, monthly residual distributions</span></div>
+      <div class="feat-item">• <span><b>Exit Waterfall:</b> sale price, loan payoff, remaining pref, GP catch-up, promote</span></div>
+      <div class="feat-item">• <span><b>Lease-Up Ramp:</b> occupancy S-curve, current → stabilized over user-defined months</span></div>
+      <div class="feat-item">• <span><b>IRR Sensitivity Heatmap:</b> blended rate &amp; exit cap target matrix</span></div>
+      <div class="feat-item">• <span><b>Stress &amp; Breakeven:</b> real-time margin-of-safety testing</span></div>
+      <div class="feat-item">• <span><b>Capital Calls:</b> automatic when refi or NOI surplus can't cover shortfalls</span></div>
+    </div>
+    <div class="btn-row" style="margin-top:22px">
+      <a href="developer_pro_forma_sample.pdf" target="_blank" class="btn btn-ghost">Download Sample — Developer Pro Forma</a>
+      <a href="deal_performance_report_sample.pdf" target="_blank" class="btn btn-ghost">Download Sample — Deal Summary Report</a>
+    </div>
+  </div>
+  <div class="ss-item"><img src="CREDevSim_Banner_Download.jpg" alt="CREDevSim download banner" loading="lazy"></div>
+</div>
+
+<!-- ════ ENGINE ════ -->
+<div id="engine" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Underwriting Engine</div>
+  <h1>Institutional-Grade Modeling.<br>Without the Setup Overhead.</h1>
+  <p class="lead">One screen, one engine. Enter your deal structure and watch the full capital stack solve itself — every promote tier, every capital call, every monthly cash flow — updated in real time.</p>
+
+  <div class="grid-3 section-sm">
+    <div class="card">
+      <h3>Rapid Input</h3>
+      <p>Logical, labeled inputs for every deal type — no configuration, no hidden parameters, no guessing which field drives which output. Every input has a tooltip.</p>
+    </div>
+    <div class="card">
+      <h3>Automated Waterfall</h3>
+      <p>Preferred returns, ROC, GP catch-up, and capital calls — computed accurately at every event across the full hold cycle, not just at exit.</p>
+    </div>
+    <div class="card">
+      <h3>Visual Capital Flow</h3>
+      <p>Sankey diagrams, monthly cash flow heatmaps, and waterfall snapshots — all linked to the same live engine output, not static charts.</p>
+    </div>
+  </div>
+
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Timeline Control</p>
+    <p class="v-cap">Drag the timeline — every number in the deal updates instantly</p>
+    <video class="demo-video lazy-video" muted loop playsinline preload="none">
+      <source data-src="Timelinedrag.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Input Guidance</p>
+    <p class="v-cap">Every input and button has a tooltip — no guessing what a field means</p>
+    <video class="demo-video lazy-video" muted loop playsinline preload="none">
+      <source data-src="Input_tooltips.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="video-block">
+    <p class="v-sub">Live Demo · Additional Pop-up Tools and Visualizations</p>
+    <p class="v-cap">Click the different tool buttons for a full breakdown and visualizations</p>
+    <video class="demo-video lazy-video" muted loop playsinline preload="none">
+      <source data-src="openmodals.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <p class="video-block" style="margin-bottom:14px">Dashboard Screens</p>
+  <div class="ss-grid">
+    <div class="ss-item"><img src="Screenshot_inputs.png" alt="Deal Inputs" loading="lazy"><p>Input Panel</p></div>
+    <div class="ss-item"><img src="Screenshot_waterfall.png" alt="Waterfall" loading="lazy"><p>Waterfall Engine</p></div>
+    <div class="ss-item"><img src="Screenshot_sankey.png" alt="Sankey" loading="lazy"><p>Sankey Diagrams</p></div>
+    <div class="ss-item"><img src="Screenshot_flow.png" alt="Flow" loading="lazy"><p>Deal Flow Timeline</p></div>
+    <div class="ss-item"><img src="Screenshot_summary.png" alt="Summary" loading="lazy"><p>Deal Summary</p></div>
+  </div>
+
+  <!-- Visual Language -->
+  <div class="section" style="margin-top:36px">
+    <p class="sec-lbl">Visual Language — Reading the Interface</p>
+
+    <div class="card" style="margin-bottom:14px">
+      <h3 style="margin-bottom:14px">Capital Stack Color Convention</h3>
+      <p style="font-size:.88rem;color:var(--tx-sec);margin-bottom:18px">Every waterfall block, Sankey segment, capital stack bar, and heatmap row uses the same three-color system — consistent across every screen and every PDF export. Once you know it, any view reads instantly.</p>
+      <div style="display:flex;flex-direction:column">
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--acc)">BANK</div>
+          <div>
+            <div class="clr-label">Bank Debt — Blue</div>
+            <div class="clr-desc">Senior lender capital. Appears on: construction draws, bridge loan balance, permanent loan principal, bank payoff at exit, accrued interest. Blue blocks in the Sankey and heatmap always represent money the bank is owed or has funded.</div>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--grn)">LP</div>
+          <div>
+            <div class="clr-label">LP Equity — Green</div>
+            <div class="clr-desc">Limited partner capital. Appears on: equity draws at construction, LP return of capital at refi/exit, preferred return, LP residual share. Green always flows toward passive investors — capital in, distributions out.</div>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="clr-swatch" style="background:var(--amb)">GP</div>
+          <div>
+            <div class="clr-label">GP Equity — Amber</div>
+            <div class="clr-desc">General partner capital. Appears on: GP co-invest draws, GP management fee, GP catch-up distributions, GP promote at exit. Amber is always the active sponsor's share — the smaller stake earning the larger upside on performance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>4-Phase Timeline</h3>
+        <p style="font-size:.88rem">The horizontal timeline bar divides every deal into four phases: <b style="color:#fff">Construction → Refi → Operating → Exit</b>. Drag the slider to any month and the entire dashboard — waterfall, heatmap, Sankey, cash flow detail — snaps to that month's exact financial state in real time. Month-level granularity, not annual buckets.</p>
+      </div>
+      <div class="card">
+        <h3>Capital Stack Bar</h3>
+        <p style="font-size:.88rem">The three-segment bar at the top of the Summary panel shows live Bank / LP / GP percentages of total project cost, color-coded in the same blue / green / amber convention. Values update instantly as you change any debt or equity input — no need to re-run the analysis to see the capital split shift.</p>
+      </div>
+      <div class="card">
+        <h3>Verdict Badges</h3>
+        <p style="font-size:.88rem">The colored badge next to LP IRR summarizes deal health at a glance: <b style="color:var(--grn)">STRONG</b> (well above hurdle), <b style="color:var(--acc)">VALUE-ADD / DEVELOPMENT</b> (on-target), <b style="color:var(--amb)">MARGINAL</b> (IRR below LP pref), or <b style="color:var(--red)">IMPAIRED</b> (LP loses money). The IC Memo auto-thesis language reflects whichever badge is active.</p>
+      </div>
+      <div class="card">
+        <h3>Feedback Bar</h3>
+        <p style="font-size:.88rem">The status strip below the timeline shows real-time validation flags as you type: DSCR violations, LTC exceedances, capital call triggers, DS reserve sizing warnings, and gate breaches. Amber means tight; red means the deal has a structural problem that blocks export. It clears automatically when the underlying input is corrected.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ PRICING ════ -->
+<div id="pricing" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Pricing &amp; Downloads</div>
+  <h1>Start Free.<br>Go Pro When You Need It.</h1>
+  <p class="lead">The free tier gives you two deal types and the full visual engine with no time limit. Pro unlocks all four deal types, PDF export, and advanced waterfall mechanics.</p>
+
+  <div class="card section-sm">
+    <p class="sec-lbl" style="margin-bottom:16px">Included in Both Plans</p>
+    <div class="feat-grid">
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Draggable timeline with real-time recalculation</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Automated construction draws and bridge-to-perm</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Full visual waterfall dashboard</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Heatmap sensitivity &amp; Sankey flow diagrams</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>Core debt sizing (LTV, DSCR, Debt Yield)</span></div>
+      <div class="feat-item"><span class="ck">✓</span>&nbsp;<span>100% local — no deal data transmitted anywhere</span></div>
+    </div>
+  </div>
+
+  <div class="bill-toggle" role="group" aria-label="Billing period">
+    <button type="button" class="bill-opt active" data-plan="monthly" aria-pressed="true">Monthly</button>
+    <button type="button" class="bill-opt" data-plan="yearly" aria-pressed="false">Yearly <span class="bill-badge">Save TBD%</span></button>
+  </div>
+
+  <div class="p-grid section">
+    <div class="p-card">
+      <div class="p-name">Free</div>
+      <div class="p-desc">Full engine access for two deal types. No expiry, no credit card.</div>
+      <div class="p-amt">$0 <sub>/forever</sub></div>
+      <div class="p-note">No trial period. Download and run immediately.</div>
+      <ul class="fl">
+        <li><span class="ck">✓</span> Ground-Up Development deal type</li>
+        <li><span class="ck">✓</span> Stabilized Acquisition deal type</li>
+        <li><span style="font-size:.78rem;color:var(--tx-dim);padding-left:0">Plus all features listed under "Included in Both Plans" above.</span></li>
+        <li class="off"><span class="cx">✕</span> PDF Export — Deal Summary + Developer Pro Forma</li>
+        <li class="off"><span class="cx">✕</span> Major Renovation deal type</li>
+        <li class="off"><span class="cx">✕</span> Distressed Acquisition deal type</li>
+        <li class="off"><span class="cx">✕</span> Multi-Tier Promotes (IRR / MOIC hurdles)</li>
+        <li class="off"><span class="cx">✕</span> GP Lookback &amp; Catch-Up Switch</li>
+        <li class="off"><span class="cx">✕</span> Exit Clawback Option</li>
+        <li class="off"><span class="cx">✕</span> After-Tax View (Depreciation, Recapture, Cap Gains)</li>
+        <li class="off"><span class="cx">✕</span> Save / Load Deal Presets</li>
+        <li class="off"><span class="cx">✕</span> Scenario A vs B Side-by-Side Comparison</li>
+      </ul>
+      <a href="/download.html" class="btn btn-ghost">Download Free Version</a>
+    </div>
+
+    <div class="p-card featured">
+      <div class="p-chip">Beta · Founder Pricing</div>
+      <div class="p-name">Pro Simulation</div>
+      <div class="p-desc">Complete institutional architecture for developers, GPs, and analysts who need the full toolkit.</div>
+      <div class="p-price">
+        <div class="p-strike" id="proStrike">$TBD</div>
+        <div class="p-amt"><span id="proAmt">$TBD</span> <sub id="proPer">/month</sub></div>
+        <div class="p-save" id="proSave">Founder rate — Free during beta</div>
+      </div>
+      <div class="p-note">Free for beta subscribers before public launch. <a href="signup.html">Join the waitlist →</a></div>
+      <ul class="fl">
+        <li><span class="ck">✓</span> <span>Everything in Free<span class="feat-desc">Ground-Up Development, Stabilized Acquisition, full visual dashboard</span></span></li>
+
+        <span class="fl-grp">Deal Types — 2 More Unlocked</span>
+        <li><span class="ck">✓</span> <span>Major Renovation<span class="feat-desc">Pre-renovation NOI offsets construction debt service; bridge-to-perm with full operating waterfall</span></span></li>
+        <li><span class="ck">✓</span> <span>Distressed Acquisition<span class="feat-desc">Day-0 capital deficit, immediate bridge financing, reserve-funded stabilization mechanics</span></span></li>
+
+        <span class="fl-grp">Investor Deliverables</span>
+        <li><span class="ck">✓</span> <span>Deal Summary PDF<span class="feat-desc">One-page investor snapshot: IRR/MOIC by tier, capital stack, exit waterfall, key metrics — generated in seconds</span></span></li>
+        <li><span class="ck">✓</span> <span>Developer Pro Forma PDF<span class="feat-desc">Full institutional report: construction draw schedule, debt structure, annual operating projections, exit analysis</span></span></li>
+        <li><span class="ck">✓</span> <span>Investment Committee Memo<span class="feat-desc">LP-ready IC document with risk factors, sponsor track record, Reg D disclosure, and deal thesis — exported as HTML or RTF</span></span></li>
+
+        <span class="fl-grp">Advanced Waterfall Mechanics</span>
+        <li><span class="ck">✓</span> <span>Multi-Tier Promotes (IRR &amp; MOIC)<span class="feat-desc">Up to 3 promote tiers with configurable hurdle rates — gates tested at every distribution event, not only at exit</span></span></li>
+        <li><span class="ck">✓</span> <span>GP Lookback &amp; Catch-Up<span class="feat-desc">Model catch-up provisions; lookback reconciles GP promote at exit against LP's actual realized return</span></span></li>
+        <li><span class="ck">✓</span> <span>Exit Clawback<span class="feat-desc">Simulate GP clawback obligations when LP didn't hit the hurdle rate over the full hold period</span></span></li>
+
+        <span class="fl-grp">Analysis &amp; Workflow</span>
+        <li><span class="ck">✓</span> <span>After-Tax Returns View<span class="feat-desc">LP/GP net returns accounting for depreciation, cost segregation basis, recapture, and capital gains at exit</span></span></li>
+        <li><span class="ck">✓</span> <span>Scenario A vs B Side-by-Side<span class="feat-desc">Compare two deal structures on one screen — leverage, promote, exit cap — ideal for LP presentations</span></span></li>
+        <li><span class="ck">✓</span> <span>Save / Load Deal Presets<span class="feat-desc">Archive any deal configuration and reload it later; run multiple sensitivity scenarios without re-entering inputs</span></span></li>
+        <li><span class="ck">✓</span> <span>CSV Import<span class="feat-desc">Import deal inputs from a spreadsheet template — skip manual re-entry on deals you've already modeled elsewhere</span></span></li>
+
+        <span class="fl-grp">Debt &amp; Underwriting Controls</span>
+        <li><span class="ck">✓</span> <span>Fund Reserve via Loan<span class="feat-desc">Fold the Debt Service Reserve into the permanent loan balance instead of funding it from equity proceeds at refi</span></span></li>
+        <li><span class="ck">✓</span> <span>Perm Loan Refinements<span class="feat-desc">Set amortization schedule, IO period, refi closing cost, and Debt Yield gate independently from the bridge loan</span></span></li>
+        <li><span class="ck">✓</span> <span>Underwriting Hard Gates<span class="feat-desc">Enforce minimum DSCR, Debt Yield, and LTV constraints — the engine flags violations before you export</span></span></li>
+      </ul>
+      <a href="signup.html" class="btn">Join Beta Waitlist → (Please email me)</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════ FAQ ════ -->
+<div id="faq" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Documentation &amp; FAQ</div>
+  <h1>Resources &amp; System Logic</h1>
+  <p class="lead">Technical breakdowns, underwriting definitions, and simulation engine mechanics. Built from real deal questions — not a boilerplate help center.</p>
+
+  <!-- Quick resource links -->
+  <div class="section-sm">
+    <p class="sec-lbl">Quick Access</p>
+    <div class="res-grid">
+      <a href="developer_pro_forma_sample.pdf" target="_blank" class="res-card">
+        <span class="res-card-icon">📄</span>
+        <div class="res-card-title">Developer Pro Forma — Sample PDF</div>
+        <div class="res-card-desc">Full institutional report: draw schedule, debt structure, annual projections, exit analysis</div>
+      </a>
+      <a href="deal_performance_report_sample.pdf" target="_blank" class="res-card">
+        <span class="res-card-icon">📊</span>
+        <div class="res-card-title">Deal Summary Report — Sample PDF</div>
+        <div class="res-card-desc">One-page investor snapshot: IRR/MOIC, capital stack, exit waterfall, key metrics</div>
+      </a>
+      <a href="signup.html" class="res-card">
+        <span class="res-card-icon">📬</span>
+        <div class="res-card-title">Beta Waitlist</div>
+        <div class="res-card-desc">Join to lock in founder pricing before Pro launches publicly</div>
+      </a>
+      <a href="mailto:kasing@credevsim.com" class="res-card">
+        <span class="res-card-icon">✉️</span>
+        <div class="res-card-title">Direct Support</div>
+        <div class="res-card-desc">kasing@credevsim.com — no ticket queue, no automated response</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Capital pivot framework -->
+  <div class="card card-acc section">
+    <h3 style="color:var(--acc);margin-bottom:10px">The Post-Refi Capital Pivot Framework</h3>
+    <p style="margin-bottom:14px">The construction-to-operations transition is the highest-risk event in the deal lifecycle. The engine separates it into two distinct financial mechanisms:</p>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--tx-dim)">
+        <h3 style="font-size:.88rem;margin-bottom:5px">1. Construction Phase (Accrual Zone)</h3>
+        <p style="font-size:.84rem">Construction loan interest is capitalized into the permanent loan basis. The engine accumulates without forcing mid-phase capital calls, rolling total accrued interest into the final payoff balance.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--grn)">
+        <h3 style="font-size:.88rem;margin-bottom:5px">2. Operating Phase (Stabilization Zone)</h3>
+        <p style="font-size:.84rem">Once the perm loan triggers, the model manages lease-up timing stress using a user-defined Debt Service Reserve (DS Reserve) to buffer shortfalls before distributions hit the promote tiers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FAQ SECTIONS ── -->
+  <h2 style="margin-bottom:10px">Frequently Asked Questions</h2>
+  <div class="faq-search-wrap">
+    <span class="faq-search-ico" aria-hidden="true">⌕</span>
+    <input id="faqSearch" class="faq-search" type="search" placeholder="Search questions, terms, mechanics…" aria-label="Search the FAQ" autocomplete="off">
+  </div>
+  <span id="faqEmpty" class="faq-empty" hidden>No questions match that search. Try a broader term like “DSCR”, “promote”, or “reserve”.</span>
+
+  <!-- GENERAL -->
+  <p class="faq-sec-lbl">General</p>
+
+  <details class="faq">
+    <summary class="faq-q">Is this a web app or a desktop application?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">CREDevSim is a desktop application for Windows. There is no browser version — it runs fully offline on your machine. No install of Node, Python, or any runtime is required.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What operating system does it require?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Windows 10 or Windows 11 (64-bit). A macOS version is on the roadmap. The application is distributed as a standalone executable — no installation wizard or admin rights needed.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How is this different from Argus or Excel?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Argus is a lease-level rent roll tool. Excel is a blank canvas. CREDevSim is purpose-built for the LP/GP capital structure — waterfall logic, capital calls, promote mechanics — with a dedicated engine with validation gates and traceable outputs. It complements both; it doesn't replace them.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What asset classes does it support?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Any deal with a stabilized NOI and an LP/GP capital structure: multifamily, industrial, retail, office, mixed-use, self-storage. Enter stabilized NOI directly — asset-class-specific rent roll modeling (unit mix, RevPAR, overage rent) is outside scope.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What inputs does the model actually need to run a deal?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">For a Ground-Up Development deal: Total Project Cost (or a line-by-line budget), construction loan amount and interest rate, LP/GP equity split and preferred return rate, construction timeline in months, stabilized NOI, exit cap rate, and desired hold period. That's it — the engine computes the bridge payoff, permanent loan sizing, monthly distributions, IRR, MOIC, and full exit waterfall from those inputs automatically. Most deals are fully set up in under 5 minutes.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Do I need to already understand LP/GP waterfall mechanics to use this?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">No — not to get started. The default deal structure uses a single-tier LP/GP split with a preferred return, which is the most common structure. You can run a complete deal analysis without touching any of the advanced settings. The multi-tier promotes, catch-up provisions, and clawback toggles are there when you're ready for institutional-level structuring, but they're completely optional.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Can I share my deal files with a colleague?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes. Deal presets are saved as standard JSON files on your hard drive. You can copy or share these files directly — your colleague loads them in their own copy of CREDevSim. No cloud sync required. Note that deal preset save/load is a Pro feature.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Is the free version truly free?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes. No trial period, no expiration. The free version gives you two deal types and the full visual suite with no time limit and no credit card required.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Is my deal data stored anywhere?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">No. CREDevSim runs entirely on your local machine. No deal data is ever transmitted or stored externally. Everything stays on your hard drive. Your license is validated against your account via a lightweight token check — that's the only network call the application makes.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Where can I see a sample output?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">On the Home tab, scroll to the bottom: <b>Download Sample — Developer Pro Forma</b> and <b>Download Sample — Deal Summary Report</b>. Both are real PDF exports generated from the engine.</div>
+  </details>
+
+  <!-- WATERFALL MECHANICS -->
+  <p class="faq-sec-lbl">Getting Started</p>
+  <details class="faq"><summary class="faq-q">Can I import an existing Excel or Argus underwriting?<span class="faq-tog">+</span></summary><div class="faq-body">CREDevSim is built for a focused set of deal inputs rather than a lease-level rent roll. Pro includes CSV import for supported inputs; review the supplied template before importing a deal.</div></details>
+  <details class="faq"><summary class="faq-q">What does the free version exclude?<span class="faq-tog">+</span></summary><div class="faq-body">Free includes two deal types and the interactive visual engine with no time limit. Pro adds the other deal types, PDF and IC Memo exports, advanced waterfall controls, scenario comparison, and deal presets.</div></details>
+  <details class="faq"><summary class="faq-q">Does CREDevSim need an internet connection?<span class="faq-tog">+</span></summary><div class="faq-body">The application runs locally. A lightweight license check may occur for account validation; deal inputs and saved files remain on your machine.</div></details>
+  <details class="faq"><summary class="faq-q">How does Pro pricing and founder pricing work?<span class="faq-tog">+</span></summary><div class="faq-body">Pro pricing will be announced before launch. Join the beta waitlist to receive launch details and founder-pricing information.</div></details>
+  <details class="faq"><summary class="faq-q">Is CREDevSim financial, tax, or legal advice?<span class="faq-tog">+</span></summary><div class="faq-body">No. CREDevSim is a modeling tool. Validate outputs independently and consult qualified financial, tax, and legal advisors before making investment decisions or using investor-facing materials.</div></details>
+
+  <p class="faq-sec-lbl">Waterfall Mechanics</p>
+
+  <details class="faq">
+    <summary class="faq-q">What is a preferred return, and how is it compounded?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>A preferred return (pref) is the minimum annualized return LP investors must receive before the GP earns any promote. It accrues on <em>invested and unreturned capital</em> — not on committed capital that hasn't been drawn yet.</p>
+      <p>CREDevSim computes pref accrual monthly using compound interest by default. Each month the pref balance grows by (annual pref rate ÷ 12) × LP equity basis outstanding. When a distribution event occurs — refi proceeds, operating cash flow, or exit — the engine pays pref arrears before any promote tier is tested. This matches institutional LP agreement logic far more accurately than annual approximations.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the difference between an IRR hurdle and a MOIC hurdle for promote tiers?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>IRR hurdle:</b> The promote tier unlocks when the LP's time-weighted rate of return exceeds the hurdle (e.g., 15% IRR). IRR is sensitive to timing — early distributions dramatically boost it. Best for deals with significant mid-hold cash flow.</p>
+      <p><b>MOIC hurdle:</b> The promote tier unlocks when the LP's total return multiple exceeds the hurdle (e.g., 2.0× MOIC). MOIC is purely magnitude-based — a 5× return over 10 years and a 5× return over 3 years are treated identically. Best for short holds or deals where timing is predictable and simple.</p>
+      <p>CREDevSim lets you set each promote tier independently as IRR or MOIC, and tests the gate at every distribution event — not only at exit — which is meaningfully more accurate for deals with significant mid-hold distributions.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How does GP catch-up work?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>After LP has received its preferred return, a catch-up provision lets the GP rapidly collect distributions until the GP's share of total distributions equals its target promote percentage.</p>
+      <p>Example: 80/20 structure with full GP catch-up. After LP receives 8% pref, the GP gets 100% of subsequent distributions until GP's cumulative share equals 20% of all distributions made so far. After catch-up closes, remaining distributions split 80/20.</p>
+      <p>CREDevSim models catch-up precisely at every distribution event. The catch-up switch is off by default (most institutional deals don't use a full catch-up); enable it in the Equity Structure panel when your LP agreement includes this provision.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is an exit clawback and when does it trigger?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>A clawback is a GP obligation to return previously collected promote if the LP's realized return over the <em>full hold period</em> falls below the hurdle rate.</p>
+      <p>It matters when a GP collects interim promote during mid-hold distributions (e.g., at refi) but the deal underperforms at exit, leaving the LP below their pref threshold overall. The clawback forces the GP to give back the excess promote to make the LP whole.</p>
+      <p>CREDevSim tracks cumulative GP promote received at every distribution event and computes the clawback obligation at exit against the LP's actual realized return. Toggle it on in the Equity Structure panel.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What does "ROC-First" distribution order mean?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>ROC-First (Return of Capital First):</b> LP gets all invested capital back before any pref or promote is paid. This minimizes LP risk exposure and is common in development deals.</p>
+      <p><b>Pref-First:</b> LP receives accrued preferred return before ROC. Less common; lowers the LP's capital exposure but delays full capital recovery.</p>
+      <p>CREDevSim defaults to ROC-First for development and renovation deals. Stabilized acquisitions typically use Pref-First. Both are configurable in the Distribution Order dropdown.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is pari passu, and where does it appear in the waterfall?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Pari passu means "on equal footing" — distributions are shared proportionally based on each party's ownership stake, with no priority. In CREDevSim, pari passu typically applies to residual cash distributions after all pref, ROC, and promote tiers have been satisfied. It also describes how unused reserves are returned at exit: LP and GP receive their pro-rata share of any leftover reserve balance.</div>
+  </details>
+
+  <!-- REFINANCE & RESERVE MECHANICS -->
+  <p class="faq-sec-lbl">Refinance &amp; Reserve Mechanics</p>
+
+  <details class="faq">
+    <summary class="faq-q">What does the Debt Service Reserve (DS Reserve) input do?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      It acts as a liquidity fence. Instead of distributing 100% of net refi proceeds to partners immediately, this input captures a dollar amount as restricted cash to absorb debt service shortfalls during lease-up.
+      <div class="faq-code">Distributable Cash = Net Refi Proceeds − Debt Service Reserve</div>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Who pays for the Debt Service Reserve?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The equity partners (LP/GP pool) — via opportunity cost from reduced refinancing cash flow. The Debt Service Reserve is subtracted from net refi proceeds before any distribution split or GP promote is calculated.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What happens to unused DS Reserve at sale?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Any unused balance is swept back into the net sale distribution pool at exit and returned to investors proportionally (<em>pari passu</em>). It is never lost.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How does the lease-up ramp work?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">You set three inputs: current occupancy (e.g. 60%), stabilized occupancy target (e.g. 92%), and ramp duration in months (e.g. 12 months). The engine runs an S-curve from current to stabilized over that window. Each operating month's NOI reflects the actual blended occupancy for that month — so debt service coverage, distributions, and capital call triggers are all computed from projected income at that occupancy level, not the stabilized rate.</div>
+  </details>
+
+  <!-- CAPITAL CALLS & RISK -->
+  <p class="faq-sec-lbl">Capital Calls &amp; Risk Management</p>
+
+  <details class="faq">
+    <summary class="faq-q">What happens if the Stabilization Reserve runs dry?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">If operating deficits outlast the reserve, the engine flags an asset stress warning and triggers a Capital Call to preserve debt compliance. The call is sized to cover the exact shortfall (Just-in-Time mode) or the aggregate projected gap (Full Funding mode).</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How do Capital Calls alter waterfall returns vs. using the Reserve?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">A Capital Call is fresh equity — it expands the Return of Capital basis, initiates preferred return accruals on the new capital immediately, and recalibrates fee tracking. A reserve draw is not new equity; it's a return of previously withheld refi proceeds. Capital calls are more dilutive to GP promote because they grow the LP's basis, which must be repaid and pref'd before any residual split.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the difference between Just-in-Time and Full Funding capital calls?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Just-in-Time (default):</b> Calls capital month-by-month to match the exact dollar shortage. Maximizes investor IRR by delaying deployment.</p>
+      <p><b>Full Funding:</b> Calculates total aggregate downside gap over the hold period and executes a single lump-sum call on the first violation month. Optimizes accounting clarity over IRR.</p>
+    </div>
+  </details>
+
+  <!-- DEBT & UNDERWRITING TERMS -->
+  <p class="faq-sec-lbl">Debt &amp; Underwriting Terms</p>
+
+  <details class="faq">
+    <summary class="faq-q">What is DSCR and what minimum should I use?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Debt Service Coverage Ratio</b> = NOI ÷ Annual Debt Service. It measures how many times the property's income covers its debt payments.</p>
+      <p>Agency lenders (Fannie Mae, Freddie Mac) typically require 1.25× minimum DSCR on multifamily. Banks on commercial deals often require 1.20–1.30×. Construction lenders underwrite to stabilized DSCR at takeout. CREDevSim enforces a configurable minimum and flags any breach in real time before you export. The engine also shows Net DSCR (after management fee, capex reserve, and TI/LC) for a more conservative underwriting view.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is a Debt Yield, and how is it different from DSCR?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Debt Yield</b> = NOI ÷ Loan Amount. Unlike DSCR, it doesn't depend on interest rates or amortization terms — it measures the lender's return if they had to foreclose and hold the asset.</p>
+      <p>As interest rates change, a fixed DSCR can be achieved by changing the loan term or IO period — Debt Yield can't be gamed this way. CMBS and institutional lenders have increasingly focused on Debt Yield (typically 8–10%+ minimum) alongside DSCR as a more rate-agnostic underwriting metric.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the difference between LTC and LTV?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Loan-to-Cost (LTC)</b> = Loan Amount ÷ Total Project Cost. Used during construction — the denominator is what you're spending, not what the asset is worth yet. Typical range: 60–75%.</p>
+      <p><b>Loan-to-Value (LTV)</b> = Loan Amount ÷ Appraised Property Value. Used for permanent loans — the denominator is the stabilized or as-is property value. Typical range: 55–75% depending on asset class and lender.</p>
+      <p>CREDevSim enforces user-defined LTC on the construction loan and LTV on the permanent loan, and flags any breach against your inputs.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is a bridge-to-perm structure and how does the engine handle it?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>A bridge-to-perm structure uses a short-term construction loan (the "bridge") to fund the development period, then refinances into a long-term permanent loan once the asset reaches a lender-defined stabilization threshold — typically DSCR above 1.20× and occupancy above 85–90%.</p>
+      <p>CREDevSim models this as a two-phase structure: the construction loan draws on an S-curve schedule with capitalized interest, then the engine automatically payoffs the bridge and originate the perm loan at the user-defined refi month. The perm loan size, rate, IO period, and amortization schedule are set independently from the bridge.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is a TI/LC reserve and how is it modeled?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Tenant Improvement (TI) allowance</b> is the landlord's contribution to fit-out costs when signing a new lease or renewing an existing one. <b>Leasing Commissions (LC)</b> are broker fees typically paid as a percentage of the lease revenue.</p>
+      <p>In the model, TI/LC is computed as an annual reserve: (TI $/SF × rentable SF ÷ average lease term) + (leasing commission % × annual gross rent). This reserve is funded from operating income before distributions, reflecting the real cash drag on NOI available for debt service and equity payouts. Office and retail deals often carry TI/LC reserves that consume 25–40% of gross NOI — a critical underwriting input that many simplified models ignore.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is a rate cap, and why does it appear in the project cost?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Rate caps are insurance contracts that limit the floating interest rate on a loan — for example, a SOFR cap at 4.5% means the borrower never pays more than 4.5% + spread even if SOFR rises above that level. Lenders often require them on floating-rate construction loans. CREDevSim includes rate cap cost as a Day-0 project expense in the Sources &amp; Uses, which adds it to LP's equity basis for waterfall purposes.</div>
+  </details>
+
+  <!-- AFTER-TAX & DEPRECIATION -->
+  <p class="faq-sec-lbl">After-Tax &amp; Depreciation <span class="pro-tag">Pro</span></p>
+
+  <details class="faq">
+    <summary class="faq-q">How does depreciation affect LP/GP after-tax returns?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>Real property can be depreciated for tax purposes over its IRS-defined recovery period: 27.5 years for residential, 39 years for commercial. This creates an annual non-cash tax deduction that reduces taxable income — effectively sheltering a portion of operating distributions from ordinary income tax.</p>
+      <p>The annual depreciation shield = Depreciable Basis ÷ Recovery Period. A $10M apartment property depreciates at $10M ÷ 27.5 = $364K/yr. If LP's tax rate is 37%, that's ~$134K/yr in saved taxes. CREDevSim's After-Tax view applies the appropriate recovery period based on the asset class you've selected.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is cost segregation and how does it work in the model?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>Cost segregation is an engineering study that reclassifies components of a building into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation in early years rather than straight-line over 27.5 or 39 years.</p>
+      <p>CREDevSim lets you specify a cost segregation percentage of the depreciable basis. That portion is depreciated at the accelerated rate, producing a larger tax shield in Year 1 and smaller shields in later years. Remaining basis is depreciated straight-line over the standard recovery period.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is §1245 recapture at exit?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">When you sell a property that benefited from cost segregation or bonus depreciation on personal property, the IRS "recaptures" the accelerated depreciation you claimed — taxing that portion at ordinary income rates (up to 37%) rather than the lower long-term capital gains rate (typically 20%). This recapture under §1245 applies specifically to personal property components. Real property recapture under §1250 is taxed at a 25% unrecaptured rate. CREDevSim models both recapture types at exit and shows after-tax net proceeds.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is bonus depreciation, and should I use it?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>Bonus depreciation allows immediate 100% expensing of qualifying personal property in Year 1 (phasing down under current tax law). Combined with cost segregation, this can generate very large paper losses in the first year, which pass through to investors.</p>
+      <p>Whether to use it depends on your LP investors' tax situation — passive loss rules may prevent non-real estate professionals from deducting those losses immediately. CREDevSim models the Year 1 bonus depreciation impact on after-tax IRR. Consult a tax advisor for LP-specific implications.</p>
+    </div>
+  </details>
+
+  <!-- DASHBOARD & VISUALIZATIONS -->
+  <p class="faq-sec-lbl">Dashboard &amp; Visualizations</p>
+
+  <details class="faq">
+    <summary class="faq-q">Can I trace the reserve burning down inside the interface?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes — in two places. The <b>Waterfall Snapshot</b> shows the reserve as a color-coded block at the refi event. The <b>Monthly Operating Heatmap</b> tracks a dynamic cash line showing the pool declining through early months and leveling off as NOI covers debt service.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What do the Sankey diagrams show?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>CREDevSim has three Sankey views, selectable in the dashboard dropdown:</p>
+      <p><b>NOI Distribution:</b> Shows how cumulative operating income flows to debt service, reserves, management fees, and equity distributions over the hold period. Useful for identifying cash flow drag (e.g., TI/LC consuming 30% of NOI on an office deal).</p>
+      <p><b>Exit Waterfall:</b> Shows gross sale proceeds flowing to disposition costs, bank repayment, LP return of capital, preferred return, and GP promote — tier by tier.</p>
+      <p><b>Sources &amp; Uses:</b> Shows where construction capital came from (bank loan, LP equity, GP equity) and how it was spent (land, hard costs, soft costs, fees, contingency, financing).</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How do I read the IRR Sensitivity Heatmap?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The heatmap shows LP IRR across a matrix of blended bank rates (rows) and exit cap rates (columns). The current deal scenario is highlighted. Green cells = LP meets or exceeds pref hurdle; yellow = marginal; red = LP IRR below pref. This lets you see at a glance how much your deal's return depends on interest rate direction and exit pricing, and identify the breakeven rate/cap combination where LP barely clears the hurdle.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Can I export to PDF on the free plan?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">PDF export is a Pro feature. The free plan gives you the full interactive model; PDF is the deliverable layer for investor packages and lender submissions.</div>
+  </details>
+
+  <!-- IC MEMO & WORKFLOW -->
+  <p class="faq-sec-lbl">Investment Committee Memo &amp; Deliverables <span class="pro-tag">Pro</span></p>
+
+  <details class="faq">
+    <summary class="faq-q">What is the Investment Committee Memo export?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p>The IC Memo is a placement-agent quality investor document generated directly from your deal model. It includes: deal overview, sources &amp; uses, capital structure, projected returns (IRR/MOIC by tier), risk factor checklist with mitigants, sponsor track record, deal thesis, regulatory disclosures, and optional Reg D language.</p>
+      <p>Exported as an HTML file (browser-renderable, easily converted to PDF via browser print) or as an RTF file compatible with Word. The entire document populates from your live deal model — there's no manual copy-paste from the spreadsheet to the deck.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the Risk Factor checklist and how does it work?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The risk factor editor contains 12 standard risk categories: construction cost overrun, interest rate, lease-up timing, exit cap rate compression, capital call, entitlement, operator, market, environmental, regulatory, force majeure, and interest coverage. The engine auto-detects which risks are elevated from your deal inputs — for example, if your DSCR is below 1.20× the interest coverage risk is flagged automatically. You can accept, dismiss, add custom risks, and edit the mitigant text for each. Selected risks are rendered as a formatted risk matrix in the IC Memo export.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the Sponsor Track Record section?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">A firm-level section (saved globally, not per-deal) where you enter your sponsor's credentials: years in business, total AUM, deals closed, total transaction volume, up to 3 named principals with bios, and a table of up to 10 prior deals (name, type, market, size, LP IRR, hold period, status). This data populates a "Sponsor Profile" section in every IC Memo you generate, saving re-entry across deals.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What is the Reg D / Rule 506(b) disclosure section?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Rule 506(b) of Regulation D is the most commonly used SEC exemption for private real estate offerings. The IC Memo includes a pre-filled, editable 506(b) disclosure block covering: private offering notice, forward-looking statement disclaimer, accredited investor restriction, and a mandatory attorney-review reminder. This is a template only — the disclosure must be reviewed by a securities attorney before use in any actual investor communication.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">What does the "Marginal Deal" badge mean?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">The Marginal Deal badge appears when the LP's projected IRR falls below the LP preferred return threshold you've set. It signals that — at current assumptions — the LP does not clear their hurdle rate. The engine continues to run and show all outputs; the badge is a heads-up that the deal's return projections do not support the stated preferred return, and deal assumptions should be scrutinized carefully before presenting to investors. The IC Memo auto-thesis also reflects this language when the badge is active.</div>
+  </details>
+
+  <!-- OUTPUTS & PDF -->
+  <p class="faq-sec-lbl">Outputs &amp; PDF Exports</p>
+
+  <details class="faq">
+    <summary class="faq-q">What's the difference between the Deal Summary PDF and the Developer Pro Forma?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">
+      <p><b>Deal Summary</b> is a one-page investor snapshot — total project cost, capital stack breakdown, IRR and MOIC by tier, exit waterfall table, and a key metrics panel. Designed for quick LP conversations and lender submissions.</p>
+      <p><b>Developer Pro Forma</b> is a full institutional report (4–5 pages): construction draw schedule showing monthly bank and equity draws, debt structure detail, annual operating cash flow table (NOI / debt service / CapEx / distributions for each year of the hold), and a complete exit analysis.</p>
+      <p>Rule of thumb: use the Deal Summary for first conversations; use the Developer Pro Forma for due diligence packages or when a counterparty needs to audit your numbers.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">How accurate are the IRR calculations?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Very. The engine uses exact monthly cash flow timing — not annual approximations or simplified period returns. Each equity dollar is tracked from its actual draw date, and returns are discounted back to Month 0 using monthly compounding.<br><br>For multi-tier promotes with IRR hurdles, the engine maintains a running present-value accumulator that updates at every distribution event — construction surplus, refi proceeds, monthly operating distributions, and exit. Promote gates reflect the LP's actual return path at every point in the deal, not an end-of-hold estimate.</div>
+  </details>
+
+  <details class="faq">
+    <summary class="faq-q">Can I model a deal that doesn't have a construction phase?<span class="faq-tog">+</span></summary>
+    <div class="faq-body">Yes — the Stabilized Acquisition deal type is designed exactly for this. There is no construction period, no bridge loan, and no refi. You model the acquisition at a going-in cap rate, set your permanent financing, define the hold period and exit cap, and the engine runs the operating waterfall and exit analysis directly. The lease-up ramp is still available if the property isn't fully stabilized at purchase.</div>
+  </details>
+
+  <!-- GLOSSARY -->
+  <div class="section" style="margin-top:40px">
+    <h2 style="margin-bottom:6px">CRE Underwriting Glossary</h2>
+    <p style="margin-bottom:18px;font-size:.88rem">Quick-reference definitions for terms used throughout the engine.</p>
+    <div class="glossary-grid">
+      <div class="gl-item">
+        <div class="gl-term">Cap Rate</div>
+        <div class="gl-def">NOI ÷ Property Value. The yield on an unlevered real estate asset at a given price. Lower cap = higher price premium; higher cap = more yield required (or more risk priced in).</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">NOI</div>
+        <div class="gl-def">Net Operating Income. Effective Gross Income minus operating expenses, before debt service, depreciation, and capital expenditures. The core cash generation metric of a property.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">IRR</div>
+        <div class="gl-def">Internal Rate of Return. The discount rate at which the net present value of all cash flows (in and out) equals zero. Time-weighted — early distributions improve IRR.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">MOIC</div>
+        <div class="gl-def">Multiple on Invested Capital. Total distributions received ÷ total equity invested. Not time-sensitive — a 2× in 2 years and a 2× in 10 years are both 2× MOIC.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">LP / GP</div>
+        <div class="gl-def">Limited Partner (passive investor) / General Partner (active sponsor). LP provides capital; GP contributes a smaller equity check (typically 5–20%) and earns a promote for delivering returns above the hurdle.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Promote</div>
+        <div class="gl-def">GP's disproportionate share of profits above the hurdle rate. Also called "carried interest." A 20% promote on an 80/20 LP/GP deal means GP earns 20% of residual profits after LP's pref, even though GP contributed only ~10% of equity.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">DSCR</div>
+        <div class="gl-def">Debt Service Coverage Ratio = NOI ÷ Annual Debt Service. Measures how safely NOI covers the loan payment. Most lenders require 1.20–1.30× minimum; agencies often require 1.25×.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Debt Yield</div>
+        <div class="gl-def">NOI ÷ Loan Amount. Rate-agnostic metric used by CMBS and institutional lenders to measure the lender's return in a foreclosure scenario. Typical minimum: 8–10%.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">LTC / LTV</div>
+        <div class="gl-def">Loan-to-Cost (construction) = Loan ÷ Total Project Cost. Loan-to-Value (permanent) = Loan ÷ Appraised Value. Both measure leverage; LTC is used during construction before an appraisal exists.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">ROC</div>
+        <div class="gl-def">Return of Capital. The repayment of an investor's original equity contribution, before any profit. In an ROC-First waterfall, LP gets all invested capital back before the GP earns any promote.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Pref / Preferred Return</div>
+        <div class="gl-def">A guaranteed minimum annualized return that LP must receive before GP earns promote. Typically 6–10% per year, compounded monthly, accruing on unreturned LP equity balance.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">IO Period</div>
+        <div class="gl-def">Interest-Only period on a permanent loan. During IO, the borrower pays only interest — no principal amortization. Common on transitional assets; preserves cash flow during lease-up.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">TI / LC</div>
+        <div class="gl-def">Tenant Improvements (landlord fit-out allowance to sign/renew a lease) and Leasing Commissions (broker fees). A recurring capital drag on office and retail deals, modeled as an annual reserve in the engine.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">YOC</div>
+        <div class="gl-def">Yield on Cost = Stabilized NOI ÷ Total Project Cost. An unlevered development yield. Compare to the exit cap rate: if YOC > exit cap, you've created value; if YOC &lt; exit cap, you have negative leverage.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Waterfall</div>
+        <div class="gl-def">The contractual order in which cash distributions flow to each party. Defines who gets paid first, in what amounts, and under what conditions (pref cleared, ROC returned, hurdle met) before residual profits are split.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Capital Call</div>
+        <div class="gl-def">A request to investors to contribute additional equity beyond their initial commitment. Triggered when operating deficits or debt service shortfalls exceed available reserves. Grows LP's equity basis, increasing the pref due at exit.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Cost Segregation</div>
+        <div class="gl-def">An engineering study that reclassifies building components into shorter depreciable lives (5-year, 15-year) to front-load depreciation deductions. Increases after-tax returns in early hold years but triggers §1245 recapture at sale.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">§1245 Recapture</div>
+        <div class="gl-def">IRS rule that taxes accelerated depreciation on personal property at ordinary income rates (up to 37%) at sale, rather than the lower long-term capital gains rate. Reduces net exit proceeds on deals with cost segregation.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Clawback</div>
+        <div class="gl-def">GP obligation to return previously collected promote if LP's actual realized return over the full hold period falls below the agreed hurdle. Protects LP from overpaying the GP on deals with strong mid-hold performance that later deteriorates.</div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-term">Catch-Up</div>
+        <div class="gl-def">A provision allowing the GP to receive 100% of distributions (temporarily) after LP's pref is satisfied, until the GP's share of total distributions equals the target promote percentage. Accelerates GP participation before the final residual split.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engine Reference -->
+  <div class="section" style="margin-top:44px">
+    <h2 style="margin-bottom:6px">CREDevSim Engine Reference</h2>
+    <p style="margin-bottom:18px;font-size:.88rem;color:var(--tx-sec)">Proprietary behaviors and mechanics specific to how this engine computes and displays results — not general CRE definitions. These are the conventions you need to know to read the interface correctly.</p>
+    <div class="eng-ref-grid">
+
+      <div class="er-item">
+        <div class="er-term">Capital Stack Color System</div>
+        <div class="er-def">Blue = Bank debt. Green = LP equity. Amber = GP equity. This mapping is enforced globally: waterfall blocks, Sankey segments, the capital stack bar, timeline chips, and all PDF exports use the same three colors. Status colors (red = impaired, green chip = stabilized) are a separate, independent layer and never conflict with entity colors.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Bank Sizing — MIN of Four Tests</div>
+        <div class="er-def">The engine computes the loan four ways independently: LTC × Total Cost, LTV × Appraised Value, NOI ÷ DSCR minimum ÷ rate, NOI ÷ Debt Yield minimum. The binding constraint — the smallest of the four — becomes the actual bank loan. The Summary panel shows which constraint is binding and by how much. This is standard institutional underwriting behavior; it can't be overridden by simply increasing the LTC slider.</div>
+      </div>
+
+      <div class="er-item er-grn">
+        <div class="er-term">Debt Service Reserve (DS Reserve)</div>
+        <div class="er-def">Post-refi restricted cash set aside from net refi proceeds to absorb debt service shortfalls during the lease-up ramp. The engine can auto-size it to exactly cover the projected gap, or you can enter a manual amount. When "Fund Reserve via Loan" is ON, the reserve folds into the perm loan balance (increasing DS slightly) rather than coming from LP/GP equity proceeds. Any unused balance is returned pari passu at exit.</div>
+      </div>
+
+      <div class="er-item er-grn">
+        <div class="er-term">Fund Reserve via Loan (RVL Toggle)</div>
+        <div class="er-def">When ON (default), the DS Reserve is bank-funded by folding it into the permanent loan amount. This raises the loan balance — and slightly raises monthly debt service — but avoids a direct equity call. When OFF, LP/GP fund the reserve from their share of refi proceeds (equity call). The toggle is auto-disabled when enabling it would push DSCR below 1.0, because lenders won't allow a borrower to borrow their own cushion in that case.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Timeline Phase System</div>
+        <div class="er-def">Every deal has four chronological phases: Construction → Refi → Operating → Exit. The horizontal timeline bar at the top of the dashboard marks each boundary. Drag the slider to any month and all panels update to that month's financial state: what the waterfall looks like, what's been drawn, what's owed, what's been distributed — all without re-running the analysis.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Verdict Badge System</div>
+        <div class="er-def">The badge next to LP IRR summarizes deal quality: <b>STRONG</b> (LP IRR &gt; pref by a wide margin), <b>VALUE-ADD / DEVELOPMENT</b> (LP IRR above pref, thesis dependent on execution), <b>MARGINAL</b> (LP IRR below the stated preferred return — LP doesn't clear the hurdle), <b>IMPAIRED</b> (LP IRR &lt; 0 — LP loses money). The IC Memo auto-thesis section writes deal-appropriate language reflecting whichever badge is active when you export.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Multi-Tier Promote — Every Event, Not Just Exit</div>
+        <div class="er-def">Most waterfall models only test IRR/MOIC hurdles at exit. CREDevSim tests at every distribution event — construction surplus, refi proceeds, each month of operating cash flow — and pays promote into the appropriate tier as the deal's cumulative return crosses each threshold in real time. This means Tier 2 and Tier 3 can engage at refi if the deal's return is already high enough, matching how institutional LP agreements actually work.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Heatmap Block — Hover for Full Breakdown</div>
+        <div class="er-def">Each colored block in the monthly heatmap is clickable/hoverable. The tooltip shows the exact cash flow breakdown for that month: NOI, debt service (IO vs P&amp;I phase), DS Reserve draw/balance, CapEx/TI-LC deduction, distributable cash, and LP/GP split by tier. What looks like a summary bar is actually a full monthly accounting — every dollar is traceable.</div>
+      </div>
+
+      <div class="er-item er-amb">
+        <div class="er-term">Capital Call — Just-in-Time vs Full Funding</div>
+        <div class="er-def">When the DS Reserve runs dry and operating NOI can't cover debt service, the engine triggers a capital call. In Just-in-Time mode (default), it calls only the exact month's shortfall — maximizing LP IRR by delaying equity deployment. In Full Funding mode, it calls a single lump sum covering the entire projected gap on the first violation month. Both increase LP's equity basis and restart pref accrual on the new capital from that date.</div>
+      </div>
+
+      <div class="er-item er-amb">
+        <div class="er-term">Stress &amp; Breakeven Panel</div>
+        <div class="er-def">Binary-searches the breakeven point for six key variables simultaneously: exit cap rate, blended bank rate, stabilized NOI, total project cost, LP pref rate, and hold period. For each variable, it finds the exact value at which LP IRR hits zero. The display shows current value, breakeven value, margin of safety, and a STRONG / Tight / STRESSED rating. Tight means the deal breaks with less than 25% of additional adverse movement in that variable.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Pref Accrual — Monthly Compound</div>
+        <div class="er-def">Preferred return accrues monthly on the LP's unreturned equity balance — not on committed capital that hasn't been drawn yet. The engine uses compound interest at the monthly rate (annual rate ÷ 12) and grows the pref balance each month until a distribution event pays it down. This is more accurate than annual approximations, which understate pref accumulation on long holds with early equity draws.</div>
+      </div>
+
+      <div class="er-item">
+        <div class="er-term">Construction Draw Schedule</div>
+        <div class="er-def">By default the engine uses an S-curve draw pattern (front-loads early draws; levels off mid-construction). You can switch to Linear (even monthly draws), Lump Sum (all at Day 1), or Manual (enter a custom month-by-month schedule). Draw timing affects capitalized interest, IRR precision, and GP management fee accrual — S-curve is the institutional norm for most construction deals. Manual draw schedules are invalidated if the construction period is later changed to prevent silent mismatches.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Product updates / changelog (bottom of Resources & FAQ) -->
+  <div class="section" style="margin-top:44px">
+    <p class="sec-lbl">Product Updates <span class="badge badge-grn" style="margin-bottom:0;margin-left:6px">Actively maintained</span></p>
+    <div class="log-list">
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.2</span><span class="log-date">Jul 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Linear interest accrual</b> across construction and bridge-extension draws, plus refined margin-of-safety heatmap and input tooltips.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.1</span><span class="log-date">Jul 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Construction Loan Extension</b> — model an extension fee and rate spread when the bridge runs past its original term before refinance.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.1</span><span class="log-date">Jul 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Bridge spread control</b> with a 0.25%/yr net-rate floor, plus a user-defined refinance month.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">v1.0.0</span><span class="log-date">Jun 2026</span><span class="log-tag new">New</span></div>
+        <div class="log-body"><b>Public beta</b> — four deal types, real-time waterfall engine, and the Sankey + heatmap dashboard.</div>
+      </div>
+      <div class="log-row">
+        <div class="log-meta"><span class="log-ver">Development</span><span class="log-date">2025-JUN 2026</span><span class="log-tag fix">Creates</span></div>
+        <div class="log-body"><b>Design, implementation, testing</b> — From the engine designs, implementing various logics, to testing</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CONTACT ════ -->
+<div id="contact" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">Contact &amp; Policies</div>
+  <h1>Let's Connect</h1>
+  <p class="lead">Questions, feature requests, bug reports — reach out directly. No ticket system, no automated queue.</p>
+
+  <div class="cbox">
+    <h3>Direct Support</h3>
+    <p>Connect directly with the engineering and modeling desk. Have a complex deal structure not covered by the standard engine? Reach out.</p>
+    <a href="mailto:kasing@credevsim.com" class="email-link">kasing@credevsim.com</a>
+  </div>
+
+  <div class="cbox">
+    <h3>Legal &amp; Policies</h3>
+    <p>Documentation governing use of CREDevSim.</p>
+    <div class="pol-row">
+      <a href="privacy.html" class="btn btn-ghost btn-sm">Privacy Policy</a>
+      <a href="terms.html"   class="btn btn-ghost btn-sm">Terms &amp; Conditions</a>
+      <a href="EULA.html"    class="btn btn-ghost btn-sm">EULA</a>
+      <a href="refund.html"  class="btn btn-ghost btn-sm">Refund Policy</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════ ABOUT ════ -->
+<div id="about" class="tab-panel">
+  <div class="panel-top"><a href="signup.html" class="btn btn-sm">Get Access →</a></div>
+  <div class="badge">About the Developer</div>
+  <h1>The Developer's Desk</h1>
+  <p class="lead">An underwriting platform built on real-world audit logic, refined between shifts by a single founder.</p>
+
+  <div class="about-grid">
+    <div class="founder-card">
+      <p>Hi, I'm Kasing. I spent years as a <strong>professional auditor at a Big 4 accounting firm</strong>, auditing public REITs, institutional developers, and complex real estate investment funds. Day after day, I saw how fragile the waterfall models were — cross-referenced Excel sheets where one broken link produced the wrong IRR and nobody caught it until the LP meeting.</p>
+      <p>I built <strong>CREDevSim</strong> to solve exactly that. By moving the mathematical engine out of spreadsheets and into a dedicated simulation, developers, investors, and analysts can stress-test complex capital stacks — multi-tier promotes, exit clawbacks, capital calls — with an intuitive, auditable interface that shows every input driving every output.</p>
+      <p style="font-style:italic;color:var(--tx-dim);margin-top:14px"><strong style="font-style:normal;color:var(--tx-sec)">Note from the Founder:</strong> Every edge case in this engine is a real deal I reviewed during my audit career. Thank you for supporting independent software.</p>
+    </div>
+    <div class="credits-card">
+      <div class="clbl">System Credits</div>
+      <div class="cr-row"><b>Development</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Design</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Programming</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Marketing</b><span>Kasing Ng</span></div>
+      <div class="cr-row"><b>Operations</b><span>Kasing Ng</span></div>
+      <div style="font-size:.7rem;color:var(--tx-dim);margin-top:12px;line-height:1.5">Built on a custom real-time financial computation engine<br>&copy; 2026 Kasing Ng — All rights reserved</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <h5>Projection Disclaimer</h5>
+    <p>This model provides mathematical estimates based on user-defined variables. Actual results will vary. IRR and MOIC are highly sensitive to exact cash flow timing and exit assumptions. This tool does not account for specific tax liabilities or legal structural nuances. All outputs are simulation estimates. Verify against a secondary audit-grade framework before presenting to institutional investors or executing LP agreements.</p>
+  </div>
+</div>
+
+</main>
+
+<!-- Sticky mobile download bar -->
+<a href="/download.html" class="mobile-cta">↓ Download Free for Windows</a>
+
+<script>
+/* ── Tab routing with deep-link + Back-button support ── */
+var VALID_TABS = ['home','engine','pricing','faq','contact','about'];
+
+function sw(tabId, el, push) {
+  if (VALID_TABS.indexOf(tabId) === -1) tabId = 'home';
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){
+    n.classList.remove('active');
+    n.removeAttribute('aria-current');
+  });
+  var panel = document.getElementById(tabId);
+  if (panel) panel.classList.add('active');
+  if (panel) panel.querySelectorAll('video.lazy-video source[data-src]').forEach(function(s){
+    s.src = s.dataset.src;
+    delete s.dataset.src;
+    var v = s.parentElement;
+    v.load();
+    v.autoplay = true;
+    v.play().catch(function(){});
+  });
+  var nav = el || document.querySelector('.nav-item[data-tab="' + tabId + '"]');
+  if (nav) { nav.classList.add('active'); nav.setAttribute('aria-current', 'page'); }
+  var main = document.querySelector('.main');
+  if (main) main.scrollTop = 0;
+  if (push !== false) history.pushState({ tab: tabId }, '', '#' + tabId);
+}
+
+/* Wire nav items: click + keyboard (Enter / Space) */
+document.querySelectorAll('.nav-item').forEach(function(item){
+  item.addEventListener('click', function(){ sw(item.dataset.tab, item); });
+  item.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sw(item.dataset.tab, item); }
+  });
+});
+
+/* In-page links that jump to a tab (e.g. "See it in action" → engine) */
+document.querySelectorAll('[data-tab-link]').forEach(function(link){
+  link.style.cursor = 'pointer';
+  function jump(){ sw(link.dataset.tabLink, null); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  link.addEventListener('click', jump);
+  link.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(); }
+  });
+});
+
+/* Native Back/Forward */
+window.addEventListener('popstate', function(e){
+  var tab = (e.state && e.state.tab) || (location.hash || '').replace('#','') || 'home';
+  sw(tab, null, false);
+});
+
+/* Open the correct tab on first load if a hash is present */
+(function(){
+  var initial = (location.hash || '').replace('#','');
+  if (initial && VALID_TABS.indexOf(initial) !== -1) sw(initial, null, false);
+})();
+
+/* ── FAQ open/close glyph ── */
+document.querySelectorAll('details.faq').forEach(function(d){
+  d.addEventListener('toggle', function(){
+    var t = d.querySelector('.faq-tog');
+    if (t) t.textContent = d.open ? '×' : '+';
+  });
+});
+
+/* ── FAQ live search ── */
+(function(){
+  var input = document.getElementById('faqSearch');
+  if (!input) return;
+  var empty = document.getElementById('faqEmpty');
+  var faqPanel = document.getElementById('faq');
+  var items = Array.prototype.slice.call(faqPanel.querySelectorAll('details.faq'));
+  var labels = Array.prototype.slice.call(faqPanel.querySelectorAll('.faq-sec-lbl'));
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var anyVisible = false;
+    items.forEach(function(d){
+      var hit = !q || d.textContent.toLowerCase().indexOf(q) !== -1;
+      d.classList.toggle('is-hidden', !hit);
+      if (hit) anyVisible = true;
+      if (q && hit) d.open = true; else if (!q) d.open = false;
+    });
+    // Hide a section label when every FAQ after it (until the next label) is hidden
+    labels.forEach(function(lbl){
+      var n = lbl.nextElementSibling, show = false;
+      while (n && !n.classList.contains('faq-sec-lbl')) {
+        if (n.classList.contains('faq') && !n.classList.contains('is-hidden')) { show = true; break; }
+        n = n.nextElementSibling;
+      }
+      lbl.classList.toggle('is-hidden', q && !show);
+    });
+    if (empty) empty.hidden = anyVisible;
+  });
+})();
+
+/* ── Pricing: monthly / yearly toggle ── */
+(function(){
+  var PLANS = {
+    monthly: { strike: '$TBD', amt: '$TBD', per: '/month', save: 'Free during beta' },
+    yearly:  { strike: '$TBD', amt: '$TBD',   per: '/year',  save: '≈ $TBD/mo · billed annually · save TBD%' }
+  };
+  var opts = document.querySelectorAll('.bill-opt');
+  var strike = document.getElementById('proStrike');
+  var amt = document.getElementById('proAmt');
+  var per = document.getElementById('proPer');
+  var save = document.getElementById('proSave');
+  if (!opts.length || !amt) return;
+
+  function apply(plan){
+    var p = PLANS[plan]; if (!p) return;
+    strike.textContent = p.strike;
+    amt.textContent = p.amt;
+    per.textContent = p.per;
+    save.textContent = p.save;
+    opts.forEach(function(o){
+      var on = o.dataset.plan === plan;
+      o.classList.toggle('active', on);
+      o.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  opts.forEach(function(o){
+    o.addEventListener('click', function(){ apply(o.dataset.plan); });
+  });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"async defer></script>
+    <meta charset="UTF-8">
+    <title>Register | Commercial Real Estate Underwriting & Development Tool</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { background: #0b0f19; color: white; font-family: sans-serif; margin: 0; height: 100vh; }
+        .nav-home { position: absolute; top: 20px; left: 20px; color: #3b82f6; text-decoration: none; font-weight: bold; font-size: 30px; }
+        .main-wrapper { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+        h1 { text-align: center; font-size: 24px; margin-bottom: 20px; }
+        .container { width: 450px; background: #1f2937; padding: 30px; border-radius: 8px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 4px; border: 1px solid #374151; background: #111827; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .terms { font-size: 12px; color: #9ca3af; margin: 10px 0; }
+        .terms a { color: #3b82f6; }
+        .login-link { text-align: center; margin-top: 15px; font-size: 14px; color: #9ca3af; }
+        .login-link a { color: #3b82f6; text-decoration: none; }
+        #msg { text-align: center; margin-top: 15px; font-size: 14px; }
+        input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    padding: 0;
+    }
+    body {background-image: url('SignupBackground.jpg');
+        background-size: cover;          /* Ensures the image fills the screen */
+        background-position: center;     /* Centers the image */
+        background-repeat: no-repeat;    /* Prevents tiling */
+        background-attachment: fixed;    /* Keeps it static */
+        color: white; 
+        font-family: sans-serif; 
+        margin: 0; 
+        height: 100vh;}
+    </style>
+</head>
+<body>
+
+    <a href="https://credevsim.com" class="nav-home">← Home</a>
+
+    <div class="main-wrapper">
+    <div class="container">
+        <h1>Register | Commercial Real Estate Underwriting & Development Tool</h1>
+        <input type="email" id="email" placeholder="Email Address">
+        <input type="password" id="password" placeholder="Password">
+        <div class="terms">
+        <label style="display: flex; align-items: center; justify-content: flex-start; cursor: pointer;"><input type="checkbox" id="terms" required> <span>I agree to the <a href="terms.html">Terms and Conditions</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="EULA.html">EULA</a>.</span></label></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADtATTgy2d34lYOH"></div>
+        <button id="signup-btn">Sign Up</button>
+        <p id="msg"></p>
+        <div class="login-link">
+            Already have an account? Login via the application <strong>CREDevSim</strong>.
+            </div>
+    </div>
+    </div>
+
+    <script>
+        // This wrapper (function() { ... })(); protects your code from errors
+        (function() {
+            // Use 'var' to prevent redeclaration errors
+            var client = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ');
+
+            document.getElementById('signup-btn').addEventListener('click', async function() {
+                var termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox.checked) {
+                    document.getElementById('msg').innerText = "Error: You must agree to the Terms and Conditions.";
+                    return;
+                }
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var msg = document.getElementById('msg');
+                
+                msg.innerText = "Signing up...";
+
+                var { error } = await client.auth.signUp({
+                    email: email,
+                    password: password,
+                });
+
+                if (error) {
+                    msg.innerText = "Error: " + error.message;
+                } else {
+                    msg.innerText = "Success! Please check your email to verify.";
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
