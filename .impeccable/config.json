@@ -10,7 +10,7 @@
           "index.html"
         ],
         "createdAt": "2026-07-23T03:36:47.956Z",
-        "reason": "User confirmed pre-existing stat-card/border-left accents are intentional site styling"
+        "reason": "User confirmed left-border-accent cards (.card-acc, .xc-issue/.xc-fix) are intentional, pre-existing site convention"
       },
       {
         "rule": "dark-glow",

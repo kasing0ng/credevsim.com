@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WBER47Q957');
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const downloadBtn = document.getElementById('download-btn');
+        if (downloadBtn) {
+          downloadBtn.addEventListener('click', function() {
+            gtag('event', 'click_download', {
+              'event_category': 'conversion',
+              'event_label': 'Microsoft Store Link'
+            });
+          });
+        }
+      });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download CREDevSim | CRE Underwriting &amp; LP/GP Waterfall Software</title>
@@ -72,7 +94,7 @@
         <h1>Download CREDevSim</h1>
         <p>Get the latest version (v1.0.4) of the institutional risk engine. Available for Windows 10/11, MacOS coming soon.</p>
 
-        <a href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" class="download-btn">Download via Microsoft Store </a>
+        <a id="download-btn" href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" class="download-btn">Download via Microsoft Store </a>
         <a href="https://github.com/kasing0ng/CREDevSim_Free/releases/download/1.0.4/CREDevSim.exe" class="download-btn">Download for Windows (.exe)</a>
         <div class="PC-note">
             <strong>Note for Microsoft Store Users:</strong> Microsoft Store might default to the base v1.0.0. Please ensure to <b>check for updates</b> in the MS Store app to update CREDevSim to the latest version (v1.0.4).

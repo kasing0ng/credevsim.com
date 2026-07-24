@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WBER47Q957');
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const downloadBtn = document.getElementById('download-btn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function() {
+        gtag('event', 'click_download', {
+          'event_category': 'conversion',
+          'event_label': 'Microsoft Store Link'
+        });
+      });
+    }
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software</title>
@@ -577,6 +599,8 @@ p{color:var(--tx-sec);line-height:1.6;font-size:.93rem}
 .v-cap{font-size:.93rem;font-weight:600;color:#fff;margin-bottom:10px}
 .v-sub{font-size:.78rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
 .demo-video{width:100%;border-radius:8px;display:block;background:var(--bg-surf);box-shadow:0 8px 32px rgba(0,0,0,.55);min-height:160px}
+.loom-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:var(--bg-surf);box-shadow:0 8px 32px rgba(0,0,0,.55)}
+.loom-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
 /* ── Screenshots ── */
 .ss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
@@ -739,7 +763,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <h1>Underwrite the capital stack.<br>Not the Excel that breaks it.</h1>
       <p class="lead">Offline, deterministic underwriting for ground-up development, S-curve construction draws, and LP/GP waterfalls, built for developers, acquisition analysts, and active LPs who verify the math themselves.</p>
       <div class="hero-actions">
-        <a href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" target="_blank" rel="noopener" class="btn btn-primary">Download on the Microsoft Store</a>
+        <a id="download-btn" href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" target="_blank" rel="noopener" class="btn btn-primary">Download on the Microsoft Store</a>
         <a class="btn btn-ghost" data-tab-link="engine" role="button" tabindex="0">See it in action →</a>
       </div>
     </div>
@@ -884,6 +908,12 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <div class="badge">Underwriting Engine</div>
   <h1>Institutional-Grade Modeling.<br>Without the Setup Overhead.</h1>
   <p class="lead">One screen, one engine. Enter your deal structure and watch the full capital stack solve itself — every promote tier, every capital call, every monthly cash flow — updated in real time.</p>
+
+  <div class="video-block">
+    <p class="v-sub">Full Walkthrough · 2.5 min</p>
+    <p class="v-cap">See the full deal build, waterfall, and outputs in one pass</p>
+    <div class="loom-wrap"><iframe src="https://www.loom.com/embed/88aef18dbf424600902961e318246cec" frameborder="0" allowfullscreen></iframe></div>
+  </div>
 
   <div class="grid-3 section-sm">
     <div class="card">
