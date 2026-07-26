@@ -25,9 +25,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software</title>
-<meta name="description" content="Native Windows desktop software for ground-up development underwriting, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring — a deterministic, offline alternative to error-prone Excel underwriting models.">
-<meta name="keywords" content="ground-up commercial real estate underwriting software, construction to perm loan refinance model, CRE waterfall model excel alternative, S-curve construction draw simulator, CRE underwriting software, LP GP waterfall calculator, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, deterministic underwriting">
+<title>CREDevSim — After-Tax CRE Deal Modeling &amp; LP/GP Waterfall Software</title>
+<meta name="description" content="Native Windows desktop CRE deal model built by a fund-audit CPA — the one that gets after-tax LP returns, depreciation recapture, 1031, and Opportunity Zone math right, for ground-up development, construction-to-perm, and LP/GP waterfalls. Deterministic and fully offline.">
+<meta name="keywords" content="after-tax CRE underwriting software, depreciation recapture model, 1031 exchange real estate model, opportunity zone real estate calculator, K-1 real estate model, ground-up commercial real estate underwriting software, construction to perm loan refinance model, S-curve construction draw simulator, LP GP waterfall calculator, real estate pro forma, promote structure, capital stack, DSCR, IRR, MOIC, deterministic underwriting">
 <meta name="author" content="Kasing Ng">
 <meta name="theme-color" content="#080d18">
 <link rel="canonical" href="https://credevsim.com/">
@@ -35,14 +35,14 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CREDevSim">
-<meta property="og:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
-<meta property="og:description" content="Enter the deal. See the capital flow. A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
+<meta property="og:title" content="CREDevSim — After-Tax CRE Deal Modeling &amp; LP/GP Waterfall Software">
+<meta property="og:description" content="The only CRE deal model built by a tax pro — accurate after-tax LP returns, depreciation recapture, 1031, and Opportunity Zone math. Deterministic desktop underwriting for ground-up development and LP/GP waterfalls. Free for Windows.">
 <meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
 <meta property="og:url" content="https://credevsim.com/">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CREDevSim — Desktop CRE Underwriting &amp; LP/GP Waterfall Software">
-<meta name="twitter:description" content="A deterministic desktop LP/GP waterfall engine for ground-up development and construction-to-perm underwriting. Free for Windows.">
+<meta name="twitter:title" content="CREDevSim — After-Tax CRE Deal Modeling &amp; LP/GP Waterfall Software">
+<meta name="twitter:description" content="Built by a fund-audit CPA: after-tax LP returns, depreciation recapture, 1031, and Opportunity Zone math done right. Deterministic desktop CRE underwriting. Free for Windows.">
 <meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
 <script type="application/ld+json">
 {
@@ -50,7 +50,7 @@
   "@type": "SoftwareApplication",
   "name": "CREDevSim",
   "url": "https://credevsim.com/",
-  "description": "Native Windows desktop underwriting software for ground-up development, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring. Runs fully offline — no browser, no cloud dependency.",
+  "description": "Native Windows desktop CRE deal model built by a fund-audit CPA, with an after-tax engine (depreciation, §1245/§1250 recapture, 1031 exchange, Opportunity Zone) for ground-up development, construction-to-perm loan refinance modeling, and LP/GP waterfall structuring. Runs fully offline — no browser, no cloud dependency.",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Real Estate Underwriting Software",
   "operatingSystem": "Windows 10, Windows 11",
@@ -68,6 +68,7 @@
   "featureList": [
     "Ground-up development, major renovation, distressed acquisition, and stabilized acquisition deal types",
     "Deterministic LP/GP waterfall engine with multi-tier promotes, GP catch-up, and exit clawback",
+    "After-tax LP/GP returns: depreciation, §1245/§1250 recapture, 1031 exchange, Opportunity Zone, K-1 income breakdown",
     "Bridge-to-perm construction financing with S-curve draw scheduling",
     "Real-time Sankey diagrams, monthly cash flow heatmaps, and IRR sensitivity analysis",
     "100% local deal data — no cloud storage or transmission"
@@ -364,7 +365,7 @@
       "name": "What is cost segregation and how does it work in the model?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cost segregation is an engineering study that reclassifies components of a building into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation in early years rather than straight-line over 27.5 or 39 years. CREDevSim lets you specify a cost segregation percentage of the depreciable basis. That portion is depreciated at the accelerated rate, producing a larger tax shield in Year 1 and smaller shields in later years. Remaining basis is depreciated straight-line over the standard recovery period."
+        "text": "Cost segregation is an engineering study that reclassifies building components into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation instead of straight-line over 27.5 or 39 years. CREDevSim models the economic effect through its Bonus Depreciation methods: you set an eligible short-life percentage of the depreciable basis (default 20%), which is front-loaded in Year 1 while the remaining basis depreciates straight-line. This is a deliberate approximation — a true cost-seg percentage requires a property-specific engineering study, which the model does not attempt to generate."
       }
     },
     {
@@ -760,8 +761,8 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <div class="home-hero">
     <div class="hero-copy">
       <div class="badge">Built by a CPA with Big&nbsp;4 fund-audit experience</div>
-      <h1>Underwrite the capital stack.<br>Not the Excel that breaks it.</h1>
-      <p class="lead">Offline, deterministic underwriting for ground-up development, S-curve construction draws, and LP/GP waterfalls, built for developers, acquisition analysts, and active LPs who verify the math themselves.</p>
+      <h1>The only CRE deal model<br>built by a tax pro.</h1>
+      <p class="lead">The one that gets your LPs' <b style="color:var(--tx-pri)">after-tax</b> return — depreciation recapture, 1031, and Opportunity Zone — actually right. Screen ten deals in the time it takes to build one spreadsheet, then hand your investment committee numbers that tie out. Built for developers, syndicators, and boutique acquisition shops raising institutional and HNW equity.</p>
       <div class="hero-actions">
         <a id="download-btn" href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" target="_blank" rel="noopener" class="btn btn-primary">Download on the Microsoft Store</a>
         <a class="btn btn-ghost" data-tab-link="engine" role="button" tabindex="0">See it in action →</a>
@@ -772,8 +773,8 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <div class="trust-row section-sm">
     <span class="trust-chip">Windows 10/11</span>
     <span class="trust-chip">100% Local, No Cloud Sync</span>
-    <span class="trust-chip">Free to Try</span>
-    <span class="trust-chip">CPA-Built Waterfall Logic</span>
+    <span class="trust-chip">After-Tax LP Returns</span>
+    <span class="trust-chip">Built by a Fund-Audit CPA</span>
   </div>
 
   <!-- Live deal snapshot — mirrors the in-app top ribbon -->
@@ -810,6 +811,51 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </a>
   </div>
 
+  <!-- ════ THE MOAT — After-Tax Engine ════ -->
+  <div class="section">
+    <p class="sec-lbl">The Moat — Built by a Tax Pro</p>
+    <h2>The after-tax number your LPs actually spend.</h2>
+    <p style="max-width:640px;margin-bottom:20px">Every rival model shows a pre-tax IRR. Your LPs don't invest pre-tax dollars. CREDevSim computes the LP's return <b style="color:var(--tx-pri)">after depreciation, recapture, and exit tax</b> — the way a fund auditor builds it, and the way an investment committee tests it.</p>
+    <div class="grid-auto">
+      <div class="card">
+        <h3>After-Tax LP IRR &amp; MOIC</h3>
+        <p>A true after-tax LP cash-flow series — not a pre-tax proxy. Depreciation shield during the hold, full tax drag at exit, NIIT (3.8%) applied by real-estate-professional status.</p>
+      </div>
+      <div class="card">
+        <h3>§1245 / §1250 Recapture — Split Correctly</h3>
+        <p>Short-life recapture at ordinary rate + NIIT; straight-line real-property recapture at the 25% capped rate with no surcharge. The split most spreadsheets quietly get wrong.</p>
+      </div>
+      <div class="card">
+        <h3>1031 Exchange + Boot</h3>
+        <p>Defers recapture and capital gain at exit, taxes the boot proportionally, and shows the deferred tax as buying power carried into the next deal's basis.</p>
+      </div>
+      <div class="card">
+        <h3>Opportunity Zone</h3>
+        <p>A 10-year hold excludes appreciation gain from federal capital-gains tax. Recapture stays taxable — modeled to the IRS rule, not glossed over.</p>
+      </div>
+      <div class="card">
+        <h3>K-1 Income Breakdown</h3>
+        <p>Ordinary income (Year 1 vs. steady-state), plus §1245 and §1250 gain at exit — the income categories your LPs' accountants ask for, computed at the asset level.</p>
+      </div>
+      <div class="card">
+        <h3>Passive-Loss Rules (§469)</h3>
+        <p>Suspends a non-professional LP's paper losses during the hold and releases them at a fully-taxable exit — correctly held back on a 1031. A senior-level detail, automated.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Honest disclosure — radical transparency -->
+  <div class="card section" style="border-left:3px solid var(--grn)">
+    <p class="sec-lbl" style="color:var(--grn)">Documented Approximations — Read Before You Trust It</p>
+    <p style="margin-bottom:16px">Amateurs hide their assumptions. Here are ours, in plain sight — each a deliberate, sponsor-grade simplification with a known ceiling:</p>
+    <div class="feat-grid">
+      <div class="feat-item">• <span><b>Equity draws</b> are scheduled per draw-period, not per calendar month.</span></div>
+      <div class="feat-item">• <span><b>Stabilized NOI is a direct input</b> — there is no lease-level rent roll (unit mix, RevPAR out of scope).</span></div>
+      <div class="feat-item">• <span><b>The cost-seg lever is a bonus-depreciation eligible %</b> — a placeholder for a real engineering study, not a substitute for one.</span></div>
+      <div class="feat-item">• <span><b>Opportunity Zone models the 10-year appreciation exclusion only</b> — not the original-gain 5/7-year deferral step-up.</span></div>
+    </div>
+  </div>
+
   <!-- NOT / IS (moved directly below hero) -->
   <div class="contrast section">
     <div class="c-not">
@@ -817,7 +863,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <ul class="c-list">
         <li><span class="c-ico" style="color:var(--red)">✕</span>A project management tool — no Gantt charts, no task boards, no milestone tracking</li>
         <li><span class="c-ico" style="color:var(--red)">✕</span>Enterprise software — no implementation team, no training program, no onboarding calls</li>
-        <li><span class="c-ico" style="color:var(--red)">✕</span>Excel with hidden formula chains, circular references, and silent cascading errors</li>
+        <li><span class="c-ico" style="color:var(--red)">✕</span>A replacement for your deep-dive Excel model — this is the fast pre-screen that runs before it, not instead of it</li>
         <li><span class="c-ico" style="color:var(--red)">✕</span>Argus — no rent roll, no lease abstraction, no $5,000/yr contract</li>
         <li><span class="c-ico" style="color:var(--red)">✕</span>A cloud platform where your confidential deal data lives on someone else's server</li>
       </ul>
@@ -838,27 +884,27 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
   <!-- Excel vs. Engine comparison -->
   <div class="section">
-    <p class="sec-lbl">Excel Model vs. Local Engine</p>
+    <p class="sec-lbl">Filter Ten Deals Before You Build One Spreadsheet</p>
     <div class="xc-grid">
-      <div class="xc-head xc-head-l">The Excel Model</div>
+      <div class="xc-head xc-head-l">The Spreadsheet First Pass</div>
       <div></div>
-      <div class="xc-head xc-head-r">CREDevSim Engine</div>
+      <div class="xc-head xc-head-r">The CREDevSim Pre-Screen</div>
 
-      <div class="xc-issue"><div class="xc-term">Circular References</div><p class="xc-def">One bad formula reference cascades through a dozen linked tabs, and nobody catches the wrong IRR until the LP meeting.</p></div>
+      <div class="xc-issue"><div class="xc-term">Hours of Setup</div><p class="xc-def">Before you know whether a deal even clears the hurdle, you're wiring tabs, linking cells, and rebuilding the waterfall from last deal's template.</p></div>
       <div class="xc-arrow">→</div>
-      <div class="xc-fix"><div class="xc-term">Deterministic, Logic-Locked Engine</div><p class="xc-def">No formula chains to break. The same inputs always produce the same outputs, with hard-coded underwriting logic instead of overridable cells.</p></div>
+      <div class="xc-fix"><div class="xc-term">Structured in Minutes</div><p class="xc-def">Type cost, debt, equity, and exit. The full capital stack, waterfall, and returns solve instantly — a go / no-go read in minutes, not an afternoon.</p></div>
 
-      <div class="xc-issue"><div class="xc-term">Recalculation Lag</div><p class="xc-def">Shift the exit cap rate and wait while a bloated workbook grinds through thousands of linked cells before the model catches up.</p></div>
+      <div class="xc-issue"><div class="xc-term">One Deal at a Time</div><p class="xc-def">Every new opportunity means another workbook, another save-as, another set of assumptions to keep straight.</p></div>
       <div class="xc-arrow">→</div>
-      <div class="xc-fix"><div class="xc-term">Instant Local Execution</div><p class="xc-def">The full capital stack, waterfall, and exit proceeds recalculate the moment you change an assumption, running entirely on your machine.</p></div>
+      <div class="xc-fix"><div class="xc-term">Screen the Whole Pipeline</div><p class="xc-def">Run deal after deal on the same engine. Kill the marginal ones early and spend your deep-underwriting hours only on the survivors.</p></div>
 
-      <div class="xc-issue"><div class="xc-term">Manual Draw Schedules</div><p class="xc-def">Construction draws get built cell-by-cell, with the S-curve timing hand-plotted and easy to misalign with the actual budget.</p></div>
+      <div class="xc-issue"><div class="xc-term">Draw Schedules by Hand</div><p class="xc-def">Construction draws get built cell-by-cell, the S-curve timing hand-plotted and easy to misalign with the actual budget.</p></div>
       <div class="xc-arrow">→</div>
       <div class="xc-fix"><div class="xc-term">S-Curve Draw Simulator</div><p class="xc-def">Bridge-to-perm draws follow a modeled S-curve automatically, tied to your construction timeline and interest carry.</p></div>
 
-      <div class="xc-issue"><div class="xc-term">Ad Hoc Waterfall Tabs</div><p class="xc-def">Promote tiers and catch-up provisions live in a side tab that quietly drifts from the actual LP/GP agreement.</p></div>
+      <div class="xc-issue"><div class="xc-term">Waterfall Rebuilt Each Time</div><p class="xc-def">Promote tiers, catch-up, and pref accrual get hand-built in a side tab for every new deal — and drift from the actual LP/GP agreement.</p></div>
       <div class="xc-arrow">→</div>
-      <div class="xc-fix"><div class="xc-term">Tier-Based Waterfall Engine</div><p class="xc-def">Preferred return, GP catch-up, and promote tiers are structured the way a Big 4 fund auditor would build and test them.</p></div>
+      <div class="xc-fix"><div class="xc-term">Waterfall Built In</div><p class="xc-def">Preferred return, GP catch-up, and promote tiers are structured the way a fund auditor would build and test them — ready on every deal.</p></div>
     </div>
   </div>
 
@@ -1091,7 +1137,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
         <li><span class="ck">✓</span> <span>Exit Clawback<span class="feat-desc">Simulate GP clawback obligations when LP didn't hit the hurdle rate over the full hold period</span></span></li>
 
         <span class="fl-grp">Analysis &amp; Workflow</span>
-        <li><span class="ck">✓</span> <span>After-Tax Returns View<span class="feat-desc">LP/GP net returns accounting for depreciation, cost segregation basis, recapture, and capital gains at exit</span></span></li>
+        <li><span class="ck">✓</span> <span>After-Tax Returns View<span class="feat-desc">LP/GP net returns accounting for depreciation, bonus-depreciation eligible basis, recapture, and capital gains at exit</span></span></li>
         <li><span class="ck">✓</span> <span>Scenario A vs B Side-by-Side<span class="feat-desc">Compare two deal structures on one screen — leverage, promote, exit cap — ideal for LP presentations</span></span></li>
         <li><span class="ck">✓</span> <span>Save / Load Deal Presets<span class="feat-desc">Archive any deal configuration and reload it later; run multiple sensitivity scenarios without re-entering inputs</span></span></li>
         <li><span class="ck">✓</span> <span>CSV Import<span class="feat-desc">Import deal inputs from a spreadsheet template — skip manual re-entry on deals you've already modeled elsewhere</span></span></li>
@@ -1386,8 +1432,8 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <details class="faq">
     <summary class="faq-q">What is cost segregation and how does it work in the model?<span class="faq-tog">+</span></summary>
     <div class="faq-body">
-      <p>Cost segregation is an engineering study that reclassifies components of a building into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation in early years rather than straight-line over 27.5 or 39 years.</p>
-      <p>CREDevSim lets you specify a cost segregation percentage of the depreciable basis. That portion is depreciated at the accelerated rate, producing a larger tax shield in Year 1 and smaller shields in later years. Remaining basis is depreciated straight-line over the standard recovery period.</p>
+      <p>Cost segregation is an engineering study that reclassifies building components into shorter-life asset classes — personal property (5-year), land improvements (15-year) — allowing accelerated depreciation instead of straight-line over 27.5 or 39 years.</p>
+      <p>CREDevSim models the <b>economic effect</b> through its Bonus Depreciation methods: you set an eligible short-life percentage of the depreciable basis (default 20%), which is front-loaded in Year 1 while the remaining basis depreciates straight-line. This is a deliberate approximation — a true cost-seg percentage requires a property-specific engineering study, which the model does not attempt to generate for you.</p>
     </div>
   </details>
 
