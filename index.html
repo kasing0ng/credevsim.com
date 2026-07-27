@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Supabase email-confirm links bake redirect_to at send time; old ones land here.
+     Bounce any auth token/error to verified.html so users always get feedback. -->
+<script>
+  (function () {
+    var h = window.location.hash;
+    if (h && (h.indexOf("access_token=") !== -1 || h.indexOf("error") !== -1) && h.indexOf("type=") !== -1) {
+      window.location.replace("/verified.html" + h);
+    }
+  })();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
 <script>
