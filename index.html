@@ -619,6 +619,15 @@ p{color:var(--tx-sec);line-height:1.6;font-size:.93rem}
 .ss-item img{width:100%;border-radius:6px;display:block;margin-bottom:6px;border:1px solid var(--bd-subtle)}
 .ss-item p{font-size:.75rem;color:var(--tx-sec)}
 
+/* ── Media gallery (A/B assets) ── */
+.media-hero{width:100%;border-radius:10px;display:block;border:1px solid var(--bd-subtle);box-shadow:0 8px 32px rgba(0,0,0,.55)}
+.band{width:100%;display:block;border-radius:8px;border:1px solid var(--bd-subtle);background:var(--bg-surf);padding:10px 14px;box-sizing:border-box}
+.spotlight{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:26px;align-items:center}
+.spotlight img{width:100%;max-height:560px;object-fit:contain;border-radius:8px;border:1px solid var(--bd-subtle);background:var(--bg-surf);display:block}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.vid-grid .v-sub{margin-bottom:8px}
+@media(max-width:640px){.spotlight{grid-template-columns:1fr}}
+
 /* ── Pricing ── */
 .p-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}
 .p-card{background:var(--bg-card);border:1px solid var(--bd-subtle);border-radius:12px;padding:26px;display:flex;flex-direction:column}
@@ -966,9 +975,17 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   <p class="lead">One screen, one engine. Enter your deal structure and watch the full capital stack solve itself — every promote tier, every capital call, every monthly cash flow — updated in real time.</p>
 
   <div class="video-block">
-    <p class="v-sub">Full Walkthrough · 2.5 min</p>
-    <p class="v-cap">See the full deal build, waterfall, and outputs in one pass</p>
-    <div class="loom-wrap"><iframe src="https://www.loom.com/embed/88aef18dbf424600902961e318246cec" frameborder="0" allowfullscreen></iframe></div>
+    <p class="v-sub">The Instrument Panel</p>
+    <p class="v-cap">One screen — capital stack, waterfall, Sankey cash flow, and returns, live</p>
+    <a href="A1hero.png" target="_blank" rel="noopener" title="Tap to view full size"><img src="A1hero.png" class="media-hero" alt="CREDevSim full dashboard — LP/GP waterfall, capital stack, Sankey cash flow and return tiles"></a>
+  </div>
+
+  <div class="video-block">
+    <p class="v-sub">Live · Real-Time Recalc</p>
+    <p class="v-cap">Change one assumption — every number and chart repaints instantly</p>
+    <video class="demo-video lazy-video" muted loop playsinline preload="none">
+      <source data-src="B1heroloop.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="grid-3 section-sm">
@@ -987,36 +1004,51 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
   </div>
 
   <div class="video-block">
-    <p class="v-sub">Live Demo · Timeline Control</p>
-    <p class="v-cap">Drag the timeline — every number in the deal updates instantly</p>
-    <video class="demo-video lazy-video" muted loop playsinline preload="none">
-      <source data-src="Timelinedrag.mp4" type="video/mp4">
-    </video>
+    <p class="v-sub">Pre-Tax ↔ After-Tax</p>
+    <p class="v-cap">The only CRE model that carries the deal all the way to the after-tax return</p>
+    <a href="A2aftertaxribbon.png" target="_blank" rel="noopener" title="Tap to view full size"><img src="A2aftertaxribbon.png" class="band" alt="After-tax return ribbon — LP IRR, MOIC, tax drag, exit tax, depreciation shield"></a>
   </div>
 
   <div class="video-block">
-    <p class="v-sub">Live Demo · Input Guidance</p>
-    <p class="v-cap">Every input and button has a tooltip — no guessing what a field means</p>
-    <video class="demo-video lazy-video" muted loop playsinline preload="none">
-      <source data-src="Input_tooltips.mp4" type="video/mp4">
-    </video>
+    <p class="v-sub">Seven Asset Classes</p>
+    <p class="v-cap">Multifamily, industrial, retail, office, hotel, mixed-use, self-storage — one engine</p>
+    <a href="A8assetclassbar.png" target="_blank" rel="noopener" title="Tap to view full size"><img src="A8assetclassbar.png" class="band" alt="Asset class selector — multifamily, industrial, retail, office, hotel, mixed-use, self-storage"></a>
   </div>
 
   <div class="video-block">
-    <p class="v-sub">Live Demo · Additional Pop-up Tools and Visualizations</p>
-    <p class="v-cap">Click the different tool buttons for a full breakdown and visualizations</p>
-    <video class="demo-video lazy-video" muted loop playsinline preload="none">
-      <source data-src="openmodals.mp4" type="video/mp4">
-    </video>
+    <p class="v-sub">Built by a Tax Pro</p>
+    <p class="v-cap">The after-tax breakdown nobody else builds</p>
+    <div class="spotlight">
+      <a href="A3taxbreakdownmodal.png" target="_blank" rel="noopener" title="Tap to view full size"><img src="A3taxbreakdownmodal.png" alt="After-tax detailed breakdown — Section 1250 recapture, Section 1231 gain, NIIT, Section 469 passive-loss suspension"></a>
+      <div>
+        <p style="font-size:.9rem;color:var(--tx-sec);line-height:1.65">Depreciation recapture under §1250, appreciation gain at long-term capital-gains rates, the 3.8% NIIT, and §469 passive-loss suspension and release — computed at the asset level and flowed straight into the LP's after-tax IRR and MOIC. Every figure traces back to a formula in the PDF audit trail.</p>
+      </div>
+    </div>
   </div>
 
   <p class="video-block" style="margin-bottom:14px">Dashboard Screens</p>
   <div class="ss-grid">
-    <div class="ss-item"><img src="Screenshot_inputs.png" alt="Deal Inputs" loading="lazy"><p>Input Panel</p></div>
-    <div class="ss-item"><img src="Screenshot_waterfall.png" alt="Waterfall" loading="lazy"><p>Waterfall Engine</p></div>
-    <div class="ss-item"><img src="Screenshot_sankey.png" alt="Sankey" loading="lazy"><p>Sankey Diagrams</p></div>
-    <div class="ss-item"><img src="Screenshot_flow.png" alt="Flow" loading="lazy"><p>Deal Flow Timeline</p></div>
-    <div class="ss-item"><img src="Screenshot_summary.png" alt="Summary" loading="lazy"><p>Deal Summary</p></div>
+    <div class="ss-item"><a href="A4sourcesuses.png" target="_blank" rel="noopener"><img src="A4sourcesuses.png" alt="Sources and Uses capital stack" loading="lazy"></a><p>Sources &amp; Uses</p></div>
+    <div class="ss-item"><a href="A5exitwaterfallsankey.png" target="_blank" rel="noopener"><img src="A5exitwaterfallsankey.png" alt="Exit waterfall Sankey diagram" loading="lazy"></a><p>Exit Waterfall</p></div>
+    <div class="ss-item"><a href="A9refieventsankey.png" target="_blank" rel="noopener"><img src="A9refieventsankey.png" alt="Refinance event Sankey flow" loading="lazy"></a><p>Refi Event Flow</p></div>
+    <div class="ss-item"><a href="A6lpirrsensitivitygrid.png" target="_blank" rel="noopener"><img src="A6lpirrsensitivitygrid.png" alt="LP IRR sensitivity grid" loading="lazy"></a><p>IRR Sensitivity</p></div>
+  </div>
+
+  <p class="video-block" style="margin:30px 0 14px">Live Demos</p>
+  <div class="vid-grid">
+    <div><p class="v-sub">Asset-Class Flip</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B2assetclassflip.mp4" type="video/mp4"></video></div>
+    <div><p class="v-sub">Pre-Tax ↔ After-Tax</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B3pretaxaftertaxtoggle.mp4" type="video/mp4"></video></div>
+    <div><p class="v-sub">Sensitivity Scrub</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B4sensitivityscrub.mp4" type="video/mp4"></video></div>
+    <div><p class="v-sub">Sankey Build</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B5sankeybuild.mp4" type="video/mp4"></video></div>
+    <div><p class="v-sub">Refi Stress Reveal</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B6refistressreveal.mp4" type="video/mp4"></video></div>
+    <div><p class="v-sub">Save / Load</p><video class="demo-video lazy-video" muted loop playsinline preload="none"><source data-src="B7saveload.mp4" type="video/mp4"></video></div>
+  </div>
+
+  <p class="video-block" style="margin:30px 0 14px">The Audit Trail — Every Number Traceable</p>
+  <div class="ss-grid">
+    <div class="ss-item"><a href="A7pdfproofpage1.png" target="_blank" rel="noopener"><img src="A7pdfproofpage1.png" alt="PDF proof sheet — returns and assumptions" loading="lazy"></a><p>Returns &amp; Assumptions</p></div>
+    <div class="ss-item"><a href="A7pdfproofpage2.png" target="_blank" rel="noopener"><img src="A7pdfproofpage2.png" alt="PDF proof sheet — exit and after-tax" loading="lazy"></a><p>Exit &amp; After-Tax</p></div>
+    <div class="ss-item"><a href="A7pdfproofpage3.png" target="_blank" rel="noopener"><img src="A7pdfproofpage3.png" alt="PDF proof sheet — deal proof detail" loading="lazy"></a><p>Deal Proof Sheet</p></div>
   </div>
 
   <!-- Visual Language -->
