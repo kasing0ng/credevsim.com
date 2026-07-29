@@ -804,11 +804,32 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </a>
   </div>
 
+  <!-- ════ SECURITY — Local-First Data Privacy ════ -->
+  <div class="section">
+    <p class="sec-lbl">Your Data Never Leaves Your Machine</p>
+    <h2>The numbers you enter, even I can never see.</h2>
+    <p style="max-width:660px;margin-bottom:20px">CREDevSim runs entirely on your own computer. Your deal inputs, saved files, and every output stay on your local hard drive — never uploaded, never synced, never transmitted. The only thing the app sends over the network is a lightweight license-check token. <b style="color:var(--tx-pri)">Your deal data never is.</b></p>
+    <div class="grid-auto">
+      <div class="card">
+        <h3>No cloud to breach</h3>
+        <p>There is no server receiving your numbers, no database holding your deal flow — nothing to leak, subpoena, or hack. The only place your confidential inputs live is your own hard drive.</p>
+      </div>
+      <div class="card">
+        <h3>Even the creator can't see it</h3>
+        <p>I built CREDevSim, and I have no technical path to your inputs — no copy on any server I control, no tracking of your deal contents. It isn't a policy promise; there's simply no pipe for your data to travel down.</p>
+      </div>
+      <div class="card">
+        <h3>Nothing to vet</h3>
+        <p>No vendor security questionnaire, no SOC&nbsp;2 review, no data-processing agreement to negotiate — because no third party ever touches your data. Institutional LPs protective of proprietary deal flow have nothing to object to.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ════ THE MOAT — After-Tax Engine ════ -->
   <div class="section">
     <p class="sec-lbl">The Moat — Built by an Auditor</p>
     <h2>The after-tax number your LPs actually spend.</h2>
-    <p style="max-width:640px;margin-bottom:20px">Every rival model shows a pre-tax IRR. Your LPs don't invest pre-tax dollars. CREDevSim computes the LP's return <b style="color:var(--tx-pri)">after depreciation, recapture, and exit tax</b> — the way a fund auditor builds it, and the way an investment committee tests it.</p>
+    <p style="max-width:640px;margin-bottom:20px">Most rival models stop at a pre-tax IRR. Your LPs don't invest pre-tax dollars. CREDevSim computes the LP's return <b style="color:var(--tx-pri)">after depreciation, recapture, and exit tax</b> — the way a fund auditor builds it, and the way an investment committee tests it.</p>
     <div class="grid-auto">
       <div class="card">
         <h3>After-Tax LP IRR &amp; MOIC</h3>
@@ -872,7 +893,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       </ul>
     </div>
   </div>
-  <div class="stat-row section-sm"><div class="stat"><span class="stat-val">~5 min</span><span class="stat-lbl">Per-Deal First Pass</span></div><div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div><div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Spreadsheets Needed</span></div><div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div><div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div></div>
+  <div class="stat-row section-sm"><div class="stat"><span class="stat-val">~5 min</span><span class="stat-lbl">Per-Deal First Pass</span></div><div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Deal Types</span></div><div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Cloud Uploads</span></div><div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Local &amp; Private</span></div><div class="stat"><span class="stat-val">Big 4</span><span class="stat-lbl">Audit-Trained Logic</span></div></div>
   <div class="how-grid"><div class="how-step"><span class="how-num">01 / INPUT</span><h3>Structure the deal</h3><p>Enter cost, debt, equity, and operating assumptions in one place.</p></div><div class="how-step"><span class="how-num">02 / TEST</span><h3>Stress the economics</h3><p>Adjust timing, rates, and exit assumptions while the waterfall recalculates.</p></div><div class="how-step"><span class="how-num">03 / SHARE</span><h3>Export the narrative</h3><p>Move from analysis to investor-ready outputs when you are ready.</p></div></div>
 
   <!-- Excel vs. Engine comparison -->
@@ -1771,7 +1792,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
   <div class="about-grid">
     <div class="founder-card">
-      <p>Hi, I'm Kasing. I spent years as a <strong>professional auditor at a Big 4 accounting firm</strong>, auditing public REITs, institutional developers, and complex real estate investment funds. Day after day, I saw how fragile the waterfall models were — cross-referenced Excel sheets where one broken link produced the wrong IRR and nobody caught it until the LP meeting.</p>
+      <p>Hi, I'm Kasing — a California-licensed CPA. I spent years as an <strong>auditor at a Big 4 firm</strong>, working through the realized financials of public REITs and real estate investment funds: the actual results, after the deals had already run. That job trains one reflex above all — distrust any number you can't trace back to its source. And auditing the back end of enough deals, I kept noticing the same gap: the pro forma that raised the capital stopped at a pre-tax IRR, and never modeled the tax that actually hit the LPs when the asset sold.</p>
       <p>I built <strong>CREDevSim</strong> to solve exactly that. By moving the mathematical engine out of spreadsheets and into a dedicated simulation, developers, investors, and analysts can stress-test complex capital stacks — multi-tier promotes, exit clawbacks, capital calls — with an intuitive, auditable interface that shows every input driving every output.</p>
       <p style="font-style:italic;color:var(--tx-dim);margin-top:14px"><strong style="font-style:normal;color:var(--tx-sec)">Note from the Founder:</strong> Every edge case in this engine is a real deal I reviewed during my audit career. Thank you for supporting independent software.</p>
       <p style="margin-top:16px"><a href="article.html" style="color:var(--acc);text-decoration:none;font-weight:600">Read: 3 Things Every CRE Model Gets Wrong About After-Tax LP Returns &rarr;</a></p>
