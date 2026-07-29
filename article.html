@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 Things Almost Every CRE Model Gets Wrong About the After-Tax LP Return | CREDevSim</title>
+<meta name="description" content="An auditor's take on the three tax errors that quietly overstate after-tax LP returns: stopping at pre-tax, lumping §1250 and §1245 recapture together, and numbers you can't trace to a source.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/article.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="3 Things Almost Every CRE Model Gets Wrong About the After-Tax LP Return">
+<meta property="og:description" content="An auditor's take on the three tax errors that quietly overstate after-tax LP returns — and how to fix them.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
+<meta property="og:url" content="https://credevsim.com/article.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3 Things Almost Every CRE Model Gets Wrong About the After-Tax LP Return">
+<meta name="twitter:description" content="An auditor's take on the three tax errors that quietly overstate after-tax LP returns — and how to fix them.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.jpg">
+<style>
+:root{
+  --bg-app:#080d18; --bg-surf:#111927; --bg-card:#17202e;
+  --bd:#243043; --acc:#C8A84A; --blue:#4a8aff;
+  --tx-pri:#e8edf4; --tx-sec:#b0bac8; --tx-dim:#7c8aa0; --grn:#1aaf80;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.72;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:34px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:.01em}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+.back:hover{color:var(--tx-pri)}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+.byline{color:var(--tx-dim);font-size:.9rem;margin:0 0 34px;font-family:var(--mono)}
+h2{color:#fff;font-size:1.35rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 14px}
+p{margin:0 0 18px}
+strong{color:var(--tx-pri);font-weight:700}
+em{color:var(--tx-pri);font-style:italic}
+blockquote{margin:26px 0;padding:16px 20px;background:var(--bg-surf);border-left:3px solid var(--acc);border-radius:6px;color:var(--tx-sec);font-size:.98rem}
+blockquote p:last-child{margin:0}
+ul{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:12px}
+hr{border:0;border-top:1px solid var(--bd);margin:44px 0 26px}
+a.inline{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(200,168,74,.4)}
+a.inline:hover{border-bottom-color:var(--acc)}
+.disclaimer{font-size:.82rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+.cta{display:block;margin:40px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(74,138,255,.3);border-radius:12px;text-decoration:none}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta span{color:var(--tx-sec);font-size:.9rem}
+.cta .go{display:inline-block;margin-top:14px;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px}
+.foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">CRE<span>DevSim</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <article>
+    <h1>3 Things Almost Every CRE Model Gets Wrong About the After-Tax LP Return</h1>
+    <p class="byline">By Kasing Ng, CPA — former Big&nbsp;4 auditor</p>
+
+    <p>I spent years as an auditor at a Big&nbsp;4 firm, on real-estate funds and REITs. Here's what that job actually is: you work in what already happened. The entity is formed, the LPA is signed, the deal is long since closed — and you trace every number in the financial statements back to a source you can point to, because a figure you can't support doesn't belong in the statements. You learn, fast, to distrust any number whose origin you can't see.</p>
+
+    <p>That gives you an unusual vantage point on these deals: you see how they actually turned out. The depreciation that was really taken. The recapture that actually hit when the asset sold. The K-1s that actually went out to the LPs. And then you glance back at the pro forma that raised the money in the first place — the forward underwriting sitting in the deal file — and notice it never modeled any of that. It stopped at a pre-tax IRR.</p>
+
+    <p>I'm not a developer, and I never underwrote these deals going in. But audit the back end of enough of them and you start seeing the same three gaps between the pitch and the reality — every one on the tax side, every one changing the number the LP actually keeps.</p>
+
+    <p>None of the three are hard to understand. Here they are.</p>
+
+    <blockquote><p><strong>Quick note before we start.</strong> This isn't an argument against Excel, and it isn't a bet against AI writing your spreadsheets. Use both. This is about the errors that survive <em>inside</em> those tools — the ones a fresh formula or a confident chatbot won't catch for you, because they're errors of <em>what you chose to model</em>, not of arithmetic. Think of this as the second set of eyes, not a replacement for the first.</p></blockquote>
+
+    <h2>1. The model stops at pre-tax</h2>
+    <p>This is the big one, and it's almost universal.</p>
+    <p>Nearly every development pro forma I came across in those deal files ends at a pre-tax IRR and a pre-tax equity multiple. The deck says "17% IRR." Everyone nods. The problem: <strong>your LP doesn't spend pre-tax dollars.</strong> They spend what's left after depreciation recapture, after capital gains, and — for most passive investors — after the 3.8% net investment income tax.</p>
+    <p>The gap between the pre-tax number you present and the after-tax number your investor actually receives is not small, and it is not constant across deals. Two deals with an identical 17% pre-tax IRR can hand the LP meaningfully different after-tax returns depending on how much depreciation was taken, how the gain splits at exit, and the investor's own tax posture.</p>
+    <p>When you show a pre-tax number and call it "the return," you're not lying — but you're showing the LP a number they will never see in their bank account. The sophisticated ones know it, and quietly discount you for it. The unsophisticated ones find out at exit, which is worse.</p>
+    <p>There's a fair objection here, and good sponsors raise it: <em>you can't model after-tax at screening, because you don't know your LPs yet.</em> One deal takes tax-exempt pension money; the next takes a taxable high-net-worth investor, or a foreign LP behind a blocker. All true — but it proves too much. You don't need anyone's personal 1040 to see the friction that hits every <em>taxable</em> dollar: recapture, capital gains, the 3.8% surtax. The honest move isn't to predict each investor's return — it's to model one <strong>standard taxable LP</strong> and hold every deal to that same after-tax baseline. And to keep that baseline honest, set it at the top: a top-federal-bracket investor paying the 3.8% NIIT. That's the conservative stress-test floor — if a deal still clears its hurdle <em>after</em> tax under top-bracket assumptions, it's bulletproof, and any lower-bracket or tax-exempt LP can only come out ahead of it. That's what makes it the apples-to-apples floor.</p>
+    <p><strong>So the fix isn't complicated: carry the deal all the way to that after-tax baseline.</strong> Depreciation shields income during the hold; the tax comes due at exit. Model both. It's more work. It's also the number that matters.</p>
+
+    <h2>2. They lump the recapture together (§1250 vs §1245)</h2>
+    <p>This one is more technical, and it's where I see even good models quietly get it wrong.</p>
+    <p>When you sell, the depreciation you took gets "recaptured" — the IRS taxes it back. But it doesn't all get taxed the same way, and this is the part spreadsheets flatten:</p>
+    <ul>
+      <li><strong>Straight-line depreciation on the real property</strong> — the building and its structural components — recaptures under <strong>§1250</strong>, taxed at a capped <strong>25%</strong> rate (the "unrecaptured §1250 gain" rate).</li>
+      <li><strong>Accelerated or bonus depreciation on personal-property components</strong> — the 5- and 7-year property a cost-segregation study carves out of the building (carpeting, fixtures, specialized electrical, equipment) — recaptures under <strong>§1245</strong>, taxed at <strong>ordinary income rates plus the 3.8% NIIT</strong> for a passive investor. That's north of 40% all-in, not 25%.</li>
+    </ul>
+    <p>If your model takes aggressive cost-segregation or bonus depreciation up front (great for early-year returns) but then recaptures <em>all</em> of it at the 25% §1250 rate at exit, <strong>it is understating the exit tax.</strong> The early-year benefit looks real; the exit cost is quietly too low; the after-tax IRR is overstated. It's the kind of error that looks fine until an LP's own accountant runs the numbers and asks a question you can't answer in the room.</p>
+    <p><strong>The fix: split the recapture.</strong> §1250 at 25%, §1245 at ordinary + NIIT, and only recapture what you actually accelerated. The two are not interchangeable, and the deals where it matters most are exactly the ones marketed on their depreciation.</p>
+
+    <h2>3. The number you can't trace</h2>
+    <p>The first two are modeling errors. This one is an audit reflex — the deepest habit the job leaves you with.</p>
+    <p>In audit, a number you can't trace is a problem by definition. It doesn't matter how reasonable it looks: if you can't follow it back to a source you can point to, it doesn't get signed off. You spend years asking one question until it becomes involuntary — <em>show me where this comes from.</em></p>
+    <p>Most underwriting models can't answer it. The final IRR is the output of forty cross-referenced sheets, one of which has a broken link nobody has opened in three months — a liability with a green cell on top. The person presenting it usually isn't dishonest; they just can't see, and can't show, where the number came from.</p>
+    <p>It surfaces at the worst possible moment: the investment committee, or an LP's analyst, asks where one cash-flow line comes from — and the sponsor is suddenly clicking through tabs, live, hunting for the formula. The number might even be right. It no longer matters. The room just watched them not know their own model.</p>
+    <p><strong>The fix is a discipline, not a feature: every number that reaches an investor should trace to a formula and an input you can point to.</strong> A number you can't show, you don't really know — you're just hoping.</p>
+
+    <h2>Why I built a tool around this</h2>
+    <p>I got tired of finding the same three problems, so I built the model I wished those deals had come in on. It's called <strong>CREDevSim</strong>. It's a desktop app — runs fully offline, nothing about your deal touches a server — and it does three specific things:</p>
+    <ul>
+      <li>It carries the deal all the way to the <strong>after-tax LP IRR and MOIC</strong>, not just pre-tax.</li>
+      <li>It <strong>splits §1250 and §1245 recapture correctly</strong>, so the exit tax on a bonus-depreciation deal isn't understated.</li>
+      <li>Every number <strong>traces to a formula</strong> you can open — the auditor's habit, built into the software.</li>
+    </ul>
+    <p>It also models §1031 exchanges, Opportunity Zone treatment, and §469 passive-loss suspension, because those change the after-tax answer too.</p>
+    <p>One honest thing, because I'd rather you trust me than oversell you: <strong>it's a modeling tool, not tax advice.</strong> The tax figures are illustrative — computed at the asset level from the rates, elections, and inputs you supply, including the share of basis you designate as cost-segregation / bonus-eligible personal property. It doesn't perform a cost-segregation study for you, and it doesn't replace your CPA — verify before you put anything in front of an LP. What it does is start you from numbers built the way an auditor would check them, instead of from a pre-tax number that was never the real one.</p>
+
+    <a class="cta" href="/">
+      <strong>CREDevSim is free.</strong>
+      <span>If any of this sounded like a spreadsheet you own, take it for a run.</span>
+      <span class="go">Try it &rarr;</span>
+    </a>
+
+    <div class="foot">
+      Kasing Ng is a California-licensed CPA and former Big&nbsp;4 auditor. CREDevSim is a financial modeling tool and does not provide audit, attestation, or tax services; the CPA credential is stated as background only. Consult your own qualified advisors before making investment or tax decisions.
+    </div>
+  </article>
+</div>
+</body>
+</html>
