@@ -6,7 +6,7 @@ I spent years auditing real estate funds and REITs at a Big 4 firm. The job is m
 
 It also gives you a specific vantage point. You see how these deals turned out: the depreciation that got taken, the recapture that hit when the asset sold, the K-1s that went out to the LPs. Then you look back at the pro forma that raised the money in the first place, the forward underwriting still sitting in the file, and you notice it modeled none of that. It stopped at a pre-tax IRR.
 
-I am not a developer, and I never underwrote these deals going in. But if you audit the back end of enough of them, the same three gaps between the pitch and the reality keep showing up. All three are on the tax side, and all three change the number the LP actually keeps.
+I am not a developer, and I never underwrote these deals going in. But if you audit the back end of enough of them, the same three gaps between the pitch and the reality keep showing up. The first two are tax errors that overstate the after-tax return the LP keeps. The third is not a tax error at all. It is what decides whether you can defend that number once you fix it.
 
 None of them are complicated, which is part of why they are so easy to skip.
 
