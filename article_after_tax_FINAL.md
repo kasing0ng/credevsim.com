@@ -39,17 +39,17 @@ If your model front-loads aggressive cost-segregation or bonus depreciation, whi
 
 The fix is to split the recapture: §1250 at 25%, §1245 at ordinary rates plus NIIT, and only recapture what you actually accelerated. The two are not interchangeable, and the deals where it matters most are the ones being marketed on their depreciation in the first place.
 
-## 3. The number you cannot trace
+## 3. The number you cannot show on the spot
 
 The first two are modeling errors. This one is more of a reflex, the deepest habit the job leaves you with.
 
 In audit, a number you cannot trace is a problem by definition. It does not matter how reasonable it looks. If you cannot follow it back to a source, it does not get signed off. You spend years asking the same question until it is involuntary: show me where this comes from.
 
-Most underwriting models cannot answer it. The final IRR is the output of forty cross-referenced tabs, and one of them has a broken link nobody has opened in three months, a liability sitting under a green cell. The person presenting it usually is not being dishonest. They just cannot see, or show you, where the number came from.
+Excel can answer that. Trace Precedents, the formula bar, and a clean tab structure will all walk you back to where a number came from. So the problem is not that spreadsheets cannot trace. It is that the tracing is slow, it lives in a file only its builder really knows, and nothing stops you from pointing a total at the wrong cell or leaving one stale link three tabs deep. The number still prints, and nothing warns you it is off.
 
-And it surfaces at the worst possible time. The investment committee, or an LP's analyst, asks where one cash-flow line comes from, and the sponsor is suddenly clicking through tabs live, hunting for the formula. The number might even be right, but at that point it does not matter, because the room just watched them not know their own model.
+And that friction shows up at the worst possible time. The investment committee, or an LP's analyst, asks where one cash-flow line comes from, and the answer becomes a live hunt through tabs and formula bars while the room waits. The number might be perfectly right. But at that point it does not matter, because everyone just watched the sponsor dig for their own number.
 
-The fix here is a discipline rather than a feature: every number that reaches an investor should trace back to a formula and an input you can point to. If you cannot show where a number comes from, you do not really know it. You are just hoping.
+The fix is not a better spreadsheet, it is a discipline: every number that reaches an investor should trace back, on the spot, to a formula and an input you can point to. If showing your work takes a scavenger hunt, you are one stale link away from not being able to show it at all.
 
 ## Why I built a tool around this
 
