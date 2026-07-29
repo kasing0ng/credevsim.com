@@ -13,6 +13,15 @@
         "reason": "User confirmed left-border-accent cards (.card-acc, .xc-issue/.xc-fix) are intentional, pre-existing site convention"
       },
       {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "article.html"
+        ],
+        "createdAt": "2026-07-29T06:30:00.000Z",
+        "reason": "Pull-quote left rule matches site house pattern (.founder-card/.er-item); confirmed intentional, not an AI-UI tell"
+      },
+      {
         "rule": "dark-glow",
         "value": "*",
         "files": [
