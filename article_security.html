@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Deal Model Is the Most Sensitive File You Own. Here's Why CREDevSim Can't See It. | CREDevSim</title>
+<meta name="description" content="An auditor's take on why your underwriting file is your most confidential document, and why CREDevSim's zero-cloud, local-first design means the tool itself has no way to see it, store it, or leak it.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/article_security.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="Your Deal Model Is the Most Sensitive File You Own. Here's Why CREDevSim Can't See It.">
+<meta property="og:description" content="Why a local-first CRE model has no way to see, store, or leak your underwriting file, from a former Big 4 auditor.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/article_security.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Deal Model Is the Most Sensitive File You Own. Here's Why CREDevSim Can't See It.">
+<meta name="twitter:description" content="Why a local-first CRE model has no way to see, store, or leak your underwriting file, from a former Big 4 auditor.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<style>
+:root{
+  --bg-app:#080d18; --bg-surf:#111927; --bg-card:#17202e;
+  --bd:#243043; --acc:#C8A84A; --blue:#4a8aff;
+  --tx-pri:#e8edf4; --tx-sec:#b0bac8; --tx-dim:#7c8aa0; --grn:#1aaf80;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.72;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:34px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:.01em}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+.back:hover{color:var(--tx-pri)}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+.byline{color:var(--tx-dim);font-size:.9rem;margin:0 0 34px;font-family:var(--mono)}
+h2{color:#fff;font-size:1.35rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 14px}
+p{margin:0 0 18px}
+strong{color:var(--tx-pri);font-weight:700}
+em{color:var(--tx-pri);font-style:italic}
+ul{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:12px}
+hr{border:0;border-top:1px solid var(--bd);margin:44px 0 26px}
+a.inline{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(200,168,74,.4)}
+a.inline:hover{border-bottom-color:var(--acc)}
+.disclaimer{font-size:.82rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+.cta{display:block;margin:40px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(74,138,255,.3);border-radius:12px;text-decoration:none}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta span{color:var(--tx-sec);font-size:.9rem}
+.cta .go{display:inline-block;margin-top:14px;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px}
+.foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">CRE<span>DevSim</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <article>
+    <h1>Your Deal Model Is the Most Sensitive File You Own. Here's Why CREDevSim Can't See It.</h1>
+    <p class="byline">By Kasing Ng, CPA, former Big&nbsp;4 auditor</p>
+
+    <p>A development model is not a neutral document. It holds your purchase price, your debt terms, your LP economics, the promote you negotiated, the earnest money and contract timelines you're working against, and, often most sensitive of all, unannounced off-market site control before a contract is even signed. In the wrong inbox that file can move a price, tip a competitor onto an assemblage, or front-run your land. Everyone who works on a deal knows this, which is why the file gets guarded, emailed carefully, kept off the shared drive.</p>
+
+    <p>So it is strange how rarely anyone asks where that file goes the moment they type it into a modeling tool.</p>
+
+    <h2>The question nobody asks the software</h2>
+    <p>Most modern software is a cloud service. You enter your numbers into a browser, and those numbers travel to a server you do not own, land in a multi-tenant database you cannot see, and are handled by systems, and the staff who administer them, under governance controls you never reviewed and cannot verify. The vendor will have a privacy policy full of words like "encrypted" and "secure." But encrypted-in-transit does not mean invisible-to-them. It means invisible to everyone <em>except</em> the company running the service. Your deal now lives on their infrastructure, subject to their access controls, their subpoenas, their breaches, and their retention policy.</p>
+    <p>For most software, that is a fair trade. For a confidential underwriting file, it is the exact exposure you spend the rest of your process trying to prevent.</p>
+
+    <h2>It has gotten sharper with AI</h2>
+    <p>Many web-based platforms now include data-use clauses in their terms of service that permit user inputs to inform downstream model training or product improvement. Read that against an underwriting file. When the input is your proprietary cap-rate assumptions, your rent-growth projections, and your return math, you have handed a third party contractual latitude over your confidential deal terms. That is a risk most deal teams never budgeted for when they clicked "I agree."</p>
+    <p>This is not about one dramatic breach. It is the quieter, structural exposure of confidential inputs living on shared infrastructure, under terms you did not write.</p>
+
+    <h2>CREDevSim is built the opposite way: architecture, not a promise</h2>
+    <p>CREDevSim uses a zero-cloud, local-first architecture. It is a native desktop application that runs on your own computer. Your inputs, your saved deal files, every output and PDF stay on your local hard drive. They are never uploaded, never synced, never transmitted.</p>
+    <p>The only time CREDevSim touches the network is for an initial sign-in and, after that, a weekly check-in with a license server to confirm your account is active. That check is the only thing that ever leaves the app, and it carries none of your deal data: no numbers, no files, nothing you typed. In between, the app runs fully offline for up to seven days, so you can model a deal on a plane and your work never waits on a connection. There is no server receiving your numbers and no database holding your deal flow. Because that data never leaves your machine, there is nothing on my end to leak, breach, or hand over.</p>
+
+    <h2>Even I cannot see it</h2>
+    <p>People ask whether I can see their inputs. I cannot. Not "I promise not to look." I have no technical path to them.</p>
+    <p>As a former Big&nbsp;4 auditor, I know exactly what a real system audit trail looks like, because reconstructing one was my job. So I built the opposite on purpose: there is no telemetry on your underwriting cells, no event log of your assumptions, no server-side copy to reconstruct. There is no server in that loop at all. That is not a matter of trusting me. The plumbing does not exist.</p>
+
+    <h2>Nothing to vet, and no calendar to lose</h2>
+    <p>There is a quieter benefit for anyone raising institutional money, and it is measured in weeks. Institutional LPs love SOC 2 compliance, right up until their internal IT security team sits on your vendor questionnaire for three weeks while your capital raise waits. When your data never leaves your machine, there is no vendor to onboard, no SOC 2 report to hand your LP's counsel, no data-processing agreement to negotiate, no sub-processor questionnaire to answer. A third party never touches the data, so there is no third party to vet. An LP protective of proprietary deal flow has nothing to object to, and nothing sits between your model and your investment committee.</p>
+
+    <h2>The honest boundary</h2>
+    <p>I will be precise, because overselling security is its own red flag. What CREDevSim controls is the <strong>application layer</strong>: the software gives your deal data no way out. It cannot send what it was never built to send. What it does not control is your <strong>endpoint</strong>, the machine itself. That is the same responsibility you already carry for every Excel file on your drive, and it is handled the same way: standard full-disk encryption (BitLocker on Windows, FileVault on Mac) protects the device, and because the deal files are ordinary local files, they work with your normal backup routine (OneDrive, Time Machine, or your firm's managed backup), so local-first never means you are one dead laptop away from losing a deal.</p>
+    <p>The distinction matters: I am not claiming to secure your hardware. I am guaranteeing something narrower and, I think, more valuable: that the tool itself never becomes the leak.</p>
+    <p>I spent years being handed other people's most sensitive financials and trusted to handle them carefully. When I built CREDevSim, the version of "careful" I wanted was not a longer privacy policy. It was a design that does not require trust, because the data never leaves your hands in the first place.</p>
+
+    <a class="cta" href="/download.html">
+      <strong>CREDevSim is free and runs entirely on your machine.</strong>
+      <span>If your deal data is the kind of thing you would never email without thinking twice, that is exactly who it is built for.</span>
+      <span class="go">Download and run your next deal locally &rarr;</span>
+    </a>
+
+    <div class="foot">
+      Kasing Ng is a California-licensed CPA and former Big&nbsp;4 auditor. CREDevSim is a financial modeling tool and does not provide security, audit, or legal advice; the descriptions above concern how the application handles data and are not a warranty. Consult your own advisors regarding your data-security obligations.
+    </div>
+  </article>
+</div>
+</body>
+</html>
