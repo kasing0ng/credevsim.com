@@ -1120,11 +1120,6 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
   </div>
 
-  <div class="bill-toggle" role="group" aria-label="Billing period">
-    <button type="button" class="bill-opt active" data-plan="monthly" aria-pressed="true">Monthly</button>
-    <button type="button" class="bill-opt" data-plan="yearly" aria-pressed="false">Yearly <span class="bill-badge">Save TBD%</span></button>
-  </div>
-
   <div class="p-grid section">
     <div class="p-card">
       <div class="p-name">Free</div>
@@ -1149,13 +1144,12 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
 
     <div class="p-card featured">
-      <div class="p-chip">Beta · Founder Pricing</div>
+      <div class="p-chip">14-Day Pro Trial · No Card</div>
       <div class="p-name">Pro Simulation</div>
       <div class="p-desc">Complete institutional architecture for developers, GPs, and analysts who need the full toolkit.</div>
       <div class="p-price">
-        <div class="p-strike" id="proStrike">$TBD</div>
-        <div class="p-amt"><span id="proAmt">$TBD</span> <sub id="proPer">/month</sub></div>
-        <div class="p-save" id="proSave">Founder rate, Free during beta</div>
+        <div class="p-amt">Free <sub>for 14 days</sub></div>
+        <div class="p-save">Then free forever, or upgrade when paid plans launch.</div>
       </div>
       <div class="p-note">Every new account starts with 14 days of full Pro, no credit card. Pro pricing is set at public launch, join the waitlist to lock founder pricing. <a href="signup.html">Join the waitlist →</a></div>
       <ul class="fl">
@@ -1186,7 +1180,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
         <li><span class="ck">✓</span> <span>Perm Loan Refinements<span class="feat-desc">Set amortization schedule, IO period, refi closing cost, and Debt Yield gate independently from the bridge loan</span></span></li>
         <li><span class="ck">✓</span> <span>Underwriting Hard Gates<span class="feat-desc">Enforce minimum DSCR, Debt Yield, and LTV constraints, the engine flags violations before you export</span></span></li>
       </ul>
-      <a href="signup.html" class="btn">Join Beta Waitlist → (Please email me)</a>
+      <a href="/download.html" class="btn">Download &amp; Start Your 14-Day Pro Trial →</a>
     </div>
   </div>
 </div>
@@ -1939,35 +1933,6 @@ document.querySelectorAll('details.faq').forEach(function(d){
   });
 })();
 
-/* ── Pricing: monthly / yearly toggle ── */
-(function(){
-  var PLANS = {
-    monthly: { strike: '$TBD', amt: '$TBD', per: '/month', save: 'Free during beta' },
-    yearly:  { strike: '$TBD', amt: '$TBD',   per: '/year',  save: '≈ $TBD/mo · billed annually · save TBD%' }
-  };
-  var opts = document.querySelectorAll('.bill-opt');
-  var strike = document.getElementById('proStrike');
-  var amt = document.getElementById('proAmt');
-  var per = document.getElementById('proPer');
-  var save = document.getElementById('proSave');
-  if (!opts.length || !amt) return;
-
-  function apply(plan){
-    var p = PLANS[plan]; if (!p) return;
-    strike.textContent = p.strike;
-    amt.textContent = p.amt;
-    per.textContent = p.per;
-    save.textContent = p.save;
-    opts.forEach(function(o){
-      var on = o.dataset.plan === plan;
-      o.classList.toggle('active', on);
-      o.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-  }
-  opts.forEach(function(o){
-    o.addEventListener('click', function(){ apply(o.dataset.plan); });
-  });
-})();
 
 </script>
 </body>
