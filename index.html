@@ -530,6 +530,8 @@ body{font-family:var(--font);background:var(--bg-app);color:var(--tx-pri);displa
 .nav-item{padding:9px 13px;font-size:.87rem;font-weight:500;color:var(--tx-sec);border-radius:6px;cursor:pointer;transition:color .15s,background .15s;user-select:none}
 .nav-item:hover{background:rgba(255,255,255,.04);color:#fff}
 .nav-item.active{background:var(--acc);color:#fff}
+.nav-link{display:block;padding:9px 13px;font-size:.87rem;font-weight:600;color:var(--acc);border-radius:6px;text-decoration:none;transition:color .15s,background .15s}
+.nav-link:hover{background:rgba(200,168,74,.12);color:#fff}
 .sidebar-foot{padding-top:14px;border-top:1px solid var(--bd-subtle);font-size:.7rem;color:var(--tx-dim);line-height:1.5}
 
 /* ── Main ── */
@@ -761,6 +763,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     <div class="nav-list" role="tablist">
       <div class="nav-item active" role="tab" tabindex="0" aria-current="page" data-tab="home">Home</div>
       <div class="nav-item" role="tab" tabindex="0" data-tab="engine">Underwriting Engine</div>
+      <a class="nav-link" href="advisory.html">Work With a CPA</a>
       <div class="nav-item" role="tab" tabindex="0" data-tab="pricing">Pricing &amp; Downloads</div>
       <div class="nav-item" role="tab" tabindex="0" data-tab="faq">Resources &amp; FAQ</div>
       <div class="nav-item" role="tab" tabindex="0" data-tab="contact">Contact &amp; Policies</div>
@@ -797,6 +800,14 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     <span class="trust-chip">Built by a Fund-Audit CPA</span>
     <span class="trust-chip">14 Days of Pro Free · No Card</span>
   </div>
+
+  <!-- ════ ADVISORY CTA, the CPA behind the tool ════ -->
+  <a href="advisory.html" class="card section" style="display:block;text-decoration:none;border-color:rgba(200,168,74,.35);background:linear-gradient(145deg,#1a2438 0%,#121b2b 100%)">
+    <p class="sec-lbl" style="color:var(--acc)">Work directly with the CPA who built it</p>
+    <h2 style="margin-bottom:10px">Need a second set of eyes on your deal's tax structure?</h2>
+    <p style="max-width:680px;margin-bottom:14px">With 100% bonus depreciation back for 2025, the year-one tax benefit on a new acquisition can be enormous, and easy to get wrong. I model it for your deal, then handle cost segregation planning, 1031s, and reviewing your partnership return and K-1s before they reach investors. Built for GPs, syndicators, and developers.</p>
+    <span class="btn btn-sm">Explore CRE tax advisory &rarr;</span>
+  </a>
 
   <!-- Real screenshot proof, the actual dark-mode Instrument Panel, not a mockup -->
   <div class="card section" style="padding:6px">
