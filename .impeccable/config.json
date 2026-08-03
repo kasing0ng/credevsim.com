@@ -16,7 +16,7 @@
         "rule": "side-tab",
         "value": "*",
         "files": [
-          "article.html"
+          "after-tax-returns.html"
         ],
         "createdAt": "2026-07-29T06:30:00.000Z",
         "reason": "Pull-quote left rule matches site house pattern (.founder-card/.er-item); confirmed intentional, not an AI-UI tell"
