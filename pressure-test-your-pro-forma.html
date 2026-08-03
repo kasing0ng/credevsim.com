@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bad Markets Punish Sloppy Math. Good Markets Just Hide It. | CREDevSim</title>
+<meta name="description" content="A former Big 4 auditor on why a repricing CRE market exposes the pro forma errors that a rising market forgave, and why a second set of eyes on the math is cheap insurance before you commit millions.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/pressure-test-your-pro-forma.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="Bad Markets Punish Sloppy Math. Good Markets Just Hide It.">
+<meta property="og:description" content="Why a repricing CRE market exposes the pro forma errors a rising market forgave, from a former Big 4 auditor.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/pressure-test-your-pro-forma.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bad Markets Punish Sloppy Math. Good Markets Just Hide It.">
+<meta name="twitter:description" content="Why a repricing CRE market exposes the pro forma errors a rising market forgave, from a former Big 4 auditor.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<style>
+:root{
+  --bg-app:#080d18; --bg-surf:#111927; --bg-card:#17202e;
+  --bd:#243043; --acc:#C8A84A; --blue:#4a8aff;
+  --tx-pri:#e8edf4; --tx-sec:#b0bac8; --tx-dim:#7c8aa0; --grn:#1aaf80;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.72;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:34px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:.01em}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+.back:hover{color:var(--tx-pri)}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+.byline{color:var(--tx-dim);font-size:.9rem;margin:0 0 34px;font-family:var(--mono)}
+h2{color:#fff;font-size:1.35rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 14px}
+p{margin:0 0 18px}
+strong{color:var(--tx-pri);font-weight:700}
+em{color:var(--tx-pri);font-style:italic}
+ul{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:12px}
+hr{border:0;border-top:1px solid var(--bd);margin:44px 0 26px}
+a.inline{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(200,168,74,.4)}
+a.inline:hover{border-bottom-color:var(--acc)}
+.disclaimer{font-size:.82rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+sup.fn{font-size:.7em;font-weight:600;line-height:0}
+sup.fn a{color:var(--acc);text-decoration:none;margin-left:1px}
+.sources{margin-top:48px;padding-top:24px;border-top:1px solid var(--bd)}
+.sources h2{font-size:1.1rem;margin:0 0 16px}
+.sources ol{padding-left:20px;margin:0}
+.sources li{font-size:.85rem;color:var(--tx-dim);margin-bottom:11px;line-height:1.55}
+.sources a{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(200,168,74,.35);word-break:break-word}
+.cta{display:block;margin:40px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(74,138,255,.3);border-radius:12px;text-decoration:none}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta span{color:var(--tx-sec);font-size:.9rem}
+.cta .go{display:inline-block;margin-top:14px;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px}
+.foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">CRE<span>DevSim</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <article>
+    <h1>Bad Markets Punish Sloppy Math. Good Markets Just Hide It.</h1>
+    <p class="byline">By Kasing Ng, CPA, former Big&nbsp;4 auditor</p>
+
+    <p>There is a division of labor in commercial real estate that almost nobody says out loud. Sponsors find the dirt. Brokers find the buyers. Lenders push the paper. Everyone in that chain is good at their piece, and the deal moves because each of them does their job well. But there is one job that sits under all of it and belongs to no one in particular: being able to look a pro forma in the eye and say whether it will survive contact with reality.</p>
+
+    <p>Very few people in this industry actually do that job. Not because they are careless, but because for most of the last fifteen years, they did not have to.</p>
+
+    <h2>A rising market is a very forgiving editor</h2>
+    <p>When rents are climbing and cap rates are compressing, the math almost does not matter. An optimistic rent-growth assumption gets bailed out by an even more optimistic market. A thin exit is rescued by a lower exit cap than you underwrote. A refinance that looked tight closes easily because values kept moving your way. In that environment, a sloppy model and a rigorous one produce roughly the same outcome, which is a good one, and the difference between the two disappears into the return.</p>
+    <p>That is the trap. A great market does not reward good underwriting. It hides the absence of it. The mistakes are still in the model. They are just being paid for by momentum instead of by you.</p>
+
+    <h2>The market that forgave everything has changed</h2>
+    <p>The momentum has stopped, and the timing is not gentle. By most counts, somewhere between half a trillion and a trillion dollars of commercial real estate debt matures in 2026 alone.<sup class="fn"><a href="#s1">1</a></sup> The estimates vary widely, which itself tells you something: the people who track this for a living cannot fully agree on the size of the wall. What they do agree on is the shape of the problem. A large share of that debt was written in the 2010s at three and four percent, on aggressive leverage and generous valuations, and it is now trying to refinance into a world of six and seven percent, stricter debt-service coverage, and lenders offering less proceeds against a lower value.</p>
+    <p>The strain is already visible where it shows up first. CMBS delinquencies have climbed toward seven percent, several times the rate on comparable bank loans,<sup class="fn"><a href="#s2">2</a></sup> and the Mortgage Bankers Association counted roughly $384&nbsp;billion of maturing loans that lenders extended rather than resolve.<sup class="fn"><a href="#s3">3</a></sup> "Extend and pretend" was the defining move of 2024 and 2025.<sup class="fn"><a href="#s4">4</a></sup> It did not fix anything. It moved the problem into 2026 and made the pile bigger.</p>
+
+    <h2>Here is the part most people are missing</h2>
+    <p>The prices have not caught up to the reality yet, and that gap is the most dangerous thing in the market right now, precisely because it is invisible.</p>
+    <p>When almost nothing trades, there are almost no fresh comps, and without comps there is no honest evidence of where a building would actually clear today. Owners still anchor to the value they carried in 2022. Buyers price in today's cost of capital. The two numbers do not meet, so deals do not happen, and the absence of transactions becomes its own kind of false comfort: no sale means no new low mark, and no new low mark means the spreadsheet can keep carrying the old number.</p>
+    <p>Appraisals make it worse, not better. A valuation that leans on periodic appraisals carries a built-in lag. In markets where cap rates have widened 150 to 200 basis points inside an eighteen-month window,<sup class="fn"><a href="#s5">5</a></sup> a loan underwritten at 65% of a 2022 appraisal may already be materially undercollateralized, and neither the lender nor the borrower will see it on paper until the next appraisal cycle forces the mark. A great many existing properties are simply not appraised to their true value yet. The number on the page is not wrong because someone lied. It is wrong because reality has moved and the paperwork has not.</p>
+    <p>None of this is a reason to panic, and I am not in the business of selling fear. It is a reason to be exact. The market has quietly switched from the forgiving editor to the strict one, and the models being run on next year's deals were mostly built with habits formed during the forgiving years.</p>
+
+    <h2>Where the sloppy math actually hides</h2>
+    <p>When I review a pro forma, the errors are rarely dramatic. They are small, reasonable-looking assumptions that each shave a little risk off the page and compound into a return that cannot happen. Watch for:</p>
+    <ul>
+      <li><strong>The optimistic exit cap.</strong> Underwriting an exit at or below your going-in cap is a bet that the market will be friendlier when you sell than when you bought. That is not a baseline, and it is often the single biggest driver of the whole return.</li>
+      <li><strong>Straight-line rent growth.</strong> Three percent forever is a modeling convenience, not a forecast. It rarely survives a real lease-up curve, concessions, or a soft year two.</li>
+      <li><strong>The legacy refinance.</strong> A take-out sized on yesterday's rates and yesterday's proceeds can become a capital call nobody budgeted for, or a gap that wipes the promote.</li>
+      <li><strong>Coverage only at stabilization.</strong> A deal does not have to survive the year it works. It has to survive the year it does not, and coverage during lease-up or free rent is where thin deals actually break.</li>
+      <li><strong>Thin reserves and a pre-tax headline.</strong> Undersized reserves flatter cash flow, and a return quoted before tax overstates what the LP actually keeps. Both make the deal look better than the one the investor lives in.</li>
+    </ul>
+    <p>Any one of these can be defensible. The problem is that they tend to travel together, all leaning the same optimistic direction, and the model that results is not lying so much as hoping.</p>
+
+    <h2>The most expensive assumption is the one you want to be true</h2>
+    <p>Notice that every item on that list leans the same way. That is not an accident, and it points at the real failure, which is not arithmetic but judgment.</p>
+    <p>The biggest mistake underwriters make is falling in love with the broker's narrative. The offering memorandum is a sales document. It is built to make the deal feel inevitable, and by the time the numbers reach your model they arrive wrapped in a story about a submarket that only moves one way and a business plan that has never missed.</p>
+    <p>Your job is to be aggressively objective with your inputs. Every assumption you did not independently verify is the seller's assumption until you prove otherwise. Strip the story out, feed the model what you can defend rather than what you hope, and see whether the deal still works on the numbers alone. If it only pencils on the broker's version of the future, you have not found a good deal. You have found a good pitch.</p>
+
+    <h2>The cheapest line item in the whole deal</h2>
+    <p>Here is the case I would make to anyone about to commit real money to a project. You will spend on legal, on environmental, on a survey, on a property-condition report. Every one of those is a second opinion on something you cannot afford to be wrong about. The math is the one thing that determines whether the deal makes money at all, and it is the thing most often checked by the same person who built it and wants it to work.</p>
+    <p>An independent review is not a vote of no confidence in your sponsor. It is the same basic hygiene you already apply to the title and the roof. Someone whose only job is to find the assumption that does not hold, who has no fee riding on the deal closing and no reason to want the answer to be yes, will either confirm the deal is sound, which lets you commit with real conviction, or find the one number that quietly breaks it, which is the cheapest expensive lesson you will ever get.</p>
+    <p>That is the layer I provide. I am a California-licensed CPA and a former Big&nbsp;4 auditor, and reconstructing and stress-testing other people's numbers was literally my job for years. I built CREDevSim, a genuine after-tax CRE model, because I wanted the underwriting layer done for real rather than guessed. When I look at your deal, I am not reading it off a template. I am reading it off an engine I wrote, and I am looking for the assumption that will not survive contact with the market we are actually in.</p>
+    <p>In a market that forgives nothing, a second pair of eyes on the math before the money moves is not caution. It is just good business.</p>
+
+    <a class="cta" href="/advisory.html">
+      <strong>Before you commit millions, have someone check the math.</strong>
+      <span>Tell me what deal you are underwriting and I will tell you honestly whether the numbers hold, with clear, fixed pricing before a single spreadsheet is opened. No obligation.</span>
+      <span class="go">See how the advisory works &rarr;</span>
+    </a>
+
+    <div class="sources">
+      <h2>Sources</h2>
+      <ol>
+        <li id="s1">2026 maturity-wall estimates vary widely by source. CoStar reports a widely cited figure near $1.26&nbsp;trillion, while other trackers place 2026 maturities closer to the $540&nbsp;billion&ndash;$950&nbsp;billion range. <a href="https://www.costar.com/article/1122236114/why-commercial-property-pros-say-a-looming-1-26-trillion-debt-wall-can-be-scaled" target="_blank" rel="noopener">CoStar, "Why commercial property pros say a looming $1.26 trillion debt wall can be scaled"</a>; <a href="https://www.credaily.com/briefs/maturing-debt-drives-2026-cre-distress/" target="_blank" rel="noopener">CRE Daily, "Maturing Debt Drives 2026 CRE Distress."</a></li>
+        <li id="s2">CMBS delinquency rates near 7%, several times the rate on comparable bank loans. <a href="https://www.credaily.com/briefs/debt-maturities-rise-amid-2026-cre-pressure/" target="_blank" rel="noopener">CRE Daily, "Debt Maturities Rise Amid 2026 CRE Pressure."</a></li>
+        <li id="s3">Roughly $384&nbsp;billion of maturing loans extended into 2025, per the Mortgage Bankers Association. <a href="https://www.commercialsearch.com/news/why-cre-transaction-volumes-so-low/" target="_blank" rel="noopener">Commercial Property Executive, "Why CRE's Transaction Volume Is So Low."</a></li>
+        <li id="s4">On "extend and pretend" as a systemic practice across the U.S. CRE market. <a href="https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr1130.pdf" target="_blank" rel="noopener">Federal Reserve Bank of New York staff report, "Extend-and-Pretend in the U.S. CRE Market."</a></li>
+        <li id="s5">Cap-rate expansion of 150&ndash;200 basis points within 18-month windows and the resulting appraisal-lag and undercollateralization risk, referencing the Federal Reserve's CRE Price Index through Q3&nbsp;2025. <a href="https://www.unitedstatesrealestateinvestor.com/united-states-cre-valuation-blind-spots-raise-risk/" target="_blank" rel="noopener">United States Real Estate Investor, "CRE Valuation Blind Spots Raise Risk."</a></li>
+      </ol>
+    </div>
+
+    <div class="foot">
+      Kasing Ng is a California-licensed CPA and former Big&nbsp;4 auditor. This article is general commentary, not tax, legal, or investment advice, and no client relationship is formed until a written engagement letter is signed. Market figures cited are drawn from public sources current as of publication and are subject to change; readers should verify current data before acting. Every deal turns on its own facts.
+    </div>
+  </article>
+</div>
+</body>
+</html>
