@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://credevsim.com/1031-exchanges-at-the-fund-level.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://credevsim.com/signup.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
