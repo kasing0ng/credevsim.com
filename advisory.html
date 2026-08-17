@@ -132,6 +132,10 @@ a.inline:hover{border-bottom-color:var(--acc)}
 .cta .go{display:inline-block;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.98rem;padding:13px 26px;border-radius:7px;text-decoration:none}
 .cta .alt{display:block;margin-top:14px;font-size:.85rem;color:var(--tx-dim)}
 .cta .alt a{color:var(--tx-sec)}
+.bio{display:flex;gap:20px;align-items:center;margin:10px 0 20px;background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:18px 20px}
+.bio img{width:96px;height:96px;border-radius:12px;object-fit:cover;border:1px solid var(--bd);flex-shrink:0}
+.bio .nm{color:#fff;font-weight:700;font-size:1.05rem}
+@media(max-width:560px){.bio{flex-direction:column;gap:14px;text-align:center}}
 .foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
 @media(max-width:560px){h1{font-size:1.62rem}.sub{font-size:1rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}}
 </style>
@@ -145,7 +149,7 @@ a.inline:hover{border-bottom-color:var(--acc)}
 
   <h1>CRE Tax Advisory for Developers and Syndicators, from a CPA Who Builds the Model</h1>
   <p class="sub">Cost segregation and 100% bonus depreciation planning, 1031 exchanges, K-1 and partnership-return review, and after-tax deal modeling. I do the tax layer most CRE models get wrong, and I built the software that proves the math.</p>
-  <p class="byline">Kasing Ng, CPA, former Big&nbsp;4 auditor</p>
+  <p class="byline" style="display:flex;align-items:center;gap:10px"><img src="kasing_ng.png" alt="Kasing Ng" width="34" height="34" style="border-radius:50%;object-fit:cover;border:1px solid var(--bd)"><span>Kasing Ng, CPA, former Big&nbsp;4 auditor</span></p>
 
   <div class="banner">
     <span class="tag">Why now</span>
@@ -211,6 +215,10 @@ a.inline:hover{border-bottom-color:var(--acc)}
   </div>
 
   <h2>Why work with me</h2>
+  <div class="bio">
+    <img src="kasing_ng.png" alt="Kasing Ng, CPA" width="96" height="96">
+    <p style="margin:0"><span class="nm">Kasing Ng, CPA</span><br><span style="color:var(--tx-dim);font-size:.92rem">California license&nbsp;139270 &middot; Former Big&nbsp;4 auditor &middot; Builder of CREDevSim</span></p>
+  </div>
   <p>I am a California-licensed CPA and a former Big&nbsp;4 auditor. Most CRE models are built by people who are excellent at the deal and shaky on the tax, so the after-tax number, the part your investors actually keep, is the part that gets guessed. I built CREDevSim to do that layer for real: a genuine after-tax engine covering 1031 exchanges, §1245 and §1250 recapture, passive-loss limits, opportunity zones, and bonus depreciation. When I advise on your deal, I am not reading it off a spreadsheet template. I am reading it off an engine I wrote and can stand behind.</p>
   <p>If you want the background, here is <a class="inline" href="after-tax-returns.html">how most models get after-tax LP returns wrong</a>, and <a class="inline" href="article_security.html">why your deal data never leaves your machine</a> when you model it in CREDevSim.</p>
 
