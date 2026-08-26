@@ -125,6 +125,11 @@ a.inline:hover{border-bottom-color:var(--acc)}
 .banner{background:linear-gradient(145deg,#1a2438 0%,#121b2b 100%);border:1px solid rgba(200,168,74,.35);border-radius:12px;padding:20px 22px;margin:0 0 30px}
 .banner .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
 .banner p{margin:0;color:var(--tx-sec);font-size:.98rem}
+.wins{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 30px}
+.wins > div{background:var(--bg-card);border:1px solid var(--bd);border-radius:10px;padding:15px 16px}
+.wins strong{display:block;color:#fff;font-size:.98rem;margin-bottom:5px}
+.wins p{margin:0;font-size:.88rem;color:var(--tx-sec);line-height:1.55}
+@media(max-width:640px){.wins{grid-template-columns:1fr}}
 .pillar-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 2px}
 .offer-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:8px 0 20px}
 .offer-card{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:22px 22px}
@@ -164,9 +169,15 @@ a.inline:hover{border-bottom-color:var(--acc)}
     <a class="back" href="/">&larr; Home</a>
   </div>
 
-  <h1>The Financial Layer Behind Your Deal, from a CPA Who Builds the Model</h1>
-  <p class="sub">After-tax and cost-segregation modeling, underwriting and waterfall review, IC and investor packages, and the ongoing fund finance most small sponsors have no back office for. One CPA and former Big&nbsp;4 auditor across the whole numbers side of your deal. The deal analytics run on CREDevSim, the underwriting engine I built and can stand behind; the fund books and reporting I keep by hand, the way an auditor does.</p>
+  <h1>Your model stops at pre-tax. I carry it to the number your LPs keep.</h1>
+  <p class="sub">I'm a CPA and former Big&nbsp;4 auditor who works the numbers side of your deal. Your analyst builds the pro forma; I take it the rest of the way, to the after-tax LP return, the recapture at exit, and a package that holds up when investors start asking questions. Because I don't broker the deal or earn a commission on it, the read stays independent of whether you buy.</p>
   <p class="byline" style="display:flex;align-items:center;gap:10px"><img src="kasing_ng.png" alt="Kasing Ng" width="34" height="34" style="border-radius:50%;object-fit:cover;border:1px solid var(--bd)"><span>Kasing Ng, CPA, former Big&nbsp;4 auditor</span></p>
+
+  <div class="wins">
+    <div><strong>A raise investors trust</strong><p>Numbers that hold up because they trace back to the model.</p></div>
+    <div><strong>No surprise on the K-1</strong><p>The exit-tax hit modeled up front, not felt at sale.</p></div>
+    <div><strong>Sharp on the IC and LP call</strong><p>Every figure easy to point back to when someone asks.</p></div>
+  </div>
 
   <div class="banner">
     <span class="tag">Why now</span>
@@ -286,7 +297,7 @@ a.inline:hover{border-bottom-color:var(--acc)}
     <img src="kasing_ng.png" alt="Kasing Ng, CPA" width="96" height="96">
     <p style="margin:0"><span class="nm">Kasing Ng, CPA</span><br><span style="color:var(--tx-dim);font-size:.92rem">California license&nbsp;139270 &middot; Former Big&nbsp;4 auditor &middot; Builder of CREDevSim</span></p>
   </div>
-  <p>I am a California-licensed CPA and a former Big&nbsp;4 auditor, so my instinct is the same one an auditor has: does this number tie, and can I defend it. Most CRE models are built by people who are excellent at the deal and shaky on the numbers behind it, so the after-tax return, the capital accounts, and the reporting, the parts your investors actually live with, are the parts that get guessed. I built CREDevSim to do the modeling for real: a genuine after-tax engine covering 1031 exchanges, §1245 and §1250 recapture, passive-loss limits, opportunity zones, and bonus depreciation, on top of full underwriting, capital stack, and waterfall math. When I advise on your deal, I am reading it off an engine I wrote. When I keep your fund's books, I am doing it with the same standard I was trained to audit against.</p>
+  <p>I am a California-licensed CPA and a former Big&nbsp;4 auditor, so my instinct is the same one an auditor has: does this number tie, and can I defend it. Most CRE models are built by people who are excellent at the deal and shaky on the numbers behind it, so the after-tax return, the capital accounts, and the reporting, the parts your investors actually live with, are the parts that get guessed. I built CREDevSim to do the modeling for real: a genuine after-tax engine covering 1031 exchanges, §1245 and §1250 recapture, passive-loss limits, opportunity zones, and bonus depreciation, on top of full underwriting, capital stack, and waterfall math. When I advise on your deal, I am reading it off an engine I wrote. When I keep your fund's books, I am doing it with the same standard I was trained to audit against. And because I don't broker your deal or earn a commission on it, the read you get is independent of whether you end up buying.</p>
   <p>If you want the background, here is <a class="inline" href="after-tax-returns.html">how most models get after-tax LP returns wrong</a>, and <a class="inline" href="article_security.html">why your deal data never leaves your machine</a> when you model it in CREDevSim.</p>
 
   <div class="cta">
