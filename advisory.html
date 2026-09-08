@@ -75,6 +75,11 @@
     },
     {
       "@type": "Question",
+      "name": "My CPA already handles my taxes. Why do I need you?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your CPA files the return and produces the K-1s, which is compliance work. What usually goes unaddressed is the planning: modeling the after-tax LP return before the raise, screening whether a cost segregation study actually pays off, and catching depreciation left on older holds that a Form 3115 can still recover in one year without amending prior returns. Most compliance preparers do not raise these because they sit outside the annual filing engagement. I am the independent second read on the deal's tax posture, and I hand what I find to your preparer to put on the return. I do not file returns, and I do not replace your CPA." }
+    },
+    {
+      "@type": "Question",
       "name": "Do you keep my fund's books and prepare investor reporting?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes, on a non-attest basis. I can maintain your fund-level books, build and reconcile tax-basis capital accounts, and produce the quarterly investor statements and distribution schedules that small sponsors usually run out of a spreadsheet at midnight. This is bookkeeping and controller-type work, not an audit. I do not perform audits, reviews, or compilations of financial statements." }
     },
@@ -130,6 +135,16 @@ a.inline:hover{border-bottom-color:var(--acc)}
 .wins strong{display:block;color:#fff;font-size:.98rem;margin-bottom:5px}
 .wins p{margin:0;font-size:.88rem;color:var(--tx-sec);line-height:1.55}
 @media(max-width:640px){.wins{grid-template-columns:1fr}}
+.sample{background:var(--bg-card);border:1px solid rgba(200,168,74,.35);border-radius:12px;padding:22px 22px 20px;margin:0 0 30px}
+.sample-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 16px}
+.sample-stats > div{background:var(--bg-surf);border:1px solid var(--bd);border-radius:10px;padding:14px 15px}
+.sample-stats .big{display:block;color:#fff;font-family:var(--mono);font-size:1.5rem;font-weight:700;line-height:1.1;margin:2px 0 5px}
+.sample-stats .lbl{display:block;color:var(--tx-dim);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sample-stats .cap{display:block;color:var(--tx-sec);font-size:.82rem;line-height:1.45;margin-top:4px}
+.sample-stats .grn{color:var(--grn)}
+.sample-link{display:inline-block;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.94rem;padding:11px 22px;border-radius:7px;text-decoration:none}
+.sample-note{font-size:.78rem;color:var(--tx-dim);font-style:italic;margin:12px 0 0}
+@media(max-width:640px){.sample-stats{grid-template-columns:1fr}}
 .pillar-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 2px}
 .offer-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:8px 0 20px}
 .offer-card{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:22px 22px}
@@ -177,6 +192,30 @@ a.inline:hover{border-bottom-color:var(--acc)}
     <div><strong>A raise investors trust</strong><p>Numbers that hold up because they trace back to the model.</p></div>
     <div><strong>No surprise on the K-1</strong><p>The exit-tax hit modeled up front, not felt at sale.</p></div>
     <div><strong>Sharp on the IC and LP call</strong><p>Every figure easy to point back to when someone asks.</p></div>
+  </div>
+
+  <h2 style="margin:36px 0 8px">See the actual read, not a description of it</h2>
+  <p class="lead">A real projection, anonymized, the same one-pager a client gets. These are the numbers a pre-tax pitch deck never shows.</p>
+  <div class="sample">
+    <div class="sample-stats">
+      <div>
+        <span class="lbl">After-tax LP IRR</span>
+        <span class="big">13.1%</span>
+        <span class="cap">vs 17.6% pre-tax, a 4.5-point drag the deck doesn't show.</span>
+      </div>
+      <div>
+        <span class="lbl">Exit tax, mapped up front</span>
+        <span class="big">$1.36M</span>
+        <span class="cap">the K-1 hit at sale, modeled before the sale, not felt after.</span>
+      </div>
+      <div>
+        <span class="lbl">Cost segregation</span>
+        <span class="big grn">Favorable</span>
+        <span class="cap">~$681K PV benefit; the study pays off under a $302K fee.</span>
+      </div>
+    </div>
+    <a class="sample-link" href="mh_community_tax_projection_sample.pdf" target="_blank" rel="noopener">View the full one-page sample (PDF) &rarr;</a>
+    <p class="sample-note">Illustrative sample on an anonymized deal, not a client's pro forma. Your read is run on your own numbers.</p>
   </div>
 
   <div class="banner">
@@ -299,6 +338,11 @@ a.inline:hover{border-bottom-color:var(--acc)}
   </div>
   <p>I am a California-licensed CPA and a former Big&nbsp;4 auditor, so my instinct is the same one an auditor has: does this number tie, and can I defend it. Most CRE models are built by people who are excellent at the deal and shaky on the numbers behind it, so the after-tax return, the capital accounts, and the reporting, the parts your investors actually live with, are the parts that get guessed. I built CREDevSim to do the modeling for real: a genuine after-tax engine covering 1031 exchanges, §1245 and §1250 recapture, passive-loss limits, opportunity zones, and bonus depreciation, on top of full underwriting, capital stack, and waterfall math. When I advise on your deal, I am reading it off an engine I wrote. When I keep your fund's books, I am doing it with the same standard I was trained to audit against. And because I don't broker your deal or earn a commission on it, the read you get is independent of whether you end up buying.</p>
   <p>If you want the background, here is <a class="inline" href="after-tax-returns.html">how most models get after-tax LP returns wrong</a>, and <a class="inline" href="article_security.html">why your deal data never leaves your machine</a> when you model it in CREDevSim.</p>
+
+  <div class="banner" style="margin-top:34px">
+    <span class="tag">But my CPA already handles this</span>
+    <p>Your CPA files the return and cuts the K-1s, that is compliance. The planning is what usually goes unaddressed: the after-tax LP return modeled <em>before</em> the raise, whether a cost segregation study actually pays off, and depreciation left on older holds that a Form&nbsp;3115 can still recover in one year without amending. Most preparers do not raise these because they sit outside the annual filing. I am the independent second read on the deal, and I hand what I find to your preparer to put on the return. I do not file returns, and I do not replace your CPA.</p>
+  </div>
 
   <div class="cta">
     <strong>Let's look at your deal.</strong>
