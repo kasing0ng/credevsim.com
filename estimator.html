@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RV Park &amp; MHP After-Tax Estimator | CREDevSim</title>
+<meta name="description" content="A 30-second first-year cost-segregation estimate for RV park, campground, and mobile-home-park deals — with the two things the other calculators leave out: passive-loss suspension and depreciation recapture at exit. From a former Big 4 auditor.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#080d18">
+<link rel="canonical" href="https://credevsim.com/estimator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CREDevSim">
+<meta property="og:title" content="RV Park & MHP After-Tax Estimator">
+<meta property="og:description" content="First-year cost-seg estimate for park deals — plus the passive-loss and recapture reality the other calculators skip. From a former Big 4 auditor.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/estimator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RV Park & MHP After-Tax Estimator">
+<meta name="twitter:description" content="First-year cost-seg estimate for park deals — plus the passive-loss and recapture reality other calculators skip.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<style>
+:root{
+  --bg-app:#080d18; --bg-surf:#111927; --bg-card:#17202e;
+  --bd:#243043; --acc:#C8A84A; --blue:#4a8aff;
+  --tx-pri:#e8edf4; --tx-sec:#b0bac8; --tx-dim:#7c8aa0; --grn:#1aaf80; --red:#e0714f;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.7;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:.01em}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+.back:hover{color:var(--tx-pri)}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+.byline{color:var(--tx-dim);font-size:.9rem;margin:0 0 26px;font-family:var(--mono);display:flex;align-items:center;gap:10px}
+.lede{margin:0 0 30px}
+strong{color:var(--tx-pri);font-weight:700}
+em{color:var(--tx-pri);font-style:italic}
+
+/* form */
+.card{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:24px 22px;margin:0 0 22px}
+.fld{margin:0 0 18px}
+.fld:last-child{margin-bottom:0}
+label{display:block;color:var(--tx-pri);font-weight:600;font-size:.92rem;margin:0 0 7px}
+label .q{display:inline-block;width:15px;height:15px;line-height:15px;text-align:center;border-radius:50%;background:var(--bd);color:var(--tx-dim);font-size:.7rem;font-weight:700;cursor:help;margin-left:6px;vertical-align:middle}
+input,select{width:100%;background:var(--bg-app);border:1px solid var(--bd);border-radius:7px;color:var(--tx-pri);font-size:1rem;padding:11px 12px;font-family:var(--font)}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.hint{color:var(--tx-dim);font-size:.78rem;margin:6px 0 0;line-height:1.5}
+.adv{border-top:1px solid var(--bd);margin-top:8px;padding-top:6px}
+.adv summary{cursor:pointer;color:var(--tx-dim);font-size:.85rem;padding:8px 0;list-style:none}
+.adv summary::-webkit-details-marker{display:none}
+.adv summary::before{content:"\25B8 ";color:var(--acc)}
+.adv[open] summary::before{content:"\25BE "}
+
+/* results */
+.out{margin:26px 0 0}
+.metric{background:var(--bg-surf);border:1px solid var(--bd);border-radius:10px;padding:18px 20px;margin:0 0 12px}
+.metric .lab{color:var(--tx-dim);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 5px}
+.metric .val{color:#fff;font-size:1.7rem;font-weight:700;font-family:var(--mono);line-height:1.1}
+.metric .sub{color:var(--tx-sec);font-size:.85rem;margin:7px 0 0}
+.metric.hero{border-color:rgba(200,168,74,.4);background:linear-gradient(145deg,#1c2436 0%,#141c2b 100%)}
+.metric.hero .val{color:var(--acc)}
+.flag{border:1px solid rgba(224,113,79,.32);background:rgba(224,113,79,.06);border-radius:8px;padding:14px 18px;margin:0 0 12px;font-size:.95rem}
+.flag .t{color:var(--red)}
+.flag.good{border-color:rgba(26,175,128,.32);background:rgba(26,175,128,.06)}
+.flag.good .t{color:var(--grn)}
+.flag .t{display:block;color:var(--tx-pri);font-weight:700;margin:0 0 4px}
+.section-h{color:var(--tx-dim);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin:24px 0 12px;font-weight:700}
+
+.cta{display:block;margin:34px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(74,138,255,.3);border-radius:12px;text-decoration:none}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta span{color:var(--tx-sec);font-size:.9rem}
+.cta .go{display:inline-block;margin-top:14px;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px}
+.foot{margin-top:44px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.65;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}.metric .val{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">CRE<span>DevSim</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <h1>RV Park &amp; MHP After-Tax Estimator</h1>
+  <p class="byline"><img src="kasing_ng.png" alt="Kasing Ng" width="34" height="34" style="border-radius:50%;object-fit:cover;border:1px solid var(--bd)" onerror="this.style.display='none'"><span>By Kasing Ng, CPA, former Big&nbsp;4 auditor</span></p>
+
+  <p class="lede">Every cost-seg calculator shows you the first-year deduction. Almost none show the two things that decide whether it is actually worth anything: whether you can <em>use</em> the loss this year, and what it costs you back at sale. This one does both. Thirty seconds, no signup.</p>
+
+  <div class="card">
+    <div class="fld">
+      <label for="asset">Property type<span class="q" title="Sets the typical share of building basis that a cost-seg study reclassifies to short-life (5/15-year) property. Parks are pads, hookups, roads, and utilities — far more short-life than a building-heavy asset. These are planning defaults, not a study result.">?</span></label>
+      <select id="asset">
+        <option value="rv_park">RV park</option>
+        <option value="campground">Campground</option>
+        <option value="mhp">Mobile-home / manufactured-housing park</option>
+        <option value="selfstorage">Self-storage</option>
+        <option value="retail">Retail</option>
+        <option value="hotel">Hotel</option>
+        <option value="multifamily">Multifamily / apartments</option>
+        <option value="office">Office</option>
+        <option value="industrial">Industrial</option>
+      </select>
+      <p class="hint" id="assetHint"></p>
+    </div>
+
+    <div class="fld">
+      <label for="price">Purchase price<span class="q" title="Total acquisition price. Land is backed out automatically before depreciation (land does not depreciate).">?</span></label>
+      <input id="price" type="text" inputmode="numeric" placeholder="e.g. 3,000,000">
+    </div>
+
+    <div class="fld">
+      <label for="pis">Year placed in service<span class="q" title="The federal bonus-depreciation rate is set by the year the property is placed in service: 2018-2022 and 2025-onward = 100% (OBBBA restored it permanently for property acquired after Jan 19, 2025); 2023 = 80%; 2024 = 60%.">?</span></label>
+      <select id="pis">
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022 or earlier</option>
+      </select>
+    </div>
+
+    <div class="fld">
+      <label for="bracket">Your marginal tax bracket<span class="q" title="Your top federal ordinary-income rate. Used to translate the deduction into dollars of tax. State tax is not included — see the note below.">?</span></label>
+      <select id="bracket">
+        <option value="0.37">37% (top bracket)</option>
+        <option value="0.35">35%</option>
+        <option value="0.32">32%</option>
+        <option value="0.24">24%</option>
+        <option value="0.22">22%</option>
+      </select>
+    </div>
+
+    <div class="fld">
+      <label for="status">How do you hold this deal?<span class="q" title="This is the field the other calculators never ask — and it is the one that decides whether the deduction does anything for you this year. A passive limited partner generally cannot use a rental paper loss against wages or business income (IRC 469); it suspends until you have passive income or the deal sells.">?</span></label>
+      <select id="status">
+        <option value="passive">Passive investor / LP (no other passive income)</option>
+        <option value="passive_income">Passive investor, but I have other passive income</option>
+        <option value="active">Active operator / real-estate professional</option>
+      </select>
+    </div>
+
+    <details class="adv fld">
+      <summary>Advanced assumptions</summary>
+      <div class="fld" style="margin-top:14px">
+        <label for="land">Land portion of price (%)<span class="q" title="The share of the purchase price allocated to land, which never depreciates. Parks are land-heavy; 20% is a common starting point, but a real allocation comes from an appraisal or cost-seg study.">?</span></label>
+        <input id="land" type="text" inputmode="numeric" placeholder="20">
+      </div>
+      <div class="fld">
+        <label for="slover">Short-life reclass override (%)<span class="q" title="Leave blank to use the property-type default. Override only if you already have a cost-seg study percentage.">?</span></label>
+        <input id="slover" type="text" inputmode="numeric" placeholder="auto">
+      </div>
+    </details>
+  </div>
+
+  <div class="out" id="out" hidden>
+    <div class="metric hero">
+      <div class="lab">Estimated first-year cost-seg deduction</div>
+      <div class="val" id="rDed">—</div>
+      <div class="sub" id="rDedSub"></div>
+    </div>
+    <div class="metric">
+      <div class="lab">Federal tax that deduction shelters (before the catch below)</div>
+      <div class="val" id="rTax">—</div>
+      <div class="sub">At your <span id="rRate"></span> marginal rate.</div>
+    </div>
+
+    <div class="section-h">The part the other calculators leave out</div>
+    <div id="rSuspend"></div>
+    <div class="flag">
+      <span class="t">This reverses at sale — depreciation recapture</span>
+      Whatever you accelerate now is recaptured when you sell. The short-life (5/15-year) piece comes back as <strong>&sect;1245 ordinary-income</strong> gain — taxed at roughly the same rate it saved you — and high earners add the 3.8% NIIT. So the headline above is mostly <em>timing</em>, not free money, unless you defer it with a <strong>1031 exchange</strong> or hold to a step-up at death. Estimated recapture exposure on the accelerated piece: <strong id="rRecap">—</strong>.
+    </div>
+  </div>
+
+  <a class="cta" href="/#contact" id="cta">
+    <strong>Want this run on your actual deal?</strong>
+    <span>This is the 30-second screen. The full read models the real lease-up, the passive-loss timing across the whole hold, the exit recapture net of a 1031, and a &sect;481(a) catch-up if you already own the park — built and reviewed by a former Big&nbsp;4 auditor, not a study salesperson.</span>
+    <span class="go">Get the full after-tax read &rarr;</span>
+  </a>
+
+  <p class="foot">
+    Estimate only, not tax advice, and not a cost-segregation study. Figures use the property-type and &sect;168(k) placed-in-service assumptions shown above; a real allocation requires an engineering cost-segregation study, and your actual result depends on your full return. State income tax is not modeled — several states decouple from federal bonus depreciation, which can change the number materially. Passive-activity treatment (IRC &sect;469) depends on your facts, including real-estate-professional status. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
+  </p>
+</div>
+
+<script>
+// ── Mirrors FinancialEngine.gd verbatim — DO NOT let these drift from the engine.
+// costseg_default_shortlife_pct() table:
+var SHORTLIFE = {
+  rv_park:0.60, rv_resort:0.60, campground:0.60,
+  mhp:0.55, mobilehome:0.55, manufactured:0.55,
+  selfstorage:0.35, retail:0.25, hotel:0.25,
+  industrial:0.20, office:0.20, mixeduse:0.20, multifamily:0.20
+};
+// §168(k) bonus rate by placed-in-service year (after-tax block / §481(a) lookup):
+function bonusRate(y){
+  if(y<=2017) return 0.00;
+  if(y<=2022) return 1.00;
+  if(y===2023) return 0.80;
+  if(y===2024) return 0.60;
+  return 1.00; // ≥2025 OBBBA restored 100%
+}
+
+var $=function(id){return document.getElementById(id);};
+function num(s){ if(s==null) return NaN; var v=parseFloat(String(s).replace(/[^0-9.]/g,'')); return v; }
+function money(x){ return '$'+Math.round(x).toLocaleString('en-US'); }
+
+var ASSET_HINT = {
+  rv_park:'~60% short-life is typical for RV parks (pads, hookups, roads, utilities).',
+  campground:'~60% short-life is typical for campgrounds (sites, utilities, site work).',
+  mhp:'~55% short-life is typical for MH/manufactured-housing parks (pads, utilities, roads).',
+  selfstorage:'~35% short-life is typical for self-storage.',
+  retail:'~25% short-life is typical for retail.',
+  hotel:'~25% short-life is typical for hotels (before separately-classed FF&E).',
+  multifamily:'~20% short-life is typical for multifamily.',
+  office:'~20% short-life is typical for office.',
+  industrial:'~20% short-life is typical for industrial.'
+};
+
+function recalc(){
+  var asset=$('asset').value;
+  var price=num($('price').value);
+  var pis=parseInt($('pis').value,10);
+  var rate=parseFloat($('bracket').value);
+  var status=$('status').value;
+  var landPct = $('land').value.trim()==='' ? 0.20 : num($('land').value)/100;
+  var slOver  = $('slover').value.trim()==='' ? null : num($('slover').value)/100;
+
+  $('assetHint').textContent = ASSET_HINT[asset]||'';
+
+  if(!(price>0)){ $('out').hidden=true; return; }
+  if(!(landPct>=0 && landPct<1)) landPct=0.20;
+
+  var sl = (slOver!=null && slOver>=0 && slOver<=1) ? slOver : (SHORTLIFE[asset]||0.20);
+  var br = bonusRate(pis);
+  var building = price*(1-landPct);
+  var ded = building*sl*br;            // first-year §168(k) slug on the reclassified short-life basis
+  var taxShield = ded*rate;
+
+  $('rDed').textContent = money(ded);
+  $('rDedSub').textContent = money(building)+' building basis × '+Math.round(sl*100)+'% short-life × '+Math.round(br*100)+'% bonus.';
+  $('rTax').textContent = money(taxShield);
+  $('rRate').textContent = Math.round(rate*100)+'%';
+  $('rRecap').textContent = money(ded*rate);
+
+  // Suspension reality by holder type
+  var s='';
+  if(status==='passive'){
+    s='<div class="flag"><span class="t">As a passive LP with no passive income, you likely cannot use this yet</span>'
+     +'Under IRC §469 this rental paper loss is passive. With no other passive income it does not offset your wages or business income &mdash; it <strong>suspends and carries forward</strong>, doing nothing for you until the deal throws off passive income or is sold. Usable this year on these facts: <strong>about '+money(0)+'</strong>. The '+money(taxShield)+' above is what it would shelter <em>once</em> you can use it.</div>';
+  } else if(status==='passive_income'){
+    s='<div class="flag good"><span class="t">You can use it against your other passive income</span>'
+     +'Because you have other passive income, this loss can offset it (IRC §469), up to that amount. Anything beyond your passive income suspends and carries forward.</div>';
+  } else {
+    s='<div class="flag good"><span class="t">As an active operator / RE professional, this is usable against active income</span>'
+     +'If you materially participate or qualify as a real-estate professional, the loss is non-passive and can offset active income this year &mdash; roughly the '+money(taxShield)+' above, subject to basis and at-risk limits.</div>';
+  }
+  $('rSuspend').innerHTML=s;
+  $('out').hidden=false;
+}
+
+['asset','price','pis','bracket','status','land','slover'].forEach(function(id){
+  $(id).addEventListener('input',recalc);
+  $(id).addEventListener('change',recalc);
+});
+$('assetHint').textContent = ASSET_HINT['rv_park'];
+</script>
+</body>
+</html>
