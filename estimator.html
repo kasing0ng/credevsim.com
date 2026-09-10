@@ -153,6 +153,14 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
       </select>
     </div>
 
+    <div class="fld">
+      <label for="own">Do you already own this property?<span class="q" title="If you have owned it a year or more and never ran a cost-seg study, you can usually claim all the depreciation you missed in the current year with a §481(a) catch-up on Form 3115 — no amended returns. This tool flags it; the full read quantifies it.">?</span></label>
+      <select id="own">
+        <option value="no">No — buying it now / just placed in service</option>
+        <option value="yes">Yes — I already own it</option>
+      </select>
+    </div>
+
     <details class="adv fld">
       <summary>Advanced assumptions</summary>
       <div class="fld" style="margin-top:14px">
@@ -163,19 +171,28 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
         <label for="slover">Short-life reclass override (%)<span class="q" title="Leave blank to use the property-type default. Override only if you already have a cost-seg study percentage.">?</span></label>
         <input id="slover" type="text" inputmode="numeric" placeholder="auto">
       </div>
+      <div class="fld">
+        <label for="statetax">State marginal income-tax rate (%)<span class="q" title="Optional. Your top state income-tax rate. Added on top of the federal rate for the tax figures below, the same way the full engine does it. Note: several states do not conform to federal bonus depreciation, which can change the deduction itself — that state-by-state decoupling is not modeled here. Leave blank for federal-only.">?</span></label>
+        <input id="statetax" type="text" inputmode="numeric" placeholder="0">
+      </div>
     </details>
   </div>
 
   <div class="out" id="out" hidden>
+    <div class="metric">
+      <div class="lab">Standard first-year depreciation, no cost-seg study</div>
+      <div class="val" id="rStd">—</div>
+      <div class="sub">Straight-line on the building basis over 39 years — what you get without a study.</div>
+    </div>
     <div class="metric hero">
-      <div class="lab">Estimated first-year cost-seg deduction</div>
+      <div class="lab">First-year deduction with cost seg + bonus</div>
       <div class="val" id="rDed">—</div>
       <div class="sub" id="rDedSub"></div>
     </div>
     <div class="metric">
-      <div class="lab">Federal tax that deduction shelters (before the catch below)</div>
+      <div class="lab">Tax that deduction shelters (before the catch below)</div>
       <div class="val" id="rTax">—</div>
-      <div class="sub">At your <span id="rRate"></span> marginal rate.</div>
+      <div class="sub">At your <span id="rRate"></span> combined marginal rate.</div>
     </div>
     <div class="metric" id="rUsableCard">
       <div class="lab">Of that, usable against your income <em>this year</em></div>
@@ -185,6 +202,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
 
     <div class="section-h">The part the other calculators leave out</div>
     <div id="rSuspend"></div>
+    <div id="rCatchup"></div>
     <div class="flag">
       <span class="t">This reverses at sale — depreciation recapture</span>
       Whatever you accelerate now is recaptured when you sell. The short-life (5/15-year) piece comes back as <strong>&sect;1245 ordinary-income</strong> gain — taxed at roughly the same rate it saved you — and high earners add the 3.8% NIIT. So the headline above is mostly <em>timing</em>, not free money, unless you defer it with a <strong>1031 exchange</strong> or hold to a step-up at death. Estimated recapture exposure on the accelerated piece: <strong id="rRecap">—</strong>.
@@ -198,7 +216,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
   </a>
 
   <p class="foot">
-    Estimate only, not tax advice, and not a cost-segregation study. Figures use the property-type and &sect;168(k) placed-in-service assumptions shown above; a real allocation requires an engineering cost-segregation study, and your actual result depends on your full return. State income tax is not modeled — several states decouple from federal bonus depreciation, which can change the number materially. Passive-activity treatment (IRC &sect;469) depends on your facts, including real-estate-professional status. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
+    Estimate only, not tax advice, and not a cost-segregation study. Figures use the property-type and &sect;168(k) placed-in-service assumptions shown above; a real allocation requires an engineering cost-segregation study, and your actual result depends on your full return. State income tax is added only if you enter a rate under Advanced, and only as a flat add-on to the federal rate; several states decouple from federal bonus depreciation, which can change the deduction itself, and that state-by-state decoupling is not modeled here. Passive-activity treatment (IRC &sect;469) depends on your facts, including real-estate-professional status. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
   </p>
 </div>
 
@@ -242,25 +260,31 @@ function recalc(){
   var pis=parseInt($('pis').value,10);
   var rate=parseFloat($('bracket').value);
   var status=$('status').value;
+  var own=$('own').value;
   var landPct = $('land').value.trim()==='' ? 0.20 : num($('land').value)/100;
   var slOver  = $('slover').value.trim()==='' ? null : num($('slover').value)/100;
+  var stateRate = $('statetax').value.trim()==='' ? 0 : num($('statetax').value)/100;
 
   $('assetHint').textContent = ASSET_HINT[asset]||'';
 
   if(!(price>0)){ $('out').hidden=true; return; }
   if(!(landPct>=0 && landPct<1)) landPct=0.20;
+  if(!(stateRate>=0 && stateRate<1)) stateRate=0;
 
+  var effRate = rate + stateRate;      // engine adds state_rate on top of the ordinary rate
   var sl = (slOver!=null && slOver>=0 && slOver<=1) ? slOver : (SHORTLIFE[asset]||0.20);
   var br = bonusRate(pis);
   var building = price*(1-landPct);
+  var stdDep = building/39;            // straight-line, no study — the commodity baseline
   var ded = building*sl*br;            // first-year §168(k) slug on the reclassified short-life basis
-  var taxShield = ded*rate;
+  var taxShield = ded*effRate;
 
+  $('rStd').textContent = money(stdDep);
   $('rDed').textContent = money(ded);
   $('rDedSub').textContent = money(building)+' building basis × '+Math.round(sl*100)+'% short-life × '+Math.round(br*100)+'% bonus.';
   $('rTax').textContent = money(taxShield);
-  $('rRate').textContent = Math.round(rate*100)+'%';
-  $('rRecap').textContent = money(ded*rate);
+  $('rRate').textContent = Math.round(effRate*100)+'%';
+  $('rRecap').textContent = money(ded*effRate);
 
   // Usable-this-year headline — the number the holder field actually moves
   var usable = (status==='passive') ? 0 : taxShield;
@@ -275,6 +299,12 @@ function recalc(){
   } else {
     $('rUsableSub').innerHTML = 'Non-passive if you materially participate or qualify as an RE professional — offsets active income this year, subject to basis/at-risk limits.';
   }
+
+  // §481(a) catch-up tease for property already owned
+  $('rCatchup').innerHTML = (own==='yes')
+    ? '<div class="flag good"><span class="t">You already own it — you can likely claim the missed years now (§481(a))</span>'
+      +'Held without a cost-seg study, you generally do <strong>not</strong> amend prior returns. You file <strong>Form 3115</strong> and take the entire catch-up — every year of depreciation you missed — as a deduction in the current year through a <strong>§481(a) adjustment</strong>. On an older park this catch-up is often the single largest number on the page, at the current-year bonus rate. The full read quantifies it for your actual hold.</div>'
+    : '';
 
   // Suspension reality by holder type
   var s='';
@@ -292,7 +322,7 @@ function recalc(){
   $('out').hidden=false;
 }
 
-['asset','price','pis','bracket','status','land','slover'].forEach(function(id){
+['asset','price','pis','bracket','status','own','land','slover','statetax'].forEach(function(id){
   $(id).addEventListener('input',recalc);
   $(id).addEventListener('change',recalc);
 });
