@@ -22,12 +22,12 @@
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const downloadBtn = document.getElementById('download-btn');
-    if (downloadBtn) {
-      downloadBtn.addEventListener('click', function() {
-        gtag('event', 'click_download', {
+    const estimatorBtn = document.getElementById('estimator-btn');
+    if (estimatorBtn) {
+      estimatorBtn.addEventListener('click', function() {
+        gtag('event', 'click_estimator', {
           'event_category': 'conversion',
-          'event_label': 'Microsoft Store Link'
+          'event_label': 'Hero Estimator Button'
         });
       });
     }
@@ -796,7 +796,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
       <p class="lead">CREDevSim is the CRE deal engine I built as a fund auditor, the one that carries your deal all the way to the <b style="color:var(--tx-pri)">after-tax</b> return your LPs actually keep. The tool is free. I am the CPA behind it, and I work with GPs and syndicators directly on the deals that need a second set of eyes.</p>
       <div class="hero-actions">
         <a href="advisory.html" class="btn btn-primary">Work with me on your deal &rarr;</a>
-        <a id="download-btn" href="https://apps.microsoft.com/store/detail/9PK6ZRC64RK7?cid=DevShareMCLPCS" target="_blank" rel="noopener" class="btn btn-ghost">Get the free tool</a>
+        <a id="estimator-btn" href="estimator.html" class="btn btn-ghost">Try the free after-tax estimator &rarr;</a>
       </div>
     </div>
   </div>
