@@ -177,6 +177,11 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
       <div class="val" id="rTax">—</div>
       <div class="sub">At your <span id="rRate"></span> marginal rate.</div>
     </div>
+    <div class="metric" id="rUsableCard">
+      <div class="lab">Of that, usable against your income <em>this year</em></div>
+      <div class="val" id="rUsable">—</div>
+      <div class="sub" id="rUsableSub"></div>
+    </div>
 
     <div class="section-h">The part the other calculators leave out</div>
     <div id="rSuspend"></div>
@@ -256,6 +261,20 @@ function recalc(){
   $('rTax').textContent = money(taxShield);
   $('rRate').textContent = Math.round(rate*100)+'%';
   $('rRecap').textContent = money(ded*rate);
+
+  // Usable-this-year headline — the number the holder field actually moves
+  var usable = (status==='passive') ? 0 : taxShield;
+  $('rUsable').textContent = money(usable);
+  var uCard=$('rUsableCard');
+  uCard.style.borderColor = (usable>0) ? 'rgba(26,175,128,.4)' : 'rgba(224,113,79,.4)';
+  $('rUsable').style.color = (usable>0) ? 'var(--grn)' : 'var(--red)';
+  if(status==='passive'){
+    $('rUsableSub').innerHTML = 'As a passive LP with no passive income, the loss suspends under §469 — <strong>$0 lands on this year’s return.</strong> It waits for passive income or the sale.';
+  } else if(status==='passive_income'){
+    $('rUsableSub').innerHTML = 'Usable against your other passive income (§469), up to that amount; any excess suspends.';
+  } else {
+    $('rUsableSub').innerHTML = 'Non-passive if you materially participate or qualify as an RE professional — offsets active income this year, subject to basis/at-risk limits.';
+  }
 
   // Suspension reality by holder type
   var s='';
