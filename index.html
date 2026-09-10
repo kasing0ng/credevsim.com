@@ -789,11 +789,17 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 <!-- ════ HOME ════ -->
 <div id="home" class="tab-panel active">
   <div class="panel-top"><a href="/download.html" class="btn btn-sm">Download Free for Windows</a></div>
+  <style>
+    .wedge-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:12px;margin:24px 0 8px}
+    .wedge{background:rgba(200,168,74,.05);border:1px solid rgba(200,168,74,.25);border-radius:9px;padding:14px 16px;font-size:.9rem;line-height:1.5;color:var(--tx-sec)}
+    .wedge b{color:var(--acc);display:block;margin-bottom:3px;font-size:.96rem}
+  </style>
+
   <div class="home-hero">
     <div class="hero-copy">
-      <div class="badge">Kasing Ng, CPA &middot; Former Big&nbsp;4 auditor</div>
-      <h1>I audited the funds.<br>Then I built the model<br>they should have used.</h1>
-      <p class="lead">CREDevSim is the CRE deal engine I built as a fund auditor, the one that carries your deal all the way to the <b style="color:var(--tx-pri)">after-tax</b> return your LPs actually keep. The tool is free. I am the CPA behind it, and I work with GPs and syndicators directly on the deals that need a second set of eyes.</p>
+      <div class="badge">Kasing Ng, CPA &middot; Former Big&nbsp;4 fund auditor &middot; <b style="color:var(--acc)">Independent</b></div>
+      <h1>Your deck shows the pre-tax IRR.<br>Your LPs keep the <b style="color:var(--acc)">after-tax</b> number.<br>I model the gap between them.</h1>
+      <p class="lead">I am the <b style="color:var(--tx-pri)">independent</b> CPA who reads that number before your investors do. Not a cost-seg firm selling you a study. Not your fund admin. A former Big&nbsp;4 fund auditor who models the after-tax LP return <b style="color:var(--tx-pri)">net of depreciation recapture</b> and the <b style="color:var(--tx-pri)">passive-loss trap</b> most decks skip, then hands you a read you can put in front of LPs.</p>
       <div class="hero-actions">
         <a href="advisory.html" class="btn btn-primary">Work with me on your deal &rarr;</a>
         <a id="estimator-btn" href="estimator.html" class="btn btn-ghost">Try the free after-tax estimator &rarr;</a>
@@ -801,11 +807,13 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
   </div>
 
-  <div class="trust-row section-sm">
-    <span class="trust-chip">Big&nbsp;4 Audit-Trained</span>
-    <span class="trust-chip">After-Tax LP Returns</span>
-    <span class="trust-chip">100% Local, No Cloud</span>
-    <span class="trust-chip">Free for Windows</span>
+  <!-- 5-second scan: the wedges, impossible to miss -->
+  <div class="wedge-strip section-sm">
+    <div class="wedge"><b>Independent</b>I don't sell you the cost-seg study. No conflict, no upsell, no product to push.</div>
+    <div class="wedge"><b>After-tax, net of recapture</b>The give-back at sale that the pre-tax IRR in your deck never nets out.</div>
+    <div class="wedge"><b>Former Big&nbsp;4 fund auditor</b>The same rigor that signed off on institutional real-estate funds.</div>
+    <div class="wedge"><b>The &sect;469 passive-loss trap</b>Whether your LPs can even use the depreciation loss this year, or it just suspends.</div>
+    <div class="wedge"><b>100% local, no cloud</b>Your deal file never leaves your machine. Nothing uploaded, nothing stored.</div>
   </div>
 
   <!-- ════ ADVISORY CTA, the CPA behind the tool ════ -->
