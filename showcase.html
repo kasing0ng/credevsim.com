@@ -91,6 +91,23 @@ a.inline:hover{border-bottom-color:var(--acc)}
 .cta .go{display:inline-block;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.98rem;padding:13px 26px;border-radius:7px;text-decoration:none}
 .cta .alt{display:block;margin-top:14px;font-size:.85rem;color:var(--tx-dim)}
 .cta .alt a{color:var(--tx-sec)}
+.chart{margin:30px 0;padding:20px 20px 16px;background:var(--bg-surf);border:1px solid var(--bd);border-radius:12px}
+.chart figcaption{color:var(--tx-pri);font-weight:700;font-size:.95rem;margin:0 0 16px}
+.bar-row{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+.bar-lbl{flex:0 0 118px;font-size:.82rem;color:var(--tx-sec);text-align:right;font-family:var(--mono)}
+.bar-track{flex:1;background:rgba(255,255,255,.04);border-radius:5px;overflow:hidden}
+.bar{height:34px;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:11px;color:#0b0f19;font-weight:700;font-family:var(--mono);font-size:.95rem;min-width:52px}
+.bar-pre{background:var(--acc)}
+.bar-post{background:linear-gradient(90deg,#c98a5f,#e0705f)}
+.gap-note{display:flex;gap:8px;align-items:baseline;margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--bd)}
+.gap-note b{color:var(--red);font-family:var(--mono);font-size:1.15rem}
+.gap-note span{color:var(--tx-sec);font-size:.86rem}
+.stack{display:flex;height:40px;border-radius:6px;overflow:hidden;font-family:var(--mono);font-size:.8rem;font-weight:700}
+.seg{display:flex;align-items:center;justify-content:center;color:#0b0f19;padding:0 6px;text-align:center;line-height:1.15}
+.seg-recap{background:#e0705f}
+.seg-gain{background:#7c8aa0}
+.chart-note{color:var(--tx-dim);font-size:.8rem;font-style:italic;margin:12px 0 0}
+@media(max-width:560px){.bar-lbl{flex-basis:78px;font-size:.74rem}.seg{font-size:.68rem}}
 .foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
 @media(max-width:560px){h1{font-size:1.62rem}.sub{font-size:1rem}body{font-size:1rem}.wrap{padding:24px 18px 60px}}
 </style>
@@ -134,8 +151,30 @@ a.inline:hover{border-bottom-color:var(--acc)}
   <h2>2. The number LPs actually keep</h2>
   <p>Carry the same deal through federal and state tax at the investor level and the LP return lands at <strong>21.3%</strong>, a <strong>2.38x</strong> multiple. That is a <strong>6.1-point drag</strong> on IRR between the pitch and the pocket. It is not a rounding error and it is not pessimism. It is the tax the pre-tax model simply does not carry.</p>
 
+  <figure class="chart">
+    <figcaption>What the LP keeps: pre-tax pitch vs after-tax reality</figcaption>
+    <div class="bar-row">
+      <span class="bar-lbl">Pre-tax IRR</span>
+      <div class="bar-track"><div class="bar bar-pre" style="width:100%">27.4%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-lbl">After-tax IRR</span>
+      <div class="bar-track"><div class="bar bar-post" style="width:77.7%">21.3%</div></div>
+    </div>
+    <div class="gap-note"><b>&minus;6.1 pts</b><span>lost to investor-level tax the pitch deck stops short of</span></div>
+  </figure>
+
   <h2>3. Where the 6.1 points go</h2>
   <p>Most of the gap shows up in one place: the exit. Total tax at sale runs about <strong>$1.37M</strong>. Of that, roughly <strong>$854K is depreciation recapture</strong>, taxed as ordinary income at rates approaching 46% once federal and state stack, not the 20% long-term capital-gains rate most investors have in their heads. The remaining capital-gain tax on appreciation is about $516K. A pre-tax pro forma shows none of this, because it ends before the tax return begins.</p>
+
+  <figure class="chart">
+    <figcaption>The $1.37M exit tax, split by what actually drives it</figcaption>
+    <div class="stack">
+      <div class="seg seg-recap" style="width:62.3%">Recapture $854K<br>ordinary rate</div>
+      <div class="seg seg-gain" style="width:37.7%">Cap gain $516K</div>
+    </div>
+    <p class="chart-note">Nearly two thirds of the exit tax is recapture at ordinary income rates, the part LPs never price when they assume a flat 20% on the sale.</p>
+  </figure>
 
   <h2>4. The cost-seg twist</h2>
   <p>Here is where the audit habit earns its keep. A mobile home park is an unusually good cost-segregation candidate, because most of the basis is land improvements (roads, pads, utility lines) and park-owned homes, all property with a tax life of 15 years or less, all eligible for 100% bonus depreciation. This park throws off a <strong>$1.7M first-year bonus deduction</strong>. Real money.</p>
