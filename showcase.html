@@ -102,10 +102,16 @@ a.inline:hover{border-bottom-color:var(--acc)}
 .gap-note{display:flex;gap:8px;align-items:baseline;margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--bd)}
 .gap-note b{color:var(--red);font-family:var(--mono);font-size:1.15rem}
 .gap-note span{color:var(--tx-sec);font-size:.86rem}
-.stack{display:flex;height:40px;border-radius:6px;overflow:hidden;font-family:var(--mono);font-size:.8rem;font-weight:700}
-.seg{display:flex;align-items:center;justify-content:center;color:#0b0f19;padding:0 6px;text-align:center;line-height:1.15}
+.stack{display:flex;height:46px;border-radius:6px;overflow:hidden;font-family:var(--mono);font-size:.95rem;font-weight:700}
+.seg{display:flex;align-items:center;justify-content:center;color:#0b0f19;padding:0 6px;text-align:center;line-height:1.15;min-width:0}
 .seg-recap{background:#e0705f}
 .seg-gain{background:#7c8aa0}
+.stack-legend{display:flex;flex-wrap:wrap;gap:9px 24px;margin:14px 0 0;font-family:var(--font);font-size:.86rem;color:var(--tx-sec)}
+.stack-legend span{display:flex;align-items:center;gap:9px}
+.stack-legend b{color:var(--tx-pri);font-weight:700}
+.sw{width:12px;height:12px;border-radius:3px;flex:none}
+.sw-recap{background:#e0705f}
+.sw-gain{background:#7c8aa0}
 .chart-note{color:var(--tx-dim);font-size:.8rem;font-style:italic;margin:12px 0 0}
 @media(max-width:560px){.bar-lbl{flex-basis:78px;font-size:.74rem}.seg{font-size:.68rem}}
 .foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.6;font-style:italic}
@@ -172,8 +178,12 @@ a.inline:hover{border-bottom-color:var(--acc)}
   <figure class="chart">
     <figcaption>The LPs' $651K exit tax, split by what actually drives it</figcaption>
     <div class="stack">
-      <div class="seg seg-recap" style="width:96.3%">Recapture $627K<br>ordinary and 25% rates</div>
-      <div class="seg seg-gain" style="width:3.7%">Cap gain $24K</div>
+      <div class="seg seg-recap" style="width:96.3%">$627K</div>
+      <div class="seg seg-gain" style="width:3.7%"></div>
+    </div>
+    <div class="stack-legend">
+      <span><i class="sw sw-recap"></i>Recapture <b>$627K</b> &middot; 96% &middot; ordinary &amp; 25% rates</span>
+      <span><i class="sw sw-gain"></i>Capital gain <b>$24K</b> &middot; 4% &middot; 20% rate</span>
     </div>
     <p class="chart-note">About 96% of the exit tax is recapture, most of it at ordinary income rates, the part LPs never price when they assume a flat 20% on the sale.</p>
   </figure>
