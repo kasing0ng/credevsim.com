@@ -11,22 +11,22 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RV Park &amp; MHP After-Tax Estimator | CREDevSim</title>
-<meta name="description" content="A 30-second first-year cost-segregation estimate for RV park, campground, and mobile-home-park deals — with the two things the other calculators leave out: passive-loss suspension and depreciation recapture at exit. From a former Big 4 auditor.">
+<title>Free After-Tax Cost-Seg Estimator | Kasing Ng, CPA</title>
+<meta name="description" content="A 30-second first-year cost-segregation estimate for commercial real estate deals — with the two things the other calculators leave out: passive-loss suspension and depreciation recapture at exit. From a former Big 4 auditor.">
 <meta name="author" content="Kasing Ng">
 <meta name="theme-color" content="#080d18">
 <link rel="canonical" href="https://credevsim.com/estimator.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="CREDevSim">
-<meta property="og:title" content="RV Park & MHP After-Tax Estimator">
-<meta property="og:description" content="First-year cost-seg estimate for park deals — plus the passive-loss and recapture reality the other calculators skip. From a former Big 4 auditor.">
+<meta property="og:site_name" content="Kasing Ng, CPA">
+<meta property="og:title" content="Free After-Tax Cost-Seg Estimator">
+<meta property="og:description" content="First-year cost-seg estimate for your deal — plus the passive-loss and recapture reality the other calculators skip. From a former Big 4 auditor.">
 <meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <meta property="og:url" content="https://credevsim.com/estimator.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RV Park & MHP After-Tax Estimator">
-<meta name="twitter:description" content="First-year cost-seg estimate for park deals — plus the passive-loss and recapture reality other calculators skip.">
+<meta name="twitter:title" content="Free After-Tax Cost-Seg Estimator">
+<meta name="twitter:description" content="First-year cost-seg estimate for your deal — plus the passive-loss and recapture reality other calculators skip.">
 <meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <style>
 :root{
@@ -91,18 +91,18 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
 <body>
 <div class="wrap">
   <div class="top">
-    <a class="brand" href="/">CRE<span>DevSim</span></a>
+    <a class="brand" href="/">Kasing Ng, <span>CPA</span></a>
     <a class="back" href="/">&larr; Home</a>
   </div>
 
-  <h1>RV Park &amp; MHP After-Tax Estimator</h1>
+  <h1>Free After-Tax Cost-Seg Estimator</h1>
   <p class="byline"><img src="kasing_ng.png" alt="Kasing Ng" width="34" height="34" style="border-radius:50%;object-fit:cover;border:1px solid var(--bd)" onerror="this.style.display='none'"><span>By Kasing Ng, CPA, former Big&nbsp;4 auditor</span></p>
 
   <p class="lede">Every cost-seg calculator shows you the first-year deduction. Almost none show the two things that decide whether it is actually worth anything: whether you can <em>use</em> the loss this year, and what it costs you back at sale. This one does both. Thirty seconds, no signup.</p>
 
   <div class="card">
     <div class="fld">
-      <label for="asset">Property type<span class="q" title="Sets the typical share of building basis that a cost-seg study reclassifies to short-life (5/15-year) property. Parks are pads, hookups, roads, and utilities — far more short-life than a building-heavy asset. These are planning defaults, not a study result.">?</span></label>
+      <label for="asset">Property type<span class="q" title="Sets the typical share of building basis that a cost-seg study reclassifies to short-life (5/15-year) property. Land improvements, site work, fixtures, and specialty build-out reclassify far more than a building-heavy asset. These are planning defaults, not a study result.">?</span></label>
       <select id="asset">
         <option value="rv_park">RV park</option>
         <option value="campground">Campground</option>
@@ -110,7 +110,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
         <option value="selfstorage">Self-storage</option>
         <option value="retail">Retail</option>
         <option value="hotel">Hotel</option>
-        <option value="multifamily">Multifamily / apartments</option>
+        <option value="multifamily" selected>Multifamily / apartments</option>
         <option value="office">Office</option>
         <option value="industrial">Industrial</option>
       </select>
@@ -164,7 +164,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
     <details class="adv fld">
       <summary>Advanced assumptions</summary>
       <div class="fld" style="margin-top:14px">
-        <label for="land">Land portion of price (%)<span class="q" title="The share of the purchase price allocated to land, which never depreciates. Parks are land-heavy; 20% is a common starting point, but a real allocation comes from an appraisal or cost-seg study.">?</span></label>
+        <label for="land">Land portion of price (%)<span class="q" title="The share of the purchase price allocated to land, which never depreciates. Land-heavy assets can run higher; 20% is a common starting point, but a real allocation comes from an appraisal or cost-seg study.">?</span></label>
         <input id="land" type="text" inputmode="numeric" placeholder="20">
       </div>
       <div class="fld">
@@ -211,7 +211,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
 
   <a class="cta" href="/#contact" id="cta">
     <strong>Want this run on your actual deal?</strong>
-    <span>This is the 30-second screen. The full read models the real lease-up, the passive-loss timing across the whole hold, the exit recapture net of a 1031, and a &sect;481(a) catch-up if you already own the park — built and reviewed by a former Big&nbsp;4 auditor, not a study salesperson.</span>
+    <span>This is the 30-second screen. The full read models the real lease-up, the passive-loss timing across the whole hold, the exit recapture net of a 1031, and a &sect;481(a) catch-up if you already own it — built and reviewed by a former Big&nbsp;4 auditor, not a study salesperson.</span>
     <span class="go">Get the full after-tax read &rarr;</span>
   </a>
 
@@ -303,7 +303,7 @@ function recalc(){
   // §481(a) catch-up tease for property already owned
   $('rCatchup').innerHTML = (own==='yes')
     ? '<div class="flag good"><span class="t">You already own it — you can likely claim the missed years now (§481(a))</span>'
-      +'Held without a cost-seg study, you generally do <strong>not</strong> amend prior returns. You file <strong>Form 3115</strong> and take the entire catch-up — every year of depreciation you missed — as a deduction in the current year through a <strong>§481(a) adjustment</strong>. On an older park this catch-up is often the single largest number on the page, at the current-year bonus rate. The full read quantifies it for your actual hold.</div>'
+      +'Held without a cost-seg study, you generally do <strong>not</strong> amend prior returns. You file <strong>Form 3115</strong> and take the entire catch-up — every year of depreciation you missed — as a deduction in the current year through a <strong>§481(a) adjustment</strong>. On an older property this catch-up is often the single largest number on the page, at the current-year bonus rate. The full read quantifies it for your actual hold.</div>'
     : '';
 
   // Suspension reality by holder type
@@ -326,7 +326,7 @@ function recalc(){
   $(id).addEventListener('input',recalc);
   $(id).addEventListener('change',recalc);
 });
-$('assetHint').textContent = ASSET_HINT['rv_park'];
+$('assetHint').textContent = ASSET_HINT['multifamily'];
 </script>
 </body>
 </html>
