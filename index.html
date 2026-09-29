@@ -769,13 +769,10 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
     <div class="nav-list" role="tablist">
       <div class="nav-item active" role="tab" tabindex="0" aria-current="page" data-tab="home">Home</div>
-      <div class="nav-item" role="tab" tabindex="0" data-tab="services">Services</div>
-      <div class="nav-item" role="tab" tabindex="0" data-tab="serve">Who We Serve</div>
+      <a class="nav-link" href="advisory.html" style="font-weight:700;color:#fff;background:var(--acc);text-align:center;margin:2px 0 4px">Services &amp; Pricing</a>
       <div class="nav-item" role="tab" tabindex="0" data-tab="engine">Our Proprietary Engine</div>
       <div class="nav-item" role="tab" tabindex="0" data-tab="faq">Resources</div>
       <div class="nav-item" role="tab" tabindex="0" data-tab="about">About</div>
-      <!-- Primary CTA. TODO: swap advisory.html for a Calendly/SavvyCal booking link once set up. -->
-      <a class="nav-link" href="advisory.html" style="background:var(--acc);color:#fff;text-align:center;margin-top:10px;margin-bottom:4px">Book Strategy Call</a>
       <a class="nav-link" href="estimator.html">Free After-Tax Estimator</a>
       <a class="nav-link" href="showcase.html">See a Sample Read</a>
       <a class="nav-link" data-tab-link="contact" role="button" tabindex="0" style="cursor:pointer">Contact &amp; Policies</a>
@@ -861,52 +858,6 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
     </div>
   </div>
 
-</div>
-
-<!-- ════ SERVICES ════ -->
-<div id="services" class="tab-panel">
-  <div class="panel-top"><a href="advisory.html" class="btn btn-sm">Book a Strategy Call &rarr;</a></div>
-  <div class="badge">What I Do</div>
-  <h1>Institutional Tax Engineering &amp;<br>After-Tax Deal Modeling for CRE.</h1>
-  <p class="lead">Two ways to work with a former Big&nbsp;4 real-estate fund auditor and licensed CPA (#139270): a one-time tax read on a deal you are raising, or a standing quarterly review alongside the CPA you already have.</p>
-
-  <div class="grid-2 section">
-    <div class="card card-acc">
-      <p class="sec-lbl" style="color:var(--acc)">Pillar 1 &middot; Project-based</p>
-      <h2 style="margin-bottom:10px">Deal Tax Engineering &amp; LP Waterfall Review</h2>
-      <p style="margin-bottom:16px"><b style="color:#fff">For syndicators, GPs, and capital raisers.</b> A line-by-line tax review of your deal before it reaches your LPs. I model the exact after-tax LP IRR, &sect;469 passive-loss absorption, cost-segregation impact, and the tax-at-sale distribution the pre-tax deck never nets out, so the number in your deck survives contact with your investors.</p>
-      <a href="advisory.html" class="btn">Book a Strategy Call &rarr;</a>
-    </div>
-    <div class="card">
-      <p class="sec-lbl" style="color:var(--acc)">Pillar 2 &middot; Quarterly retainer</p>
-      <h2 style="margin-bottom:10px">Proactive Tax Advisory &amp; Quarterly Review</h2>
-      <p style="margin-bottom:16px"><b style="color:#fff">For active CRE investors and owners.</b> Year-round tax strategy and a quarterly review that works <b style="color:var(--tx-pri)">alongside your existing CPA, not instead of them</b>: cost-seg and 1031 planning, contribution-vs-sale structuring (IRC&nbsp;&sect;721), and coordinating your annual filing with the CPA who prepares it. The strategy layer most owners never get from a once-a-year preparer.</p>
-      <a href="advisory.html" class="btn btn-ghost">Book a Strategy Call &rarr;</a>
-    </div>
-  </div>
-
-  <p style="font-size:.78rem;color:var(--tx-dim);font-style:italic;max-width:680px">Advisory and modeling services are provided in a non-attest capacity and do not constitute an audit or attest opinion. I coordinate with your existing CPA and do not replace your tax preparer. Kasing Ng, CPA &mdash; California license&nbsp;#139270.</p>
-</div>
-
-<!-- ════ WHO WE SERVE ════ -->
-<div id="serve" class="tab-panel">
-  <div class="panel-top"><a href="advisory.html" class="btn btn-sm">Book a Strategy Call &rarr;</a></div>
-  <div class="badge">Who I Serve</div>
-  <h1>Built for the people raising<br>and holding the deal.</h1>
-  <p class="lead">If your return depends on the number your LPs keep after tax, or on catching the strategy your once-a-year preparer never raised, this is for you.</p>
-
-  <div class="grid-auto section">
-    <div class="card"><h3>Syndicators &amp; GPs</h3><p>You are raising capital and the pre-tax IRR in your deck is not the number your LPs keep. I read the after-tax return before your investors do.</p></div>
-    <div class="card"><h3>Developers</h3><p>Ground-up and value-add deals where cost-seg, bonus depreciation, and recapture at sale swing the LP outcome more than the cap rate does.</p></div>
-    <div class="card"><h3>Active CRE investors &amp; owners</h3><p>A few doors or a growing portfolio. You have a CPA who files; you are missing the strategy layer that plans the year before it closes.</p></div>
-    <div class="card"><h3>Capital raisers &amp; LPs</h3><p>An independent read on a sponsor's tax math, from a former fund auditor with no product to upsell and no stake in the deal.</p></div>
-  </div>
-
-  <a href="advisory.html" class="card section" style="display:block;text-decoration:none;border-color:var(--bd-accent);background:rgba(42,108,240,.05)">
-    <h2 style="margin-bottom:8px">Not sure which fits your deal?</h2>
-    <p style="margin-bottom:12px">Tell me the deal in a sentence and I will tell you straight whether there is tax work worth doing on it.</p>
-    <span class="btn btn-sm">Book a Strategy Call &rarr;</span>
-  </a>
 </div>
 
 <!-- ════ ENGINE ════ -->
@@ -1851,7 +1802,7 @@ details.faq[open] .faq-tog{transform:rotate(45deg);background:var(--acc-dim)}
 
 <script>
 /* ── Tab routing with deep-link + Back-button support ── */
-var VALID_TABS = ['home','services','serve','engine','pricing','faq','contact','about'];
+var VALID_TABS = ['home','engine','pricing','faq','contact','about'];
 
 function sw(tabId, el, push) {
   if (VALID_TABS.indexOf(tabId) === -1) tabId = 'home';
