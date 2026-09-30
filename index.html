@@ -323,7 +323,70 @@ section{padding-block:64px}
 .mfoot-bar .eng{font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);white-space:nowrap}
 @media(max-width:760px){.mfoot-top{grid-template-columns:1fr 1fr;gap:26px}.mfoot .mf-brand-col{grid-column:1/-1}}
 @media(max-width:440px){.mfoot-top{grid-template-columns:1fr}}
+/* lead-capture modal */
+.lead-modal{position:fixed;inset:0;background:rgba(6,9,15,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+.lead-modal.open{display:flex}
+.lead-box{background:var(--card);border:1px solid var(--bd);border-radius:14px;max-width:420px;width:100%;padding:30px 26px 26px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.lead-box h3{font-family:var(--disp);font-weight:700;font-size:1.35rem;margin:0 0 10px;color:var(--ink);letter-spacing:-.01em}
+.lead-box>p{color:var(--ink-2);font-size:.95rem;margin:0 0 16px;line-height:1.55}
+.lead-box input{width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--bd);background:var(--bg-2);color:var(--ink);font-size:1rem;box-sizing:border-box;margin:0 0 12px}
+.lead-box input:focus{outline:none;border-color:var(--gold)}
+.lead-box .btn{width:100%;justify-content:center}
+.lead-x{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--ink-dim);font-size:1.7rem;line-height:1;cursor:pointer;padding:0}
+.lead-msg{min-height:1.1em;font-size:.9rem;color:var(--gold);margin:12px 0 0}
+.lead-fine{font-size:.78rem;color:var(--ink-dim);margin:14px 0 0;line-height:1.5}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Book-a-call conversion tracking (all Calendly links)
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      gtag('event', 'click_book_call', { event_category: 'conversion', event_label: 'Book a Call' });
+    });
+  });
+
+  // Sample-projection email gate
+  var PDF = 'cedar_ridge_tax_projection_sample.pdf';
+  var modal = document.getElementById('lead-modal');
+  var form = document.getElementById('lead-form');
+  var emailEl = document.getElementById('lead-email');
+  var msgEl = document.getElementById('lead-msg');
+  var sb = null;
+  try { sb = supabase.createClient('https://zjpopvttlslhoopvmqsb.supabase.co', 'sb_publishable_Cwj_h10p92CFrSFSW4yzzQ_Eckr2fWJ'); } catch (e) {}
+
+  function unlocked() { try { return localStorage.getItem('sample_unlocked') === '1'; } catch (e) { return false; } }
+  function openModal() { if (modal) { modal.classList.add('open'); setTimeout(function () { if (emailEl) emailEl.focus(); }, 50); } }
+  function closeModal() { if (modal) modal.classList.remove('open'); }
+
+  document.querySelectorAll('.js-sample').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (unlocked()) return;            // already captured: let the real link open the PDF
+      e.preventDefault();
+      openModal();
+    });
+  });
+  if (modal) {
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    var x = document.getElementById('lead-close');
+    if (x) x.addEventListener('click', closeModal);
+  }
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var email = (emailEl.value || '').trim();
+      if (!email || email.indexOf('@') < 1) { msgEl.textContent = 'Please enter a valid email.'; return; }
+      msgEl.textContent = 'One sec…';
+      gtag('event', 'lead_sample', { event_category: 'conversion', event_label: 'Sample PDF email' });
+      try { if (sb) await sb.from('leads').insert({ email: email, source: 'homepage_sample' }); } catch (e) {}
+      try { localStorage.setItem('sample_unlocked', '1'); } catch (e) {}
+      msgEl.textContent = 'Thanks — opening the sample now.';
+      window.open(PDF, '_blank');
+      setTimeout(closeModal, 900);
+    });
+  }
+});
+</script>
 </head>
 <body>
 
@@ -424,7 +487,7 @@ section{padding-block:64px}
           <h2 style="font-size:1.7rem;margin:12px 0 12px">The numbers a pre-tax pitch deck never shows.</h2>
           <p style="margin:0 0 22px;color:var(--ink-2)">A real projection, anonymized — the same sample a client gets on their own deal.</p>
           <div class="hero-cta">
-            <a class="btn btn-gold btn-sm" href="cedar_ridge_tax_projection_sample.pdf">View the sample projection (PDF) &rarr;</a>
+            <a class="btn btn-gold btn-sm js-sample" href="cedar_ridge_tax_projection_sample.pdf">View the sample projection (PDF) &rarr;</a>
             <a class="btn btn-ghost btn-sm" href="what-your-lps-actually-keep.html">Read the full teardown &rarr;</a>
           </div>
         </div>
@@ -598,7 +661,7 @@ section{padding-block:64px}
         <h4>Tools &amp; samples</h4>
         <a href="estimator.html">Free estimator</a>
         <a href="showcase.html">Sample deal showcase</a>
-        <a href="cedar_ridge_tax_projection_sample.pdf">Sample projection (PDF)</a>
+        <a class="js-sample" href="cedar_ridge_tax_projection_sample.pdf">Sample projection (PDF)</a>
         <a href="download.html">Download the engine</a>
         <a href="kasing-ng.html">About Kasing</a>
       </div>
@@ -615,6 +678,21 @@ section{padding-block:64px}
     </div>
   </div>
 </footer>
+
+<!-- Lead-capture modal -->
+<div id="lead-modal" class="lead-modal" aria-hidden="true">
+  <div class="lead-box" role="dialog" aria-modal="true" aria-labelledby="lead-h">
+    <button id="lead-close" class="lead-x" aria-label="Close">&times;</button>
+    <h3 id="lead-h">Get the sample projection</h3>
+    <p>A real anonymized Deal Tax Projection &mdash; the same read a client gets on their own deal. Tell me where to send it.</p>
+    <form id="lead-form">
+      <input id="lead-email" type="email" placeholder="you@company.com" required autocomplete="email">
+      <button type="submit" class="btn btn-gold">Send me the sample &rarr;</button>
+    </form>
+    <p id="lead-msg" class="lead-msg" aria-live="polite"></p>
+    <p class="lead-fine">No spam. I only follow up if I can genuinely help your deal. Unsubscribe anytime.</p>
+  </div>
+</div>
 
 </body>
 </html>
