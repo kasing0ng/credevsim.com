@@ -272,7 +272,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;letter-spacing:-.012em}
   <h2 style="margin:36px 0 8px">See the actual read, not a description of it</h2>
   <p class="lead">A real projection, anonymized, the same sample a client gets. These are the numbers a pre-tax pitch deck never shows.</p>
   <div class="sample">
-    <a class="sample-link" href="Northgate_Apartment_illustrative_SAMPLE.pdf" target="_blank" rel="noopener">View the full sample projection (PDF) &rarr;</a>
+    <a class="sample-link js-sample" href="Northgate_Apartment_illustrative_SAMPLE.pdf" target="_blank" rel="noopener">View the full sample projection (PDF) &rarr;</a>
     <a href="/showcase.html" style="display:block;margin-top:14px;color:var(--acc);font-weight:600;font-size:.9rem;text-decoration:none">Read the full teardown: what a multifamily development keeps after tax &rarr;</a>
     <p class="sample-note">Illustrative sample on an anonymized deal, not a client's pro forma. Your read is run on your own numbers.</p>
   </div>
@@ -396,7 +396,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;letter-spacing:-.012em}
         <h4>Tools &amp; samples</h4>
         <a href="estimator.html">Free estimator</a>
         <a href="showcase.html">Sample deal showcase</a>
-        <a href="Northgate_Apartment_illustrative_SAMPLE.pdf">Sample projection (PDF)</a>
+        <a class="js-sample" href="Northgate_Apartment_illustrative_SAMPLE.pdf">Sample projection (PDF)</a>
         <a href="download.html">Download the engine</a>
         <a href="kasing-ng.html">About Kasing</a>
       </div>
@@ -429,5 +429,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window.SAMPLE_SOURCE='advisory_sample';</script>
+<script src="sample-gate.js"></script>
 </body>
 </html>
