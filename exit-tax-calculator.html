@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Exit Tax Calculator: Depreciation Recapture on a Real Estate Sale | Kasing Ng, CPA</title>
+<meta name="description" content="What you actually owe when you sell a rental or syndication deal: §1245 recapture, unrecaptured §1250 gain, capital gain, NIIT and state, split out. Plus what a 1031 really defers and the cost-seg slice it does not. From a former Big 4 auditor.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#0A0E17">
+<link rel="canonical" href="https://credevsim.com/exit-tax-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kasing Ng, CPA">
+<meta property="og:title" content="Free Exit Tax Calculator: what you owe when you sell">
+<meta property="og:description" content="Depreciation recapture, capital gain, NIIT and state, split out. Plus what a 1031 really defers, and the cost-seg slice it does not.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/exit-tax-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Exit Tax Calculator: what you owe when you sell">
+<meta name="twitter:description" content="Depreciation recapture, capital gain, NIIT and state, split out. Plus what a 1031 really defers.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+h1,h2,h3{font-family:"Spectral",Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+:root{
+  --bg-app:#0A0E17; --bg-surf:#131a28; --bg-card:#161d2c;
+  --bd:#242f42; --acc:#CBA94E; --blue:#CBA94E;
+  --tx-pri:#EEF2F8; --tx-sec:#9AA6B8; --tx-dim:#6b788d; --grn:#39c093; --red:#e0714f;
+  --font:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.7;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:.01em}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+.back:hover{color:var(--tx-pri)}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+.byline{color:var(--tx-dim);font-size:.9rem;margin:0 0 26px;font-family:var(--mono);display:flex;align-items:center;gap:10px}
+.lede{margin:0 0 30px}
+strong{color:var(--tx-pri);font-weight:700}
+em{color:var(--tx-pri);font-style:italic}
+a.inline{color:var(--acc)}
+
+.card{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:24px 22px;margin:0 0 22px}
+.fld{margin:0 0 18px}
+.fld:last-child{margin-bottom:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;color:var(--tx-pri);font-weight:600;font-size:.92rem;margin:0 0 7px}
+label .q{display:inline-block;width:15px;height:15px;line-height:15px;text-align:center;border-radius:50%;background:var(--bd);color:var(--tx-dim);font-size:.7rem;font-weight:700;cursor:help;margin-left:6px;vertical-align:middle}
+input,select{width:100%;background:var(--bg-app);border:1px solid var(--bd);border-radius:7px;color:var(--tx-pri);font-size:1rem;padding:11px 12px;font-family:var(--font)}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.hint{color:var(--tx-dim);font-size:.78rem;margin:6px 0 0;line-height:1.5}
+.adv{border-top:1px solid var(--bd);margin-top:8px;padding-top:6px}
+.adv summary{cursor:pointer;color:var(--tx-dim);font-size:.85rem;padding:8px 0;list-style:none}
+.adv summary::-webkit-details-marker{display:none}
+.adv summary::before{content:"\25B8 ";color:var(--acc)}
+.adv[open] summary::before{content:"\25BE "}
+
+.out{margin:26px 0 0}
+.metric{background:var(--bg-surf);border:1px solid var(--bd);border-radius:10px;padding:18px 20px;margin:0 0 12px}
+.metric .lab{color:var(--tx-dim);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 5px}
+.metric .val{color:#fff;font-size:1.7rem;font-weight:700;font-family:var(--mono);line-height:1.1}
+.metric .sub{color:var(--tx-sec);font-size:.85rem;margin:7px 0 0}
+.metric.hero{border-color:rgba(203,169,78,.4);background:linear-gradient(145deg,#1c2436 0%,#141c2b 100%)}
+.metric.hero .val{color:var(--acc)}
+.flag{border:1px solid rgba(224,113,79,.32);background:rgba(224,113,79,.06);border-radius:8px;padding:14px 18px;margin:0 0 12px;font-size:.95rem}
+.flag.good{border-color:rgba(26,175,128,.32);background:rgba(26,175,128,.06)}
+.flag .t{display:block;color:var(--tx-pri);font-weight:700;margin:0 0 4px}
+.section-h{color:var(--tx-dim);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin:24px 0 12px;font-weight:700}
+
+.tbl-wrap{overflow-x:auto;margin:0 0 12px}
+table.brk{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--bg-surf);border:1px solid var(--bd);border-radius:10px}
+table.brk th,table.brk td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--bd)}
+table.brk th{color:var(--tx-dim);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+table.brk td.n{text-align:right;font-family:var(--mono);color:var(--tx-pri);white-space:nowrap}
+table.brk tr.tot td{font-weight:700;color:#fff;border-bottom:none}
+table.brk td small{display:block;color:var(--tx-dim);font-size:.75rem;line-height:1.4}
+
+.cta{display:block;margin:34px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(203,169,78,.34);border-radius:12px;text-decoration:none}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta span{color:var(--tx-sec);font-size:.9rem}
+.cta .go{display:inline-block;margin-top:14px;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px}
+.also{margin:18px 0 0;font-size:.9rem}
+.foot{margin-top:44px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.65;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 16px 60px}.metric .val{font-size:1.4rem}.row2{grid-template-columns:1fr}table.brk th,table.brk td{padding:8px 8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">Kasing Ng, <span>CPA</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <h1>Free Exit Tax Calculator: what you owe when you sell</h1>
+  <p class="byline"><img src="kasing_ng.png" alt="Kasing Ng" width="34" height="34" style="border-radius:50%;object-fit:cover;border:1px solid var(--bd)" onerror="this.style.display='none'"><span>By Kasing Ng, CPA, former Big&nbsp;4 auditor</span></p>
+
+  <p class="lede">Most people expect to pay 20% on the profit when they sell. Then the return comes back higher, because a big part of the gain isn't appreciation at all. It's the depreciation you already deducted, coming back at higher rates. This splits your exit tax into the layers the IRS actually uses, shows what a 1031 really defers, and flags the case where you owe tax on a deal that lost money. No signup.</p>
+
+  <div class="card">
+    <div class="fld">
+      <label for="asset">Property type<span class="q" title="Sets the depreciation life (27.5 years residential rental, 39 years commercial and transient lodging) and the default cost-seg short-life share if you used a study.">?</span></label>
+      <select id="asset">
+        <option value="rv_park">RV park</option>
+        <option value="campground">Campground</option>
+        <option value="mhp">Mobile-home / manufactured-housing park</option>
+        <option value="selfstorage">Self-storage</option>
+        <option value="retail">Retail</option>
+        <option value="hotel">Hotel</option>
+        <option value="multifamily" selected>Multifamily / apartments</option>
+        <option value="office">Office</option>
+        <option value="industrial">Industrial</option>
+      </select>
+    </div>
+
+    <div class="row2">
+      <div class="fld">
+        <label for="price">Purchase price<span class="q" title="What the property cost, land included. Land is backed out automatically since it never depreciates.">?</span></label>
+        <input id="price" type="text" inputmode="numeric" placeholder="e.g. 4,000,000">
+      </div>
+      <div class="fld">
+        <label for="sale">Expected sale price<span class="q" title="The gross price you expect to sell for. Selling costs come off under Advanced.">?</span></label>
+        <input id="sale" type="text" inputmode="numeric" placeholder="e.g. 4,800,000">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="fld">
+        <label for="buy">Year bought<span class="q" title="The year the property was placed in service. Sets how much depreciation has been taken and the bonus-depreciation rate a cost-seg study would have used.">?</span></label>
+        <select id="buy">
+          <option value="2017">2017 or earlier</option>
+          <option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option>
+          <option value="2021" selected>2021</option><option value="2022">2022</option><option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025e">2025 (before Jan 20)</option>
+          <option value="2025">2025 (after Jan 19)</option>
+          <option value="2026">2026</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="sell">Year you sell<span class="q" title="Depreciation is estimated in whole years between purchase and sale.">?</span></label>
+        <select id="sell"></select>
+      </div>
+    </div>
+
+    <div class="fld">
+      <label for="cs">Did the deal use a cost segregation study?<span class="q" title="A study moves part of the building into 5- and 15-year property that can be written off fast with bonus depreciation. That is the piece that comes back as ordinary income at sale.">?</span></label>
+      <select id="cs">
+        <option value="no">No, straight-line only</option>
+        <option value="yes">Yes, cost seg with bonus depreciation</option>
+      </select>
+    </div>
+
+    <div class="row2">
+      <div class="fld">
+        <label for="bracket">Federal bracket in the year you sell<span class="q" title="Pick the bracket you expect to be in INCLUDING the sale. A large gain can push you up a bracket by itself.">?</span></label>
+        <select id="bracket">
+          <option value="0.37">37%</option>
+          <option value="0.35">35%</option>
+          <option value="0.32">32%</option>
+          <option value="0.24">24%</option>
+          <option value="0.22">22%</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="statetax">State income-tax rate (%)<span class="q" title="Your top state rate. Most states tax capital gains as ordinary income, so it applies to every layer. Leave 0 for a no-income-tax state.">?</span></label>
+        <input id="statetax" type="text" inputmode="decimal" placeholder="0 (e.g. 13.3 for CA)">
+      </div>
+    </div>
+
+    <div class="fld">
+      <label for="status">How do you hold it?<span class="q" title="The 3.8% Net Investment Income Tax (IRC §1411) hits a passive investor's whole gain. A qualifying real estate professional whose rentals are a trade or business generally excludes it.">?</span></label>
+      <select id="status">
+        <option value="passive">Passive investor / LP</option>
+        <option value="rep">Real estate professional, materially participating</option>
+      </select>
+    </div>
+
+    <details class="adv fld">
+      <summary>Advanced: your share, debt, suspended losses, selling costs</summary>
+      <div class="row2" style="margin-top:14px">
+        <div class="fld">
+          <label for="share">Your ownership share (%)<span class="q" title="If you're an LP, your percentage of the deal. Prices, depreciation and debt above are whole-deal figures; everything is scaled to your share.">?</span></label>
+          <input id="share" type="text" inputmode="decimal" placeholder="100">
+        </div>
+        <div class="fld">
+          <label for="costs">Selling costs (% of price)<span class="q" title="Broker commission, transfer tax, closing costs. They reduce the amount realized, so they reduce the gain.">?</span></label>
+          <input id="costs" type="text" inputmode="decimal" placeholder="3">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="fld">
+          <label for="loan">Loan payoff at sale<span class="q" title="Whole-deal debt paid off at closing. Used to show the cash you actually walk away with, next to the tax you owe.">?</span></label>
+          <input id="loan" type="text" inputmode="numeric" placeholder="0">
+        </div>
+        <div class="fld">
+          <label for="equity">Equity you put in<span class="q" title="Your own cash invested (your share, not the whole deal). Optional. Used to flag a sale where you lose money and still owe tax.">?</span></label>
+          <input id="equity" type="text" inputmode="numeric" placeholder="optional">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="fld">
+          <label for="susp">Suspended passive losses on this deal<span class="q" title="Losses from this deal you could not use in prior years (IRC §469). A fully taxable sale to an unrelated buyer releases them, and they offset income in the year of sale. Your share, from your own records or your K-1 preparer.">?</span></label>
+          <input id="susp" type="text" inputmode="numeric" placeholder="0">
+        </div>
+        <div class="fld">
+          <label for="slover">Cost-seg short-life share (%)<span class="q" title="Share of the building a study moved to 5- and 15-year property. Leave blank for the property-type default.">?</span></label>
+          <input id="slover" type="text" inputmode="decimal" placeholder="auto">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="fld">
+          <label for="land">Land share of purchase price (%)<span class="q" title="Land never depreciates. 20% is a common starting point; your appraisal or study has the real number.">?</span></label>
+          <input id="land" type="text" inputmode="decimal" placeholder="20">
+        </div>
+        <div class="fld">
+          <label for="li">Land-improvement share of cost-seg (%)<span class="q" title="Of the cost-seg short-life basis, the part that is 15-year land improvements (paving, site utilities, pads) rather than 5-year personal property. Land improvements are §1250 property: only the bonus in excess of straight-line comes back as ordinary income. Default 0 treats it all as §1245, which is the conservative (higher-tax) read. Parks and RV sites usually run high here; your study breaks it out.">?</span></label>
+          <input id="li" type="text" inputmode="decimal" placeholder="0">
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="out" id="out" hidden>
+    <div class="metric hero">
+      <div class="lab">Estimated tax due on this sale</div>
+      <div class="val" id="rTax">&mdash;</div>
+      <div class="sub" id="rTaxSub"></div>
+    </div>
+
+    <div id="rFlags"></div>
+
+    <div class="section-h">Where the tax comes from</div>
+    <div class="tbl-wrap">
+      <table class="brk">
+        <thead><tr><th>Layer</th><th style="text-align:right">Gain</th><th style="text-align:right">Rate</th><th style="text-align:right">Tax</th></tr></thead>
+        <tbody id="rRows"></tbody>
+      </table>
+    </div>
+
+    <div class="metric">
+      <div class="lab">Cash in hand after loan payoff and tax</div>
+      <div class="val" id="rCash">&mdash;</div>
+      <div class="sub" id="rCashSub"></div>
+    </div>
+
+    <div class="section-h">What a 1031 exchange would change</div>
+    <div id="r1031"></div>
+  </div>
+
+  <a class="cta" href="advisory.html#deal" id="cta">
+    <strong>Want the real number on your actual deal?</strong>
+    <span>This is a fast estimate on whole years and default allocations. A Deal Tax Projection models your real depreciation schedule, your passive-loss history, the 1031 or hold-longer alternatives, and the after-tax IRR you actually keep, reviewed by a former Big&nbsp;4 auditor with no cost-seg study or exchange to sell you.</span>
+    <span class="go">See the Deal Tax Projection &rarr;</span>
+  </a>
+  <p class="also">Buying, not selling? Try the <a class="inline" href="estimator.html">free after-tax cost-seg estimator</a>. Want to see a full read? Get the <a class="inline js-sample" href="Northgate_Apartment_illustrative_SAMPLE.pdf">sample Deal Tax Projection (PDF)</a>.</p>
+
+  <p class="foot">
+    Estimate only, not tax advice. Depreciation is estimated in whole years with no mid-month convention, straight-line on the building over 27.5 or 39 years, and, if you used cost segregation, bonus depreciation at the rate for the year you bought with the remainder straight-line over 5 or 15 years. Capital improvements made during the hold are not included. All depreciation recapture is assumed recognized ahead of appreciation, and personal property is assumed fully recaptured at ordinary rates; an appraisal-based allocation of the sale price can lower that. Unrecaptured &sect;1250 gain is taxed at your ordinary rate or 25%, whichever is lower; long-term capital gain at 20% for the 35% and 37% brackets and 15% below (part of the 35% bracket is actually 15%). State tax is a flat add-on to every layer and does not model state-specific rules. Suspended losses are valued at your full marginal rate. The 1031 view assumes all proceeds and debt are replaced and no boot; cost-seg personal property is treated as outside the exchange unless state law makes it real property, a question for counsel. Foreclosure, deed-in-lieu, short sale, installment sales and related-party sales follow different rules. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
+  </p>
+</div>
+
+<script>
+// SHORTLIFE mirrors FinancialEngine.gd costseg_default_shortlife_pct() (same table as estimator.html).
+var SHORTLIFE = {
+  rv_park:0.60, campground:0.60, mhp:0.55, selfstorage:0.35, retail:0.25, hotel:0.25,
+  industrial:0.20, office:0.20, multifamily:0.20
+};
+// Residential rental = 27.5, nonresidential / transient lodging = 39 (IRC §168(c)).
+var RECOVERY = { multifamily:27.5, mhp:27.5, rv_park:39, campground:39, selfstorage:39, retail:39, hotel:39, industrial:39, office:39 };
+// §168(k) bonus by placed-in-service year. "2017 or earlier" = 0: used property was not bonus-eligible before TCJA.
+var BONUS = { '2017':0, '2018':1, '2019':1, '2020':1, '2021':1, '2022':1, '2023':0.8, '2024':0.6, '2025e':0.4, '2025':1, '2026':1 };
+var NIIT = 0.038;
+
+// Pure calculation. Layering mirrors FinancialEngine.gd exit block: recapture = min(accumulated
+// depreciation, gain); the bonus/ordinary layer fills first, then unrecaptured §1250, then appreciation.
+function compute(o){
+  var life = RECOVERY[o.asset] || 39;
+  var n = Math.max(o.sellYear - o.buyYear, 0);
+  var b = BONUS[o.buyKey] != null ? BONUS[o.buyKey] : 1;
+  var building = o.price * (1 - o.land);
+  var S = o.cs ? building * o.sl : 0;
+  var P = S * (1 - o.li), L = S * o.li, B = building - S;
+  var depP = b*P + (1-b)*P*Math.min(n/5, 1);
+  var depL = b*L + (1-b)*L*Math.min(n/15, 1);
+  var slL  = L*Math.min(n/15, 1);
+  var depB = B*Math.min(n/life, 1);
+  var accum = depP + depL + depB;
+  var ordDep = depP + Math.max(depL - slL, 0);          // §1245 + §1250 excess over straight-line
+  var amt = o.sale * (1 - o.costs);
+  var gainDeal = amt - (o.price - accum);
+
+  var sh = o.share;
+  var gain = gainDeal * sh;
+  var recap = Math.max(Math.min(accum, gainDeal), 0) * sh;
+  var ord = Math.min(ordDep * sh, recap);
+  var unrec = recap - ord;
+  var cg = Math.max(gain - recap, 0);
+
+  var niit = o.rep ? 0 : NIIT;
+  var ltcg = (o.r >= 0.35) ? 0.20 : 0.15;
+  var rOrd = o.r + niit + o.st, rUn = Math.min(o.r, 0.25) + niit + o.st, rCg = ltcg + niit + o.st;
+  var tOrd = ord*rOrd, tUn = unrec*rUn, tCg = cg*rCg;
+  var gross = tOrd + tUn + tCg;
+  var release = o.susp * (o.r + niit + o.st);
+  var tax = gross - release;
+
+  var cash = (amt - o.loan) * sh;
+  // 1031: cost-seg personal property is not §1031 property after TCJA; its share of the amount
+  // realized (by cost share, capped at cost) is a taxable sale, recapture capped at depreciation taken.
+  var ppFmv = o.price > 0 ? Math.min(amt * P / o.price, P) : 0;
+  var ppRecog = Math.min(Math.max(ppFmv - (P - depP), 0), depP) * sh;
+  var t1031 = Math.min(ppRecog * rOrd, gross);
+
+  return { n:n, life:life, gain:gain, ord:ord, unrec:unrec, cg:cg, rOrd:rOrd, rUn:rUn, rCg:rCg,
+           tOrd:tOrd, tUn:tUn, tCg:tCg, gross:gross, release:release, tax:tax, cash:cash,
+           afterTax:cash - Math.max(tax, 0), recapPct: gross > 0 ? (tOrd + tUn)/gross : 0,
+           ppRecog:ppRecog, t1031:t1031, deferred:gross - t1031, accum:accum*sh };
+}
+
+var $ = function(id){ return document.getElementById(id); };
+function num(s){ return parseFloat(String(s == null ? '' : s).replace(/[^0-9.\-]/g, '')); }
+function pct(id, dflt){ var v = $(id).value.trim(); if(v === '') return dflt; v = num(v)/100; return (v >= 0 && v <= 1) ? v : dflt; }
+function money(x){ return (x < 0 ? '-$' : '$') + Math.round(Math.abs(x)).toLocaleString('en-US'); }
+function rate(x){ return (Math.round(x*1000)/10) + '%'; }
+
+(function(){
+  var sel = $('sell'), y = new Date().getFullYear();
+  for(var i = y; i <= y + 10; i++){ var op = document.createElement('option'); op.value = i; op.textContent = i; sel.appendChild(op); }
+})();
+
+function recalc(){
+  var price = num($('price').value), sale = num($('sale').value);
+  if(!(price > 0) || !(sale > 0)){ $('out').hidden = true; return; }
+  var buyKey = $('buy').value;
+  var loan = num($('loan').value), susp = num($('susp').value), equity = num($('equity').value);
+  var o = {
+    asset:$('asset').value, price:price, sale:sale, buyKey:buyKey, buyYear:parseInt(buyKey, 10),
+    sellYear:parseInt($('sell').value, 10), cs:$('cs').value === 'yes',
+    r:parseFloat($('bracket').value), st:pct('statetax', 0), rep:$('status').value === 'rep',
+    share:pct('share', 1), costs:pct('costs', 0.03), land:pct('land', 0.20), li:pct('li', 0),
+    loan:loan > 0 ? loan : 0, susp:susp > 0 ? susp : 0
+  };
+  o.sl = pct('slover', SHORTLIFE[o.asset] || 0.20);
+  var c = compute(o);
+
+  if(c.gain <= 0){
+    $('rTax').textContent = '$0';
+    $('rTaxSub').innerHTML = 'On these numbers the sale is a <strong>loss of ' + money(-c.gain) + '</strong> against your depreciated basis. A loss on business real estate held over a year is generally a §1231 loss, which is ordinary and can offset other income, and any suspended passive losses are released on top.';
+    $('rRows').innerHTML = ''; $('rFlags').innerHTML = '';
+  } else {
+    $('rTax').textContent = money(c.tax);
+    $('rTaxSub').innerHTML = 'On a taxable gain of ' + money(c.gain) + ' (your share), after about ' + money(c.accum) + ' of depreciation taken over ' + c.n + ' year' + (c.n === 1 ? '' : 's') + '. Effective rate on the gain: <strong>' + rate(c.tax / c.gain) + '</strong>.'
+      + (c.gross > 0 ? ' <strong>' + Math.round(c.recapPct*100) + '% of this bill is depreciation coming back</strong>, not appreciation.' : '');
+    var rows = '';
+    if(c.ord > 0) rows += '<tr><td>Ordinary recapture<small>' + (o.li > 0 ? '§1245 personal property + §1250 bonus in excess of straight-line' : '§1245, the cost-seg bonus coming back') + '</small></td><td class="n">' + money(c.ord) + '</td><td class="n">' + rate(c.rOrd) + '</td><td class="n">' + money(c.tOrd) + '</td></tr>';
+    if(c.unrec > 0) rows += '<tr><td>Unrecaptured §1250 gain<small>straight-line depreciation on the building, capped at 25%</small></td><td class="n">' + money(c.unrec) + '</td><td class="n">' + rate(c.rUn) + '</td><td class="n">' + money(c.tUn) + '</td></tr>';
+    if(c.cg > 0) rows += '<tr><td>Capital gain<small>actual appreciation over what you paid</small></td><td class="n">' + money(c.cg) + '</td><td class="n">' + rate(c.rCg) + '</td><td class="n">' + money(c.tCg) + '</td></tr>';
+    if(c.release > 0) rows += '<tr><td>Released suspended losses<small>§469(g), fully taxable sale to an unrelated buyer</small></td><td class="n"></td><td class="n"></td><td class="n">' + money(-c.release) + '</td></tr>';
+    rows += '<tr class="tot"><td>Total</td><td class="n">' + money(c.gain) + '</td><td class="n"></td><td class="n">' + money(c.tax) + '</td></tr>';
+    $('rRows').innerHTML = rows;
+
+    var f = '';
+    if(c.cg <= 0 && c.gain > 0){
+      f += '<div class="flag"><span class="t">You owe tax with zero appreciation</span>The sale price is at or below what you paid, yet there is still a ' + money(c.gain) + ' gain. That is the depreciation you deducted along the way, and the IRS takes it back at sale. This is the part most sellers do not see coming.</div>';
+    }
+    if(c.afterTax < 0){
+      f += '<div class="flag"><span class="t">The tax is bigger than the cash you walk away with</span>After paying off the loan you net ' + money(c.cash) + ', but the bill is ' + money(c.tax) + '. You would be writing a check to sell. Common in distressed exits where debt eats the proceeds. Worth modeling before you list it or sign a short sale.</div>';
+    }
+    if(equity > 0 && c.cash < equity && c.tax > 0){
+      f += '<div class="flag"><span class="t">You lose money on the deal and still owe tax</span>You put in ' + money(equity) + ' and get back ' + money(Math.max(c.cash, 0)) + ' before tax, an economic loss of ' + money(equity - Math.max(c.cash, 0)) + '. The tax return does not see it that way: depreciation lowered your basis, so the sale still shows a gain.</div>';
+    }
+    $('rFlags').innerHTML = f;
+  }
+
+  $('rCash').textContent = money(c.afterTax);
+  $('rCash').style.color = c.afterTax < 0 ? 'var(--red)' : '#fff';
+  $('rCashSub').innerHTML = money(o.sale) + ' sale, less ' + Math.round(o.costs*100) + '% selling costs' + (o.loan > 0 ? ' and ' + money(o.loan) + ' loan payoff' : '') + (o.share < 1 ? ', times your ' + (Math.round(o.share*1000)/10) + '% share' : '') + ', less the tax above. Before any reserves or waterfall splits.';
+
+  var x = '';
+  if(c.gain > 0){
+    x += '<div class="flag good"><span class="t">A full 1031 defers about ' + money(c.deferred) + ' of this</span>Reinvest all the proceeds and replace the debt, and the gain rolls into the replacement property with a lower basis. Deferred, not forgiven: it comes due when you finally sell without exchanging, unless you hold until death and your heirs get a stepped-up basis.</div>';
+    if(c.t1031 > 0){
+      x += '<div class="flag"><span class="t">But about ' + money(c.t1031) + ' may still be due, even with no cash out</span>Since 2018 a 1031 only covers real property. The cost-seg personal property is sold, not exchanged, so its recapture (about ' + money(c.ppRecog) + ' of ordinary income here) can be taxed even in a clean exchange. Some fixtures count as real property under state law, which is a question for your QI and counsel. This is the slice of a 1031 most people never hear about.'
+        + ((o.li === 0 && /^(rv_park|campground|mhp)$/.test(o.asset)) ? ' <strong>On a park this is likely overstated:</strong> pads, roads and site utilities are mostly 15-year land improvements, which are real property and stay inside the exchange. Enter your study\'s land-improvement share under Advanced and this number drops.' : '')
+        + '</div>';
+    }
+  }
+  $('r1031').innerHTML = x;
+  $('out').hidden = false;
+  try { if(!window._exitUsed && typeof gtag === 'function'){ window._exitUsed = 1; gtag('event', 'use_exit_calc', { event_category: 'tool' }); } } catch(e) {}
+}
+
+['asset','price','sale','buy','sell','cs','bracket','statetax','status','share','costs','loan','equity','susp','slover','land','li'].forEach(function(id){
+  $(id).addEventListener('input', recalc);
+  $(id).addEventListener('change', recalc);
+});
+$('cta').addEventListener('click', function(){ try { gtag('event', 'click_exit_calc_cta', { event_category: 'conversion' }); } catch(e) {} });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window.SAMPLE_SOURCE = 'exitcalc_sample';</script>
+<script src="sample-gate.js"></script>
+</body>
+</html>
