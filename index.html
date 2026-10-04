@@ -73,6 +73,7 @@
   "description": "Independent commercial real estate tax advisory for developers, general partners, and syndicators: after-tax LP return modeling net of depreciation recapture, cost-segregation screening, the §469 passive-loss trap, 1031 and Opportunity Zone planning, and non-attest fund finance including capital accounts, investor reporting, and K-1 review.",
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deal Tax Projection" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Close Financial Due Diligence" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Proactive Quarterly Tax Advisory" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Underwriting & Pro Forma Pressure-Test" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Partnership Return & K-1 Review" } }
@@ -277,7 +278,7 @@ section{padding-block:64px}
 @media(max-width:720px){.sample-grid{grid-template-columns:1fr}}
 
 /* SERVICES */
-.svc{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .svc-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:30px 30px}
 .svc-card.lead-card{border-color:var(--gold-bd)}
 .svc-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
@@ -573,8 +574,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <section id="services">
     <div class="sec-head">
       <span class="eyebrow">Services &amp; pricing</span>
-      <h2>Two ways to work with me.</h2>
-      <p>A one-time tax read on a deal you're raising, or a standing quarterly review alongside the CPA you already have. <a href="advisory.html">See the full service menu &amp; pricing &rarr;</a></p>
+      <h2>Three ways to work with me.</h2>
+      <p>A one-time tax read on a deal you're raising, independent diligence on a deal you're buying, or a standing quarterly review alongside the CPA you already have. <a href="advisory.html">See the full service menu &amp; pricing &rarr;</a></p>
     </div>
     <div class="svc">
       <div class="svc-card lead-card">
@@ -583,6 +584,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="svc-price">$750 flat, one deal <span class="founder">Founder rate</span></div>
         <p>The after-tax LP IRR the pre-tax deck never shows, the recapture waiting at exit, and a straight go/no-go on whether a cost-seg study pays for itself. Own it already? I check the depreciation a Form&nbsp;3115 §481(a) catch-up can still recover in one year.</p>
         <a class="btn btn-gold btn-sm" href="https://calendly.com/kasing-credevsim/15min">Book a Strategy Call &rarr;</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-tag">Before you close &middot; project-based</span>
+        <h3>Pre-Close Financial Due Diligence</h3>
+        <div class="svc-price">from $2,500 flat, one deal</div>
+        <p>Under LOI? Before your earnest money goes hard, I test the seller's T-12, rent roll, and bank statements against the pitch, rebuild the pro forma, and hand you a findings memo: what the deal really earns and what to renegotiate. Independent buyer-side diligence, not an audit.</p>
+        <a class="btn btn-ghost btn-sm" href="advisory.html#diligence">See what's covered &rarr;</a>
       </div>
       <div class="svc-card">
         <span class="svc-tag">Quarterly retainer</span>
@@ -715,6 +723,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <h4>Services</h4>
         <a href="advisory.html">Services &amp; pricing</a>
         <a href="advisory.html">Deal Tax Projection</a>
+        <a href="advisory.html#diligence">Pre-close diligence</a>
         <a href="advisory.html">Quarterly advisory</a>
         <a href="https://calendly.com/kasing-credevsim/15min">Book a call</a>
       </div>
