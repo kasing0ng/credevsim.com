@@ -36,7 +36,7 @@
   modal.innerHTML = '<div class="sg-box" role="dialog" aria-modal="true" aria-labelledby="sg-h">'
     + '<button class="sg-x" aria-label="Close">&times;</button>'
     + '<h3 id="sg-h">Get the sample projection</h3>'
-    + '<p>A real anonymized Deal Tax Projection &mdash; the same read a client gets on their own deal. Tell me where to send it.</p>'
+    + '<p>A sample Deal Tax Projection on a fictional multifamily deal, run through the same engine as a client report. Tell me where to send it.</p>'
     + '<form><input type="email" placeholder="you@company.com" required autocomplete="email">'
     + '<button type="submit">Send me the sample &rarr;</button></form>'
     + '<p class="sg-msg" aria-live="polite"></p>'

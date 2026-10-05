@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBER47Q957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBER47Q957');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the Numbers Are Checked | Kasing Ng, CPA</title>
+<meta name="description" content="How the engine behind every Deal Tax Projection is tested: an independent Excel rebuild of the exit-tax math, thousands of pinned results that fail on any change, and checks proven able to fail. Plus what is not checked.">
+<meta name="author" content="Kasing Ng">
+<meta name="theme-color" content="#0A0E17">
+<link rel="canonical" href="https://credevsim.com/how-the-numbers-are-checked.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8F%A2</text></svg>">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kasing Ng, CPA">
+<meta property="og:title" content="How the numbers are checked">
+<meta property="og:description" content="An independent Excel rebuild of the exit-tax math, thousands of pinned results, and checks proven able to fail. Plus what is not checked.">
+<meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<meta property="og:url" content="https://credevsim.com/how-the-numbers-are-checked.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How the numbers are checked">
+<meta name="twitter:description" content="How the engine behind every Deal Tax Projection is tested, and what is not checked.">
+<meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+h1,h2,h3{font-family:"Spectral",Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+:root{
+  --bg-app:#0A0E17; --bg-surf:#131a28; --bg-card:#161d2c;
+  --bd:#242f42; --acc:#CBA94E;
+  --tx-pri:#EEF2F8; --tx-sec:#9AA6B8; --tx-dim:#6b788d; --grn:#39c093; --red:#e0714f;
+  --font:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg-app);color:var(--tx-sec);line-height:1.7;font-size:1.05rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:34px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid var(--bd)}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1rem}
+.brand span{color:var(--acc)}
+.back{color:var(--tx-dim);text-decoration:none;font-size:.85rem}
+h1{color:#fff;font-size:2rem;line-height:1.22;letter-spacing:-.02em;margin:0 0 14px}
+h2{color:#fff;font-size:1.35rem;margin:38px 0 12px}
+p{margin:0 0 16px}
+strong{color:var(--tx-pri);font-weight:700}
+a.inline{color:var(--acc)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 8px}
+.stats div{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:16px 16px 12px}
+.stats b{display:block;font-family:var(--mono);color:var(--acc);font-size:1.45rem;font-weight:600;line-height:1.2}
+.stats span{display:block;font-size:.84rem;line-height:1.45;margin-top:6px}
+.chk{background:var(--bg-card);border:1px solid var(--bd);border-radius:12px;padding:18px 20px 6px;margin:0 0 14px}
+.chk h3{color:#fff;font-size:1.15rem;margin:0 0 8px}
+.chk p{font-size:.95rem}
+ul.not{margin:0 0 16px;padding-left:20px}
+ul.not li{margin-bottom:10px;font-size:.95rem}
+.cta{margin:40px 0 0;padding:22px 24px;background:linear-gradient(145deg,#162640 0%,#101a29 60%,#101827 100%);border:1px solid rgba(203,169,78,.34);border-radius:12px}
+.cta strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
+.cta p{margin:0 0 14px;font-size:.92rem}
+.btn{display:inline-block;background:var(--acc);color:#0b0f19;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:6px;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--acc);border:1px solid rgba(203,169,78,.5);margin-left:8px}
+.foot{margin-top:44px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.65;font-style:italic}
+@media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 16px 60px}.stats{grid-template-columns:1fr}.btn.ghost{margin:10px 0 0}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How the Numbers Are Checked",
+  "description": "How the engine behind every Deal Tax Projection is tested: an independent Excel rebuild of the exit-tax math, thousands of pinned results that fail on any change, and checks proven able to fail. Plus what is not checked.",
+  "url": "https://credevsim.com/how-the-numbers-are-checked.html",
+  "image": "https://credevsim.com/CREDevSim_Banner_Download.png",
+  "author": { "@type": "Person", "name": "Kasing Ng", "jobTitle": "CPA, former Big 4 auditor", "url": "https://credevsim.com/kasing-ng.html" },
+  "publisher": { "@type": "Organization", "name": "CREDevSim", "url": "https://credevsim.com/" },
+  "mainEntityOfPage": "https://credevsim.com/how-the-numbers-are-checked.html"
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">Kasing Ng, <span>CPA</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+
+  <h1>How the numbers are checked</h1>
+
+  <p>Every Deal Tax Projection comes out of software I built. Before you lean on one of these reports, the fair question is simple: who checks the software? I spent years as an auditor asking exactly that about other people's models, so here is the honest answer, including the parts I don't check.</p>
+
+  <div class="stats">
+    <div><b>21 &times; 7</b><span>test deals and key tax figures double-checked in a separate spreadsheet I built by hand</span></div>
+    <div><b>15,000+</b><span>saved results locked in; if my code moves one by accident, the check catches it</span></div>
+    <div><b>40+</b><span>automated checks run before any change reaches your report</span></div>
+  </div>
+
+  <h2>1. A second, independent calculation</h2>
+  <div class="chk">
+    <p>The tax you owe when you sell is the part that has to be right, so I check it twice. Alongside the software, I built a completely separate version in Excel, typing the tax rules in by hand rather than copying the software. Then I ran 21 different deals through both and compared the figures that matter: your gain at sale, the depreciation you have to pay back, the capital-gains tax, the total tax bill when you sell, and the losses you carry forward.</p>
+    <p><strong>Every one matches, on all 21 deals.</strong> Two separate tools, built two different ways, landing on the same number. If the software had a hidden tax error, the hand-built Excel would not agree with it. The check re-runs any time, so a mistake turns up here, not in your report.</p>
+  </div>
+
+  <h2>2. Saved results that can't move without me knowing</h2>
+  <div class="chk">
+    <p>I keep more than 30 test deals on hand, from ground-up builds to stabilized purchases, each with its correct answers on record. A separate check loads 20 of my real deal models the same way you would click through the app, plus one with the lease-up turned off, and compares about 15,600 saved results against what they should be.</p>
+    <p>If a single result drifts by more than rounding, the check stops and names exactly which one, on which deal. Nothing in your report changes quietly. A number moves only when I mean it to, and I review the change before accepting it.</p>
+  </div>
+
+  <h2>3. Checks proven to actually catch mistakes</h2>
+  <div class="chk">
+    <p>A test that always passes proves nothing. So whenever I add a check, I deliberately break the software in a throwaway copy, for example nudging one month of income by a tenth of a percent, and confirm the check turns red on exactly the deals it should. If it doesn't catch the break, it doesn't count. The alarms get tested before I trust them.</p>
+  </div>
+
+  <h2>What is not checked, and what this is not</h2>
+  <ul class="not">
+    <li><strong>The hand-built double-check covers the tax at sale.</strong> How the cash is split between you and your investors is checked a different way, against saved results, not a second calculation.</li>
+    <li><strong>The year-to-year tax doesn't tie to the penny between the two tools.</strong> They differ for two reasons I tracked down and wrote up: a vacancy allowance in the spreadsheet, and a timing difference in when depreciation starts. Known, not hidden.</li>
+    <li><strong>Testing proves the math does what it's built to do.</strong> It can't make your inputs right. A projection is only as good as the rent, cost, loan and sale assumptions behind it, which is why every report lists them in full.</li>
+    <li><strong>This is not an audit.</strong> These are my own quality checks on my own software, not a formal opinion on any deal or financial statement, and not a cost segregation study.</li>
+  </ul>
+
+  <div class="cta">
+    <strong>See the output these checks stand behind</strong>
+    <p>The sample Deal Tax Projection is a fictional multifamily development run through the same engine.</p>
+    <a class="btn js-sample" href="Northgate_Apartment_illustrative_SAMPLE.pdf" target="_blank" rel="noopener">See the sample (PDF) &rarr;</a>
+    <a class="btn ghost" href="https://calendly.com/kasing-credevsim/15min" onclick="try{gtag('event','click_book_call',{event_category:'conversion',event_label:'numbers_checked'})}catch(e){}">Book a 15-min call</a>
+  </div>
+
+  <div class="foot">
+    Descriptions of testing refer to the engine as of the date of this page and to the scenarios described; they are not a guarantee of any result. This page is educational and is not tax, legal, or investment advice. Advisory engagements are non-attest: I do not perform audits, reviews, or compilations, and I do not prepare or file tax returns. Kasing Ng, CPA &mdash; California License 139270.
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window.SAMPLE_SOURCE='numbers_checked_sample';</script>
+<script src="sample-gate.js"></script>
+</body>
+</html>

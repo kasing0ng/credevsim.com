@@ -97,6 +97,28 @@ table.brk td small{display:block;color:var(--tx-dim);font-size:.75rem;line-heigh
 .foot{margin-top:44px;padding-top:22px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx-dim);line-height:1.65;font-style:italic}
 @media(max-width:560px){h1{font-size:1.6rem}body{font-size:1rem}.wrap{padding:24px 16px 60px}.metric .val{font-size:1.4rem}.row2{grid-template-columns:1fr}table.brk th,table.brk td{padding:8px 8px}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Exit Tax Calculator: Depreciation Recapture on a Real Estate Sale",
+  "description": "What you actually owe when you sell a rental or syndication deal: §1245 recapture, unrecaptured §1250 gain, capital gain, NIIT and state, split out. Plus what a 1031 really defers and the cost-seg slice it does not. From a former Big 4 auditor.",
+  "url": "https://credevsim.com/exit-tax-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (web browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Kasing Ng",
+    "jobTitle": "CPA, former Big 4 auditor",
+    "url": "https://credevsim.com/kasing-ng.html"
+  }
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -176,8 +198,10 @@ table.brk td small{display:block;color:var(--tx-dim);font-size:.75rem;line-heigh
         </select>
       </div>
       <div class="fld">
-        <label for="statetax">State income-tax rate (%)<span class="q" title="Your top state rate. Most states tax capital gains as ordinary income, so it applies to every layer. Leave 0 for a no-income-tax state.">?</span></label>
-        <input id="statetax" type="text" inputmode="decimal" placeholder="0 (e.g. 13.3 for CA)">
+        <label for="statetax">State income-tax rate (%)<span class="q" title="Your top state rate. Most states tax capital gains as ordinary income. Pick your state and the handful that tax gains lower (AZ, AR, HI, MT, NM, ND, SC, WI, and MO at zero) apply that lower rate to the unrecaptured §1250 and capital gain layers. A rate you type yourself applies to every layer. Leave 0 for a no-income-tax state.">?</span></label>
+        <select id="statepick" aria-label="Pick your state"><option value="">Pick your state (fills the rate)</option></select>
+        <input id="statetax" type="text" inputmode="decimal" placeholder="0 (e.g. 13.3 for CA)" style="margin-top:8px">
+        <p class="hint" id="stateNote">Top 2026 rates per the Tax Foundation; you can type over it.</p>
       </div>
     </div>
 
@@ -269,7 +293,7 @@ table.brk td small{display:block;color:var(--tx-dim);font-size:.75rem;line-heigh
   <p class="also">Buying, not selling? Try the <a class="inline" href="estimator.html">free after-tax cost-seg estimator</a>. Want to see a full read? Get the <a class="inline js-sample" href="Northgate_Apartment_illustrative_SAMPLE.pdf">sample Deal Tax Projection (PDF)</a>.</p>
 
   <p class="foot">
-    Estimate only, not tax advice. Depreciation is estimated in whole years with no mid-month convention, straight-line on the building over 27.5 or 39 years, and, if you used cost segregation, bonus depreciation at the rate for the year you bought with the remainder straight-line over 5 or 15 years. Capital improvements made during the hold are not included. All depreciation recapture is assumed recognized ahead of appreciation, and personal property is assumed fully recaptured at ordinary rates; an appraisal-based allocation of the sale price can lower that. Unrecaptured &sect;1250 gain is taxed at your ordinary rate or 25%, whichever is lower; long-term capital gain at 20% for the 35% and 37% brackets and 15% below (part of the 35% bracket is actually 15%). State tax is a flat add-on to every layer and does not model state-specific rules. Suspended losses are valued at your full marginal rate. The 1031 view assumes all proceeds and debt are replaced and no boot; cost-seg personal property is treated as outside the exchange unless state law makes it real property, a question for counsel. Foreclosure, deed-in-lieu, short sale, installment sales and related-party sales follow different rules. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
+    Estimate only, not tax advice. Depreciation is estimated in whole years with no mid-month convention, straight-line on the building over 27.5 or 39 years, and, if you used cost segregation, bonus depreciation at the rate for the year you bought with the remainder straight-line over 5 or 15 years. Capital improvements made during the hold are not included. All depreciation recapture is assumed recognized ahead of appreciation, and personal property is assumed fully recaptured at ordinary rates; an appraisal-based allocation of the sale price can lower that. Unrecaptured &sect;1250 gain is taxed at your ordinary rate or 25%, whichever is lower; long-term capital gain at 20% for the 35% and 37% brackets and 15% below (part of the 35% bracket is actually 15%). State tax is added at your state's top rate; for the states that tax capital gain lower, a picked state applies its lower rate to the unrecaptured &sect;1250 and capital gain layers. Brackets, dollar caps on state exclusions, and local income tax are not modeled. Suspended losses are valued at your full marginal rate. The 1031 view assumes all proceeds and debt are replaced and no boot; cost-seg personal property is treated as outside the exchange unless state law makes it real property, a question for counsel. Foreclosure, deed-in-lieu, short sale, installment sales and related-party sales follow different rules. No engagement is created by using this tool. Kasing Ng, CPA &mdash; California License 139270.
   </p>
 </div>
 
@@ -312,7 +336,9 @@ function compute(o){
 
   var niit = o.rep ? 0 : NIIT;
   var ltcg = (o.r >= 0.35) ? 0.20 : 0.15;
-  var rOrd = o.r + niit + o.st, rUn = Math.min(o.r, 0.25) + niit + o.st, rCg = ltcg + niit + o.st;
+  // Ordinary recapture takes the state's ordinary rate; the gain layers take its capital-gain rate.
+  var stCg = (o.stCg == null) ? o.st : o.stCg;
+  var rOrd = o.r + niit + o.st, rUn = Math.min(o.r, 0.25) + niit + stCg, rCg = ltcg + niit + stCg;
   var tOrd = ord*rOrd, tUn = unrec*rUn, tCg = cg*rCg;
   var gross = tOrd + tUn + tCg;
   var release = o.susp * (o.r + niit + o.st);
@@ -350,7 +376,7 @@ function recalc(){
   var o = {
     asset:$('asset').value, price:price, sale:sale, buyKey:buyKey, buyYear:parseInt(buyKey, 10),
     sellYear:parseInt($('sell').value, 10), cs:$('cs').value === 'yes',
-    r:parseFloat($('bracket').value), st:pct('statetax', 0), rep:$('status').value === 'rep',
+    r:parseFloat($('bracket').value), st:pct('statetax', 0), stCg:window._stateCg, rep:$('status').value === 'rep',
     share:pct('share', 1), costs:pct('costs', 0.03), land:pct('land', 0.20), li:pct('li', 0),
     loan:loan > 0 ? loan : 0, susp:susp > 0 ? susp : 0
   };
@@ -404,6 +430,49 @@ function recalc(){
   try { if(!window._exitUsed && typeof gtag === 'function'){ window._exitUsed = 1; gtag('event', 'use_exit_calc', { event_category: 'tool' }); } } catch(e) {}
 }
 
+// ponytail: top 2026 statutory rate (Tax Foundation, single filer). Lower brackets and local tax are not modeled.
+// 4th element = the state's top rate on capital gain where it is lower than ordinary (exclusion or special rate).
+// Mirrors FinancialEngine.STATE_TAX cg_rate in the engine; keep the two in step.
+var STATES = [['Alabama',5,'$3,000'],['Alaska',0],['Arizona',2.5,'$0',1.875],['Arkansas',3.9,'$4,600',1.95],['California',13.3,'$1,000,000'],
+ ['Colorado',4.4,'$0'],['Connecticut',6.99,'$500,000'],['Delaware',6.6,'$60,000'],['District of Columbia',10.75,'$1,000,000'],
+ ['Florida',0],['Georgia',5.19,'$0'],['Hawaii',11,'$325,000',7.25],['Idaho',5.3,'$4,811'],['Illinois',4.95,'$0'],['Indiana',2.95,'$0'],
+ ['Iowa',3.8,'$0'],['Kansas',5.58,'$23,000'],['Kentucky',3.5,'$0'],['Louisiana',3,'$0'],['Maine',7.15,'$64,849'],
+ ['Maryland',6.5,'$1,000,000'],['Massachusetts',9,'$1,083,150'],['Michigan',4.25,'$0'],['Minnesota',9.85,'$203,150'],
+ ['Mississippi',4,'$10,000'],['Missouri',4.7,'$9,436',0],['Montana',5.65,'$47,500',4.1],['Nebraska',4.55,'$24,760'],['Nevada',0],
+ ['New Hampshire',0],['New Jersey',10.75,'$1,000,000'],['New Mexico',5.9,'$210,000',3.54],['New York',10.9,'$25,000,000'],
+ ['North Carolina',3.99,'$0'],['North Dakota',2.5,'$244,825',1.5],['Ohio',2.75,'$26,050'],['Oklahoma',4.5,'$7,200'],
+ ['Oregon',9.9,'$125,000'],['Pennsylvania',3.07,'$0'],['Rhode Island',5.99,'$186,450'],['South Carolina',6,'$18,230',3.36],
+ ['South Dakota',0],['Tennessee',0],['Texas',0],['Utah',4.5,'$0'],['Vermont',8.75,'$249,700'],['Virginia',5.75,'$17,000'],
+ ['Washington',0],['West Virginia',4.82,'$60,000'],['Wisconsin',7.65,'$332,720',5.355],['Wyoming',0]];
+var STATE_FLAG = {
+  'Washington': 'Washington taxes capital gains separately, but sales of real estate are exempt, so 0 here.',
+  'Missouri': 'Missouri subtracts capital gain from its income tax starting in 2025, so the gain layers carry 0% state tax here. Ordinary recapture stays taxable at 4.7%. Confirm with your preparer how Missouri treats the unrecaptured §1250 portion.',
+  'Arizona': 'Arizona excludes 25% of long-term capital gain on assets bought after 2011.',
+  'Arkansas': 'Arkansas excludes 50% of long-term capital gain, and gain above $10 million entirely (that cap is not modeled).',
+  'Hawaii': 'Hawaii caps the rate on long-term capital gain at 7.25%.',
+  'Montana': 'Montana taxes long-term capital gain at a 4.1% top rate.',
+  'New Mexico': 'New Mexico excludes 40% of long-term gain on up to $1 million of gain; the cap is not modeled.',
+  'North Dakota': 'North Dakota excludes 40% of long-term capital gain.',
+  'South Carolina': 'South Carolina excludes 44% of long-term capital gain.',
+  'Wisconsin': 'Wisconsin deducts 30% of long-term capital gain.',
+  'Vermont': 'Vermont excludes up to 40% of gain on assets held 3+ years, capped at $350,000; not modeled here.',
+  'Minnesota': 'Minnesota adds a 1% tax on net investment income above $1 million, not included.',
+  'Oklahoma': 'Oklahoma real property held 5+ years may qualify for a capital gain deduction; not modeled here.',
+  'New York': 'New York City and Yonkers residents also pay local income tax, not included.',
+  'Maryland': 'Maryland counties add a local income tax, not included.'
+};
+STATES.forEach(function(r){ var o = document.createElement('option'); o.value = r[1]; o.textContent = r[0] + ': ' + (r[1] ? r[1] + '%' : 'no income tax'); $('statepick').appendChild(o); });
+$('statepick').addEventListener('change', function(){
+  var r = STATES[this.selectedIndex - 1];
+  if (!r) return;
+  $('statetax').value = r[1] || '';
+  window._stateCg = (r[3] == null) ? null : r[3] / 100;
+  $('stateNote').textContent = [r[1] ? r[0] + "'s top rate applies above " + r[2] + ' of taxable income; a smaller total income lands in a lower bracket.'
+    : (STATE_FLAG[r[0]] ? '' : r[0] + ' has no state income tax.'), STATE_FLAG[r[0]], 'Source: Tax Foundation, 2026 rates.'].filter(Boolean).join(' ');
+  recalc();
+});
+// Typing a rate by hand leaves the picker: one flat rate on every layer.
+$('statetax').addEventListener('input', function(){ window._stateCg = null; $('statepick').value = ''; });
 ['asset','price','sale','buy','sell','cs','bracket','statetax','status','share','costs','loan','equity','susp','slover','land','li'].forEach(function(id){
   $(id).addEventListener('input', recalc);
   $(id).addEventListener('change', recalc);
