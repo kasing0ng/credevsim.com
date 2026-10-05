@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free After-Tax Cost-Seg Estimator | Kasing Ng, CPA</title>
-<meta name="description" content="A 30-second first-year cost-segregation estimate for commercial real estate deals — with the two things the other calculators leave out: passive-loss suspension and depreciation recapture at exit. From a former Big 4 auditor.">
+<meta name="description" content="A 30-second first-year cost-segregation estimate for commercial real estate deals, with the two things the other calculators leave out: passive-loss suspension and depreciation recapture at exit. From a former Big 4 auditor.">
 <meta name="author" content="Kasing Ng">
 <meta name="theme-color" content="#0A0E17">
 <link rel="canonical" href="https://credevsim.com/estimator.html">
@@ -21,12 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kasing Ng, CPA">
 <meta property="og:title" content="Free After-Tax Cost-Seg Estimator">
-<meta property="og:description" content="First-year cost-seg estimate for your deal — plus the passive-loss and recapture reality the other calculators skip. From a former Big 4 auditor.">
+<meta property="og:description" content="First-year cost-seg estimate for your deal, plus the passive-loss and recapture reality the other calculators skip. From a former Big 4 auditor.">
 <meta property="og:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <meta property="og:url" content="https://credevsim.com/estimator.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free After-Tax Cost-Seg Estimator">
-<meta name="twitter:description" content="First-year cost-seg estimate for your deal — plus the passive-loss and recapture reality other calculators skip.">
+<meta name="twitter:description" content="First-year cost-seg estimate for your deal, plus the passive-loss and recapture reality other calculators skip.">
 <meta name="twitter:image" content="https://credevsim.com/CREDevSim_Banner_Download.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,18 +127,19 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
     </div>
 
     <div class="fld">
-      <label for="pis">Year placed in service<span class="q" title="The federal bonus-depreciation rate is set by the year the property is placed in service: 2018-2022 and 2025-onward = 100% (OBBBA restored it permanently for property acquired after Jan 19, 2025); 2023 = 80%; 2024 = 60%.">?</span></label>
+      <label for="pis">Year placed in service<span class="q" title="The federal bonus-depreciation rate depends on when the property is placed in service and, from 2025, when you acquired it: 2018-2022 = 100%; 2023 = 80%; 2024 = 60%. OBBBA restored 100% permanently for property acquired after Jan 19, 2025 (by written binding contract). Property acquired before Jan 20, 2025 keeps the prior-law rate for the year it is placed in service: 40% in 2025, 20% in 2026.">?</span></label>
       <select id="pis">
-        <option value="2026">2026</option>
-        <option value="2025">2025</option>
+        <option value="2026">2026 or later (acquired after Jan 19, 2025)</option>
+        <option value="2025">2025 (acquired after Jan 19, 2025)</option>
+        <option value="2025e">2025 (acquired before Jan 20, 2025)</option>
         <option value="2024">2024</option>
         <option value="2023">2023</option>
-        <option value="2022">2022 or earlier</option>
+        <option value="2022">2018&ndash;2022</option>
       </select>
     </div>
 
     <div class="fld">
-      <label for="bracket">Your marginal tax bracket<span class="q" title="Your top federal ordinary-income rate. Used to translate the deduction into dollars of tax. State tax is not included — see the note below.">?</span></label>
+      <label for="bracket">Your marginal tax bracket<span class="q" title="Your top federal ordinary-income rate. Used to translate the deduction into dollars of tax. State tax is not included; see the note below.">?</span></label>
       <select id="bracket">
         <option value="0.37">37% (top bracket)</option>
         <option value="0.35">35%</option>
@@ -149,7 +150,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
     </div>
 
     <div class="fld">
-      <label for="status">How do you hold this deal?<span class="q" title="This is the field the other calculators never ask — and it is the one that decides whether the deduction does anything for you this year. A passive limited partner generally cannot use a rental paper loss against wages or business income (IRC 469); it suspends until you have passive income or the deal sells.">?</span></label>
+      <label for="status">How do you hold this deal?<span class="q" title="This is the field the other calculators never ask, and it is the one that decides whether the deduction does anything for you this year. A passive limited partner generally cannot use a rental paper loss against wages or business income (IRC 469); it suspends until you have passive income or the deal sells.">?</span></label>
       <select id="status">
         <option value="passive">Passive investor / LP (no other passive income)</option>
         <option value="passive_income">Passive investor, but I have other passive income</option>
@@ -158,10 +159,10 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
     </div>
 
     <div class="fld">
-      <label for="own">Do you already own this property?<span class="q" title="If you have owned it a year or more and never ran a cost-seg study, you can usually claim all the depreciation you missed in the current year with a §481(a) catch-up on Form 3115 — no amended returns. This tool flags it; the full read quantifies it.">?</span></label>
+      <label for="own">Do you already own this property?<span class="q" title="If you have owned it a year or more and never ran a cost-seg study, you can usually claim all the depreciation you missed in the current year with a §481(a) catch-up on Form 3115, with no amended returns. This tool flags it; the full read quantifies it.">?</span></label>
       <select id="own">
-        <option value="no">No — buying it now / just placed in service</option>
-        <option value="yes">Yes — I already own it</option>
+        <option value="no">No, buying it now / just placed in service</option>
+        <option value="yes">Yes, I already own it</option>
       </select>
     </div>
 
@@ -176,7 +177,7 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
         <input id="slover" type="text" inputmode="numeric" placeholder="auto">
       </div>
       <div class="fld">
-        <label for="statetax">State marginal income-tax rate (%)<span class="q" title="Optional. Your top state income-tax rate. Added on top of the federal rate for the tax figures below, the same way the full engine does it. Note: several states do not conform to federal bonus depreciation, which can change the deduction itself — that state-by-state decoupling is not modeled here. Leave blank for federal-only.">?</span></label>
+        <label for="statetax">State marginal income-tax rate (%)<span class="q" title="Optional. Your top state income-tax rate. Added on top of the federal rate for the tax figures below, the same way the full engine does it. Note: several states do not conform to federal bonus depreciation, which can change the deduction itself. That state-by-state decoupling is not modeled here. Leave blank for federal-only.">?</span></label>
         <input id="statetax" type="text" inputmode="numeric" placeholder="0">
       </div>
     </details>
@@ -184,9 +185,9 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
 
   <div class="out" id="out" hidden>
     <div class="metric">
-      <div class="lab">Standard first-year depreciation, no cost-seg study</div>
+      <div class="lab">Standard depreciation per year, no cost-seg study</div>
       <div class="val" id="rStd">—</div>
-      <div class="sub">Straight-line on the building basis over 39 years — what you get without a study.</div>
+      <div class="sub">Straight-line on the building basis over its <span id="rLife">39</span>-year life (27.5 yr residential rental, 39 yr commercial). This is what you get without a study.</div>
     </div>
     <div class="metric hero">
       <div class="lab">First-year deduction with cost seg + bonus</div>
@@ -208,14 +209,14 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
     <div id="rSuspend"></div>
     <div id="rCatchup"></div>
     <div class="flag">
-      <span class="t">This reverses at sale — depreciation recapture</span>
-      Whatever you accelerate now is recaptured when you sell. The short-life (5/15-year) piece comes back as <strong>&sect;1245 ordinary-income</strong> gain — taxed at roughly the same rate it saved you — and high earners add the 3.8% NIIT. So the headline above is mostly <em>timing</em>, not free money, unless you defer it with a <strong>1031 exchange</strong> or hold to a step-up at death. Estimated recapture exposure on the accelerated piece: <strong id="rRecap">—</strong>.
+      <span class="t">This reverses at sale: depreciation recapture</span>
+      Whatever you accelerate now is recaptured when you sell, and the two short-life buckets are taxed differently. The 5-year <strong>personal property</strong> comes back as <strong>&sect;1245 ordinary-income</strong> gain, taxed at roughly the rate it saved you. The 15-year <strong>land improvements</strong> are <strong>&sect;1250</strong> property: the accelerated portion is recaptured as ordinary gain, and the rest is unrecaptured &sect;1250 gain capped at 25%. A passive holder also owes the 3.8% NIIT on the gain. So the headline above is mostly <em>timing</em>, not free money, unless you defer it with a <strong>1031 exchange</strong> or hold to a step-up at death. Estimated recapture exposure on the accelerated piece: <strong id="rRecap">—</strong>.
     </div>
   </div>
 
   <a class="cta" href="/#contact" id="cta">
     <strong>Want this run on your actual deal?</strong>
-    <span>This is the 30-second screen. The full read models the real lease-up, the passive-loss timing across the whole hold, the exit recapture net of a 1031, and a &sect;481(a) catch-up if you already own it — built and reviewed by a former Big&nbsp;4 auditor, not a study salesperson.</span>
+    <span>This is the 30-second screen. The full read models the real lease-up, the passive-loss timing across the whole hold, the exit recapture net of a 1031, and a &sect;481(a) catch-up if you already own it, built and reviewed by a former Big&nbsp;4 auditor, not a study salesperson.</span>
     <span class="go">Get the full after-tax read &rarr;</span>
   </a>
 
@@ -225,22 +226,34 @@ input:focus,select:focus{outline:none;border-color:var(--blue)}
 </div>
 
 <script>
-// ── Mirrors FinancialEngine.gd verbatim — DO NOT let these drift from the engine.
-// costseg_default_shortlife_pct() table:
+// ── SHORTLIFE mirrors FinancialEngine.gd costseg_default_shortlife_pct() — keep in sync with the engine.
 var SHORTLIFE = {
   rv_park:0.60, rv_resort:0.60, campground:0.60,
   mhp:0.55, mobilehome:0.55, manufactured:0.55,
   selfstorage:0.35, retail:0.25, hotel:0.25,
   industrial:0.20, office:0.20, mixeduse:0.20, multifamily:0.20
 };
-// §168(k) bonus rate by placed-in-service year (after-tax block / §481(a) lookup):
-function bonusRate(y){
-  if(y<=2017) return 0.00;
-  if(y<=2022) return 1.00;
-  if(y===2023) return 0.80;
-  if(y===2024) return 0.60;
-  return 1.00; // ≥2025 OBBBA restored 100%
+// Long-life recovery period (yrs) for the building residual after short-life is pulled out.
+// Residential rental = 27.5, nonresidential / transient lodging = 39 (IRC §168(e)).
+// Engine matches: FinancialEngine.gd sets dep_yrs = 27.5 for residential, 39 otherwise (property_type).
+var RECOVERY = {
+  multifamily:27.5, mhp:27.5, mobilehome:27.5, manufactured:27.5,
+  rv_park:39, rv_resort:39, campground:39,   // transient (<30-day avg stay) = nonresidential
+  selfstorage:39, retail:39, hotel:39, industrial:39, office:39, mixeduse:39
+};
+// §168(k) bonus rate by placed-in-service timing (select value is the key, not a plain year):
+function bonusRate(k){
+  switch(k){
+    case '2026':  return 1.00;
+    case '2025':  return 1.00;   // acquired after Jan 19, 2025: OBBBA 100%, now permanent
+    case '2025e': return 0.40;   // acquired before Jan 20, 2025 (binding contract): prior-law 40% for 2025 PIS
+    case '2024':  return 0.60;
+    case '2023':  return 0.80;
+    case '2022':  return 1.00;   // 2018–2022 = 100%
+    default:      return 1.00;
+  }
 }
+var NIIT = 0.038;                 // §1411 net investment income tax on a passive holder's gain
 
 var $=function(id){return document.getElementById(id);};
 function num(s){ if(s==null) return NaN; var v=parseFloat(String(s).replace(/[^0-9.]/g,'')); return v; }
@@ -261,7 +274,7 @@ var ASSET_HINT = {
 function recalc(){
   var asset=$('asset').value;
   var price=num($('price').value);
-  var pis=parseInt($('pis').value,10);
+  var pisKey=$('pis').value;
   var rate=parseFloat($('bracket').value);
   var status=$('status').value;
   var own=$('own').value;
@@ -277,37 +290,50 @@ function recalc(){
 
   var effRate = rate + stateRate;      // engine adds state_rate on top of the ordinary rate
   var sl = (slOver!=null && slOver>=0 && slOver<=1) ? slOver : (SHORTLIFE[asset]||0.20);
-  var br = bonusRate(pis);
+  var br = bonusRate(pisKey);
+  var life = RECOVERY[asset] || 39;    // 27.5 residential, 39 commercial
   var building = price*(1-landPct);
-  var stdDep = building/39;            // straight-line, no study — the commodity baseline
+  var stdDep = building/life;          // straight-line, no study — the commodity baseline
   var ded = building*sl*br;            // first-year §168(k) slug on the reclassified short-life basis
   var taxShield = ded*effRate;
 
   $('rStd').textContent = money(stdDep);
+  $('rLife').textContent = (life===27.5) ? '27.5' : '39';
   $('rDed').textContent = money(ded);
-  $('rDedSub').textContent = money(building)+' building basis × '+Math.round(sl*100)+'% short-life × '+Math.round(br*100)+'% bonus.';
+  $('rDedSub').textContent = money(building)+' building basis × '+Math.round(sl*100)+'% short-life × '+Math.round(br*100)+'% bonus. This is the accelerated slug only; normal depreciation on the remaining building continues on top of it (the figure above).';
   $('rTax').textContent = money(taxShield);
   $('rRate').textContent = Math.round(effRate*100)+'%';
-  $('rRecap').textContent = money(ded*effRate);
+  // Recapture estimate at ordinary rates (conservative — the §1250 land-improvement slice is capped
+  // at 25%); a passive holder's gain also carries the 3.8% NIIT, an active participant's generally does not.
+  var recapRate = effRate + ((status==='active') ? 0 : NIIT);
+  $('rRecap').textContent = money(ded*recapRate);
 
   // Usable-this-year headline — the number the holder field actually moves
-  var usable = (status==='passive') ? 0 : taxShield;
-  $('rUsable').textContent = money(usable);
-  var uCard=$('rUsableCard');
-  uCard.style.borderColor = (usable>0) ? 'rgba(26,175,128,.4)' : 'rgba(224,113,79,.4)';
-  $('rUsable').style.color = (usable>0) ? 'var(--grn)' : 'var(--red)';
-  if(status==='passive'){
-    $('rUsableSub').innerHTML = 'As a passive LP with no passive income, the loss suspends under §469 — <strong>$0 lands on this year’s return.</strong> It waits for passive income or the sale.';
-  } else if(status==='passive_income'){
-    $('rUsableSub').innerHTML = 'Usable against your other passive income (§469), up to that amount; any excess suspends.';
+  var uCard=$('rUsableCard'), u=$('rUsable');
+  if(status==='passive_income'){
+    // §469 caps the offset at the holder's passive income, which this screen does not collect.
+    u.textContent = '≤ your passive income';
+    u.style.fontSize = '1.15rem';
+    u.style.color = 'var(--acc)';
+    uCard.style.borderColor = 'rgba(203,169,78,.45)';
+    $('rUsableSub').innerHTML = 'Offsets your <em>other</em> passive income this year (§469), up to that amount; anything beyond it suspends and carries forward. Enter your passive income in the full read to size it.';
   } else {
-    $('rUsableSub').innerHTML = 'Non-passive if you materially participate or qualify as an RE professional — offsets active income this year, subject to basis/at-risk limits.';
+    u.style.fontSize = '';
+    var usable = (status==='active') ? taxShield : 0;
+    u.textContent = money(usable);
+    uCard.style.borderColor = (usable>0) ? 'rgba(26,175,128,.4)' : 'rgba(224,113,79,.4)';
+    u.style.color = (usable>0) ? 'var(--grn)' : 'var(--red)';
+    if(status==='passive'){
+      $('rUsableSub').innerHTML = 'As a passive LP with no passive income, the loss suspends under §469: <strong>$0 lands on this year’s return.</strong> It waits for passive income or the sale.';
+    } else {
+      $('rUsableSub').innerHTML = 'Non-passive if you materially participate or qualify as an RE professional, it offsets active income this year, subject to basis, at-risk, and the §461(l) excess-business-loss cap.';
+    }
   }
 
   // §481(a) catch-up tease for property already owned
   $('rCatchup').innerHTML = (own==='yes')
-    ? '<div class="flag good"><span class="t">You already own it — you can likely claim the missed years now (§481(a))</span>'
-      +'Held without a cost-seg study, you generally do <strong>not</strong> amend prior returns. You file <strong>Form 3115</strong> and take the entire catch-up — every year of depreciation you missed — as a deduction in the current year through a <strong>§481(a) adjustment</strong>. On an older property this catch-up is often the single largest number on the page, at the current-year bonus rate. The full read quantifies it for your actual hold.</div>'
+    ? '<div class="flag good"><span class="t">You already own it: you can likely claim the missed years now (§481(a))</span>'
+      +'Held without a cost-seg study, you generally do <strong>not</strong> amend prior returns. You file <strong>Form 3115</strong> and take the entire catch-up (every year of depreciation you missed) as a deduction in the current year through a <strong>§481(a) adjustment</strong>. On an older property this catch-up is often the single largest number on the page. The full read computes it as if cost seg had applied from the start and quantifies it for your actual hold.</div>'
     : '';
 
   // Suspension reality by holder type
