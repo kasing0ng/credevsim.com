@@ -201,12 +201,29 @@ strong,b{color:var(--ink);font-weight:600}
 .btn-sm{padding:9px 15px;font-size:.86rem}
 .nav-right{display:flex;align-items:center;gap:28px}
 .nav-toggle{display:none}
+/* Resources dropdown: hover/focus on desktop, inline tools list in the mobile menu */
+.nav-dd{position:relative}
+.dd-car{font-size:.68em;margin-left:4px;opacity:.7}
+.dd-panel{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:14px}
+.nav-dd:hover .dd-panel,.nav-dd:focus-within .dd-panel{display:block}
+.dd-box{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;width:540px;background:#121927;border:1px solid var(--bd);border-radius:12px;padding:18px 22px 14px;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.dd-h{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 4px}
+.nav-links .dd-box a{display:block;padding:7px 0;line-height:1.35}
+.dd-box a small{display:block;font-size:.76rem;color:var(--ink-dim);font-weight:400;margin-top:2px}
 @media(max-width:760px){
   .nav-right{gap:12px}
   .nav-links{position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,14,23,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd-soft);padding:6px 24px 14px;display:none}
   .nav.open .nav-links{display:flex}
   .nav-links a{padding:14px 0;font-size:1rem;border-bottom:1px solid var(--bd-soft)}
   .nav-links a:last-child{border-bottom:none}
+  .nav-dd .dd-panel{display:block;position:static;transform:none;padding:0}
+  .nav.open{backdrop-filter:none;-webkit-backdrop-filter:none;background:#0A0E17}
+  .nav-dd{border-bottom:1px solid var(--bd-soft)}
+  .nav-links .nav-dd>a{border-bottom:none;padding-bottom:6px}
+  .dd-car{display:none}
+  .dd-box{display:block;width:auto;background:none;border:0;box-shadow:none;padding:0 0 0 16px}
+  .dd-read,.dd-h,.dd-box a small{display:none}
+  .nav-links .dd-box a{padding:11px 0;font-size:.95rem}
   .nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:38px;background:transparent;border:1px solid var(--bd);border-radius:8px;cursor:pointer;padding:0 10px}
   .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
   .nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -239,6 +256,8 @@ strong,b{color:var(--ink);font-weight:600}
 .fill.aft{width:73.3%;background:linear-gradient(90deg,var(--gold),var(--gold-2))}
 .gc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--bd-soft)}
 .gc-drag{font-family:var(--mono);font-size:.82rem;color:var(--grn)}
+.gc-link{display:inline-block;margin-top:12px;font-size:.84rem;font-weight:600;color:var(--gold);text-decoration:none}
+.gc-link:hover{color:var(--gold-2)}
 .gc-note{font-size:.72rem;color:var(--ink-dim);font-style:italic;margin-top:12px}
 
 /* RIBBON */
@@ -296,6 +315,9 @@ section{padding-block:64px}
 .res h3{font-family:var(--sans);font-size:1.02rem;font-weight:600;line-height:1.3;margin:0 0 8px}
 .res p{font-size:.86rem;color:var(--ink-2);margin:0 0 16px;flex:1}
 .res .more{font-size:.82rem;color:var(--ink);font-weight:500}
+.tools-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:40px 0 14px}
+.res-tools a{padding:18px 20px}
+.res-tools p{margin-bottom:12px}
 .res-foot{margin-top:18px;font-size:.9rem}
 .res-foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold-bd)}
 @media(max-width:720px){.res{grid-template-columns:1fr}}
@@ -463,7 +485,27 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="#about">About</a>
         <a href="#sample">Sample Read</a>
         <a href="#services">Services &amp; Pricing</a>
-        <a href="#resources">Resources</a>
+        <div class="nav-dd">
+          <a href="#resources">Resources<span class="dd-car" aria-hidden="true">&#9662;</span></a>
+          <div class="dd-panel">
+            <div class="dd-box">
+              <div class="dd-col">
+                <div class="dd-h">Free tools</div>
+                <a href="estimator.html">After-tax estimator<small>Can your LPs use the year-one losses?</small></a>
+                <a href="exit-tax-calculator.html">Exit tax calculator<small>What the sale really costs</small></a>
+                <a href="questions-to-ask-your-sponsor.html">LP checklist<small>3 questions to ask a sponsor</small></a>
+              </div>
+              <div class="dd-col dd-read">
+                <div class="dd-h">Reading</div>
+                <a href="what-your-lps-actually-keep.html">What your LPs actually keep</a>
+                <a href="due-diligence-catches-errors.html">DD catches errors, not omissions</a>
+                <a href="1031-exchanges-at-the-fund-level.html">1031 at the fund level</a>
+                <a href="after-tax-returns.html">After-tax returns</a>
+                <a href="pressure-test-your-pro-forma.html">Pressure-test the pro forma</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="#book">Contact</a>
       </div>
       <a class="btn btn-gold btn-sm nav-cta" href="https://calendly.com/kasing-credevsim/15min">Book a Call &rarr;</a>
@@ -503,6 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <span class="gc-drag">&minus;2.7 pts from exit tax</span>
           <span style="font-family:var(--mono);font-size:.8rem;color:var(--ink-dim)">1.62&times; &rarr; 1.42&times;</span>
         </div>
+        <a class="gc-link" href="exit-tax-calculator.html">Estimate the exit tax on your deal &rarr;</a>
         <p class="gc-note">Illustrative model on an anonymized deal, not a forecast. Your read runs on your own numbers.</p>
       </div>
     </div>
@@ -694,7 +737,28 @@ document.addEventListener("DOMContentLoaded", function () {
         <span class="more">Read &rarr;</span>
       </a>
     </div>
-    <p class="res-foot">More: <a href="after-tax-returns.html">After-tax returns</a> &middot; <a href="pressure-test-your-pro-forma.html">Pressure-test your pro forma</a> &middot; <a href="estimator.html">Free after-tax estimator</a> &middot; <a href="exit-tax-calculator.html">Free exit tax calculator</a> &middot; <a href="questions-to-ask-your-sponsor.html">3 questions to ask your sponsor</a></p>
+    <p class="res-foot">More reading: <a href="after-tax-returns.html">After-tax returns</a> &middot; <a href="pressure-test-your-pro-forma.html">Pressure-test your pro forma</a></p>
+    <div class="tools-h">Free tools</div>
+    <div class="res res-tools">
+      <a href="estimator.html">
+        <div class="rk">Free tool</div>
+        <h3>After-tax estimator</h3>
+        <p>Cost seg on your deal: how much of the year-one loss a passive LP can actually use.</p>
+        <span class="more">Run it &rarr;</span>
+      </a>
+      <a href="exit-tax-calculator.html">
+        <div class="rk">Free tool</div>
+        <h3>Exit tax calculator</h3>
+        <p>What a sale really costs: recapture, capital gain, NIIT and state, and what a 1031 would and wouldn't defer.</p>
+        <span class="more">Run it &rarr;</span>
+      </a>
+      <a href="questions-to-ask-your-sponsor.html">
+        <div class="rk">LP checklist</div>
+        <h3>3 questions to ask your sponsor</h3>
+        <p>What a good answer sounds like before you wire, and the answers that should make you pause.</p>
+        <span class="more">Read &rarr;</span>
+      </a>
+    </div>
   </section>
 
   <!-- CTA -->
