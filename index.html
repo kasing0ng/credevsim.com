@@ -60,7 +60,7 @@
 {
   "@context": "https://schema.org",
   "@type": "AccountingService",
-  "name": "Kasing Ng, CPA — Real Estate Tax Advisory",
+  "name": "Kasing Ng, CPA · Real Estate Tax Advisory",
   "url": "https://credevsim.com/",
   "image": "https://credevsim.com/CREDevSim_Banner_Download.png",
   "priceRange": "$$",
@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag('event', 'lead_sample', { event_category: 'conversion', event_label: 'Sample PDF email' });
       try { if (sb) await sb.from('leads').insert({ email: email, source: 'homepage_sample' }); } catch (e) {}
       try { localStorage.setItem('sample_unlocked', '1'); } catch (e) {}
-      msgEl.textContent = 'Thanks — opening the sample now.';
+      msgEl.textContent = 'Thanks, opening the sample now.';
       window.open(PDF, '_blank');
       setTimeout(closeModal, 900);
     });

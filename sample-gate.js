@@ -70,7 +70,7 @@
     try { if (typeof gtag === 'function') gtag('event', 'lead_sample', { event_category: 'conversion', event_label: SOURCE }); } catch (e) {}
     try { if (sb) await sb.from('leads').insert({ email: email, source: SOURCE }); } catch (e) {}
     try { localStorage.setItem('sample_unlocked', '1'); } catch (e) {}
-    msgEl.textContent = 'Thanks — opening the sample now.';
+    msgEl.textContent = 'Thanks, opening the sample now.';
     window.open(PDF, '_blank');
     setTimeout(closeModal, 900);
   });
