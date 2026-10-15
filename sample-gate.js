@@ -68,7 +68,12 @@
     if (!email || email.indexOf('@') < 1) { msgEl.textContent = 'Please enter a valid email.'; return; }
     msgEl.textContent = 'One sec…';
     try { if (typeof gtag === 'function') gtag('event', 'lead_sample', { event_category: 'conversion', event_label: SOURCE }); } catch (e) {}
-    try { if (sb) await sb.from('leads').insert({ email: email, source: SOURCE }); } catch (e) {}
+    try {
+      var r = sb ? await sb.from('leads').insert({ email: email, source: SOURCE }) : { error: { message: 'no supabase client' } };
+      if (r && r.error && typeof gtag === 'function') gtag('event', 'lead_capture_failed', { event_category: 'conversion', event_label: String(r.error.message || r.error) });
+    } catch (e) {
+      try { if (typeof gtag === 'function') gtag('event', 'lead_capture_failed', { event_category: 'conversion', event_label: String((e && e.message) || e) }); } catch (e2) {}
+    }
     try { localStorage.setItem('sample_unlocked', '1'); } catch (e) {}
     msgEl.textContent = 'Thanks, opening the sample now.';
     window.open(PDF, '_blank');
